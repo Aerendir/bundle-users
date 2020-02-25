@@ -1,0 +1,50 @@
+{
+    "name": "serendipity_hq/bundle-users",
+    "description": "A Symfony bundle that helps manage users in a Symfony app.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5",
+        "serendipity_hq/console-styles-bundle": "dev-dev",
+        "symfony/console": "5.0.*",
+        "thecodingmachine/safe": "^1.0"
+    },
+    "require-dev": {
+        "drenso/phan-extensions": "^2.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phan/phan": "2.4.8",
+        "phpstan/phpstan": "^0.12.9",
+        "phpstan/phpstan-doctrine": "^0.12.8",
+        "phpstan/phpstan-phpunit": "^0.12.5",
+        "phpstan/phpstan-symfony": "^0.12.2",
+        "rector/rector": "0.7.1",
+        "roave/security-advisories": "dev-master",
+        "symfony/debug-pack": "1.0.7",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/test-pack": "1.0.6",
+        "vimeo/psalm": "^3.8",
+        "weirdan/doctrine-psalm-plugin": "^0.9"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "SerendipityHQ\\Bundle\\UsersBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    }
+}

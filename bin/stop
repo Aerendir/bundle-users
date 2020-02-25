@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+symfony server:stop &&
+symfony proxy:stop &&
+docker-compose stop

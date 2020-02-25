@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+docker-compose up --remove-orphans -d &&
+symfony proxy:start &&
+symfony server:start -d &&
+symfony open:local
