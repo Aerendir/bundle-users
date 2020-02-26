@@ -93,3 +93,5 @@ parameters:
         - 'Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector'
         - 'Rector\SOLID\Rector\ClassConst\PrivatizeLocalClassConstantRector'
         - 'Rector\SOLID\Rector\Class_\FinalizeClassesWithoutChildrenRector'
+        # Incompatible with bundles
+        - 'Rector\DeadCode\Rector\Class_\RemoveUnusedClassesRector'

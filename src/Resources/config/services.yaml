@@ -1,0 +1,5 @@
+services:
+    SerendipityHQ\Bundle\UsersBundle\Command\UsersCreateCommand:
+        tags: ['console.command']
+        public: false
+        autowire: true
