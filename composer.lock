@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5e061412afdbfec03967c47e45aada6",
+    "content-hash": "28f19e0f27d11d4fd4431c38a0abbb5e",
     "packages": [
         {
             "name": "psr/container",
@@ -2854,16 +2854,16 @@
         },
         {
             "name": "phan/phan",
-            "version": "2.4.8",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phan/phan.git",
-                "reference": "dc94f53f651bfb32766902e5d4198780245d8382"
+                "reference": "d458d8197b5b25bdca4c442be9a50321f0f8a15b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phan/phan/zipball/dc94f53f651bfb32766902e5d4198780245d8382",
-                "reference": "dc94f53f651bfb32766902e5d4198780245d8382",
+                "url": "https://api.github.com/repos/phan/phan/zipball/d458d8197b5b25bdca4c442be9a50321f0f8a15b",
+                "reference": "d458d8197b5b25bdca4c442be9a50321f0f8a15b",
                 "shasum": ""
             },
             "require": {
@@ -2881,7 +2881,7 @@
                 "symfony/polyfill-mbstring": "^1.11.0"
             },
             "require-dev": {
-                "brianium/paratest": "^3.1.2",
+                "brianium/paratest": "^4.0.0",
                 "phpunit/phpunit": "^7.5.0"
             },
             "suggest": {
@@ -2923,7 +2923,7 @@
                 "php",
                 "static"
             ],
-            "time": "2020-01-25T17:22:42+00:00"
+            "time": "2020-02-20T14:53:46+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -3030,16 +3030,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.0.0",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "a48807183a4b819072f26e347bbd0b5199a9d15f"
+                "reference": "cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/a48807183a4b819072f26e347bbd0b5199a9d15f",
-                "reference": "a48807183a4b819072f26e347bbd0b5199a9d15f",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e",
+                "reference": "cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e",
                 "shasum": ""
             },
             "require": {
@@ -3079,7 +3079,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-02-09T09:16:15+00:00"
+            "time": "2020-02-22T12:28:44+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
