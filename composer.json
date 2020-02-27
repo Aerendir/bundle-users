@@ -23,7 +23,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/test-pack": "1.0.6",
         "vimeo/psalm": "^3.8",
-        "weirdan/doctrine-psalm-plugin": "^0.9"
+        "weirdan/doctrine-psalm-plugin": "^0.10"
     },
     "config": {
         "preferred-install": {
