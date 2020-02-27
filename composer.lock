@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5e061412afdbfec03967c47e45aada6",
+    "content-hash": "40a1a6f09888f4912202bcd1f12f3e2b",
     "packages": [
         {
             "name": "psr/container",
@@ -1947,6 +1947,50 @@
             "time": "2018-06-13T13:22:40+00:00"
         },
         {
+            "name": "jetbrains/phpstorm-stubs",
+            "version": "v2019.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JetBrains/phpstorm-stubs.git",
+                "reference": "883b6facd78e01c0743b554af86fa590c2573f40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JetBrains/phpstorm-stubs/zipball/883b6facd78e01c0743b554af86fa590c2573f40",
+                "reference": "883b6facd78e01c0743b554af86fa590c2573f40",
+                "shasum": ""
+            },
+            "require-dev": {
+                "nikic/php-parser": "^4",
+                "php": "^7.1",
+                "phpdocumentor/reflection-docblock": "^4.3",
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "PhpStormStubsMap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP runtime & extensions header files for PhpStorm",
+            "homepage": "https://www.jetbrains.com/phpstorm",
+            "keywords": [
+                "autocomplete",
+                "code",
+                "inference",
+                "inspection",
+                "jetbrains",
+                "phpstorm",
+                "stubs",
+                "type"
+            ],
+            "time": "2019-12-05T16:56:26+00:00"
+        },
+        {
             "name": "microsoft/tolerant-php-parser",
             "version": "v0.0.18",
             "source": {
@@ -3547,16 +3591,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "v0.7.1",
+            "version": "v0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "4493137ad6e50379dacc765b3ba367684aeac554"
+                "reference": "f7b3f203cb60c6f44336f97c1b81594b5eb9506f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/4493137ad6e50379dacc765b3ba367684aeac554",
-                "reference": "4493137ad6e50379dacc765b3ba367684aeac554",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f7b3f203cb60c6f44336f97c1b81594b5eb9506f",
+                "reference": "f7b3f203cb60c6f44336f97c1b81594b5eb9506f",
                 "shasum": ""
             },
             "require": {
@@ -3565,6 +3609,7 @@
                 "doctrine/inflector": "^1.3",
                 "ext-json": "*",
                 "jean85/pretty-package-versions": "^1.2",
+                "jetbrains/phpstorm-stubs": "^2019.3",
                 "nette/robot-loader": "^3.2",
                 "nette/utils": "^3.1",
                 "nikic/php-parser": "^4.3",
@@ -3586,7 +3631,6 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16",
-                "jetbrains/phpstorm-stubs": "^2019.3",
                 "ocramius/package-versions": "^1.4|^1.5",
                 "phpunit/phpunit": "^8.4|^9.0",
                 "symplify/changelog-linker": "^7.2",
@@ -3706,7 +3750,7 @@
                 "instant refactoring",
                 "instant upgrades"
             ],
-            "time": "2020-02-23T22:42:11+00:00"
+            "time": "2020-02-27T13:29:48+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -3714,12 +3758,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "1df6b9d09d2b074fd3f0f10a7696d9f797d4772c"
+                "reference": "974eed9766dc388dc01c231fa82faeff0df8892e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1df6b9d09d2b074fd3f0f10a7696d9f797d4772c",
-                "reference": "1df6b9d09d2b074fd3f0f10a7696d9f797d4772c",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/974eed9766dc388dc01c231fa82faeff0df8892e",
+                "reference": "974eed9766dc388dc01c231fa82faeff0df8892e",
                 "shasum": ""
             },
             "conflict": {
@@ -3734,6 +3778,7 @@
                 "bagisto/bagisto": "<0.1.5",
                 "bolt/bolt": "<3.6.10",
                 "brightlocal/phpwhois": "<=4.2.5",
+                "buddypress/buddypress": "<5.1.2",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
                 "cakephp/cakephp": ">=1.3,<1.3.18|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=2.7,<2.7.6|>=3,<3.5.18|>=3.6,<3.6.15|>=3.7,<3.7.7",
                 "cart2quote/module-quotation": ">=4.1.6,<=4.4.5|>=5,<5.4.4",
@@ -3965,7 +4010,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2020-02-19T06:23:50+00:00"
+            "time": "2020-02-27T10:27:06+00:00"
         },
         {
             "name": "sabre/event",
