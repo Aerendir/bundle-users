@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5e061412afdbfec03967c47e45aada6",
+    "content-hash": "716fea2de74409cf1ae69cff989e1852",
     "packages": [
         {
             "name": "psr/container",
@@ -725,20 +725,21 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.8.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc"
+                "reference": "5eb79f3dbdffed6544e1fc287572c0f462bd29bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/904dca4eb10715b92569fbcd79e201d5c349b6bc",
-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5eb79f3dbdffed6544e1fc287572c0f462bd29bb",
+                "reference": "5eb79f3dbdffed6544e1fc287572c0f462bd29bb",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
+                "ext-tokenizer": "*",
                 "php": "^7.1"
             },
             "require-dev": {
@@ -748,7 +749,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev"
+                    "dev-master": "1.9.x-dev"
                 }
             },
             "autoload": {
@@ -789,7 +790,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2019-10-01T18:55:10+00:00"
+            "time": "2020-04-02T12:33:25+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -1381,16 +1382,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "445796af0e873d9bd04f2502d322a7d5009b6846"
+                "reference": "dafe298ce5d0b995ebe1746670704c0a35868a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/445796af0e873d9bd04f2502d322a7d5009b6846",
-                "reference": "445796af0e873d9bd04f2502d322a7d5009b6846",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/dafe298ce5d0b995ebe1746670704c0a35868a6a",
+                "reference": "dafe298ce5d0b995ebe1746670704c0a35868a6a",
                 "shasum": ""
             },
             "require": {
@@ -1461,20 +1462,20 @@
                 "database",
                 "orm"
             ],
-            "time": "2020-02-15T14:35:56+00:00"
+            "time": "2020-03-19T06:41:02+00:00"
         },
         {
             "name": "doctrine/persistence",
-            "version": "1.3.6",
+            "version": "1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "5dd3ac5eebef2d0b074daa4440bb18f93132dee4"
+                "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/5dd3ac5eebef2d0b074daa4440bb18f93132dee4",
-                "reference": "5dd3ac5eebef2d0b074daa4440bb18f93132dee4",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
+                "reference": "0af483f91bada1c9ded6c2cfd26ab7d5ab2094e0",
                 "shasum": ""
             },
             "require": {
@@ -1482,7 +1483,7 @@
                 "doctrine/cache": "^1.0",
                 "doctrine/collections": "^1.0",
                 "doctrine/event-manager": "^1.0",
-                "doctrine/reflection": "^1.1",
+                "doctrine/reflection": "^1.2",
                 "php": "^7.1"
             },
             "conflict": {
@@ -1544,20 +1545,20 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-01-16T22:06:23+00:00"
+            "time": "2020-03-21T15:13:52+00:00"
         },
         {
             "name": "doctrine/reflection",
-            "version": "v1.1.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/reflection.git",
-                "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c"
+                "reference": "55e71912dfcd824b2fdd16f2d9afe15684cfce79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/reflection/zipball/bc420ead87fdfe08c03ecc3549db603a45b06d4c",
-                "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c",
+                "url": "https://api.github.com/repos/doctrine/reflection/zipball/55e71912dfcd824b2fdd16f2d9afe15684cfce79",
+                "reference": "55e71912dfcd824b2fdd16f2d9afe15684cfce79",
                 "shasum": ""
             },
             "require": {
@@ -1578,7 +1579,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -1622,7 +1623,7 @@
                 "reflection",
                 "static"
             ],
-            "time": "2020-01-08T19:53:19+00:00"
+            "time": "2020-03-27T11:06:43+00:00"
         },
         {
             "name": "drenso/phan-extensions",
@@ -1716,6 +1717,7 @@
                 "monolog",
                 "productivity"
             ],
+            "abandoned": true,
             "time": "2019-10-24T07:13:31+00:00"
         },
         {
@@ -6531,12 +6533,12 @@
             "version": "v7.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Symplify/AutoBindParameter.git",
+                "url": "https://github.com/symplify/auto-bind-parameter.git",
                 "reference": "d3108315ba89a6dcb79f3028564c5c03f6bfff59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/AutoBindParameter/zipball/d3108315ba89a6dcb79f3028564c5c03f6bfff59",
+                "url": "https://api.github.com/repos/symplify/auto-bind-parameter/zipball/d3108315ba89a6dcb79f3028564c5c03f6bfff59",
                 "reference": "d3108315ba89a6dcb79f3028564c5c03f6bfff59",
                 "shasum": ""
             },
@@ -6573,12 +6575,12 @@
             "version": "v7.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Symplify/AutowireArrayParameter.git",
+                "url": "https://github.com/symplify/autowire-array-parameter.git",
                 "reference": "c4904d4640f8fa13d4494d2d4e817274ba855891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/AutowireArrayParameter/zipball/c4904d4640f8fa13d4494d2d4e817274ba855891",
+                "url": "https://api.github.com/repos/symplify/autowire-array-parameter/zipball/c4904d4640f8fa13d4494d2d4e817274ba855891",
                 "reference": "c4904d4640f8fa13d4494d2d4e817274ba855891",
                 "shasum": ""
             },
@@ -6615,12 +6617,12 @@
             "version": "v7.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Symplify/PackageBuilder.git",
+                "url": "https://github.com/symplify/package-builder.git",
                 "reference": "854b9f35f54edf10c55ae40f010e31213ac8c9b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/PackageBuilder/zipball/854b9f35f54edf10c55ae40f010e31213ac8c9b5",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/854b9f35f54edf10c55ae40f010e31213ac8c9b5",
                 "reference": "854b9f35f54edf10c55ae40f010e31213ac8c9b5",
                 "shasum": ""
             },
@@ -6661,12 +6663,12 @@
             "version": "v7.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Symplify/SetConfigResolver.git",
+                "url": "https://github.com/symplify/set-config-resolver.git",
                 "reference": "5f5af7f6aad71c2b6627b4d5ed6c39e3a220878d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/SetConfigResolver/zipball/5f5af7f6aad71c2b6627b4d5ed6c39e3a220878d",
+                "url": "https://api.github.com/repos/symplify/set-config-resolver/zipball/5f5af7f6aad71c2b6627b4d5ed6c39e3a220878d",
                 "reference": "5f5af7f6aad71c2b6627b4d5ed6c39e3a220878d",
                 "shasum": ""
             },
@@ -6704,12 +6706,12 @@
             "version": "v7.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Symplify/SmartFileSystem.git",
+                "url": "https://github.com/symplify/smart-file-system.git",
                 "reference": "b9a6109eabf559ce6b041abb29165751a3947d16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Symplify/SmartFileSystem/zipball/b9a6109eabf559ce6b041abb29165751a3947d16",
+                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/b9a6109eabf559ce6b041abb29165751a3947d16",
                 "reference": "b9a6109eabf559ce6b041abb29165751a3947d16",
                 "shasum": ""
             },
@@ -7115,31 +7117,35 @@
         },
         {
             "name": "weirdan/doctrine-psalm-plugin",
-            "version": "0.9.0",
+            "version": "0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/weirdan/doctrine-psalm-plugin.git",
-                "reference": "f962d9efc0ff90c0b4d4871fc6e3f5e499c7ae8a"
+                "reference": "8bd1fba0e2156be4b4738dfa195f705b499d3bdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/weirdan/doctrine-psalm-plugin/zipball/f962d9efc0ff90c0b4d4871fc6e3f5e499c7ae8a",
-                "reference": "f962d9efc0ff90c0b4d4871fc6e3f5e499c7ae8a",
+                "url": "https://api.github.com/repos/weirdan/doctrine-psalm-plugin/zipball/8bd1fba0e2156be4b4738dfa195f705b499d3bdc",
+                "reference": "8bd1fba0e2156be4b4738dfa195f705b499d3bdc",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "^1.0",
                 "doctrine/orm": "^2.6",
+                "php": "^7.2|^8",
                 "vimeo/psalm": "^3.6.2 || dev-master"
             },
+            "conflict": {
+                "slevomat/coding-standard": "6.1.1"
+            },
             "require-dev": {
-                "codeception/base": "^2.5 || ^3.0",
+                "codeception/codeception": "^4.0",
                 "composer/semver": "^1.4",
                 "doctrine/coding-standard": "^7.0",
                 "doctrine/doctrine-bundle": "^1.11",
                 "phly/keep-a-changelog": "^2.1",
                 "squizlabs/php_codesniffer": "^3.3",
-                "weirdan/codeception-psalm-module": "^0.2.2"
+                "weirdan/codeception-psalm-module": "^0.6"
             },
             "type": "psalm-plugin",
             "extra": {
@@ -7180,7 +7186,7 @@
                 "static analysis",
                 "static-analysis"
             ],
-            "time": "2020-01-19T19:03:13+00:00"
+            "time": "2020-04-16T11:04:26+00:00"
         }
     ],
     "aliases": [],
