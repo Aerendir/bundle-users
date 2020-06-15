@@ -6,7 +6,7 @@
     "require": {
         "php": "^7.2.5",
         "serendipity_hq/console-styles-bundle": "dev-dev",
-        "symfony/console": "5.0.*",
+        "symfony/console": "5.1.*",
         "thecodingmachine/safe": "^1.0"
     },
     "require-dev": {
