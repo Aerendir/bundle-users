@@ -8,6 +8,10 @@ SHQ USERS BUNDLE
 ================
 
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF)](https://packagist.org/packages/serendipity_hq/bundle-users)
+[![Tested with Symfony ^3.4](https://img.shields.io/badge/Symfony-%5E3.4-333)](https://github.com/Aerendir/bundle-users/actions)
+[![Tested with Symfony ^4.4](https://img.shields.io/badge/Symfony-%5E4.4-333)](https://github.com/Aerendir/bundle-users/actions)
+[![Tested with Symfony ^5.2](https://img.shields.io/badge/Symfony-%5E5.2-333)](https://github.com/Aerendir/bundle-users/actions)
+
 [![Latest Stable Version](https://poser.pugx.org/serendipity_hq/bundle-users/v/stable.png)](https://packagist.org/packages/serendipity_hq/bundle-users)
 [![Total Downloads](https://poser.pugx.org/serendipity_hq/bundle-users/downloads.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
 [![License](https://poser.pugx.org/serendipity_hq/bundle-users/license.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
