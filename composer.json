@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SerendipityHQ\\Bundle\\UsersBundle\\": "src/"
+            "SerendipityHQ\\Bundle\\UsersBundle\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests/"
+            "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests"
         }
     },
     "scripts": {
