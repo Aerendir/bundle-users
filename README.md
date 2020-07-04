@@ -7,6 +7,27 @@
 SHQ USERS BUNDLE
 ================
 
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF)](https://packagist.org/packages/serendipity_hq/bundle-users)
+[![Latest Stable Version](https://poser.pugx.org/serendipity_hq/bundle-users/v/stable.png)](https://packagist.org/packages/serendipity_hq/bundle-users)
+[![Total Downloads](https://poser.pugx.org/serendipity_hq/bundle-users/downloads.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
+[![License](https://poser.pugx.org/serendipity_hq/bundle-users/license.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=coverage)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=alert_status)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=security_rating)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
+
+![Phan](https://github.com/Aerendir/bundle-users/workflows/Phan/badge.svg)
+![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)
+![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)
+![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)
+![Composer](https://github.com/Aerendir/bundle-users/workflows/Composer/badge.svg)
+![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)
+![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)
+
 A bundle that helps managing users in Symfony apps.
 
 This bundle tries to avoid errors done by FOSUserBundle.
