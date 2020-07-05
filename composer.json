@@ -23,8 +23,8 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/test-pack": "^1.0",
         "thecodingmachine/phpstan-safe-rule": "@stable",
-        "vimeo/psalm": "^3.8",
-        "weirdan/doctrine-psalm-plugin": "^0.9"
+        "vimeo/psalm": "^3.12",
+        "weirdan/doctrine-psalm-plugin": "@stable"
     },
     "config": {
         "preferred-install": {
