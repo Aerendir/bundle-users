@@ -10,14 +10,14 @@
         "thecodingmachine/safe": "^0.1|^1.0"
     },
     "require-dev": {
-        "drenso/phan-extensions": "^2.5",
+        "drenso/phan-extensions": "@stable",
         "friendsofphp/php-cs-fixer": "^2.16",
-        "phan/phan": "2.4.8",
+        "phan/phan": "^3.0",
         "phpstan/phpstan": "^0.12.9",
         "phpstan/phpstan-doctrine": "^0.12.8",
         "phpstan/phpstan-phpunit": "^0.12.5",
         "phpstan/phpstan-symfony": "^0.12.2",
-        "rector/rector": "^0.7.41",
+        "rector/rector": "^0.7",
         "roave/security-advisories": "dev-master",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
