@@ -1,8 +1,7 @@
-imports:
-    - { resource: 'vendor/thecodingmachine/safe/rector-migrate-0.6.yml' }
-
 parameters:
     php_version_features: '7.2'
+    autoload_paths:
+        - 'vendor-bin/phpunit/vendor/autoload.php'
     sets:
         # PHP sets
         - 'php52'
@@ -76,6 +75,7 @@ parameters:
         - 'early-return'
         - 'monolog20'
         - 'php-di-decouple'
+        - 'safe07'
         - 'solid'
         - 'swiftmailer60'
         - 'unwrap-compat'
