@@ -2,20 +2,12 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude([
-        '_bak',
-        'assets',
-        'bin',
-        'config',
         'build',
         'docs',
-        'node_modules',
-        'public',
-        'templates',
-        'translations',
-        'var',
         'vendor'
     ])
-    ->in(__DIR__.'/src');
+    ->in(__DIR__.'/src')
+    ->in(__DIR__.'/tests');;
 
 $header = <<<EOF
 This file is part of SHQUsersBundle.
@@ -29,6 +21,7 @@ EOF;
 return PhpCsFixer\Config::create()
     ->setFinder($finder)
     ->setUsingCache(true)
+    ->setCacheFile(__DIR__.'/var/cache/.php_cs.cache')
     ->setRiskyAllowed(true)
     ->setRules([
         'header_comment' => ['header' => $header],
@@ -78,6 +71,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_add_missing_param_annotation' => true,
         'phpdoc_order' => true,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last'],
+        'phpdoc_var_without_name' => false,
         'single_line_comment_style' => ['comment_types' => ['hash']],
         'strict_comparison' => true
     ]);
