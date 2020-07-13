@@ -3,5 +3,6 @@ composer.lock
 var
 !var/cache/.gitkeep
 vendor
+/vendor-bin/**/vendor
 .php_cs.cache
 .phpunit.result.cache
