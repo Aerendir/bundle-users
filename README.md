@@ -1,20 +1,21 @@
 <p align="center">
     <a href="http://www.serendipityhq.com" target="_blank">
-        <img src="http://www.serendipityhq.com/assets/open-source-projects/Logo-SerendipityHQ-Icon-Text-Purple.png">
+        <img style="max-width: 350px" src="http://www.serendipityhq.com/assets/open-source-projects/Logo-SerendipityHQ-Icon-Text-Purple.png">
     </a>
 </p>
 
-SHQ USERS BUNDLE
-================
+<h1 align="center">Serendipity HQ Users Bundle</h1>
+<p align="center">Helps managing users in Symfony apps.</p>
+<p align="center">
+    <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/v/serendipity_hq/bundle-users.svg?style=flat-square"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
+    <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF&style=flat-square&logo=php" /></a>
+    <a title="Tested with Symfony ^3.4" href="https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev"><img title="Tested with Symfony ^3.4" src="https://img.shields.io/badge/Symfony-%5E3.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^4.4" href="https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev"><img title="Tested with Symfony ^4.4" src="https://img.shields.io/badge/Symfony-%5E4.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^5.0" href="https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.0" src="https://img.shields.io/badge/Symfony-%5E5.0-333?style=flat-square&logo=symfony" /></a>
+</p>
 
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF)](https://packagist.org/packages/serendipity_hq/bundle-users)
-[![Tested with Symfony ^3.0](https://img.shields.io/badge/Symfony-%5E3.0-333)](https://github.com/Aerendir/bundle-users/actions)
-[![Tested with Symfony ^4.0](https://img.shields.io/badge/Symfony-%5E4.0-333)](https://github.com/Aerendir/bundle-users/actions)
-[![Tested with Symfony ^5.0](https://img.shields.io/badge/Symfony-%5E5.0-333)](https://github.com/Aerendir/bundle-users/actions)
-
-[![Latest Stable Version](https://poser.pugx.org/serendipity_hq/bundle-users/v/stable.png)](https://packagist.org/packages/serendipity_hq/bundle-users)
-[![Total Downloads](https://poser.pugx.org/serendipity_hq/bundle-users/downloads.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
-[![License](https://poser.pugx.org/serendipity_hq/bundle-users/license.svg)](https://packagist.org/packages/serendipity_hq/bundle-users)
+## Current Status
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=coverage)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
@@ -24,15 +25,15 @@ SHQ USERS BUNDLE
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 
-![Phan](https://github.com/Aerendir/bundle-users/workflows/Phan/badge.svg)
-![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)
-![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)
-![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)
-![Composer](https://github.com/Aerendir/bundle-users/workflows/Composer/badge.svg)
-![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)
-![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)
+[![Phan](https://github.com/Aerendir/bundle-users/workflows/Phan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![Composer](https://github.com/Aerendir/bundle-users/workflows/Composer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 
-A bundle that helps managing users in Symfony apps.
+## Features
 
 This bundle tries to avoid errors done by FOSUserBundle.
 

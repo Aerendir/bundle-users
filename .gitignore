@@ -1,5 +1,7 @@
-vendor
-.php_cs.cache
 phpunit.xml
 composer.lock
+var
+!var/cache/.gitkeep
+vendor
+.php_cs.cache
 .phpunit.result.cache
