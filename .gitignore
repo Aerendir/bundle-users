@@ -4,4 +4,3 @@ var
 !var/cache/.gitkeep
 vendor
 /vendor-bin/**/vendor
-.phpunit.result.cache
