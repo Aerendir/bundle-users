@@ -1,8 +1,20 @@
 {
     "name": "serendipity_hq/bundle-users",
     "description": "A Symfony bundle that helps manage users in a Symfony app.",
+    "keywords": ["user", "users"],
+    "homepage": "https://github.com/Aerendir/bundle-users",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "docs": "https://github.com/Aerendir/bundle-users/tree/dev/docs",
+        "issues": "https://github.com/Aerendir/bundle-users/issues"
+    },
+    "authors": [
+        {
+            "name": "Adamo Aerendir Crespi",
+            "email": "hello@aerendir.me"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "serendipity_hq/component-console-styles": "dev-dev",
