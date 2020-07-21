@@ -43,6 +43,18 @@ FOSUserBundle does a lot of assumptions and forces you to flow its paths.
 
 Read this for more informations about the problems of FOSUserBundle that this bundles tries to avoid: https://jolicode.com/blog/do-not-use-fosuserbundle
 
+<hr />
+<h3 align="center">
+    <b>Do you like this bundle?</b><br />
+    <b><a href="#js-repo-pjax-container">LEAVE A &#9733;</a></b>
+</h3>
+<p align="center">
+    or run<br />
+    <code>composer global require symfony/thanks && composer thanks</code><br />
+    to say thank you to all libraries you use in your current project, this included!
+</p>
+<hr />
+
 # Documentation
 
 - Bootstrapping users management in your app (link to Symfony documentation)
@@ -83,3 +95,15 @@ Implement the trait `HasPlainPassword` in the `User` entity and then remove the 
 This way, the `User` entity will have a field `plainPassword` provided by the trait, the form will bind the form field to this property and the Doctrine listener will automatically encode the password.
 
 Also, modify the controller to not encode the password anymore.
+
+<hr />
+<h3 align="center">
+    <b>Do you like this bundle?</b><br />
+    <b><a href="#js-repo-pjax-container">LEAVE A &#9733;</a></b>
+</h3>
+<p align="center">
+    or run<br />
+    <code>composer global require symfony/thanks && composer thanks</code><br />
+    to say thank you to all libraries you use in your current project, this included!
+</p>
+<hr />
