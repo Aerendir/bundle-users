@@ -1,32 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:\\$validator has unknown class Symfony\\\\Component\\\\Validator\\\\Validator\\\\ValidatorInterface as its type\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\$validator of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:__construct\\(\\) has invalid typehint type Symfony\\\\Component\\\\Validator\\\\Validator\\\\ValidatorInterface\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Function sprintf is unsafe to use\\. It can return FALSE instead of throwing an exception\\. Please add 'use function Safe\\\\sprintf;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
-			count: 4
-			path: src/Command/UsersCreateCommand.php
-
-		-
 			message: "#^Parameter \\#1 \\$provider of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManagerRegistry\\:\\:hasProvider\\(\\) expects string, array\\<string\\>\\|bool\\|int\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|bool\\|int\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$user contains unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
 
@@ -46,54 +21,19 @@ parameters:
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^Call to method validate\\(\\) on an unknown class Symfony\\\\Component\\\\Validator\\\\Validator\\\\ValidatorInterface\\.$#"
+			message: "#^Call to function is_array\\(\\) with Symfony\\\\Component\\\\Validator\\\\ConstraintViolationListInterface will always evaluate to false\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$error contains unknown class Symfony\\\\Component\\\\Validator\\\\ConstraintViolation\\.$#"
+			message: "#^Result of \\|\\| is always true\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^Call to method getInvalidValue\\(\\) on an unknown class Symfony\\\\Component\\\\Validator\\\\ConstraintViolation\\.$#"
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getPlainPassword\\(\\)\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Call to method getMessage\\(\\) on an unknown class Symfony\\\\Component\\\\Validator\\\\ConstraintViolation\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Call to method getPropertyPath\\(\\) on an unknown class Symfony\\\\Component\\\\Validator\\\\ConstraintViolation\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string given\\.$#"
-			count: 2
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Call to method getPlainPassword\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Return typehint of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:create\\(\\) has invalid type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Property SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Doctrine\\\\UserEncodePasswordListener\\:\\:\\$encoderFactory has unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\EncoderFactoryInterface as its type\\.$#"
-			count: 1
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Parameter \\$encoderFactory of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Doctrine\\\\UserEncodePasswordListener\\:\\:__construct\\(\\) has invalid typehint type Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\EncoderFactoryInterface\\.$#"
-			count: 2
-			path: src/Doctrine/UserEncodePasswordListener.php
 
 		-
 			message: "#^PHPDoc tag @param references unknown parameter\\: \\$event$#"
@@ -101,44 +41,9 @@ parameters:
 			path: src/Doctrine/UserEncodePasswordListener.php
 
 		-
-			message: "#^PHPDoc tag @throws with type InvalidArgumentException\\|RuntimeException\\|Safe\\\\Exceptions\\\\StringsException\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Exception\\\\BadCredentialsException is not subtype of Throwable$#"
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface&Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setPassword\\(\\)\\.$#"
 			count: 1
 			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Parameter \\$user of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Doctrine\\\\UserEncodePasswordListener\\:\\:preFlush\\(\\) has invalid typehint type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to method getUsername\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to method getPlainPassword\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 3
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to method getEncoder\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\EncoderFactoryInterface\\.$#"
-			count: 1
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to method getSalt\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to method setPassword\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 1
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Property SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Event\\\\UserCreatedEvent\\:\\:\\$user has unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface as its type\\.$#"
-			count: 1
-			path: src/Event/UserCreatedEvent.php
 
 		-
 			message: "#^PHPDoc tag @param for parameter \\$provider with type string\\|null is not subtype of native type string\\.$#"
@@ -146,32 +51,7 @@ parameters:
 			path: src/Event/UserCreatedEvent.php
 
 		-
-			message: "#^Parameter \\$user of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Event\\\\UserCreatedEvent\\:\\:__construct\\(\\) has invalid typehint type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Event/UserCreatedEvent.php
-
-		-
-			message: "#^Return typehint of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Event\\\\UserCreatedEvent\\:\\:getUser\\(\\) has invalid type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Event/UserCreatedEvent.php
-
-		-
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\Exception\\\\UsersManagerException\\:\\:providerMustBeSpecified\\(\\) has parameter \\$availableProviders with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Manager/Exception/UsersManagerException.php
-
-		-
-			message: "#^Return typehint of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManager\\:\\:create\\(\\) has invalid type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Manager/UsersManager.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$user contains unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 1
-			path: src/Manager/UsersManager.php
-
-		-
-			message: "#^Return typehint of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManagerInterface\\:\\:create\\(\\) has invalid type Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\.$#"
-			count: 2
-			path: src/Manager/UsersManagerInterface.php
 

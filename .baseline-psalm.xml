@@ -1,43 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.12.2@7c7ebd068f8acaba211d4a2c707c4ba90874fa26">
+<files psalm-version="3.13.1@afd8874a9e4562eac42a02de90e42e430c3a1db1">
   <file src="src/Command/UsersCreateCommand.php">
-    <MixedAssignment occurrences="1">
+    <MixedArgument occurrences="1">
       <code>$errors</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>UserInterface</code>
-    </MixedInferredReturnType>
-    <PossibleRawObjectIteration occurrences="1">
-      <code>$errors</code>
-    </PossibleRawObjectIteration>
-    <PossiblyInvalidArgument occurrences="7">
-      <code>$provider</code>
+    </MixedArgument>
+    <PossiblyInvalidArgument occurrences="4">
       <code>$provider</code>
       <code>$provider</code>
       <code>$unique</code>
       <code>$pass</code>
-      <code>$unique</code>
-      <code>$unique</code>
     </PossiblyInvalidArgument>
-    <PropertyNotSetInConstructor occurrences="3">
-      <code>$entityManager</code>
-      <code>$usersManagerRegistry</code>
-      <code>$validator</code>
-    </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="2">
-      <code>ValidatorInterface</code>
-      <code>UserInterface</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="8">
-      <code>\Symfony\Component\Validator\Validator\ValidatorInterface</code>
-      <code>$user</code>
-      <code>$this-&gt;validator</code>
-      <code>$error</code>
-      <code>$error</code>
-      <code>$error</code>
-      <code>$error</code>
-      <code>$user</code>
-    </UndefinedDocblockClass>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getPlainPassword</code>
+    </PossiblyUndefinedMethod>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>\is_array($errors) || $errors instanceof \Countable</code>
+    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
     <MixedMethodCall occurrences="13">
@@ -64,11 +42,11 @@
       <code>$providerConfig['class']</code>
     </MixedArgument>
     <MixedArrayAccess occurrences="7">
-      <code>$securityExtConfig[0]['providers']</code>
-      <code>$config['entity']</code>
-      <code>$config['entity']</code>
+      <code>$securityExtConfig[0][self::PROVIDERS]</code>
+      <code>$config[self::ENTITY]</code>
+      <code>$config[self::ENTITY]</code>
       <code>$providerConfig['class']</code>
-      <code>$providerConfig['property']</code>
+      <code>$providerConfig[self::PROPERTY]</code>
       <code>$providerConfig['class']</code>
       <code>$providerConfig['class']</code>
     </MixedArrayAccess>
@@ -85,48 +63,38 @@
     </MixedOperand>
   </file>
   <file src="src/Doctrine/UserEncodePasswordListener.php">
-    <PropertyNotSetInConstructor occurrences="1">
-      <code>$encoderFactory</code>
-    </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="2">
-      <code>EncoderFactoryInterface</code>
-      <code>UserInterface</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="1">
-      <code>\Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface</code>
-    </UndefinedDocblockClass>
+    <PossiblyNullArgument occurrences="2">
+      <code>$user-&gt;getPlainPassword()</code>
+      <code>$user-&gt;getPlainPassword()</code>
+    </PossiblyNullArgument>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>setPassword</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Event/UserCreatedEvent.php">
     <MismatchingDocblockParamType occurrences="1">
       <code>string|null</code>
     </MismatchingDocblockParamType>
-    <MixedInferredReturnType occurrences="1">
-      <code>UserInterface</code>
-    </MixedInferredReturnType>
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>$user</code>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
       <code>$provider</code>
-    </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="2">
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="1">
-      <code>\Symfony\Component\Security\Core\User\UserInterface</code>
-    </UndefinedDocblockClass>
+    </PossiblyNullPropertyAssignmentValue>
   </file>
   <file src="src/Manager/UsersManager.php">
-    <MixedInferredReturnType occurrences="1">
+    <InvalidArgument occurrences="1">
+      <code>$user</code>
+    </InvalidArgument>
+    <InvalidReturnStatement occurrences="1">
+      <code>$user</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
       <code>UserInterface</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>UserInterface</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Manager/UsersManagerInterface.php">
-    <UndefinedClass occurrences="1">
-      <code>UserInterface</code>
-    </UndefinedClass>
+    </InvalidReturnType>
+    <InvalidStringClass occurrences="1">
+      <code>new $this-&gt;userClass()</code>
+    </InvalidStringClass>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$user</code>
+    </PossiblyInvalidArgument>
   </file>
   <file src="src/Manager/UsersManagerRegistry.php">
     <MixedArgumentTypeCoercion occurrences="2">
