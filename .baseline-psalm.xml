@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="3.13.1@afd8874a9e4562eac42a02de90e42e430c3a1db1">
   <file src="src/Command/UsersCreateCommand.php">
-    <MixedArgument occurrences="1">
-      <code>$errors</code>
-    </MixedArgument>
     <PossiblyInvalidArgument occurrences="4">
       <code>$provider</code>
       <code>$provider</code>
@@ -14,7 +11,7 @@
       <code>getPlainPassword</code>
     </PossiblyUndefinedMethod>
     <RedundantConditionGivenDocblockType occurrences="1">
-      <code>\is_array($errors) || $errors instanceof \Countable</code>
+      <code>\is_countable($errors)</code>
     </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/DependencyInjection/Configuration.php">

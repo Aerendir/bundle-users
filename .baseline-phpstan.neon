@@ -21,12 +21,7 @@ parameters:
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^Call to function is_array\\(\\) with Symfony\\\\Component\\\\Validator\\\\ConstraintViolationListInterface will always evaluate to false\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Result of \\|\\| is always true\\.$#"
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
 

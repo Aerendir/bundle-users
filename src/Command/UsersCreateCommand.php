@@ -146,7 +146,7 @@ EOT
         $user   = $this->create($provider, $unique, $pass);
         $errors = $this->validator->validate($user);
 
-        if ((\is_array($errors) || $errors instanceof \Countable ? \count($errors) : 0) > 0) {
+        if ((\is_countable($errors) ? \count($errors) : 0) > 0) {
             /** @var ConstraintViolation $error */
             foreach ($errors as $error) {
                 $io->writeln(\Safe\sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
