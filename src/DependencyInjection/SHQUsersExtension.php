@@ -43,6 +43,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
      * @var string
      */
     private const PROPERTY = 'property';
+
     /**
      * @param ContainerBuilder $containerBuilder
      */
@@ -54,7 +55,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $providers = [];
         foreach ($securityEntityProviders as $provider => $config) {
             $providers[$provider] = [
-                'class'    => $config[self::ENTITY]['class'],
+                'class'        => $config[self::ENTITY]['class'],
                 self::PROPERTY => $config[self::ENTITY][self::PROPERTY],
             ];
         }
@@ -94,9 +95,9 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
                     ->addTag(
                         'doctrine.orm.entity_listener',
                         [
-                            'event'  => Events::preFlush,
+                            'event'      => Events::preFlush,
                             self::ENTITY => $providerConfig['class'],
-                            'lazy'   => true,
+                            'lazy'       => true,
                         ]
                     );
                 $containerBuilder->setDefinition(UserEncodePasswordListener::class, $userEncodePasswordListenerDefinition);
