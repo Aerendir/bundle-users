@@ -31,6 +31,7 @@
         "symfony/debug-bundle": "^3.4|^4.4|^5.1",
         "symfony/monolog-bundle": "^3.4|^4.4|^5.1",
         "symfony/phpunit-bridge": "^3.4|^4.4|^5.1",
+        "symfony/security": "^3.4|^4.4|^5.1",
         "symfony/stopwatch": "^3.4|^4.4|^5.1",
         "symfony/twig-bundle": "^3.4|^4.4|^5.1",
         "symfony/var-dumper": "^3.4|^4.4|^5.1",
