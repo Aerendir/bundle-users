@@ -29,25 +29,37 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * {@inheritdoc}
  */
-class SHQUsersExtension extends Extension implements PrependExtensionInterface
+final class SHQUsersExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * @var string
+     */
+    private const PROVIDERS = 'providers';
+    /**
+     * @var string
+     */
+    private const ENTITY = 'entity';
+    /**
+     * @var string
+     */
+    private const PROPERTY = 'property';
     /**
      * @param ContainerBuilder $containerBuilder
      */
     public function prepend(ContainerBuilder $containerBuilder): void
     {
         $securityExtConfig       = $containerBuilder->getExtensionConfig('security');
-        $securityEntityProviders = $securityExtConfig[0]['providers'];
+        $securityEntityProviders = $securityExtConfig[0][self::PROVIDERS];
 
         $providers = [];
         foreach ($securityEntityProviders as $provider => $config) {
             $providers[$provider] = [
-                'class'    => $config['entity']['class'],
-                'property' => $config['entity']['property'],
+                'class'    => $config[self::ENTITY]['class'],
+                self::PROPERTY => $config[self::ENTITY][self::PROPERTY],
             ];
         }
 
-        $containerBuilder->prependExtensionConfig('shq_users', ['providers' => $providers]);
+        $containerBuilder->prependExtensionConfig('shq_users', [self::PROVIDERS => $providers]);
     }
 
     /**
@@ -71,19 +83,19 @@ class SHQUsersExtension extends Extension implements PrependExtensionInterface
         $propertyAccessor = new Reference('property_accessor');
         $encoderFactory   = new Reference('security.encoder_factory');
 
-        foreach ($config['providers'] as $provider => $providerConfig) {
+        foreach ($config[self::PROVIDERS] as $provider => $providerConfig) {
             $manager           = 'shq_users.managers.' . $provider;
-            $managerDefinition = new Definition(UsersManager::class, [$provider, $providerConfig['class'], $providerConfig['property'], $dispatcher, $entityManager, $propertyAccessor]);
+            $managerDefinition = new Definition(UsersManager::class, [$provider, $providerConfig['class'], $providerConfig[self::PROPERTY], $dispatcher, $entityManager, $propertyAccessor]);
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 
-            if (is_subclass_of($providerConfig['class'], HasPlainPasswordInterface::class)) {
+            if (\is_subclass_of($providerConfig['class'], HasPlainPasswordInterface::class)) {
                 $userEncodePasswordListenerDefinition = (new Definition(UserEncodePasswordListener::class, [$encoderFactory]))
                     ->addTag(
                         'doctrine.orm.entity_listener',
                         [
                             'event'  => Events::preFlush,
-                            'entity' => $providerConfig['class'],
+                            self::ENTITY => $providerConfig['class'],
                             'lazy'   => true,
                         ]
                     );

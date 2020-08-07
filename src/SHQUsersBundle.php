@@ -18,6 +18,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * {@inheritdoc}
  */
-class SHQUsersBundle extends Bundle
+final class SHQUsersBundle extends Bundle
 {
 }

@@ -22,7 +22,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * {@inheritdoc}
  */
-class UsersManager implements UsersManagerInterface
+final class UsersManager implements UsersManagerInterface
 {
     /** @var string $provider */
     private $provider;

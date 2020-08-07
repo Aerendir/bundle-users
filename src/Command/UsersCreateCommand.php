@@ -35,7 +35,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 /**
  * Creates a user.
  */
-class UsersCreateCommand extends Command
+final class UsersCreateCommand extends Command
 {
     /** @var string */
     protected static $defaultName = 'shq:users:create';
@@ -123,10 +123,11 @@ EOT
             return 1;
         }
 
-        $availableManagers = array_keys($this->usersManagerRegistry->getManagers());
+        $availableManagers = \array_keys($this->usersManagerRegistry->getManagers());
         if (null === $provider) {
             if (1 < \count($availableManagers)) {
-                $io->error(sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', implode(', ', $availableManagers)));
+                $message = \Safe\sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers));
+                $io->error($message);
 
                 return 1;
             }
@@ -135,7 +136,8 @@ EOT
         }
 
         if (false === $this->usersManagerRegistry->hasProvider($provider)) {
-            $io->error(sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, implode(', ', $availableManagers)));
+            $message = \Safe\sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers));
+            $io->error($message);
 
             return 1;
         }
@@ -144,13 +146,14 @@ EOT
         $user   = $this->create($provider, $unique, $pass);
         $errors = $this->validator->validate($user);
 
-        if ((is_array($errors) || $errors instanceof \Countable ? count($errors) : 0) > 0) {
+        if ((\is_array($errors) || $errors instanceof \Countable ? \count($errors) : 0) > 0) {
             /** @var ConstraintViolation $error */
             foreach ($errors as $error) {
                 $io->writeln(\Safe\sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
             }
+            $message = \Safe\sprintf('Impossible to create the user "%s".', $unique);
 
-            $io->error(sprintf('Impossible to create the user "%s".', $unique));
+            $io->error($message);
 
             return 1;
         }
@@ -158,7 +161,8 @@ EOT
         $this->entityManager->flush();
 
         $io->writeln(\Safe\sprintf('Password for user %s: %s', $unique, $user->getPlainPassword()));
-        $io->success(sprintf('User %s created.', $unique));
+        $message = \Safe\sprintf('User %s created.', $unique);
+        $io->success($message);
 
         return 0;
     }

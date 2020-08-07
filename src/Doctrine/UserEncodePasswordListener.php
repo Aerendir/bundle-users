@@ -28,7 +28,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @see https://symfony.com/doc/current/doctrine/events.html
  */
-class UserEncodePasswordListener
+final class UserEncodePasswordListener
 {
     /** @var \Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface $encoderFactory */
     private $encoderFactory;

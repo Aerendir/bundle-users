@@ -19,7 +19,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 /**
  * Dispatched when a user is created but not still persisted (nor flushed).
  */
-class UserCreatedEvent extends Event
+final class UserCreatedEvent extends Event
 {
     /** @var \Symfony\Component\Security\Core\User\UserInterface $user */
     private $user;

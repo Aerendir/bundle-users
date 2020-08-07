@@ -19,7 +19,7 @@ use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
 /**
  * Stores all created UsersManager.
  */
-class UsersManagerRegistry
+final class UsersManagerRegistry
 {
     /** @var UsersManagerInterface[] $managers */
     private $managers = [];
@@ -43,7 +43,7 @@ class UsersManagerRegistry
      */
     public function getManager(?string $provider = null): UsersManagerInterface
     {
-        $availableManagers = array_keys($this->getManagers());
+        $availableManagers = \array_keys($this->getManagers());
         if (null === $provider) {
             if (1 < \count($availableManagers)) {
                 throw UsersManagerException::providerMustBeSpecified($availableManagers);

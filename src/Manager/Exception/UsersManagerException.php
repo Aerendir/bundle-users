@@ -20,7 +20,7 @@ use SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface;
 /**
  * Exceptions related to UsersManager.
  */
-class UsersManagerException extends \RuntimeException
+final class UsersManagerException extends \RuntimeException
 {
     /**
      * @param string $userClass
@@ -59,7 +59,7 @@ class UsersManagerException extends \RuntimeException
      */
     public static function providerMustBeSpecified(array $availableProviders): UsersManagerException
     {
-        $message = sprintf('Currently there are "%s" providers configured in "security.providers". Please, specify for which one you\'d like to get the UsersManager. Available providers are: %s', count($availableProviders), implode(', ', $availableProviders));
+        $message = sprintf('Currently there are "%s" providers configured in "security.providers". Please, specify for which one you\'d like to get the UsersManager. Available providers are: %s', \count($availableProviders), \implode(', ', $availableProviders));
 
         return new self($message);
     }
