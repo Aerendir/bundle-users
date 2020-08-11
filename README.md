@@ -64,7 +64,7 @@ Read this for more informations about the problems of FOSUserBundle that this bu
 - Creating a login form
 - Creating a password reset form
 
-## Configuring the `userInterface` entity
+## Configuring the `UserInterface` entity
 
 Implement `HasPlainPassword` and `use HasPlainPasswordTrait`.
 
