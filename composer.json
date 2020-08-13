@@ -19,7 +19,7 @@
         "php": "^7.3",
         "serendipity_hq/component-console-styles": "dev-dev",
         "symfony/console": "^5.1",
-        "symfony/property-access": "5.1",
+        "symfony/property-access": "^5.1",
         "symfony/validator": "^5.1",
         "thecodingmachine/safe": "^1.0"
     },
