@@ -15,6 +15,9 @@ namespace SerendipityHQ\Bundle\UsersBundle\Property;
 
 interface HasPlainPasswordInterface
 {
+    /**
+     * @var string
+     */
     public const FIELD_PLAIN_PASSWORD = 'plainPassword';
 
     /**

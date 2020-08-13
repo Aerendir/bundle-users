@@ -65,17 +65,17 @@ final class UsersManager implements UsersManagerInterface
         /** @var UserInterface $user */
         $user = new $this->userClass();
         $this->propertyAccessor->setValue($user, $this->uniqueProperty, $unique);
-        
+
         try {
             $this->propertyAccessor->setValue($user, HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD, $pass);
         } catch (\Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException $noSuchPropertyException) {
             $toThrow = $noSuchPropertyException;
 
-            if (false !== strpos($noSuchPropertyException->getMessage(), HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)) {
+            if (false !== \strpos($noSuchPropertyException->getMessage(), HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)) {
                 $toThrow = UsersManagerException::userClassMustImplementHasPlainPasswordInterface($this->userClass);
             }
 
-            throw $toThrow;   
+            throw $toThrow;
         }
         $event = new UserCreatedEvent($user, $this->provider);
         $this->dispatcher->dispatch($event);
