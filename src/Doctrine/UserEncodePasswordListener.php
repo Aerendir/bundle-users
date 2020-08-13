@@ -54,7 +54,7 @@ final class UserEncodePasswordListener
     public function preFlush(UserInterface $user): void
     {
         if ( ! $user instanceof HasPlainPasswordInterface) {
-            throw UsersManagerException::userClassMustImplementHasPlainPasswordInterface($user->getUsername());
+            throw UsersManagerException::userClassMustImplementHasPlainPasswordInterface(get_class($user));
         }
 
         if (null === $user->getPlainPassword()) {
