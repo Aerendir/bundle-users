@@ -11,6 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-final class ExpiredPasswordTokenResetException extends \Exception implements PasswordResetExceptionInterface
+final class ExpiredPasswordTokenResetException extends PasswordResetTokenException
 {
 }

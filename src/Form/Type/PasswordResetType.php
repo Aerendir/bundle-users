@@ -19,7 +19,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 final class PasswordResetType extends AbstractType
 {
     /**
-     * This is probably a bug of Phan (#4155)
+     * This is probably a bug of Phan (#4155).
+     *
      * @suppress PhanUnusedPublicFinalMethodParameter
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void

@@ -612,7 +612,7 @@ Create the method `UserPasswordController::reset()`:
              * @var HasPlainPasswordInterface $user
              */
             $user = $this->passwordManager->findUserByPublicToken($token);
-        } catch (PasswordResetExceptionInterface $e) {
+        } catch (PasswordResetException $e) {
             $this->addFlash('user_password_reset_error', sprintf(
                 'There was a problem validating your reset request - %s',
                 $e->getMessage()

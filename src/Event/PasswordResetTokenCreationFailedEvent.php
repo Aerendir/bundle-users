@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Event;
 
-use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetExceptionInterface;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetException;
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
@@ -21,17 +21,17 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 final class PasswordResetTokenCreationFailedEvent extends Event
 {
-    private PasswordResetExceptionInterface $resetPasswordException;
+    private PasswordResetException $resetPasswordException;
 
-    public function __construct(PasswordResetExceptionInterface $resetPasswordException)
+    public function __construct(PasswordResetException $resetPasswordException)
     {
         $this->resetPasswordException = $resetPasswordException;
     }
 
     /**
-     * @return PasswordResetExceptionInterface
+     * @return PasswordResetException
      */
-    public function getThrowable(): PasswordResetExceptionInterface
+    public function getThrowable(): PasswordResetException
     {
         return $this->resetPasswordException;
     }

@@ -11,6 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-interface PasswordResetExceptionInterface extends \Throwable
+class PasswordResetTokenException extends PasswordResetException
 {
 }

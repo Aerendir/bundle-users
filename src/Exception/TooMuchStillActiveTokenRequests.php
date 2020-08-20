@@ -11,6 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-final class TooMuchStillActiveTokenRequests extends \Exception implements PasswordResetExceptionInterface
+final class TooMuchStillActiveTokenRequests extends PasswordResetRequestException
 {
 }

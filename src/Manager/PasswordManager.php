@@ -19,7 +19,7 @@ use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreatedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreationFailedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Exception\ExpiredPasswordTokenResetException;
 use SerendipityHQ\Bundle\UsersBundle\Exception\InvalidPasswordTokenResetException;
-use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetExceptionInterface;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetException;
 use SerendipityHQ\Bundle\UsersBundle\Exception\TooMuchFastTokenRequests;
 use SerendipityHQ\Bundle\UsersBundle\Exception\TooMuchStillActiveTokenRequests;
 use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordHelper;
@@ -100,8 +100,8 @@ final class PasswordManager
         $resetToken = new $this->tokenClass($user);
         try {
             $publicResetToken = $this->passwordResetHelper->activateResetToken($resetToken);
-        } catch (PasswordResetExceptionInterface $passwordResetExceptionInterface) {
-            $event = new PasswordResetTokenCreationFailedEvent($passwordResetExceptionInterface);
+        } catch (PasswordResetException $passwordResetException) {
+            $event = new PasswordResetTokenCreationFailedEvent($passwordResetException);
             $this->eventDispatcher->dispatch($event);
 
             return false;
