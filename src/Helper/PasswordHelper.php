@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
-use SerendipityHQ\Bundle\UsersBundle\Form\Type\ChangePasswordFormType;
 use SerendipityHQ\Bundle\UsersBundle\Form\Type\PasswordResetRequestType;
+use SerendipityHQ\Bundle\UsersBundle\Form\Type\PasswordResetType;
 use SerendipityHQ\Bundle\UsersBundle\Form\Type\UserPasswordChangeType;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Routes;
@@ -78,7 +78,7 @@ final class PasswordHelper
     {
         $action = $this->router->generate(Routes::PASSWORD_RESET_RESET);
 
-        return $this->formFactory->create(ChangePasswordFormType::class, null, [
+        return $this->formFactory->create(PasswordResetType::class, null, [
             self::ACTION             => $action,
             self::METHOD             => self::POST,
             'allow_extra_fields'     => true,

@@ -34,7 +34,7 @@ return [
         'src/Event/PasswordResetTokenCreatedEvent.php' => ['PhanUnreferencedPublicMethod'],
         'src/Event/PasswordResetTokenCreationFailedEvent.php' => ['PhanUnreferencedPublicMethod'],
         'src/Event/UserCreatedEvent.php' => ['PhanTypeMismatchDeclaredParam', 'PhanUnreferencedPublicMethod'],
-        'src/Form/Type/ChangePasswordFormType.php' => ['PhanUnusedPublicFinalMethodParameter'],
+        'src/Form/Type/ConfirmedPasswordType.php' => ['PhanUnusedPublicFinalMethodParameter'],
         'src/Form/Type/PasswordResetRequestType.php' => ['PhanUnusedPublicFinalMethodParameter'],
         'src/Form/Type/UserPasswordChangeType.php' => ['PhanUnusedPublicFinalMethodParameter'],
         'src/Helper/PasswordHelper.php' => ['PhanUnreferencedPublicMethod'],

@@ -11,7 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,9 +22,9 @@ final class PasswordResetRequestType extends AbstractType
     {
         $builder
             ->add('primaryEmail', EmailType::class, [
-                'constraints' => [
+                self::CONSTRAINTS_KEY => [
                     new NotBlank([
-                        'message' => 'serendipity_hq.user.form.error.primary.not_blank',
+                        self::MESSAGE_KEY => 'serendipity_hq.user.form.error.primary.not_blank',
                     ]),
                 ],
             ]);
