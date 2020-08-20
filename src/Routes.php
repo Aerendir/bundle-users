@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,22 +9,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle\Property;
+namespace SerendipityHQ\Bundle\UsersBundle;
 
-interface HasPlainPasswordInterface
+final class Routes
 {
     /**
      * @var string
      */
-    public const FIELD_PLAIN_PASSWORD = 'plainPassword';
-
+    public const PASSWORD_CHANGE = 'user_password_change';
     /**
-     * @param string $password
+     * @var string
      */
-    public function setPlainPassword(string $password): void;
-
+    public const PASSWORD_RESET_REQUEST = 'user_password_reset_request';
     /**
-     * @return string|null
+     * @var string
      */
-    public function getPlainPassword(): ?string;
+    public const PASSWORD_RESET_RESET = 'user_password_reset_reset_password';
 }

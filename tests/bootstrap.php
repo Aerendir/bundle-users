@@ -11,14 +11,4 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-final class SHQUsersBundle extends Bundle
-{
-    /**
-     * @var string
-     */
-    public const TRANSLATION_DOMAIN = 'serendipity_hq.bundle.users';
-}
+require_once __DIR__ . '/../vendor/autoload.php';

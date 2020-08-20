@@ -11,27 +11,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle\Property;
+namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
 /**
- * This trait MUST be implemented by all UserINterface in the app.
+ * This trait MUST be implemented by all UserInterface in the app.
  */
 trait HasPlainPasswordTrait
 {
-    /** @var string|null */
-    private $plainPassword;
+    private ?string $plainPassword = null;
 
-    /**
-     * @return string|null
-     */
     public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
 
-    /**
-     * @param string|null $plainPassword
-     */
     public function setPlainPassword(?string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;

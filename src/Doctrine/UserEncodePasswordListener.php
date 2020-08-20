@@ -13,12 +13,9 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Doctrine;
 
-use Doctrine\ORM\Event\PreFlushEventArgs;
-use Safe\Exceptions\StringsException;
 use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
-use SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -30,27 +27,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 final class UserEncodePasswordListener
 {
-    /** @var \Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface $encoderFactory */
-    private $encoderFactory;
+    private EncoderFactoryInterface $encoderFactory;
 
-    /**
-     * @param EncoderFactoryInterface $encoderFactory
-     */
     public function __construct(EncoderFactoryInterface $encoderFactory)
     {
         $this->encoderFactory = $encoderFactory;
     }
 
-    /**
-     * @param UserInterface     $user
-     * @param PreFlushEventArgs $event
-     *
-     * @throws UsersManagerException
-     * @throws \InvalidArgumentException
-     * @throws \RuntimeException
-     * @throws StringsException
-     * @throws BadCredentialsException
-     */
     public function preFlush(UserInterface $user): void
     {
         if ( ! $user instanceof HasPlainPasswordInterface) {

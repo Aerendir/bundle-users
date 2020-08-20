@@ -92,8 +92,7 @@ If your application, instead, uses the username to identify the users, then you 
 
   <info>php %command.full_name% Aerendir P4sSw0rD</info>
 
-EOT
-            );
+EOT);
     }
 
     /**

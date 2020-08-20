@@ -15,9 +15,14 @@ namespace SerendipityHQ\Bundle\UsersBundle\DependencyInjection;
 
 use Doctrine\ORM\Events;
 use SerendipityHQ\Bundle\UsersBundle\Doctrine\UserEncodePasswordListener;
+use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordHelper;
+use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordResetHelper;
+use SerendipityHQ\Bundle\UsersBundle\Manager\PasswordManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
-use SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Repository\PasswordResetTokenRepository;
+use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -31,43 +36,22 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 final class SHQUsersExtension extends Extension implements PrependExtensionInterface
 {
-    /**
-     * @var string
-     */
-    private const PROVIDERS = 'providers';
-    /**
-     * @var string
-     */
-    private const ENTITY = 'entity';
-    /**
-     * @var string
-     */
-    private const PROPERTY = 'property';
-
-    /**
-     * @param ContainerBuilder $containerBuilder
-     */
     public function prepend(ContainerBuilder $containerBuilder): void
     {
         $securityExtConfig       = $containerBuilder->getExtensionConfig('security');
-        $securityEntityProviders = $securityExtConfig[0][self::PROVIDERS];
+        $securityEntityProviders = $securityExtConfig[0][Configuration::SECURITY_PROVIDERS_KEY];
 
         $providers = [];
         foreach ($securityEntityProviders as $provider => $config) {
             $providers[$provider] = [
-                'class'        => $config[self::ENTITY]['class'],
-                self::PROPERTY => $config[self::ENTITY][self::PROPERTY],
+                Configuration::SECURITY_ENTITY_CLASS_KEY    => $config[Configuration::SECURITY_ENTITY_KEY][Configuration::SECURITY_ENTITY_CLASS_KEY],
+                Configuration::SECURITY_ENTITY_PROPERTY_KEY => $config[Configuration::SECURITY_ENTITY_KEY][Configuration::SECURITY_ENTITY_PROPERTY_KEY],
             ];
         }
 
-        $containerBuilder->prependExtensionConfig('shq_users', [self::PROVIDERS => $providers]);
+        $containerBuilder->prependExtensionConfig(Configuration::BUNDLE_CONFIG_NAME, [Configuration::SECURITY_PROVIDERS_KEY => $providers]);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws \Exception
-     */
     public function load(array $configs, ContainerBuilder $containerBuilder): void
     {
         $configuration = new Configuration();
@@ -79,25 +63,47 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
 
-        $dispatcher       = new Reference('event_dispatcher');
-        $entityManager    = new Reference('doctrine.orm.default_entity_manager');
-        $propertyAccessor = new Reference('property_accessor');
-        $encoderFactory   = new Reference('security.encoder_factory');
+        $appSecret                              = $containerBuilder->getParameter('kernel.secret');
+        $dispatcherReference                    = new Reference('event_dispatcher');
+        $encoderFactoryReference                = new Reference('security.encoder_factory');
+        $entityManagerReference                 = new Reference('doctrine.orm.default_entity_manager');
+        $formFactoryReference                   = new Reference('form.factory');
+        $propertyAccessorReference              = new Reference('property_accessor');
+        $routerReference                        = new Reference('router.default');
+        $userPasswordEncoderReference           = new Reference('security.password_encoder');
+        $passwordResetTokenRepositoryDefinition = new Definition(PasswordResetTokenRepository::class, ['App\Entity\PasswordResetToken']);
+        $passwordResetTokenRepositoryDefinition->setFactory([$entityManagerReference, 'getRepository']);
+        $containerBuilder->setDefinition(PasswordResetTokenRepository::class, $passwordResetTokenRepositoryDefinition);
 
-        foreach ($config[self::PROVIDERS] as $provider => $providerConfig) {
+        $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$formFactoryReference, $routerReference, $userPasswordEncoderReference]);
+        $containerBuilder->setDefinition(PasswordHelper::class, $passwordHelperDefinition);
+
+        foreach ($config[Configuration::SECURITY_PROVIDERS_KEY] as $provider => $providerConfig) {
+            $userClass    = $providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY];
+            $userProperty = $providerConfig[Configuration::SECURITY_ENTITY_PROPERTY_KEY];
+
             $manager           = 'shq_users.managers.' . $provider;
-            $managerDefinition = new Definition(UsersManager::class, [$provider, $providerConfig['class'], $providerConfig[self::PROPERTY], $dispatcher, $entityManager, $propertyAccessor]);
+            $managerDefinition = new Definition(UsersManager::class, [$provider, $userClass, $userProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference]);
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 
-            if (\is_subclass_of($providerConfig['class'], HasPlainPasswordInterface::class)) {
-                $userEncodePasswordListenerDefinition = (new Definition(UserEncodePasswordListener::class, [$encoderFactory]))
+            $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $userProperty, $propertyAccessorReference]);
+            $containerBuilder->setDefinition(PasswordResetTokenGenerator::class, $passwordResetTokenGeneratorDefinition);
+
+            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenRepositoryDefinition, $passwordResetTokenGeneratorDefinition]);
+            $containerBuilder->setDefinition(PasswordHelper::class, $passwordResetHelperDefinition);
+
+            $passwordManagerDefinition = new Definition(PasswordManager::class, [$config[Configuration::BUNDLE_CONFIG_TOKEN_CLASS], $userClass, $userProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
+            $containerBuilder->setDefinition(PasswordManager::class, $passwordManagerDefinition);
+
+            if (\is_subclass_of($providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY], HasPlainPasswordInterface::class)) {
+                $userEncodePasswordListenerDefinition = (new Definition(UserEncodePasswordListener::class, [$encoderFactoryReference]))
                     ->addTag(
                         'doctrine.orm.entity_listener',
                         [
-                            'event'      => Events::preFlush,
-                            self::ENTITY => $providerConfig['class'],
-                            'lazy'       => true,
+                            'event'                            => Events::preFlush,
+                            Configuration::SECURITY_ENTITY_KEY => $providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY],
+                            'lazy'                             => true,
                         ]
                     );
                 $containerBuilder->setDefinition(UserEncodePasswordListener::class, $userEncodePasswordListenerDefinition);

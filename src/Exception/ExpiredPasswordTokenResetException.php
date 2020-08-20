@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,14 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle;
+namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-final class SHQUsersBundle extends Bundle
+final class ExpiredPasswordTokenResetException extends \Exception implements PasswordResetExceptionInterface
 {
-    /**
-     * @var string
-     */
-    public const TRANSLATION_DOMAIN = 'serendipity_hq.bundle.users';
 }

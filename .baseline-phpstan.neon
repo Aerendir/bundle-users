@@ -6,6 +6,11 @@ parameters:
 			path: src/Command/UsersCreateCommand.php
 
 		-
+			message: "#^PHPDoc tag @var for variable \\$user contains unknown class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface\\.$#"
+			count: 1
+			path: src/Command/UsersCreateCommand.php
+
+		-
 			message: "#^Parameter \\#1 \\$provider of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:create\\(\\) expects string, array\\<string\\>\\|bool\\|int\\|string given\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
@@ -26,17 +31,12 @@ parameters:
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getPlainPassword\\(\\)\\.$#"
+			message: "#^Call to method getPlainPassword\\(\\) on an unknown class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface\\.$#"
 			count: 1
 			path: src/Command/UsersCreateCommand.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$event$#"
-			count: 1
-			path: src/Doctrine/UserEncodePasswordListener.php
-
-		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface&Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setPassword\\(\\)\\.$#"
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface&Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setPassword\\(\\)\\.$#"
 			count: 1
 			path: src/Doctrine/UserEncodePasswordListener.php
 
@@ -46,7 +46,52 @@ parameters:
 			path: src/Event/UserCreatedEvent.php
 
 		-
+			message: "#^Class DateTimeImmutable is unsafe to use\\. Its methods can return FALSE instead of throwing an exception\\. Please add 'use Safe\\\\DateTimeImmutable;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
+			count: 1
+			path: src/Helper/PasswordResetHelper.php
+
+		-
+			message: "#^Class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Property\\\\HasPlainPasswordInterface not found\\.$#"
+			count: 1
+			path: src/Manager/Exception/UsersManagerException.php
+
+		-
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\Exception\\\\UsersManagerException\\:\\:providerMustBeSpecified\\(\\) has parameter \\$availableProviders with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Manager/Exception/UsersManagerException.php
+
+		-
+			message: "#^Property SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:\\$repository has no typehint specified\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\) expects class\\-string\\<mixed\\>, string given\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\)$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return typehint\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\PasswordResetTokenInterface\\:\\:activate\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/Property/PasswordResetTokenInterface.php
+
+		-
+			message: "#^Class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository extends generic class Doctrine\\\\ORM\\\\EntityRepository but does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
 

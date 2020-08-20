@@ -18,7 +18,7 @@ use Rector\Set\ValueObject\SetList;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::PHP_VERSION_FEATURES, '7.3');
+    $parameters->set(Option::PHP_VERSION_FEATURES, '7.4');
 
     $parameters->set(Option::PATHS, [
         __DIR__ . '/src',
@@ -113,6 +113,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector::class,
             Rector\CodingStyle\Rector\Throw_\AnnotateThrowablesRector::class,
             Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector::class,
+            Rector\MagicDisclosure\Rector\MethodCall\FluentChainMethodCallToNormalMethodCallRector::class,
             Rector\Php56\Rector\FunctionLike\AddDefaultValueForUndefinedVariableRector::class, // Maybe good one day
             Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector::class,
             Rector\PHPUnit\Rector\ClassMethod\AddDoesNotPerformAssertionToNonAssertingTestRector::class,

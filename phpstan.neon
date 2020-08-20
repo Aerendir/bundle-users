@@ -17,3 +17,4 @@ parameters:
         - tests
     excludes_analyse:
         - */src/DependencyInjection/Configuration.php
+        - */tests/bootstrap.php

@@ -16,7 +16,7 @@ namespace SerendipityHQ\Bundle\UsersBundle\Manager;
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Event\UserCreatedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
-use SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
