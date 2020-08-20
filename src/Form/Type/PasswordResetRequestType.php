@@ -25,7 +25,7 @@ final class PasswordResetRequestType extends AbstractType
             ->add('primaryEmail', EmailType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter your email',
+                        'message' => 'serendipity_hq.user.form.error.primary.not_blank',
                     ]),
                 ],
             ]);
