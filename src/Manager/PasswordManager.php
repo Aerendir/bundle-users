@@ -35,20 +35,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PasswordManager
 {
-    // @todo Make configurable
-    /**
-     * @var int
-     */
-    private const MAX_ACTIVE_TOKENS = 3;
-
-    /**
-     * @var int Minimum time (in seconds) between two requests
-     *
-     * @todo Make configurable
-     */
-    private const MIN_TIME_BETWEEN_TOKENS = 180;
     public $repository;
 
+    private int $maxActiveTokens;
+    private int $minTimeBetweenTokens;
     private string $tokenClass;
     private string $userClass;
     private string $userProperty;
@@ -58,8 +48,20 @@ final class PasswordManager
     private PasswordResetHelper $passwordResetHelper;
     private PasswordResetTokenRepository $passwordResetTokenRepository;
 
-    public function __construct(string $tokenClass, string $userClass, string $userProperty, EntityManagerInterface $entityManager, EventDispatcherInterface $eventDispatcher, PasswordHelper $passwordHelper, PasswordResetHelper $passwordResetHelper, PasswordResetTokenRepository $passwordResetTokenRepository)
-    {
+    public function __construct(
+        int $maxActiveTokens,
+        int $minTimeBetweenTokens,
+        string $tokenClass,
+        string $userClass,
+        string $userProperty,
+        EntityManagerInterface $entityManager,
+        EventDispatcherInterface $eventDispatcher,
+        PasswordHelper $passwordHelper,
+        PasswordResetHelper $passwordResetHelper,
+        PasswordResetTokenRepository $passwordResetTokenRepository
+    ) {
+        $this->maxActiveTokens              = $maxActiveTokens;
+        $this->minTimeBetweenTokens         = $minTimeBetweenTokens;
         $this->tokenClass                   = $tokenClass;
         $this->userClass                    = $userClass;
         $this->userProperty                 = $userProperty;
@@ -195,7 +197,7 @@ final class PasswordManager
             return null;
         }
 
-        if (\count($tokens) >= self::MAX_ACTIVE_TOKENS) {
+        if (\count($tokens) >= $this->maxActiveTokens) {
             throw new TooMuchStillActiveTokenRequests();
         }
 
@@ -208,7 +210,7 @@ final class PasswordManager
         $now  = new Carbon();
         $diff = $now->diffInSeconds($lastToken->getRequestedAt());
 
-        if (self::MIN_TIME_BETWEEN_TOKENS > $diff) {
+        if ($this->minTimeBetweenTokens > $diff) {
             // Do not specify how much time the user has to wait before
             // the next request to avoid disclosing sensitive information.
             throw new TooMuchFastTokenRequests();

@@ -20,12 +20,24 @@
         <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <file name="src/DependencyInjection/Configuration.php"/>
         </ignoreFiles>
     </projectFiles>
 
     <issueHandlers>
         <MissingThrowsDocblock errorLevel="suppress" />
         <RedundantIdentityWithTrue errorLevel="suppress" />
+        <!-- Ignore some errors in DependencyInjection/SHQUsersExtension.php as not fixable -->
+        <MixedAssignment>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/SHQUsersExtension.php" />
+            </errorLevel>
+        </MixedAssignment>
+        <MixedArrayAccess>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/SHQUsersExtension.php" />
+            </errorLevel>
+        </MixedArrayAccess>
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

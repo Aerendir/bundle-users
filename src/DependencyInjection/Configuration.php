@@ -31,6 +31,18 @@ final class Configuration implements ConfigurationInterface
     /**
      * @var string
      */
+    public const BUNDLE_CONFIG_THROTTLING = 'throttling';
+    /**
+     * @var string
+     */
+    public const BUNDLE_CONFIG_MAX_ACTIVE_TOKENS = 'max_active_tokens';
+    /**
+     * @var string
+     */
+    public const BUNDLE_CONFIG_MIN_TIME_BETWEEN_TOKENS = 'min_time_between_tokens';
+    /**
+     * @var string
+     */
     public const SECURITY_PROVIDERS_KEY = 'providers';
     /**
      * @var string
@@ -59,6 +71,19 @@ final class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode(self::BUNDLE_CONFIG_TOKEN_CLASS)
                     ->defaultValue('\App\Entity\PasswordResetToken')
+                ->end()
+                ->arrayNode(self::BUNDLE_CONFIG_THROTTLING)
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->integerNode(self::BUNDLE_CONFIG_MAX_ACTIVE_TOKENS)
+                            ->info('The max number of non expired requests a user can have at the same time.')
+                            ->defaultValue(3)
+                        ->end()
+                        ->integerNode(self::BUNDLE_CONFIG_MIN_TIME_BETWEEN_TOKENS)
+                            ->info('Minimum time (in seconds) between two password reset requests.')
+                            ->defaultValue(180)
+                        ->end()
+                    ->end()
                 ->end()
                 ->arrayNode(self::SECURITY_PROVIDERS_KEY)
                     ->useAttributeAsKey('name')

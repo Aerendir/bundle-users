@@ -63,6 +63,8 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
 
+        $maxActiveTokens                        = $config[Configuration::BUNDLE_CONFIG_THROTTLING][Configuration::BUNDLE_CONFIG_MAX_ACTIVE_TOKENS];
+        $minTimeBetweenTokens                   = $config[Configuration::BUNDLE_CONFIG_THROTTLING][Configuration::BUNDLE_CONFIG_MIN_TIME_BETWEEN_TOKENS];
         $appSecret                              = $containerBuilder->getParameter('kernel.secret');
         $dispatcherReference                    = new Reference('event_dispatcher');
         $encoderFactoryReference                = new Reference('security.encoder_factory');
@@ -93,7 +95,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenRepositoryDefinition, $passwordResetTokenGeneratorDefinition]);
             $containerBuilder->setDefinition(PasswordHelper::class, $passwordResetHelperDefinition);
 
-            $passwordManagerDefinition = new Definition(PasswordManager::class, [$config[Configuration::BUNDLE_CONFIG_TOKEN_CLASS], $userClass, $userProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
+            $passwordManagerDefinition = new Definition(PasswordManager::class, [$maxActiveTokens, $minTimeBetweenTokens, $config[Configuration::BUNDLE_CONFIG_TOKEN_CLASS], $userClass, $userProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
             $containerBuilder->setDefinition(PasswordManager::class, $passwordManagerDefinition);
 
             if (\is_subclass_of($providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY], HasPlainPasswordInterface::class)) {
