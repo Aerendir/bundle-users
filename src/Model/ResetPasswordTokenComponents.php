@@ -21,13 +21,10 @@ namespace SerendipityHQ\Bundle\UsersBundle\Model;
  */
 final class ResetPasswordTokenComponents
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     public const TOKEN_SELECTOR_LENGTH = 20;
-    /**
-     * @var int
-     */
+
+    /** @var int */
     public const TOKEN_VERIFIER_LENGTH = 20;
 
     private string $verifier;

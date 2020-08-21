@@ -20,41 +20,22 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 
 final class Configuration implements ConfigurationInterface
 {
-    /**
-     * @var string
-     */
     public const BUNDLE_CONFIG_NAME = 'shq_users';
-    /**
-     * @var string
-     */
+
     public const BUNDLE_CONFIG_TOKEN_CLASS = 'token_class';
-    /**
-     * @var string
-     */
+
     public const BUNDLE_CONFIG_THROTTLING = 'throttling';
-    /**
-     * @var string
-     */
+
     public const BUNDLE_CONFIG_MAX_ACTIVE_TOKENS = 'max_active_tokens';
-    /**
-     * @var string
-     */
+
     public const BUNDLE_CONFIG_MIN_TIME_BETWEEN_TOKENS = 'min_time_between_tokens';
-    /**
-     * @var string
-     */
+
     public const SECURITY_PROVIDERS_KEY = 'providers';
-    /**
-     * @var string
-     */
+
     public const SECURITY_ENTITY_KEY = 'entity';
-    /**
-     * @var string
-     */
+
     public const SECURITY_ENTITY_CLASS_KEY = 'class';
-    /**
-     * @var string
-     */
+
     public const SECURITY_ENTITY_PROPERTY_KEY = 'property';
 
     /**

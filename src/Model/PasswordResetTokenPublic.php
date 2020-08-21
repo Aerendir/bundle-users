@@ -15,6 +15,7 @@ final class PasswordResetTokenPublic
 {
     /** Selector + non-hashed verifier token */
     private string $publicToken;
+
     private int $lifetime;
 
     private \DateTimeInterface $expiresAt;

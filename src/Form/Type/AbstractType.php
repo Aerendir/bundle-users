@@ -15,18 +15,13 @@ use Symfony\Component\Form\AbstractType as BaseAbstractType;
 
 abstract class AbstractType extends BaseAbstractType
 {
-    /** @var string */
     protected const CONSTRAINTS_KEY = 'constraints';
 
-    /** @var string */
     protected const LABEL_KEY = 'label';
 
-    /** @var string */
     protected const MAPPED_KEY = 'mapped';
 
-    /** @var string */
     protected const MESSAGE_KEY = 'message';
 
-    /** @var string */
     protected const TRANSLATION_DOMAIN_KEY = 'translation_domain';
 }

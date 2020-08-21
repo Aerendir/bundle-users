@@ -106,6 +106,7 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\CodeQuality\Rector\Concat\JoinStringConcatRector::class,
             Rector\CodeQuality\Rector\Identical\SimplifyBoolIdenticalTrueRector::class,
             Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector::class,
+            Rector\CodingStyle\Rector\ClassConst\VarConstantCommentRector::class,
             Rector\CodingStyle\Rector\ClassMethod\NewlineBeforeNewAssignSetRector::class,
             Rector\CodingStyle\Rector\ClassMethod\RemoveDoubleUnderscoreInMethodNameRector::class,
             Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class,

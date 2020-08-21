@@ -26,20 +26,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PasswordHelper
 {
-    /**
-     * @var string
-     */
     private const ACTION = 'action';
-    /**
-     * @var string
-     */
+
     private const METHOD = 'method';
-    /**
-     * @var string
-     */
+
     private const POST = 'POST';
+
     private FormFactoryInterface $formFactory;
+
     private RouterInterface $router;
+
     private UserPasswordEncoderInterface $userPasswordEncoder;
 
     // @todo Reactivate password generation

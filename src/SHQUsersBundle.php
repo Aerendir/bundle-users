@@ -17,8 +17,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class SHQUsersBundle extends Bundle
 {
-    /**
-     * @var string
-     */
     public const TRANSLATION_DOMAIN = 'serendipity_hq.bundle.users';
 }

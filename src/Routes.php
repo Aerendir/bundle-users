@@ -13,16 +13,9 @@ namespace SerendipityHQ\Bundle\UsersBundle;
 
 final class Routes
 {
-    /**
-     * @var string
-     */
     public const PASSWORD_CHANGE = 'user_password_change';
-    /**
-     * @var string
-     */
+
     public const PASSWORD_RESET_REQUEST = 'user_password_reset_request';
-    /**
-     * @var string
-     */
+
     public const PASSWORD_RESET_RESET = 'user_password_reset_reset_password';
 }

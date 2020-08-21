@@ -27,7 +27,9 @@ use Symfony\Component\String\ByteString;
 final class PasswordResetTokenGenerator
 {
     private string $appSecret;
+
     private string $userIdentifierProperty;
+
     private PropertyAccessor $propertyAccessor;
 
     public function __construct(string $appSecret, string $userIdentifierProperty, PropertyAccessor $propertyAccessor)

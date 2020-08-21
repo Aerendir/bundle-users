@@ -36,6 +36,11 @@ return PhpCsFixer\Config::create()
         'align_multiline_comment' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_before_return' => true,
+        'class_attributes_separation' => [
+            'elements' => [
+                'method',
+            ]
+        ],
         'combine_consecutive_unsets' => true,
         'linebreak_after_opening_tag' => true,
         'list_syntax' => ['syntax' => 'short'],
@@ -66,6 +71,11 @@ return PhpCsFixer\Config::create()
         ],
         'ordered_imports' => true,
         'phpdoc_add_missing_param_annotation' => true,
+        'phpdoc_line_span' => [
+            'const' => 'single',
+            'method' => 'multi',
+            'property' => 'single',
+        ],
         'phpdoc_order' => true,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last'],
         'phpdoc_var_without_name' => false,

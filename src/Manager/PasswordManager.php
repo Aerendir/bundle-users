@@ -38,14 +38,23 @@ final class PasswordManager
     public $repository;
 
     private int $maxActiveTokens;
+
     private int $minTimeBetweenTokens;
+
     private string $tokenClass;
+
     private string $userClass;
+
     private string $userProperty;
+
     private EntityManagerInterface $entityManager;
+
     private EventDispatcherInterface $eventDispatcher;
+
     private PasswordHelper $passwordHelper;
+
     private PasswordResetHelper $passwordResetHelper;
+
     private PasswordResetTokenRepository $passwordResetTokenRepository;
 
     public function __construct(

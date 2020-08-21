@@ -23,6 +23,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 final class PasswordResetTokenCreatedEvent extends Event
 {
     private PasswordResetTokenPublic $token;
+
     private UserInterface $user;
 
     public function __construct(UserInterface $user, PasswordResetTokenPublic $token)

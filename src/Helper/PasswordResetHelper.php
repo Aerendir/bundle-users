@@ -21,13 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class PasswordResetHelper
 {
-    /**
-     * @var string
-     */
     public const RESET_PASSWORD_1_CHECK_EMAIL = 'reset_password_1_check_email';
-    /**
-     * @var string
-     */
+
     public const RESET_PASSWORD_2_PUBLIC_TOKEN = 'reset_password_2_public_token';
 
     /**
@@ -38,6 +33,7 @@ final class PasswordResetHelper
     public const RESET_TOKEN_LIFETIME = 3600;
 
     private PasswordResetTokenRepository $repository;
+
     private PasswordResetTokenGenerator $passwordResetTokenGenerator;
 
     public function __construct(PasswordResetTokenRepository $repository, PasswordResetTokenGenerator $passwordResetTokenGenerator)
