@@ -77,9 +77,6 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $passwordResetTokenRepositoryDefinition->setFactory([$entityManagerReference, 'getRepository']);
         $containerBuilder->setDefinition(PasswordResetTokenRepository::class, $passwordResetTokenRepositoryDefinition);
 
-        $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$formFactoryReference, $routerReference, $userPasswordEncoderReference]);
-        $containerBuilder->setDefinition(PasswordHelper::class, $passwordHelperDefinition);
-
         foreach ($config[Configuration::SECURITY_PROVIDERS_KEY] as $provider => $providerConfig) {
             $userClass    = $providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY];
             $userProperty = $providerConfig[Configuration::SECURITY_ENTITY_PROPERTY_KEY];
@@ -88,6 +85,9 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $managerDefinition = new Definition(UsersManager::class, [$provider, $userClass, $userProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference]);
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
+
+            $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$userProperty, $formFactoryReference, $routerReference, $userPasswordEncoderReference]);
+            $containerBuilder->setDefinition(PasswordHelper::class, $passwordHelperDefinition);
 
             $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $userProperty, $propertyAccessorReference]);
             $containerBuilder->setDefinition(PasswordResetTokenGenerator::class, $passwordResetTokenGeneratorDefinition);

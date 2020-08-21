@@ -28,16 +28,21 @@
         <MissingThrowsDocblock errorLevel="suppress" />
         <RedundantIdentityWithTrue errorLevel="suppress" />
         <!-- Ignore some errors in DependencyInjection/SHQUsersExtension.php as not fixable -->
-        <MixedAssignment>
+        <MixedArgument>
             <errorLevel type="suppress">
-                <file name="src/DependencyInjection/SHQUsersExtension.php" />
+                <file name="src/Form/Type/PasswordResetRequestType.php" />
             </errorLevel>
-        </MixedAssignment>
+        </MixedArgument>
         <MixedArrayAccess>
             <errorLevel type="suppress">
                 <file name="src/DependencyInjection/SHQUsersExtension.php" />
             </errorLevel>
         </MixedArrayAccess>
+        <MixedAssignment>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/SHQUsersExtension.php" />
+            </errorLevel>
+        </MixedAssignment>
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
