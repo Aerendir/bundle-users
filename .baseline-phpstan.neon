@@ -61,11 +61,6 @@ parameters:
 			path: src/Manager/Exception/UsersManagerException.php
 
 		-
-			message: "#^Property SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:\\$repository has no typehint specified\\.$#"
-			count: 1
-			path: src/Manager/PasswordManager.php
-
-		-
 			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\) expects class\\-string\\<mixed\\>, string given\\.$#"
 			count: 1
 			path: src/Manager/PasswordManager.php

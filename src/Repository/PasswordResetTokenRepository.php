@@ -12,6 +12,7 @@
 namespace SerendipityHQ\Bundle\UsersBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Safe\DateTimeImmutable;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -41,5 +42,22 @@ final class PasswordResetTokenRepository extends EntityRepository
     public function findBySelector(string $selector): ?PasswordResetTokenInterface
     {
         return $this->findOneBy(['selector' => $selector]);
+    }
+
+    /**
+     * @psalm-suppress MixedInferredReturnType
+     * @psalm-suppress MixedReturnStatement
+     */
+    public function removeExpiredResetPasswordRequests(int $passResetLifespanAmountOf, string $passResetLifespanUnit): int
+    {
+        $time  = new DateTimeImmutable(\Safe\sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit));
+
+        return $this
+            ->createQueryBuilder('t')
+            ->delete()
+            ->where('t.expiresAt <= :time')
+            ->setParameter('time', $time)
+            ->getQuery()
+            ->getResult();
     }
 }

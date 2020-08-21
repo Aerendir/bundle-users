@@ -30,19 +30,19 @@ final class PasswordHelper
     private const METHOD = 'method';
     private const POST   = 'POST';
 
-    private string $primaryFieldName;
+    private string $secUserProperty;
     private FormFactoryInterface $formFactory;
     private RouterInterface $router;
     private UserPasswordEncoderInterface $userPasswordEncoder;
 
     // @todo Reactivate password generation
     public function __construct(
-        string $primaryFieldName,
+        string $secUserProperty,
         FormFactoryInterface $formFactory,
         RouterInterface $router,
         UserPasswordEncoderInterface $userPasswordEncoder
     ) {
-        $this->primaryFieldName    = $primaryFieldName;
+        $this->secUserProperty     = $secUserProperty;
         $this->formFactory         = $formFactory;
         $this->router              = $router;
         $this->userPasswordEncoder = $userPasswordEncoder;
@@ -63,10 +63,10 @@ final class PasswordHelper
         $action = $this->router->generate(Routes::PASSWORD_RESET_REQUEST);
 
         return $this->formFactory->create(PasswordResetRequestType::class, null, [
-            self::ACTION                                     => $action,
-            self::METHOD                                     => self::POST,
-            'allow_extra_fields'                             => true,
-            PasswordResetRequestType::PRIMARY_FIELD_NAME_KEY => $this->primaryFieldName,
+            self::ACTION                                => $action,
+            self::METHOD                                => self::POST,
+            'allow_extra_fields'                        => true,
+            PasswordResetRequestType::SEC_USER_PROPERTY => $this->secUserProperty,
         ]);
     }
 

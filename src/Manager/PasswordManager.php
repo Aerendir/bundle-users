@@ -35,50 +35,45 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PasswordManager
 {
-    public $repository;
-
-    private int $maxActiveTokens;
-
-    private int $minTimeBetweenTokens;
-
-    private string $tokenClass;
-
-    private string $userClass;
-
-    private string $userProperty;
-
+    private int $passResetThrottlingMaxActiveTokens;
+    private int $passResetThrottlingMinTimeBetweenTokens;
+    private int $passResetLifespanAmountOf;
+    private string $passResetLifespanUnit;
+    private string $passResetTokenClass;
+    private string $secUserClass;
+    private string $secUserProperty;
     private EntityManagerInterface $entityManager;
-
     private EventDispatcherInterface $eventDispatcher;
-
     private PasswordHelper $passwordHelper;
-
     private PasswordResetHelper $passwordResetHelper;
-
     private PasswordResetTokenRepository $passwordResetTokenRepository;
 
     public function __construct(
-        int $maxActiveTokens,
-        int $minTimeBetweenTokens,
-        string $tokenClass,
-        string $userClass,
-        string $userProperty,
+        int $passResetThrottlingMaxActiveTokens,
+        int $passResetThrottlingMinTimeBetweenTokens,
+        int $passResetLifespanAmountOf,
+        string $passResetLifespanUnit,
+        string $passResetTokenClass,
+        string $secUserClass,
+        string $secUserProperty,
         EntityManagerInterface $entityManager,
         EventDispatcherInterface $eventDispatcher,
         PasswordHelper $passwordHelper,
         PasswordResetHelper $passwordResetHelper,
         PasswordResetTokenRepository $passwordResetTokenRepository
     ) {
-        $this->maxActiveTokens              = $maxActiveTokens;
-        $this->minTimeBetweenTokens         = $minTimeBetweenTokens;
-        $this->tokenClass                   = $tokenClass;
-        $this->userClass                    = $userClass;
-        $this->userProperty                 = $userProperty;
-        $this->entityManager                = $entityManager;
-        $this->eventDispatcher              = $eventDispatcher;
-        $this->passwordHelper               = $passwordHelper;
-        $this->passwordResetHelper          = $passwordResetHelper;
-        $this->passwordResetTokenRepository = $passwordResetTokenRepository;
+        $this->passResetThrottlingMaxActiveTokens      = $passResetThrottlingMaxActiveTokens;
+        $this->passResetThrottlingMinTimeBetweenTokens = $passResetThrottlingMinTimeBetweenTokens;
+        $this->passResetLifespanAmountOf               = $passResetLifespanAmountOf;
+        $this->passResetLifespanUnit                   = $passResetLifespanUnit;
+        $this->passResetTokenClass                     = $passResetTokenClass;
+        $this->secUserClass                            = $secUserClass;
+        $this->secUserProperty                         = $secUserProperty;
+        $this->entityManager                           = $entityManager;
+        $this->eventDispatcher                         = $eventDispatcher;
+        $this->passwordHelper                          = $passwordHelper;
+        $this->passwordResetHelper                     = $passwordResetHelper;
+        $this->passwordResetTokenRepository            = $passwordResetTokenRepository;
     }
 
     /**
@@ -99,16 +94,21 @@ final class PasswordManager
 
     public function handleResetRequest(Request $request, FormInterface $form): bool
     {
-        $userPropertyValue = $form->get($this->userProperty)->getData();
-        $user              = $this->entityManager->getRepository($this->userClass)->findOneBy([$this->userProperty => $userPropertyValue]);
+        $userPropertyValue = $form->get($this->secUserProperty)->getData();
+
+        /** @psalm-suppress ArgumentTypeCoercion */
+        $user = $this->entityManager->getRepository($this->secUserClass)->findOneBy([$this->secUserProperty => $userPropertyValue]);
 
         if ( ! $user instanceof UserInterface) {
             return false;
         }
 
         $this->checkThrottling($user);
-        /** @var PasswordResetTokenInterface $resetToken */
-        $resetToken = new $this->tokenClass($user);
+        /**
+         * @var PasswordResetTokenInterface $resetToken
+         * @psalm-suppress InvalidStringClass
+         */
+        $resetToken = new $this->passResetTokenClass($user);
         try {
             $publicResetToken = $this->passwordResetHelper->activateResetToken($resetToken);
         } catch (PasswordResetException $passwordResetException) {
@@ -190,7 +190,7 @@ final class PasswordManager
 
     public function cleanExpiredTokens(): int
     {
-        return $this->repository->removeExpiredResetPasswordRequests();
+        return $this->passwordResetTokenRepository->removeExpiredResetPasswordRequests($this->passResetLifespanAmountOf, $this->passResetLifespanUnit);
     }
 
     public function removeResetToken(PasswordResetTokenInterface $resetToken): void
@@ -206,7 +206,7 @@ final class PasswordManager
             return null;
         }
 
-        if (\count($tokens) >= $this->maxActiveTokens) {
+        if (\count($tokens) >= $this->passResetThrottlingMaxActiveTokens) {
             throw new TooMuchStillActiveTokenRequests();
         }
 
@@ -219,7 +219,7 @@ final class PasswordManager
         $now  = new Carbon();
         $diff = $now->diffInSeconds($lastToken->getRequestedAt());
 
-        if ($this->minTimeBetweenTokens > $diff) {
+        if ($this->passResetThrottlingMinTimeBetweenTokens > $diff) {
             // Do not specify how much time the user has to wait before
             // the next request to avoid disclosing sensitive information.
             throw new TooMuchFastTokenRequests();

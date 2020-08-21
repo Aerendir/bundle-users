@@ -18,12 +18,15 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 final class PasswordResetRequestType extends AbstractType
 {
-    public const PRIMARY_FIELD_NAME_KEY = 'primary_field_name';
+    public const SEC_USER_PROPERTY = 'sec_user_property';
 
+    /**
+     * @psalm-suppress MixedArgument
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add($options[self::PRIMARY_FIELD_NAME_KEY], TextType::class, [
+            ->add($options[self::SEC_USER_PROPERTY], TextType::class, [
                 self::CONSTRAINTS_KEY => [
                     new NotBlank([
                         self::MESSAGE_KEY => 'serendipity_hq.user.form.error.primary.not_blank',
@@ -34,7 +37,7 @@ final class PasswordResetRequestType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired(self::PRIMARY_FIELD_NAME_KEY);
-        $resolver->setAllowedTypes(self::PRIMARY_FIELD_NAME_KEY, 'string');
+        $resolver->setRequired(self::SEC_USER_PROPERTY);
+        $resolver->setAllowedTypes(self::SEC_USER_PROPERTY, 'string');
     }
 }
