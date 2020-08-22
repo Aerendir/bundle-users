@@ -11,6 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-class PasswordResetException extends UsersException
+class PasswordResetException extends PasswordException
 {
 }

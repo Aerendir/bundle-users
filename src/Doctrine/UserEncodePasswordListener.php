@@ -13,43 +13,40 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Doctrine;
 
-use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
+use SerendipityHQ\Bundle\UsersBundle\Exception\UserClassMustImplementHasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Manager\PasswordManager;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Encodes the password of the user if required.
  *
- * This is implemented as a lazy listener, so the overhed on the app is practically null.
+ * This is implemented as a lazy listener, so the overhead on the app is practically null.
  *
  * @see https://symfony.com/doc/current/doctrine/events.html
  */
 final class UserEncodePasswordListener
 {
-    private EncoderFactoryInterface $encoderFactory;
+    private PasswordManager $passwordManager;
 
-    public function __construct(EncoderFactoryInterface $encoderFactory)
+    public function __construct(PasswordManager $passwordMa)
     {
-        $this->encoderFactory = $encoderFactory;
+        $this->passwordManager = $passwordMa;
     }
 
     public function preFlush(UserInterface $user): void
     {
         if ( ! $user instanceof HasPlainPasswordInterface) {
-            throw UsersManagerException::userClassMustImplementHasPlainPasswordInterface(\get_class($user));
+            throw new UserClassMustImplementHasPlainPasswordInterface($user);
         }
 
         if (null === $user->getPlainPassword()) {
+            // Here we do not throw any exception: maybe other fields of the
+            // UserInterface were changed, so we don't care about the password.
             return;
         }
 
-        $encoder         = $this->encoderFactory->getEncoder($user);
-        $encodedPassword = $encoder->encodePassword($user->getPlainPassword(), $user->getSalt());
-
-        if (false === $encoder->isPasswordValid($encodedPassword, $user->getPlainPassword(), $user->getSalt())) {
-            throw UsersManagerException::errorInEncodingThePassword($user->getUsername());
-        }
+        $encodedPassword = $this->passwordManager->getPasswordHelper()->encodePlainPassword($user);
 
         $user->setPassword($encodedPassword);
     }

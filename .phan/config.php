@@ -49,6 +49,9 @@ return [
     'array_casts_as_null' => false,
     'scalar_implicit_cast' => false,
     'ignore_undeclared_variables_in_global_scope' => false,
+    'suppress_issue_types' => [
+        'PhanUnreferencedPublicMethod',
+    ],
 
     // A regular expression to match files to be excluded
     // from parsing and analysis and will not be read at all.
@@ -57,7 +60,7 @@ return [
     // directories/files, unanalyzable files, or files that
     // can't be removed for whatever reason.
     // (e.g. '@Test\.php$@', or '@vendor/.*/(tests|Tests)/@')
-    'exclude_file_regex' => '@(^vendor/.*/(tests?|Tests?)/)|(^src/Kernel.php)@',
+    'exclude_file_regex' => '@(^vendor/.*/(tests?|Tests?)/)|(^src/Kernel.php)|(^vendor-bin/.*/vendor/symfony/)@',
     'plugins' => [
         'vendor-bin/phan/vendor/drenso/phan-extensions/Plugin/Annotation/SymfonyAnnotationPlugin.php',
         'vendor-bin/phan/vendor/drenso/phan-extensions/Plugin/DocComment/InlineVarPlugin.php',

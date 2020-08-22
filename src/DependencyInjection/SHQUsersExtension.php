@@ -60,6 +60,9 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
 
+        /** @var string $passResetTokenClass */
+        $passResetTokenClass = $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_TOKEN_CLASS];
+
         /** @var int $passResetLifespanAmountOf */
         $passResetLifespanAmountOf = $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_LIFESPAN][Configuration::BUNDLE_CONFIG_PASS_RESET_LIFESPAN_AMOUNT_OF];
 
@@ -107,7 +110,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenRepositoryDefinition, $passwordResetTokenGeneratorDefinition]);
             $containerBuilder->setDefinition(PasswordHelper::class, $passwordResetHelperDefinition);
 
-            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_TOKEN_CLASS], $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
+            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $encoderFactoryReference, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
             $containerBuilder->setDefinition(PasswordManager::class, $passwordManagerDefinition);
 
             if (\is_subclass_of($secUserClass, HasPlainPasswordInterface::class)) {

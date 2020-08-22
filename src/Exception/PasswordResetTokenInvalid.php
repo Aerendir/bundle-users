@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,11 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle\Event;
+namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-/**
- * Dispatched when a user is created but not still persisted (nor flushed).
- */
-final class UserCreatedEvent extends UserAbstractEvent
+final class PasswordResetTokenInvalid extends PasswordResetTokenException
 {
 }

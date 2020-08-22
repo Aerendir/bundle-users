@@ -15,64 +15,47 @@ namespace SerendipityHQ\Bundle\UsersBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Event\UserCreatedEvent;
-use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
+use SerendipityHQ\Bundle\UsersBundle\Event\UserPasswordChangedEvent;
+use SerendipityHQ\Bundle\UsersBundle\Event\UserUpdatedEvent;
+use SerendipityHQ\Bundle\UsersBundle\Exception\UserClassMustImplementHasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * {@inheritdoc}
- */
 final class UsersManager implements UsersManagerInterface
 {
-    /** @var string $provider */
-    private $provider;
+    private string $provider;
+    private string $secUserClass;
+    private string $secUserProperty;
+    private EventDispatcherInterface $dispatcher;
+    private EntityManagerInterface $entityManager;
+    private PropertyAccessor $propertyAccessor;
 
-    /** @var string $userClass */
-    private $userClass;
-
-    /** @var string $uniqueProperty */
-    private $uniqueProperty;
-
-    /** @var EventDispatcherInterface $dispatcher */
-    private $dispatcher;
-
-    /** @var EntityManagerInterface $entityManager */
-    private $entityManager;
-
-    /** @var \Symfony\Component\PropertyAccess\PropertyAccessor $propertyAccessor */
-    private $propertyAccessor;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct(string $provider, string $userClass, string $uniqueProperty, EventDispatcherInterface $dispatcher, EntityManagerInterface $entityManager, PropertyAccessor $propertyAccessor)
+    public function __construct(string $provider, string $secUserClass, string $secUserProperty, EventDispatcherInterface $dispatcher, EntityManagerInterface $entityManager, PropertyAccessor $propertyAccessor)
     {
         $this->provider         = $provider;
-        $this->userClass        = $userClass;
-        $this->uniqueProperty   = $uniqueProperty;
+        $this->secUserClass     = $secUserClass;
+        $this->secUserProperty  = $secUserProperty;
         $this->dispatcher       = $dispatcher;
         $this->entityManager    = $entityManager;
         $this->propertyAccessor = $propertyAccessor;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(string $unique, string $pass): UserInterface
     {
         /** @var UserInterface $user */
-        $user = new $this->userClass();
-        $this->propertyAccessor->setValue($user, $this->uniqueProperty, $unique);
+        $user = new $this->secUserClass();
+        $this->propertyAccessor->setValue($user, $this->secUserProperty, $unique);
 
         try {
             $this->propertyAccessor->setValue($user, HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD, $pass);
-        } catch (\Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException $noSuchPropertyException) {
+        } catch (NoSuchPropertyException $noSuchPropertyException) {
             $toThrow = $noSuchPropertyException;
 
             if (false !== \strpos($noSuchPropertyException->getMessage(), HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)) {
-                $toThrow = UsersManagerException::userClassMustImplementHasPlainPasswordInterface($this->userClass);
+                $toThrow = new UserClassMustImplementHasPlainPasswordInterface($this->secUserClass);
             }
 
             throw $toThrow;
@@ -85,5 +68,22 @@ final class UsersManager implements UsersManagerInterface
         }
 
         return $user;
+    }
+
+    public function load(string $primaryProperty): ?UserInterface
+    {
+        return $this->entityManager->getRepository($this->secUserClass)->findOneBy([$this->secUserProperty => $primaryProperty]);
+    }
+
+    public function updated(UserInterface $user): void
+    {
+        $event = new UserUpdatedEvent($user, $this->provider);
+        $this->dispatcher->dispatch($event);
+    }
+
+    public function passwordChanged(UserInterface $user): void
+    {
+        $event = new UserPasswordChangedEvent($user, $this->provider);
+        $this->dispatcher->dispatch($event);
     }
 }

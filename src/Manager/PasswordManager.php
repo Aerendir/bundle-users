@@ -17,11 +17,11 @@ use Carbon\Carbon;
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreatedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreationFailedEvent;
-use SerendipityHQ\Bundle\UsersBundle\Exception\ExpiredPasswordTokenResetException;
-use SerendipityHQ\Bundle\UsersBundle\Exception\InvalidPasswordTokenResetException;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetException;
-use SerendipityHQ\Bundle\UsersBundle\Exception\TooMuchFastTokenRequests;
-use SerendipityHQ\Bundle\UsersBundle\Exception\TooMuchStillActiveTokenRequests;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenExpired;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenInvalid;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenTooMuchFastRequests;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenTooMuchStillActive;
 use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordHelper;
 use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordResetHelper;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
@@ -150,7 +150,7 @@ final class PasswordManager
     public function loadTokenFromPublicOne(string $publicToken): PasswordResetTokenInterface
     {
         if (40 !== \strlen($publicToken)) {
-            throw new InvalidPasswordTokenResetException();
+            throw new PasswordResetTokenInvalid();
         }
 
         $selector = ResetPasswordTokenComponents::extractSelectorFromPublicToken($publicToken);
@@ -158,7 +158,7 @@ final class PasswordManager
         $token = $this->passwordResetTokenRepository->findBySelector($selector);
 
         if (null === $token) {
-            throw new InvalidPasswordTokenResetException();
+            throw new PasswordResetTokenInvalid();
         }
 
         return $token;
@@ -173,7 +173,7 @@ final class PasswordManager
     public function validateToken(string $publicToken, PasswordResetTokenInterface $token): void
     {
         if ($token->isExpired()) {
-            throw new ExpiredPasswordTokenResetException();
+            throw new PasswordResetTokenExpired();
         }
 
         $user     = $token->getUser();
@@ -184,7 +184,7 @@ final class PasswordManager
         );
 
         if (false === \hash_equals($token->getHashedToken(), $hashedVerifierToken->getHashedToken())) {
-            throw new InvalidPasswordTokenResetException();
+            throw new PasswordResetTokenInvalid();
         }
     }
 
@@ -207,7 +207,7 @@ final class PasswordManager
         }
 
         if (\count($tokens) >= $this->passResetThrottlingMaxActiveTokens) {
-            throw new TooMuchStillActiveTokenRequests();
+            throw new PasswordResetTokenTooMuchStillActive();
         }
 
         $lastToken = \end($tokens);
@@ -222,7 +222,7 @@ final class PasswordManager
         if ($this->passResetThrottlingMinTimeBetweenTokens > $diff) {
             // Do not specify how much time the user has to wait before
             // the next request to avoid disclosing sensitive information.
-            throw new TooMuchFastTokenRequests();
+            throw new PasswordResetTokenTooMuchFastRequests();
         }
 
         return null;

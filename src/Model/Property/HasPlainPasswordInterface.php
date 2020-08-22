@@ -17,13 +17,9 @@ interface HasPlainPasswordInterface
 {
     public const FIELD_PLAIN_PASSWORD = 'plainPassword';
 
-    /**
-     * @param string $password
-     */
     public function setPlainPassword(string $password): void;
 
-    /**
-     * @return string|null
-     */
     public function getPlainPassword(): ?string;
+
+    public function setPassword(string $password);
 }

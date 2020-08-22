@@ -11,6 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-final class TooMuchFastTokenRequests extends PasswordResetRequestException
+final class PasswordRequired extends PasswordException
 {
 }

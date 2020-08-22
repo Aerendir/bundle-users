@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -9,8 +11,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SerendipityHQ\Bundle\UsersBundle\Exception;
+namespace SerendipityHQ\Bundle\UsersBundle\Event;
 
-final class InvalidPasswordTokenResetException extends PasswordResetTokenException
+/**
+ * Dispatched when a user is updated but not still flushed.
+ */
+final class UserUpdatedEvent extends UserAbstractEvent
 {
 }

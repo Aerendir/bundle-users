@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordEncodingError;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordRequired;
+use SerendipityHQ\Bundle\UsersBundle\Exception\UserClassMustImplementHasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Exception\UserClassMustImplementUserInterface;
 use SerendipityHQ\Bundle\UsersBundle\Form\Type\PasswordResetRequestType;
 use SerendipityHQ\Bundle\UsersBundle\Form\Type\PasswordResetType;
 use SerendipityHQ\Bundle\UsersBundle\Form\Type\UserPasswordChangeType;
@@ -21,8 +25,9 @@ use SerendipityHQ\Bundle\UsersBundle\Routes;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\String\ByteString;
 
 final class PasswordHelper
 {
@@ -31,21 +36,20 @@ final class PasswordHelper
     private const POST   = 'POST';
 
     private string $secUserProperty;
+    private EncoderFactoryInterface $encoderFactory;
     private FormFactoryInterface $formFactory;
     private RouterInterface $router;
-    private UserPasswordEncoderInterface $userPasswordEncoder;
 
-    // @todo Reactivate password generation
     public function __construct(
         string $secUserProperty,
+        EncoderFactoryInterface $encoderFactory,
         FormFactoryInterface $formFactory,
-        RouterInterface $router,
-        UserPasswordEncoderInterface $userPasswordEncoder
+        RouterInterface $router
     ) {
-        $this->secUserProperty     = $secUserProperty;
-        $this->formFactory         = $formFactory;
-        $this->router              = $router;
-        $this->userPasswordEncoder = $userPasswordEncoder;
+        $this->secUserProperty = $secUserProperty;
+        $this->encoderFactory  = $encoderFactory;
+        $this->formFactory     = $formFactory;
+        $this->router          = $router;
     }
 
     public function createFormPasswordChange(HasPlainPasswordInterface $user): FormInterface
@@ -81,8 +85,36 @@ final class PasswordHelper
         ]);
     }
 
-    public function encodePlainPassword(UserInterface $user, string $plainPassword): string
+    /**
+     * @param HasPlainPasswordInterface&UserInterface $user
+     */
+    public function encodePlainPassword($user, string $plainPassword = null): string
     {
-        return $this->userPasswordEncoder->encodePassword($user, $plainPassword);
+        if ( ! $user instanceof HasPlainPasswordInterface) {
+            throw new UserClassMustImplementHasPlainPasswordInterface($user);
+        }
+
+        $plainPassword = $plainPassword ?? $user->getPlainPassword();
+        if (null === $plainPassword) {
+            throw new PasswordRequired();
+        }
+
+        if ( ! $user instanceof UserInterface) {
+            throw new UserClassMustImplementUserInterface($user);
+        }
+
+        $encoder         = $this->encoderFactory->getEncoder($user);
+        $encodedPassword = $encoder->encodePassword($plainPassword, $user->getSalt());
+
+        if (false === $encoder->isPasswordValid($encodedPassword, $plainPassword, $user->getSalt())) {
+            throw new PasswordEncodingError();
+        }
+
+        return $encodedPassword;
+    }
+
+    public function generatePlainPassword(): string
+    {
+        return ByteString::fromRandom(12)->toString();
     }
 }

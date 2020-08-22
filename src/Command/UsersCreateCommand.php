@@ -14,47 +14,26 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Safe\Exceptions\StringsException;
-use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
+use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
-use SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\PropertyAccess\Exception\AccessException;
-use Symfony\Component\PropertyAccess\Exception\InvalidArgumentException;
-use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-/**
- * Creates a user.
- */
 final class UsersCreateCommand extends Command
 {
-    /** @var string */
     protected static $defaultName = 'shq:users:create';
+    private EntityManagerInterface $entityManager;
+    private UsersManagerRegistry $usersManagerRegistry;
+    private ValidatorInterface $validator;
 
-    /** @var EntityManagerInterface $entityManager */
-    private $entityManager;
-
-    /** @var UsersManagerRegistry $usersManagerRegistry */
-    private $usersManagerRegistry;
-
-    /** @var \Symfony\Component\Validator\Validator\ValidatorInterface $validator */
-    private $validator;
-
-    /**
-     * @param EntityManagerInterface $entityManager
-     * @param UsersManagerRegistry   $usersManagerRegistry
-     *
-     * @throws LogicException
-     */
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, ValidatorInterface $validator)
     {
         $this->entityManager         = $entityManager;
@@ -63,11 +42,6 @@ final class UsersCreateCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
-     */
     protected function configure(): void
     {
         $this->setDescription('Creates a user.')
@@ -95,19 +69,6 @@ If your application, instead, uses the username to identify the users, then you 
 EOT);
     }
 
-    /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
-     * @throws StringsException
-     * @throws UsersManagerException
-     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
-     * @throws AccessException
-     * @throws InvalidArgumentException
-     * @throws UnexpectedTypeException
-     *
-     * @return int
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -141,7 +102,7 @@ EOT);
             return 1;
         }
 
-        /** @var HasPlainPasswordInterface|UserInterface $user */
+        /** @var HasPlainPasswordInterface&UserInterface $user */
         $user   = $this->create($provider, $unique, $pass);
         $errors = $this->validator->validate($user);
 
@@ -166,24 +127,10 @@ EOT);
         return 0;
     }
 
-    /**
-     * Overwrite this method to do additional things with the UserINterface object before flushing.
-     *
-     * @param string $provider
-     * @param string $unique
-     * @param string $pass
-     *
-     * @throws StringsException
-     * @throws UsersManagerException
-     * @throws AccessException
-     * @throws InvalidArgumentException
-     * @throws UnexpectedTypeException
-     *
-     * @return UserInterface
-     */
     protected function create(string $provider, string $unique, string $pass): UserInterface
     {
-        $manager = $this->usersManagerRegistry->getManager($provider);
+        /** @var UsersManagerInterface $manager */
+        $manager = $this->usersManagerRegistry->getManager($provider)->create($unique, $pass);
 
         return $manager->create($unique, $pass);
     }
