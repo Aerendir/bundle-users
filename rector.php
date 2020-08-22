@@ -128,6 +128,9 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
 
             // Seems bugged (https://github.com/rectorphp/rector/issues/4002)
             Rector\TypeDeclaration\Rector\Property\PropertyTypeDeclarationRector::class,
+
+            // Bugged (https://github.com/rectorphp/rector/issues/4013)
+            Rector\Symfony\Rector\ClassMethod\ConsoleExecuteReturnIntRector::class,
         ]
     );
 };

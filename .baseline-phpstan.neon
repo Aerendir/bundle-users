@@ -1,29 +1,9 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$provider of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManagerRegistry\\:\\:hasProvider\\(\\) expects string, array\\<string\\>\\|bool\\|int\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\#1 \\$provider of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:create\\(\\) expects string, array\\<string\\>\\|bool\\|int\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\#2 \\$unique of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:create\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
-			message: "#^Parameter \\#3 \\$pass of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Command\\\\UsersCreateCommand\\:\\:create\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
-			count: 1
-			path: src/Command/UsersCreateCommand.php
-
-		-
 			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
 			count: 1
-			path: src/Command/UsersCreateCommand.php
+			path: src/Command/CreateUserCommand.php
 
 		-
 			message: "#^Class DateTimeImmutable is unsafe to use\\. Its methods can return FALSE instead of throwing an exception\\. Please add 'use Safe\\\\DateTimeImmutable;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"

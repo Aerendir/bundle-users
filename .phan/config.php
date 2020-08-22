@@ -51,6 +51,7 @@ return [
     'ignore_undeclared_variables_in_global_scope' => false,
     'suppress_issue_types' => [
         'PhanUnreferencedPublicMethod',
+        'PhanReadOnlyProtectedProperty',
     ],
 
     // A regular expression to match files to be excluded

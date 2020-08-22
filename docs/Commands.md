@@ -15,7 +15,7 @@ Use this command to create a new user in the database.
 
 The command `shq:users:create` has a `protected` method `create()`.
 
-Create your command `app:users:create` that extends `SerendipityHQ\Bundle\UsersBundle\Command\UsersCreateCommand`.
+Create your command `app:users:create` that extends `SerendipityHQ\Bundle\UsersBundle\Command\CreateUserCommand`.
 
 Then overwrite the `create()` method to do what you like with the just created user:
 
