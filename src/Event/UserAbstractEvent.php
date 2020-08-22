@@ -18,16 +18,17 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 abstract class UserAbstractEvent extends Event
 {
-    private string $provider;
+    /** @var string|null May be null when extended by custom events in implementing apps: they may not need to specify the provider. */
+    private ?string $provider;
     private UserInterface $user;
 
-    public function __construct(UserInterface $user, string $provider)
+    public function __construct(UserInterface $user, ?string $provider = null)
     {
         $this->provider = $provider;
         $this->user     = $user;
     }
 
-    public function getProvider(): string
+    public function getProvider(): ?string
     {
         return $this->provider;
     }
