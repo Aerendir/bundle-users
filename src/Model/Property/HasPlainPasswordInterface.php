@@ -21,5 +21,5 @@ interface HasPlainPasswordInterface
 
     public function getPlainPassword(): ?string;
 
-    public function setPassword(string $password);
+    public function setPassword(string $password): void;
 }

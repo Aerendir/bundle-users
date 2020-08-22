@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class UserClassMustImplementHasPlainPasswordInterface extends UsersException
 {
     /**
-     * @param string|UserInterface $user
+     * @param HasPlainPasswordInterface|string|UserInterface $user
      */
     public function __construct($user)
     {

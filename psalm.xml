@@ -25,9 +25,35 @@
     </projectFiles>
 
     <issueHandlers>
+        <LessSpecificReturnStatement errorLevel="suppress" />
         <MissingThrowsDocblock errorLevel="suppress" />
+        <MoreSpecificReturnType errorLevel="suppress" />
         <RedundantIdentityWithTrue errorLevel="suppress" />
-        <!-- Ignore some errors in DependencyInjection/SHQUsersExtension.php as not fixable -->
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManager.php" />
+            </errorLevel>
+        </ArgumentTypeCoercion>
+        <DocblockTypeContradiction>
+            <errorLevel type="suppress">
+                <file name="src/Helper/PasswordHelper.php" />
+            </errorLevel>
+        </DocblockTypeContradiction>
+        <InvalidStringClass>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManager.php" />
+            </errorLevel>
+        </InvalidStringClass>
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <file name="src/Helper/PasswordHelper.php" />
+            </errorLevel>
+        </MixedArgument>
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManagerRegistry.php" />
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
         <MixedArrayAccess>
             <errorLevel type="suppress">
                 <file name="src/DependencyInjection/SHQUsersExtension.php" />

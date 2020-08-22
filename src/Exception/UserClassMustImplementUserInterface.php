@@ -11,14 +11,14 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use function Safe\sprintf;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class UserClassMustImplementUserInterface extends UsersException
 {
     /**
-     * @param string|UserInterface|HasPlainPasswordInterface $user
+     * @param HasPlainPasswordInterface|string|UserInterface $user
      */
     public function __construct($user)
     {

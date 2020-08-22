@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UsersException extends \Exception
 {
     /**
-     * @param string|UserInterface|HasPlainPasswordInterface $user
+     * @param HasPlainPasswordInterface|string|UserInterface $user
      */
     protected function getUserClass($user): string
     {
