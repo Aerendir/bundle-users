@@ -15,7 +15,6 @@ namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
 use SerendipityHQ\Bundle\UsersBundle\Model\PasswordResetTokenPublic;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
-use SerendipityHQ\Bundle\UsersBundle\Repository\PasswordResetTokenRepository;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -32,13 +31,10 @@ final class PasswordResetHelper
      */
     public const RESET_TOKEN_LIFETIME = 3600;
 
-    private PasswordResetTokenRepository $repository;
-
     private PasswordResetTokenGenerator $passwordResetTokenGenerator;
 
-    public function __construct(PasswordResetTokenRepository $repository, PasswordResetTokenGenerator $passwordResetTokenGenerator)
+    public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator)
     {
-        $this->repository                  = $repository;
         $this->passwordResetTokenGenerator = $passwordResetTokenGenerator;
     }
 

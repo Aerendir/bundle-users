@@ -18,6 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreatedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreationFailedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetException;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenException;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenExpired;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenInvalid;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenTooMuchFastRequests;
@@ -59,8 +60,7 @@ final class PasswordManager
         EntityManagerInterface $entityManager,
         EventDispatcherInterface $eventDispatcher,
         PasswordHelper $passwordHelper,
-        PasswordResetHelper $passwordResetHelper,
-        PasswordResetTokenRepository $passwordResetTokenRepository
+        PasswordResetHelper $passwordResetHelper
     ) {
         $this->passResetThrottlingMaxActiveTokens      = $passResetThrottlingMaxActiveTokens;
         $this->passResetThrottlingMinTimeBetweenTokens = $passResetThrottlingMinTimeBetweenTokens;
@@ -73,7 +73,13 @@ final class PasswordManager
         $this->eventDispatcher                         = $eventDispatcher;
         $this->passwordHelper                          = $passwordHelper;
         $this->passwordResetHelper                     = $passwordResetHelper;
-        $this->passwordResetTokenRepository            = $passwordResetTokenRepository;
+
+        $passwordResetTokenRepository = $entityManager->getRepository($passResetTokenClass);
+        if ( ! $passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
+            throw new PasswordResetTokenException('Wrong PasswordResetTokenRepository.');
+        }
+
+        $this->passwordResetTokenRepository = $passwordResetTokenRepository;
     }
 
     /**
@@ -95,19 +101,15 @@ final class PasswordManager
     public function handleResetRequest(Request $request, FormInterface $form): bool
     {
         $userPropertyValue = $form->get($this->secUserProperty)->getData();
-
-        /** @psalm-suppress ArgumentTypeCoercion */
-        $user = $this->entityManager->getRepository($this->secUserClass)->findOneBy([$this->secUserProperty => $userPropertyValue]);
+        $user              = $this->entityManager->getRepository($this->secUserClass)->findOneBy([$this->secUserProperty => $userPropertyValue]);
 
         if ( ! $user instanceof UserInterface) {
             return false;
         }
 
         $this->checkThrottling($user);
-        /**
-         * @var PasswordResetTokenInterface $resetToken
-         * @psalm-suppress InvalidStringClass
-         */
+
+        /** @var PasswordResetTokenInterface $resetToken */
         $resetToken = new $this->passResetTokenClass($user);
         try {
             $publicResetToken = $this->passwordResetHelper->activateResetToken($resetToken);

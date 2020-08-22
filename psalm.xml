@@ -32,6 +32,7 @@
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <file name="src/Manager/UsersManager.php" />
+                <file name="src/Manager/PasswordManager.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <DocblockTypeContradiction>
@@ -42,6 +43,7 @@
         <InvalidStringClass>
             <errorLevel type="suppress">
                 <file name="src/Manager/UsersManager.php" />
+                <file name="src/Manager/PasswordManager.php" />
             </errorLevel>
         </InvalidStringClass>
         <MixedArgument>

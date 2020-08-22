@@ -31,16 +31,6 @@ parameters:
 			path: src/Helper/PasswordResetHelper.php
 
 		-
-			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\) expects class\\-string\\<mixed\\>, string given\\.$#"
-			count: 1
-			path: src/Manager/PasswordManager.php
-
-		-
-			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\)$#"
-			count: 1
-			path: src/Manager/PasswordManager.php
-
-		-
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return typehint\\.$#"
 			count: 1
 			path: src/Manager/PasswordManager.php

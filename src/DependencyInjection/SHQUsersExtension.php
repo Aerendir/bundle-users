@@ -21,7 +21,6 @@ use SerendipityHQ\Bundle\UsersBundle\Manager\PasswordManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
-use SerendipityHQ\Bundle\UsersBundle\Repository\PasswordResetTokenRepository;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -78,16 +77,12 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         /** @var string $appSecret */
         $appSecret = $containerBuilder->getParameter('kernel.secret');
 
-        $dispatcherReference                     = new Reference('event_dispatcher');
-        $encoderFactoryReference                 = new Reference('security.encoder_factory');
-        $entityManagerReference                  = new Reference('doctrine.orm.default_entity_manager');
-        $formFactoryReference                    = new Reference('form.factory');
-        $propertyAccessorReference               = new Reference('property_accessor');
-        $routerReference                         = new Reference('router.default');
-        $userPasswordEncoderReference            = new Reference('security.password_encoder');
-        $passwordResetTokenRepositoryDefinition  = new Definition(PasswordResetTokenRepository::class, ['App\Entity\PasswordResetToken']);
-        $passwordResetTokenRepositoryDefinition->setFactory([$entityManagerReference, 'getRepository']);
-        $containerBuilder->setDefinition(PasswordResetTokenRepository::class, $passwordResetTokenRepositoryDefinition);
+        $dispatcherReference                 = new Reference('event_dispatcher');
+        $entityManagerReference              = new Reference('doctrine.orm.default_entity_manager');
+        $formFactoryReference                = new Reference('form.factory');
+        $propertyAccessorReference           = new Reference('property_accessor');
+        $routerReference                     = new Reference('router.default');
+        $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
 
         foreach ($config[Configuration::SECURITY_PROVIDERS] as $provider => $providerConfig) {
             /** @var string $secUserClass */
@@ -101,20 +96,20 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 
-            $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$secUserProperty, $formFactoryReference, $routerReference, $userPasswordEncoderReference]);
+            $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$secUserProperty, $userPasswordEncoderFactoryReference, $formFactoryReference, $routerReference]);
             $containerBuilder->setDefinition(PasswordHelper::class, $passwordHelperDefinition);
 
             $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $secUserProperty, $propertyAccessorReference]);
             $containerBuilder->setDefinition(PasswordResetTokenGenerator::class, $passwordResetTokenGeneratorDefinition);
 
-            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenRepositoryDefinition, $passwordResetTokenGeneratorDefinition]);
-            $containerBuilder->setDefinition(PasswordHelper::class, $passwordResetHelperDefinition);
+            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition]);
+            $containerBuilder->setDefinition(PasswordResetHelper::class, $passwordResetHelperDefinition);
 
-            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $encoderFactoryReference, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passwordResetTokenRepositoryDefinition]);
+            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition]);
             $containerBuilder->setDefinition(PasswordManager::class, $passwordManagerDefinition);
 
             if (\is_subclass_of($secUserClass, HasPlainPasswordInterface::class)) {
-                $userEncodePasswordListenerDefinition = (new Definition(UserEncodePasswordListener::class, [$encoderFactoryReference]))
+                $userEncodePasswordListenerDefinition = (new Definition(UserEncodePasswordListener::class, [$passwordManagerDefinition]))
                     ->addTag(
                         'doctrine.orm.entity_listener',
                         [
