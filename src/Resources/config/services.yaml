@@ -6,3 +6,5 @@ services:
         public: false
     SerendipityHQ\Bundle\UsersBundle\Command\CreateUserCommand:
         tags: ['console.command']
+    SerendipityHQ\Bundle\UsersBundle\Command\RoleAddCommand:
+        tags: ['console.command']

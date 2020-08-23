@@ -29,6 +29,7 @@
         <MissingThrowsDocblock errorLevel="suppress" />
         <MoreSpecificReturnType errorLevel="suppress" />
         <RedundantIdentityWithTrue errorLevel="suppress" />
+        <RedundantConditionGivenDocblockType errorLevel="suppress" />
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <file name="src/Manager/UsersManager.php" />
@@ -38,6 +39,8 @@
         <DocblockTypeContradiction>
             <errorLevel type="suppress">
                 <file name="src/Helper/PasswordHelper.php" />
+                <file name="src/Manager/UsersManager.php" />
+                <file name="src/Validator/RolesValidator.php" />
             </errorLevel>
         </DocblockTypeContradiction>
         <InvalidStringClass>
@@ -49,6 +52,7 @@
         <MixedArgument>
             <errorLevel type="suppress">
                 <file name="src/Helper/PasswordHelper.php" />
+                <file name="src/Manager/UsersManager.php" />
             </errorLevel>
         </MixedArgument>
         <MixedArgumentTypeCoercion>
@@ -64,7 +68,9 @@
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
                 <file name="src/Command/AbstractUserCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
                 <file name="src/Command/CreateUserCommand.php" />
+                <file name="src/Command/RoleAddCommand.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
     </issueHandlers>

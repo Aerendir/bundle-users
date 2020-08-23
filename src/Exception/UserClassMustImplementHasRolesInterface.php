@@ -15,22 +15,13 @@ use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UsersException extends \Exception
+final class UserClassMustImplementHasRolesInterface extends UserClassMustImplementInterface
 {
     /**
-     * @param HasPlainPasswordInterface|HasRolesInterface|string|UserInterface $user
+     * @param HasPlainPasswordInterface|string|UserInterface $user
      */
-    protected function getUserClass($user): string
+    public function __construct($user)
     {
-        $userClass = 'unknown';
-        if (\is_object($user)) {
-            $userClass = \get_class($user);
-        }
-
-        if (\is_string($user)) {
-            $userClass = $user;
-        }
-
-        return $userClass;
+        parent::__construct($user, HasRolesInterface::class);
     }
 }

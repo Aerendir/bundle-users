@@ -11,18 +11,17 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
+use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-final class UserClassMustImplementUserInterface extends UsersException
+final class UserClassMustImplementUserInterface extends UserClassMustImplementInterface
 {
     /**
-     * @param HasPlainPasswordInterface|string|UserInterface $user
+     * @param HasPlainPasswordInterface|HasRolesInterface|string $user
      */
     public function __construct($user)
     {
-        $message = sprintf('The User class "%s" MUST implement the "%s" interface.', $this->getUserClass($user), UserInterface::class);
-        parent::__construct($message);
+        parent::__construct($user, UserInterface::class);
     }
 }

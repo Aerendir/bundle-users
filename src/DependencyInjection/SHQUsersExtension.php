@@ -22,6 +22,7 @@ use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
+use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -56,9 +57,6 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
-        $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
-        $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
-
         /** @var string $passResetTokenClass */
         $passResetTokenClass = $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_TOKEN_CLASS];
 
@@ -75,24 +73,30 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $passResetThrottlingMinTimeBetweenTokens = $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_THROTTLING][Configuration::BUNDLE_CONFIG_PASS_RESET_THROTTLING_MIN_TIME_BETWEEN_TOKENS];
 
         /** @var string $appSecret */
-        $appSecret = $containerBuilder->getParameter('kernel.secret');
-
+        $appSecret                           = $containerBuilder->getParameter('kernel.secret');
         $dispatcherReference                 = new Reference('event_dispatcher');
         $entityManagerReference              = new Reference('doctrine.orm.default_entity_manager');
         $formFactoryReference                = new Reference('form.factory');
         $propertyAccessorReference           = new Reference('property_accessor');
+        $roleHierarchyReference              = new Reference('security.role_hierarchy');
         $routerReference                     = new Reference('router.default');
         $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
 
+        $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
+        $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
+
+        $rolesValidatorDefinition = new Definition(RolesValidator::class, [$roleHierarchyReference]);
+        $containerBuilder->setDefinition(RolesValidator::class, $rolesValidatorDefinition);
+
         foreach ($config[Configuration::SECURITY_PROVIDERS] as $provider => $providerConfig) {
             /** @var string $secUserClass */
-            $secUserClass    = $providerConfig[Configuration::SECURITY_PROVIDERS_ENTITY_CLASS];
+            $secUserClass = $providerConfig[Configuration::SECURITY_PROVIDERS_ENTITY_CLASS];
 
             /** @var string $secUserProperty */
             $secUserProperty = $providerConfig[Configuration::SECURITY_PROVIDERS_ENTITY_PROPERTY];
 
             $manager           = 'shq_users.managers.' . $provider;
-            $managerDefinition = new Definition(UsersManager::class, [$provider, $secUserClass, $secUserProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference]);
+            $managerDefinition = new Definition(UsersManager::class, [$provider, $secUserClass, $secUserProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference, $rolesValidatorDefinition]);
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 

@@ -3,8 +3,10 @@
 This is the tree representing the Exceptions thron by Serendipity HQ Users Bundle:
 
 - `UsersException`
-    - `UserClassMustImplementUserInterface`
-    - `UserClassMustImplementHasPlainPasswordInterface`
+    - `UserClassMustImplementInterface`
+        - `UserClassMustImplementHasPlainPasswordInterface`
+        - `UserClassMustImplementHasRolesInterface`
+        - `UserClassMustImplementUserInterface`
     - `PasswordException`
         - `PasswordEncodingError`
         - `PasswordRequired`
@@ -15,3 +17,5 @@ This is the tree representing the Exceptions thron by Serendipity HQ Users Bundl
             - `PasswordResetTokenException`
                 - `PasswordResetTokenExpired`
                 - `PasswordResetTokenInvalid`
+    - `RolesException`
+        - `RoleInvalidException`
