@@ -15,31 +15,28 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
-use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class RoleRemCommand extends AbstractUserRolesCommand
+final class UserActivateCommand extends AbstractUserActivationCommand
 {
-    protected static $defaultName  = 'shq:user:role:rem';
-    protected static string $title = 'Add role';
+    protected static $defaultName  = 'shq:user:activate';
+    protected static string $title = 'Activate user';
 
-    public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
     {
-        $this->entityManager = $entityManager;
-        parent::__construct($entityManager, $rolesValidator, $usersManagerRegistry);
+        parent::__construct($entityManager, $usersManagerRegistry);
     }
 
     protected function configure(): void
     {
         parent::configure();
-        $this->setDescription('Adds one or more roles to a user.')
+        $this->setDescription('Activates a user.')
             ->setHelp(
 <<<'EOT'
-The <info>%command.name%</info> command removes one or more roles from a user:
+The <info>%command.name%</info> command activates the user:
 
-  <info>php %command.full_name% Aerendir ROLE_CUSTOM</info>
-<info>php %command.full_name% Aerendir ROLE_CUSTOM1 ROLE_CUSTOM2 ROLE_CUSTOM3</info>
+  <info>php %command.full_name% Aerendir</info>
 EOT);
     }
 
@@ -50,12 +47,10 @@ EOT);
             return $initialized;
         }
 
-        $manager = $this->usersManagerRegistry->getManager($this->provider);
-        $manager->removeRoles($this->user, $this->roles);
-
+        $this->user->activate();
         $this->entityManager->flush();
 
-        $message = \Safe\sprintf('Roles removed from user %s.', $this->unique);
+        $message = \Safe\sprintf('User %s activated.', $this->unique);
         $this->io->success($message);
 
         return 0;

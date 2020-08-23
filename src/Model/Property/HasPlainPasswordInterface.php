@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
+/**
+ * This trait MUST be implemented by all UserInterface in the app.
+ */
 interface HasPlainPasswordInterface
 {
     public const FIELD_PLAIN_PASSWORD = 'plainPassword';

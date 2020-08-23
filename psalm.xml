@@ -38,6 +38,8 @@
         </ArgumentTypeCoercion>
         <DocblockTypeContradiction>
             <errorLevel type="suppress">
+                <file name="src/Command/AbstractUserActivationCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
                 <file name="src/Helper/PasswordHelper.php" />
                 <file name="src/Manager/UsersManager.php" />
                 <file name="src/Validator/RolesValidator.php" />
@@ -51,6 +53,8 @@
         </InvalidStringClass>
         <MixedArgument>
             <errorLevel type="suppress">
+                <file name="src/Command/AbstractUserActivationCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
                 <file name="src/Helper/PasswordHelper.php" />
                 <file name="src/Manager/UsersManager.php" />
             </errorLevel>
@@ -67,9 +71,12 @@
         </MixedArrayAccess>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
-                <file name="src/Command/AbstractUserCommand.php" />
+                <file name="src/Command/AbstractUsersCommand.php" />
+                <file name="src/Command/AbstractUserActivationCommand.php" />
                 <file name="src/Command/AbstractUserRolesCommand.php" />
-                <file name="src/Command/CreateUserCommand.php" />
+                <file name="src/Command/UserActivateCommand.php" />
+                <file name="src/Command/UserDeactivateCommand.php" />
+                <file name="src/Command/UserCreateCommand.php" />
                 <file name="src/Command/RoleAddCommand.php" />
                 <file name="src/Command/RoleRemCommand.php" />
             </errorLevel>

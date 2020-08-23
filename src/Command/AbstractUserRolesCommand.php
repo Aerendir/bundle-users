@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
@@ -23,17 +24,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 abstract class AbstractUserRolesCommand extends AbstractUserCommand
 {
+    /** @var HasRolesInterface&UserInterface */
+    protected $user;
+
     /** @var string[] */
     protected array $roles;
-
-    /** @var UserInterface&HasRolesInterface */
-    protected $user;
     protected RolesValidator $rolesValidator;
 
-    public function __construct(RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
     {
         $this->rolesValidator = $rolesValidator;
-        parent::__construct($usersManagerRegistry);
+        parent::__construct($entityManager, $usersManagerRegistry);
     }
 
     protected function configure(): void
@@ -49,6 +50,13 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
             return $initialized;
         }
 
+        if ( ! $this->user instanceof HasRolesInterface) {
+            $message = \Safe\sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class);
+            $this->io->error($message);
+
+            return 1;
+        }
+
         $roles = $input->getArgument('roles');
         if (false === \is_array($roles)) {
             return 1;
@@ -61,25 +69,6 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
 
             return 1;
         }
-
-        $manager = $this->usersManagerRegistry->getManager($this->provider);
-        $user    = $manager->load($this->unique);
-
-        if (null === $user) {
-            $message = \Safe\sprintf('User "%s" not found.', $this->unique);
-            $this->io->error($message);
-
-            return 1;
-        }
-
-        if ( ! $user instanceof HasRolesInterface) {
-            $message = \Safe\sprintf('User class "%s" must implement interface "%s".', \get_class($user), HasRolesInterface::class);
-            $this->io->error($message);
-
-            return 1;
-        }
-
-        $this->user = $user;
 
         return 0;
     }

@@ -23,18 +23,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-final class CreateUserCommand extends AbstractUserCommand
+final class UserCreateCommand extends AbstractUsersCommand
 {
     protected static $defaultName  = 'shq:user:create';
     protected static string $title = 'Create user';
-    private EntityManagerInterface $entityManager;
     private ValidatorInterface $validator;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, ValidatorInterface $validator)
     {
-        $this->entityManager         = $entityManager;
         $this->validator             = $validator;
-        parent::__construct($usersManagerRegistry);
+        parent::__construct($entityManager, $usersManagerRegistry);
     }
 
     protected function configure(): void

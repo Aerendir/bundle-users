@@ -23,12 +23,11 @@ final class RoleAddCommand extends AbstractUserRolesCommand
 {
     protected static $defaultName  = 'shq:user:role:add';
     protected static string $title = 'Add role';
-    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
     {
         $this->entityManager = $entityManager;
-        parent::__construct($rolesValidator, $usersManagerRegistry);
+        parent::__construct($entityManager, $rolesValidator, $usersManagerRegistry);
     }
 
     protected function configure(): void

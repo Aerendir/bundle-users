@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
+/**
+ * This interface MUST be implemented by all UserInterface in the app to use roles.
+ */
 interface HasRolesInterface
 {
     /**

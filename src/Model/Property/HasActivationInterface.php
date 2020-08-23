@@ -13,17 +13,12 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
-trait HasPlainPasswordTrait
+/**
+ * This trait MUST be implemented by all UserInterface in the app to use activation.
+ */
+interface HasActivationInterface
 {
-    private ?string $plainPassword = null;
+    public function activate(bool $activate = true): void;
 
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword): void
-    {
-        $this->plainPassword = $plainPassword;
-    }
+    public function isActive(): bool;
 }

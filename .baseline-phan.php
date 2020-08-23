@@ -28,7 +28,7 @@ return [
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
-        'src/Command/CreateUserCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanUndeclaredMethod', 'PhanUnreferencedProtectedProperty', 'UndeclaredTypeInInlineVar'],
+        'src/Command/UserCreateCommand.php' => ['PhanRedefinedClassReference', 'PhanRedefinedExtendedClass', 'PhanUndeclaredMethod', 'PhanUnreferencedProtectedProperty', 'UndeclaredTypeInInlineVar'],
         'src/DependencyInjection/SHQUsersExtension.php' => ['PhanUnreferencedClass'],
         'src/Doctrine/UserEncodePasswordListener.php' => ['PhanTypeMismatchArgument', 'PhanTypeMismatchArgumentNullable', 'PhanUndeclaredMethod', 'PhanUnreferencedPublicMethod'],
         'src/Event/PasswordResetTokenCreatedEvent.php' => ['PhanUnreferencedPublicMethod'],

@@ -13,20 +13,22 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
+use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasActivationInterface;
-use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
-use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class AbstractUserCommand extends AbstractUsersCommand
+abstract class AbstractUserActivationCommand extends AbstractUserCommand
 {
-    /**
-     * @var HasActivationInterface|HasPlainPasswordInterface|HasRolesInterface|UserInterface
-     * @suppress PhanWriteOnlyProtectedProperty
-     */
+    /** @var HasActivationInterface&UserInterface */
     protected $user;
+
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
+    {
+        parent::__construct($entityManager, $usersManagerRegistry);
+    }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -35,17 +37,12 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
             return $initialized;
         }
 
-        $manager = $this->usersManagerRegistry->getManager($this->provider);
-        $user    = $manager->load($this->unique);
-
-        if (null === $user) {
-            $message = \Safe\sprintf('User "%s" not found.', $this->unique);
+        if ( ! $this->user instanceof HasActivationInterface) {
+            $message = \Safe\sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class);
             $this->io->error($message);
 
             return 1;
         }
-
-        $this->user = $user;
 
         return 0;
     }

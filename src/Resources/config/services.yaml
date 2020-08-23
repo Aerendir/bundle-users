@@ -4,7 +4,11 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         public: false
-    SerendipityHQ\Bundle\UsersBundle\Command\CreateUserCommand:
+    SerendipityHQ\Bundle\UsersBundle\Command\UserCreateCommand:
+        tags: ['console.command']
+    SerendipityHQ\Bundle\UsersBundle\Command\UserActivateCommand:
+        tags: ['console.command']
+    SerendipityHQ\Bundle\UsersBundle\Command\UserDeactivateCommand:
         tags: ['console.command']
     SerendipityHQ\Bundle\UsersBundle\Command\RoleAddCommand:
         tags: ['console.command']
