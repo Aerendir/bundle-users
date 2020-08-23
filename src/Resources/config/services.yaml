@@ -8,3 +8,5 @@ services:
         tags: ['console.command']
     SerendipityHQ\Bundle\UsersBundle\Command\RoleAddCommand:
         tags: ['console.command']
+    SerendipityHQ\Bundle\UsersBundle\Command\RoleRemCommand:
+        tags: ['console.command']

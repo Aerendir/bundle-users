@@ -38,16 +38,17 @@ interface UsersManagerInterface
 
     /**
      * @param UserInterface&HasRolesInterface $user
-     * @param string[]                        $roles
+     * @param string|string[]                 $rolesToAdd
      *
      * @return UserInterface&HasRolesInterface
      */
-    public function addRoles($user, array $roles);
+    public function addRoles($user, $rolesToAdd);
 
     /**
      * @param UserInterface&HasRolesInterface $user
+     * @param string|string[]                 $rolesToRemove
      *
      * @return UserInterface&HasRolesInterface
      */
-    public function addRole($user, string $role);
+    public function removeRoles($user, $rolesToRemove);
 }

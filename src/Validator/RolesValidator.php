@@ -11,24 +11,12 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Validator;
 
-use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\String\UnicodeString;
 
 final class RolesValidator
 {
-    /**
-     * @todo Remove the suppression
-     * @suppress PhanWriteOnlyPublicProperty
-     */
-    public RoleHierarchyInterface $roleHierarchy;
-
     /** @var array<string,array<string>> */
     private array $errors = [];
-
-    public function __construct(RoleHierarchyInterface $roleHierarchy)
-    {
-        $this->roleHierarchy = $roleHierarchy;
-    }
 
     /**
      * @param string|string[] $roles

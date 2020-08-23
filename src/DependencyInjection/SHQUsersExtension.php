@@ -78,14 +78,13 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $entityManagerReference              = new Reference('doctrine.orm.default_entity_manager');
         $formFactoryReference                = new Reference('form.factory');
         $propertyAccessorReference           = new Reference('property_accessor');
-        $roleHierarchyReference              = new Reference('security.role_hierarchy');
         $routerReference                     = new Reference('router.default');
         $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
 
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
 
-        $rolesValidatorDefinition = new Definition(RolesValidator::class, [$roleHierarchyReference]);
+        $rolesValidatorDefinition = new Definition(RolesValidator::class);
         $containerBuilder->setDefinition(RolesValidator::class, $rolesValidatorDefinition);
 
         foreach ($config[Configuration::SECURITY_PROVIDERS] as $provider => $providerConfig) {

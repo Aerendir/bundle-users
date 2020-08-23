@@ -52,7 +52,7 @@ return [
     'suppress_issue_types' => [
         'PhanUnreferencedPublicMethod',
         'PhanReadOnlyProtectedProperty',
-        'PhanUnreferencedProtectedProperty'
+        'PhanUnreferencedProtectedProperty',
     ],
 
     // A regular expression to match files to be excluded

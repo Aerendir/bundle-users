@@ -71,6 +71,7 @@
                 <file name="src/Command/AbstractUserRolesCommand.php" />
                 <file name="src/Command/CreateUserCommand.php" />
                 <file name="src/Command/RoleAddCommand.php" />
+                <file name="src/Command/RoleRemCommand.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
     </issueHandlers>

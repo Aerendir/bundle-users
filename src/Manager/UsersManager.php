@@ -84,37 +84,41 @@ final class UsersManager implements UsersManagerInterface
         return $user;
     }
 
-    public function addRoles($user, array $roles)
+    public function addRoles($user, $rolesToAdd)
     {
-        foreach ($roles as $role) {
-            $this->addRole($user, $role);
+        $this->ensureUserImplementsHasRolesInterfaces($user);
+
+        $currentRoles = $user->getRoles();
+        $rolesToAdd   = $this->ensureRolesIsArray($rolesToAdd);
+
+        foreach ($rolesToAdd as $roleToAdd) {
+            $errors = $this->rolesValidator->validateRole($roleToAdd);
+            if (0 < \count($errors)) {
+                throw new RoleInvalidException($roleToAdd, $errors);
+            }
+
+            $currentRoles[] = $roleToAdd;
         }
+
+        $user->setRoles(\array_unique($currentRoles));
 
         return $user;
     }
 
-    /**
-     * @suppress PhanUndeclaredMethod
-     */
-    public function addRole($user, string $role)
+    public function removeRoles($user, $rolesToRemove)
     {
-        if ( ! $user instanceof UserInterface) {
-            throw new UserClassMustImplementUserInterface($user);
+        $this->ensureUserImplementsHasRolesInterfaces($user);
+
+        $currentRoles  = $user->getRoles();
+        $rolesToRemove = $this->ensureRolesIsArray($rolesToRemove);
+
+        foreach ($currentRoles as $currentRoleKey => $currentRole) {
+            if (\in_array($currentRole, $rolesToRemove)) {
+                unset($currentRoles[$currentRoleKey]);
+            }
         }
 
-        if ( ! $user instanceof HasRolesInterface) {
-            throw new UserClassMustImplementHasRolesInterface($user);
-        }
-
-        $errors = $this->rolesValidator->validateRole($role);
-        if (0 < \count($errors)) {
-            throw new RoleInvalidException($role, $errors);
-        }
-
-        $roles   = $user->getRoles();
-        $roles[] = $role;
-
-        $user->setRoles(\array_unique($roles));
+        $user->setRoles($currentRoles);
 
         return $user;
     }
@@ -134,5 +138,33 @@ final class UsersManager implements UsersManagerInterface
     {
         $event = new UserPasswordChangedEvent($user, $this->provider);
         $this->dispatcher->dispatch($event);
+    }
+
+    /**
+     * @param HasPlainPasswordInterface|HasRolesInterface|UserInterface $user
+     */
+    private function ensureUserImplementsHasRolesInterfaces($user): void
+    {
+        if ( ! $user instanceof UserInterface) {
+            throw new UserClassMustImplementUserInterface($user);
+        }
+
+        if ( ! $user instanceof HasRolesInterface) {
+            throw new UserClassMustImplementHasRolesInterface($user);
+        }
+    }
+
+    /**
+     * @param string|string[] $roles
+     *
+     * @return string[]
+     */
+    private function ensureRolesIsArray($roles): array
+    {
+        if (\is_string($roles)) {
+            return [$roles];
+        }
+
+        return $roles;
     }
 }
