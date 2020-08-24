@@ -63,7 +63,12 @@ final class PasswordResetTokenGenerator
     {
         $userIdentifier = $this->propertyAccessor->getValue($user, $this->userIdentifierProperty);
         $encodedData    = \Safe\json_encode([$verifier, $userIdentifier, $expiresAt->getTimestamp()]);
+        $hashed         = \hash_hmac('sha256', $encodedData, $this->appSecret, true);
 
-        return \base64_encode(\hash_hmac('sha256', $encodedData, $this->appSecret, true));
+        if (false === $hashed) {
+            throw new \RuntimeException('Algo is unknown or is a non-cryptographic hash function.');
+        }
+
+        return \base64_encode($hashed);
     }
 }
