@@ -31,7 +31,6 @@ use SerendipityHQ\Bundle\UsersBundle\Model\ResetPasswordTokenComponents;
 use SerendipityHQ\Bundle\UsersBundle\Repository\PasswordResetTokenRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PasswordManager
@@ -98,7 +97,7 @@ final class PasswordManager
         return $this->passwordResetHelper;
     }
 
-    public function handleResetRequest(Request $request, FormInterface $form): bool
+    public function handleResetRequest(FormInterface $form): bool
     {
         $userPropertyValue = $form->get($this->secUserProperty)->getData();
         $user              = $this->entityManager->getRepository($this->secUserClass)->findOneBy([$this->secUserProperty => $userPropertyValue]);
@@ -119,22 +118,23 @@ final class PasswordManager
 
             return false;
         }
+
         $this->entityManager->persist($resetToken);
         // Marks that the current user is allowed to see the user_password_reset_check_email page.
-        $this->getPasswordResetHelper()->allowAccessToPageCheckYourEmail($request);
+        $this->getPasswordResetHelper()->allowAccessToPageCheckYourEmail();
         $event = new PasswordResetTokenCreatedEvent($resetToken->getUser(), $publicResetToken);
         $this->eventDispatcher->dispatch($event);
 
         return true;
     }
 
-    public function handleReset(string $publicToken, HasPlainPasswordInterface $user, FormInterface $form, Request $request): void
+    public function handleReset(string $publicToken, HasPlainPasswordInterface $user, FormInterface $form): void
     {
         // A password reset token should be used only once, remove it.
         $this->deleteUsedToken($publicToken);
 
         // The session is cleaned up after the password has been changed.
-        $this->getPasswordResetHelper()->cleanSessionAfterReset($request);
+        $this->getPasswordResetHelper()->cleanSessionAfterReset();
 
         $plainPassword = $form->get(HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)->getData();
         $user->setPlainPassword($plainPassword);

@@ -19,6 +19,7 @@ use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordHelper;
 use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordResetHelper;
 use SerendipityHQ\Bundle\UsersBundle\Manager\PasswordManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManager;
+use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
@@ -80,6 +81,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $propertyAccessorReference           = new Reference('property_accessor');
         $routerReference                     = new Reference('router.default');
         $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
+        $sessionReference                    = new Reference('session');
 
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
@@ -105,7 +107,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $secUserProperty, $propertyAccessorReference]);
             $containerBuilder->setDefinition(PasswordResetTokenGenerator::class, $passwordResetTokenGeneratorDefinition);
 
-            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition]);
+            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition, $sessionReference]);
             $containerBuilder->setDefinition(PasswordResetHelper::class, $passwordResetHelperDefinition);
 
             $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition]);
@@ -123,6 +125,11 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
                     );
                 $containerBuilder->setDefinition(UserEncodePasswordListener::class, $userEncodePasswordListenerDefinition);
             }
+        }
+
+        if (isset($manager) && \is_string($manager) && isset($managerDefinition) && $managerDefinition instanceof Definition && 1 === (\is_countable($config[Configuration::SECURITY_PROVIDERS]) ? \count($config[Configuration::SECURITY_PROVIDERS]) : 0)) {
+            $containerBuilder->setAlias('shq_users.managers.default_manager', $manager);
+            $containerBuilder->setDefinition(UsersManagerInterface::class, $managerDefinition);
         }
     }
 }
