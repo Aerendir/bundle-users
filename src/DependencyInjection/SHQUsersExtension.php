@@ -81,6 +81,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $propertyAccessorReference           = new Reference('property_accessor');
         $routerReference                     = new Reference('router.default');
         $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
+        $sessionReference                    = new Reference('session');
 
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
@@ -106,7 +107,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $secUserProperty, $propertyAccessorReference]);
             $containerBuilder->setDefinition(PasswordResetTokenGenerator::class, $passwordResetTokenGeneratorDefinition);
 
-            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition]);
+            $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition, $sessionReference]);
             $containerBuilder->setDefinition(PasswordResetHelper::class, $passwordResetHelperDefinition);
 
             $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition]);
@@ -126,7 +127,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             }
         }
 
-        if (1 === count($config[Configuration::SECURITY_PROVIDERS])) {
+        if (isset($manager) && \is_string($manager) && isset($managerDefinition) && $managerDefinition instanceof Definition && 1 === (\is_countable($config[Configuration::SECURITY_PROVIDERS]) ? \count($config[Configuration::SECURITY_PROVIDERS]) : 0)) {
             $containerBuilder->setAlias('shq_users.managers.default_manager', $manager);
             $containerBuilder->setDefinition(UsersManagerInterface::class, $managerDefinition);
         }

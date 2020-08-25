@@ -16,7 +16,7 @@ namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 use SerendipityHQ\Bundle\UsersBundle\Model\PasswordResetTokenPublic;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class PasswordResetHelper
 {
@@ -32,10 +32,12 @@ final class PasswordResetHelper
     public const RESET_TOKEN_LIFETIME = 3600;
 
     private PasswordResetTokenGenerator $passwordResetTokenGenerator;
+    private SessionInterface $session;
 
-    public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator)
+    public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator, SessionInterface $session)
     {
         $this->passwordResetTokenGenerator = $passwordResetTokenGenerator;
+        $this->session                     = $session;
     }
 
     /**
@@ -46,30 +48,31 @@ final class PasswordResetHelper
         return $this->passwordResetTokenGenerator;
     }
 
-    public function allowAccessToPageCheckYourEmail(Request $request): void
+    public function allowAccessToPageCheckYourEmail(): void
     {
-        $request->getSession()->set(self::RESET_PASSWORD_1_CHECK_EMAIL, true);
+        $this->session->set(self::RESET_PASSWORD_1_CHECK_EMAIL, true);
     }
 
-    public function canAccessPageCheckYourEmail(Request $request): bool
+    public function canAccessPageCheckYourEmail(): bool
     {
-        return $request->getSession()->has(self::RESET_PASSWORD_1_CHECK_EMAIL);
+        return $this->session->has(self::RESET_PASSWORD_1_CHECK_EMAIL);
     }
 
-    public function storeTokenInSession(Request $request, string $token): void
+    public function storeTokenInSession(string $token): void
     {
-        $request->getSession()->set(self::RESET_PASSWORD_2_PUBLIC_TOKEN, $token);
+        $this->session->set(self::RESET_PASSWORD_2_PUBLIC_TOKEN, $token);
     }
 
-    public function getTokenFromSession(Request $request): string
+    public function getTokenFromSession(): string
     {
-        return $request->getSession()->get(self::RESET_PASSWORD_2_PUBLIC_TOKEN);
+        /** @psalm-suppress MixedReturnStatement */
+        return $this->session->get(self::RESET_PASSWORD_2_PUBLIC_TOKEN);
     }
 
-    public function cleanSessionAfterReset(Request $request): void
+    public function cleanSessionAfterReset(): void
     {
-        $request->getSession()->remove(self::RESET_PASSWORD_1_CHECK_EMAIL);
-        $request->getSession()->remove(self::RESET_PASSWORD_2_PUBLIC_TOKEN);
+        $this->session->remove(self::RESET_PASSWORD_1_CHECK_EMAIL);
+        $this->session->remove(self::RESET_PASSWORD_2_PUBLIC_TOKEN);
     }
 
     /**
