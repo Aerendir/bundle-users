@@ -19,6 +19,7 @@ use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordHelper;
 use SerendipityHQ\Bundle\UsersBundle\Helper\PasswordResetHelper;
 use SerendipityHQ\Bundle\UsersBundle\Manager\PasswordManager;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManager;
+use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
@@ -123,6 +124,11 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
                     );
                 $containerBuilder->setDefinition(UserEncodePasswordListener::class, $userEncodePasswordListenerDefinition);
             }
+        }
+
+        if (1 === count($config[Configuration::SECURITY_PROVIDERS])) {
+            $containerBuilder->setAlias('shq_users.managers.default_manager', $manager);
+            $containerBuilder->setDefinition(UsersManagerInterface::class, $managerDefinition);
         }
     }
 }
