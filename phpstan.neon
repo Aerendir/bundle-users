@@ -39,3 +39,9 @@ parameters:
             message: "#^Strict comparison using === between false and true will always evaluate to false\\.$#"
             count: 1
             path: src/Validator/RolesValidator.php
+        # Remove once fixed in PHPStan https://github.com/Aerendir/bundle-users/issues/129
+        -
+            message: "#^Strict comparison using === between false and string will always evaluate to false\\.$#"
+            count: 1
+            path: src/Util/PasswordResetTokenGenerator.php
+
