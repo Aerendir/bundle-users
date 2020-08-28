@@ -13,10 +13,8 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\DependencyInjection;
 
-use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 
 final class Configuration implements ConfigurationInterface
 {
@@ -98,23 +96,6 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-            ->validate()
-                ->ifTrue(function ($tree) {
-                    $tokenClass = $tree[self::BUNDLE_CONFIG_PASS][self::BUNDLE_CONFIG_PASS_RESET][self::BUNDLE_CONFIG_PASS_RESET_TOKEN_CLASS];
-                    if (false === \class_exists($tokenClass)) {
-                        throw new InvalidTypeException(\Safe\sprintf("The entity class %s doesn't exist.", $tokenClass));
-                    }
-
-                    if (false === \is_a($tokenClass, PasswordResetTokenInterface::class, true)) {
-                        throw new InvalidTypeException(\Safe\sprintf('The entity %s MUST implement interface %s.', $tokenClass, PasswordResetTokenInterface::class));
-                    }
-
-                    return $tree;
-                })
-                ->then(function ($tree) {
-                    return $tree;
-                })
             ->end();
 
         return $treeBuilder;

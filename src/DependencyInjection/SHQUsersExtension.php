@@ -110,7 +110,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $passwordResetHelperDefinition  = new Definition(PasswordResetHelper::class, [$passwordResetTokenGeneratorDefinition, $sessionReference]);
             $containerBuilder->setDefinition(PasswordResetHelper::class, $passwordResetHelperDefinition);
 
-            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $passResetTokenClass, $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition]);
+            $passwordManagerDefinition = new Definition(PasswordManager::class, [$passResetThrottlingMaxActiveTokens, $passResetThrottlingMinTimeBetweenTokens, $passResetLifespanAmountOf, $passResetLifespanUnit, $secUserClass, $secUserProperty, $entityManagerReference, $dispatcherReference, $passwordHelperDefinition, $passwordResetHelperDefinition, $passResetTokenClass]);
             $containerBuilder->setDefinition(PasswordManager::class, $passwordManagerDefinition);
 
             if (\is_subclass_of($secUserClass, HasPlainPasswordInterface::class)) {

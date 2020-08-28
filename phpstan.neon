@@ -29,11 +29,11 @@ parameters:
             path: src/Manager/UsersManager.php
         -
             message: "#^Parameter \\#1 \\$className of method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\) expects class-string\\<mixed\\>, string given\\.$#"
-            count: 2
+            count: 1
             path: src/Manager/PasswordManager.php
         -
             message: "#^Unable to resolve the template type T in call to method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:getRepository\\(\\)$#"
-            count: 2
+            count: 1
             path: src/Manager/PasswordManager.php
         -
             message: "#^Strict comparison using === between false and true will always evaluate to false\\.$#"

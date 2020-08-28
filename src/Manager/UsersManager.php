@@ -59,8 +59,12 @@ final class UsersManager implements UsersManagerInterface
 
     public function create(string $unique, string $pass): UserInterface
     {
-        /** @var UserInterface $user */
         $user = new $this->secUserClass();
+
+        if ( ! $user instanceof UserInterface) {
+            throw new UserClassMustImplementUserInterface($user);
+        }
+
         $this->propertyAccessor->setValue($user, $this->secUserProperty, $unique);
 
         try {

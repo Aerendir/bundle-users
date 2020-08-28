@@ -18,6 +18,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreatedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Event\PasswordResetTokenCreationFailedEvent;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetException;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface;
+use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenClassNotImplemented;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenException;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenExpired;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordResetTokenInvalid;
@@ -39,43 +41,48 @@ final class PasswordManager
     private int $passResetThrottlingMinTimeBetweenTokens;
     private int $passResetLifespanAmountOf;
     private string $passResetLifespanUnit;
-    private string $passResetTokenClass;
     private string $secUserClass;
     private string $secUserProperty;
     private EntityManagerInterface $entityManager;
     private EventDispatcherInterface $eventDispatcher;
     private PasswordHelper $passwordHelper;
     private PasswordResetHelper $passwordResetHelper;
-    private PasswordResetTokenRepository $passwordResetTokenRepository;
+    private ?PasswordResetTokenRepository $passwordResetTokenRepository;
+    private ?string $passResetTokenClass;
 
     public function __construct(
         int $passResetThrottlingMaxActiveTokens,
         int $passResetThrottlingMinTimeBetweenTokens,
         int $passResetLifespanAmountOf,
         string $passResetLifespanUnit,
-        string $passResetTokenClass,
         string $secUserClass,
         string $secUserProperty,
         EntityManagerInterface $entityManager,
         EventDispatcherInterface $eventDispatcher,
         PasswordHelper $passwordHelper,
-        PasswordResetHelper $passwordResetHelper
+        PasswordResetHelper $passwordResetHelper,
+        ?string $passResetTokenClass
     ) {
         $this->passResetThrottlingMaxActiveTokens      = $passResetThrottlingMaxActiveTokens;
         $this->passResetThrottlingMinTimeBetweenTokens = $passResetThrottlingMinTimeBetweenTokens;
         $this->passResetLifespanAmountOf               = $passResetLifespanAmountOf;
         $this->passResetLifespanUnit                   = $passResetLifespanUnit;
-        $this->passResetTokenClass                     = $passResetTokenClass;
         $this->secUserClass                            = $secUserClass;
         $this->secUserProperty                         = $secUserProperty;
         $this->entityManager                           = $entityManager;
         $this->eventDispatcher                         = $eventDispatcher;
         $this->passwordHelper                          = $passwordHelper;
         $this->passwordResetHelper                     = $passwordResetHelper;
+        $this->passResetTokenClass                     = $passResetTokenClass;
 
-        $passwordResetTokenRepository = $entityManager->getRepository($passResetTokenClass);
-        if ( ! $passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
-            throw new PasswordResetTokenException('Wrong PasswordResetTokenRepository.');
+        // Only load the repository if the reset password feature is activated,
+        // That means, the entity class that represents the token is implemented.
+        $passwordResetTokenRepository = null;
+        if (null !== $this->passResetTokenClass && \class_exists($this->passResetTokenClass)) {
+            $passwordResetTokenRepository = $entityManager->getRepository($this->passResetTokenClass);
+            if ( ! $passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
+                throw new PasswordResetTokenException('Wrong PasswordResetTokenRepository.');
+            }
         }
 
         $this->passwordResetTokenRepository = $passwordResetTokenRepository;
@@ -107,6 +114,14 @@ final class PasswordManager
         }
 
         $this->checkThrottling($user);
+
+        if (null === $this->passResetTokenClass || false === \class_exists($this->passResetTokenClass)) {
+            throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
+        }
+
+        if (false === \is_a($this->passResetTokenClass, PasswordResetTokenInterface::class, true)) {
+            throw new PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface($this->passResetTokenClass);
+        }
 
         /** @var PasswordResetTokenInterface $resetToken */
         $resetToken = new $this->passResetTokenClass($user);
@@ -151,6 +166,10 @@ final class PasswordManager
 
     public function loadTokenFromPublicOne(string $publicToken): PasswordResetTokenInterface
     {
+        if (null === $this->passwordResetTokenRepository) {
+            throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
+        }
+
         if (40 !== \strlen($publicToken)) {
             throw new PasswordResetTokenInvalid();
         }
@@ -192,6 +211,10 @@ final class PasswordManager
 
     public function cleanExpiredTokens(): int
     {
+        if (null === $this->passwordResetTokenRepository) {
+            throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
+        }
+
         return $this->passwordResetTokenRepository->removeExpiredResetPasswordRequests($this->passResetLifespanAmountOf, $this->passResetLifespanUnit);
     }
 
@@ -202,6 +225,9 @@ final class PasswordManager
 
     private function checkThrottling(UserInterface $user): ?\DateTimeInterface
     {
+        if (null === $this->passwordResetTokenRepository) {
+            throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
+        }
         $tokens = $this->passwordResetTokenRepository->getTokensStillValid($user);
 
         if (null === $tokens) {
