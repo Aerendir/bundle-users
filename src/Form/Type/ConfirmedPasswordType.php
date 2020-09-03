@@ -11,7 +11,6 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Form\Type;
 
-use SerendipityHQ\Bundle\UsersBundle\SHQUsersBundle;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

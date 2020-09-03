@@ -15,6 +15,9 @@ namespace SerendipityHQ\Bundle\UsersBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * @suppress PhanUnreferencedClass
+ */
 final class SHQUsersBundle extends Bundle
 {
 }

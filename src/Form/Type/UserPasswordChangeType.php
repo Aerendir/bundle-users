@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Form\Type;
 
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
-use SerendipityHQ\Bundle\UsersBundle\SHQUsersBundle;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
@@ -25,10 +24,10 @@ final class UserPasswordChangeType extends AbstractType
     {
         $builder
             ->add('old_password', PasswordType::class, [
-                self::LABEL_KEY              => 'form.label.password_change.old_password.label',
-                self::MAPPED_KEY             => false,
-                'translation_domain' => 'shq_users',
-                self::CONSTRAINTS_KEY        => [new UserPassword(['message' => 'form.error.old_password.passwords_mismatch'])],
+                self::LABEL_KEY       => 'form.label.password_change.old_password.label',
+                self::MAPPED_KEY      => false,
+                'translation_domain'  => 'shq_users',
+                self::CONSTRAINTS_KEY => [new UserPassword(['message' => 'form.error.old_password.passwords_mismatch'])],
             ])
             ->add(HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD, ConfirmedPasswordType::class);
     }
