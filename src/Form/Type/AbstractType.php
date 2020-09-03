@@ -20,8 +20,4 @@ abstract class AbstractType extends BaseAbstractType
     protected const LABEL_KEY = 'label';
 
     protected const MAPPED_KEY = 'mapped';
-
-    protected const MESSAGE_KEY = 'message';
-
-    protected const TRANSLATION_DOMAIN_KEY = 'translation_domain';
 }

@@ -429,7 +429,7 @@ class UserPasswordController extends AbstractController
 +
 +        if ($form->isSubmitted() && $form->isValid()) {
 +            $this->getDoctrine()->getManager()->flush();
-+            $this->addFlash('success', $translator->trans('user.password.change_password.success', [], SHQUsersBundle::TRANSLATION_DOMAIN));
++            $this->addFlash('success', $translator->trans('user.password.change_password.success', [], 'shq_users'));
 +            $url = $this->generateUrl('user_profile');
 +
 +            return new RedirectResponse($url);
@@ -448,7 +448,6 @@ There are some things you should note here:
 2. The name of the route MUST be the same of the one in [Routes::PASSWORD_CHANGE](src/Routes.php);
 3. The variable `$user` is indicated as of type `HasPlainPasswordInterface`: the method `PasswordHelper::createFormPasswordChange()`, in fact, accept a variable of type `HasPlainPasswordInterface`;
 4. If the form is submitted and is valid, we simply call `EntityManagerInterface::flush()`: the form, in fact, will automatically update the `$user` with the new plain password provided;
-5. The translation domain is set using the constant `SerendipityHQUsersBundle::TRANSLATION_DOMAIN`: this way you don't have to remember each time the correct translation domain and you will not make errors in using it.
 
 All is ready to be used: now your users are able to change their passwords!
 

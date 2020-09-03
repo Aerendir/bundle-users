@@ -33,21 +33,21 @@ final class ConfirmedPasswordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-           'type'                       => PasswordType::class,
-           'invalid_message'            => 'serendipity_hq.user.form.password_change.new_password.error.mismatch',
-           self::TRANSLATION_DOMAIN_KEY => SHQUsersBundle::TRANSLATION_DOMAIN,
-           'first_options'              => [
-               self::LABEL_KEY       => 'serendipity_hq.user.form.password_change.new_password.label',
+           'type'               => PasswordType::class,
+           'invalid_message'    => 'form.password_change.new_password.error.mismatch',
+           'translation_domain' => 'shq_users',
+           'first_options'      => [
+               self::LABEL_KEY       => 'form.password_change.new_password.label',
                self::CONSTRAINTS_KEY => [
-                   new NotBlank([self::MESSAGE_KEY => 'serendipity_hq.user.form.error.confirmed_password.not_blank']),
+                   new NotBlank(['message' => 'form.error.confirmed_password.not_blank']),
                    new Length([
-                                  // 'Your password should be at least {{ limit }} characters'
-                                  'maxMessage' => 'serendipity_hq.user.form.error.confirmed_password.too_long',
-                                  'max'        => self::CONSTRAINT_PASSWORD_LENGTH_MAX,
-                              ]),
+                      // 'Your password should be at least {{ limit }} characters'
+                      'maxMessage' => 'form.error.confirmed_password.too_long',
+                      'max'        => self::CONSTRAINT_PASSWORD_LENGTH_MAX,
+                  ]),
                ],
            ],
-           'second_options' => [self::LABEL_KEY => 'serendipity_hq.user.form.label.confirmed_password.confirm_password'],
+           'second_options' => [self::LABEL_KEY => 'form.label.confirmed_password.confirm_password'],
        ]);
     }
 

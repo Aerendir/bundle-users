@@ -25,10 +25,10 @@ final class UserPasswordChangeType extends AbstractType
     {
         $builder
             ->add('old_password', PasswordType::class, [
-                self::LABEL_KEY              => 'serendipity_hq.user.form.label.password_change.old_password.label',
+                self::LABEL_KEY              => 'form.label.password_change.old_password.label',
                 self::MAPPED_KEY             => false,
-                self::TRANSLATION_DOMAIN_KEY => SHQUsersBundle::TRANSLATION_DOMAIN,
-                self::CONSTRAINTS_KEY        => [new UserPassword([self::MESSAGE_KEY => 'serendipity_hq.user.form.error.old_password.passwords_mismatch'])],
+                'translation_domain' => 'shq_users',
+                self::CONSTRAINTS_KEY        => [new UserPassword(['message' => 'form.error.old_password.passwords_mismatch'])],
             ])
             ->add(HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD, ConfirmedPasswordType::class);
     }

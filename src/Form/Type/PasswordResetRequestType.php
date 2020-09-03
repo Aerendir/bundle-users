@@ -29,7 +29,7 @@ final class PasswordResetRequestType extends AbstractType
             ->add($options[self::SEC_USER_PROPERTY], TextType::class, [
                 self::CONSTRAINTS_KEY => [
                     new NotBlank([
-                        self::MESSAGE_KEY => 'serendipity_hq.user.form.error.primary.not_blank',
+                        'message' => 'form.error.primary.not_blank',
                     ]),
                 ],
             ]);
