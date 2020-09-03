@@ -32,7 +32,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
         [
             SetList::ACTION_INJECTION_TO_CONSTRUCTOR_INJECTION,
             SetList::ARRAY_STR_FUNCTIONS_TO_STATIC_CALL,
-            SetList::CONSTRUCTOR_INJECTIN_TO_ACTION_INJECTION,
             SetList::CODE_QUALITY,
             SetList::CODING_STYLE,
             SetList::MONOLOG_20,
@@ -44,7 +43,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             SetList::DOCTRINE_DBAL_210,
             SetList::FRAMEWORK_EXTRA_BUNDLE_40,
             SetList::FRAMEWORK_EXTRA_BUNDLE_50,
-            SetList::GUZZLE_50,
             SetList::PERFORMANCE,
             SetList::PHP_52,
             SetList::PHP_53,
