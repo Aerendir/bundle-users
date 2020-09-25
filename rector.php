@@ -25,6 +25,10 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
         __DIR__ . '/tests'
     ]);
 
+    $parameters->set(Option::EXCLUDE_PATHS,[
+        'src/Manager/PasswordManager.php',
+    ]);
+
     $parameters->set(Option::AUTOLOAD_PATHS, [__DIR__ . '/vendor-bin/phpunit/vendor/autoload.php']);
 
     $parameters->set(
@@ -108,7 +112,6 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\CodingStyle\Rector\ClassMethod\NewlineBeforeNewAssignSetRector::class,
             Rector\CodingStyle\Rector\ClassMethod\RemoveDoubleUnderscoreInMethodNameRector::class,
             Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class,
-            Rector\CodingStyle\Rector\Identical\IdenticalFalseToBooleanNotRector::class,
             Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector::class,
             Rector\CodingStyle\Rector\Throw_\AnnotateThrowablesRector::class,
             Rector\CodingStyle\Rector\Use_\RemoveUnusedAliasRector::class,
