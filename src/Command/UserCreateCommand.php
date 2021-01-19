@@ -65,7 +65,7 @@ EOT);
     {
         $initialized = parent::execute($input, $output);
         if (0 !== $initialized) {
-            return $initialized;
+            return (int) $initialized;
         }
 
         $pass = $input->getArgument('pass');

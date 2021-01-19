@@ -5,10 +5,6 @@
     "homepage": "https://github.com/Aerendir/bundle-users",
     "type": "symfony-bundle",
     "license": "MIT",
-    "support": {
-        "docs": "https://github.com/Aerendir/bundle-users/tree/dev/docs",
-        "issues": "https://github.com/Aerendir/bundle-users/issues"
-    },
     "authors": [
         {
             "name": "Adamo Aerendir Crespi",
@@ -18,6 +14,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
+        "doctrine/orm": "^2.8",
         "nesbot/carbon": "^2.0",
         "symfony/console": "^5.2",
         "symfony/form": "^5.2",
@@ -29,6 +26,7 @@
     "require-dev": {
         "ext-ast": "*",
         "bamarni/composer-bin-plugin": "^1.4",
+        "rector/rector": "0.9.9",
         "roave/security-advisories": "dev-master",
         "symfony/browser-kit": "^5.2",
         "symfony/css-selector": "^5.2",
@@ -40,8 +38,7 @@
         "symfony/twig-bundle": "^5.2",
         "symfony/var-dumper": "^5.2",
         "symfony/web-profiler-bundle": "^5.2",
-        "thecodingmachine/phpstan-safe-rule": "1.0.1",
-        "rector/rector": "0.9.9"
+        "thecodingmachine/phpstan-safe-rule": "1.0.1"
     },
     "config": {
         "sort-packages": true
@@ -58,7 +55,11 @@
     },
     "scripts": {
         "bin": "echo 'bin not installed'",
-        "post-install-cmd": ["@composer bin all install --ansi"],
-        "post-update-cmd": ["@composer bin all update --ansi"]
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ]
     }
 }

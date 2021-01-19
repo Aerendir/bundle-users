@@ -94,7 +94,7 @@ final class PasswordHelper
             throw new UserClassMustImplementHasPlainPasswordInterface($user);
         }
 
-        $plainPassword = $plainPassword ?? $user->getPlainPassword();
+        $plainPassword ??= $user->getPlainPassword();
         if (null === $plainPassword) {
             throw new PasswordRequired();
         }

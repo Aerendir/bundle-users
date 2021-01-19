@@ -32,7 +32,7 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
     {
         $initialized = parent::execute($input, $output);
         if (0 !== $initialized) {
-            return $initialized;
+            return (int) $initialized;
         }
 
         $manager = $this->usersManagerRegistry->getManager($this->provider);

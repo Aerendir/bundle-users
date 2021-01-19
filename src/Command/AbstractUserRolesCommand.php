@@ -47,7 +47,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
     {
         $initialized = parent::execute($input, $output);
         if (0 !== $initialized) {
-            return $initialized;
+            return (int) $initialized;
         }
 
         if ( ! $this->user instanceof HasRolesInterface) {

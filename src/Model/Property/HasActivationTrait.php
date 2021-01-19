@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 trait HasActivationTrait
 {
-    /** @ORM\Column(type="boolean", nullable=false) */
+    /** @ORM\Column(type="boolean") */
     private bool $active = false;
 
     public function activate(bool $activate = true): void

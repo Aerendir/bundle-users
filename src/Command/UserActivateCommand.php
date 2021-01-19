@@ -44,7 +44,7 @@ EOT);
     {
         $initialized = parent::execute($input, $output);
         if (0 !== $initialized) {
-            return $initialized;
+            return (int) $initialized;
         }
 
         $this->user->activate();
