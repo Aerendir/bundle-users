@@ -1,94 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.14.1@9822043ca46d6682b76097bfa97d7c450eef9e90">
+<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+  <file src="src/Command/AbstractUserActivationCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/AbstractUserCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/AbstractUserRolesCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/RoleAddCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/RoleRemCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/UserActivateCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
   <file src="src/Command/UserCreateCommand.php">
     <DocblockTypeContradiction occurrences="1">
       <code>0</code>
     </DocblockTypeContradiction>
-    <PossiblyInvalidArgument occurrences="4">
-      <code>$provider</code>
-      <code>$provider</code>
-      <code>$unique</code>
-      <code>$pass</code>
-    </PossiblyInvalidArgument>
-    <RedundantConditionGivenDocblockType occurrences="1">
-      <code>\is_countable($errors)</code>
-    </RedundantConditionGivenDocblockType>
-    <UndefinedDocblockClass occurrences="2">
-      <code>$user</code>
-      <code>$user</code>
-    </UndefinedDocblockClass>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>getPlainPassword</code>
-    </UndefinedInterfaceMethod>
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
   </file>
-  <file src="src/DependencyInjection/Configuration.php">
-    <MissingClosureParamType occurrences="2">
-      <code>$tree</code>
-      <code>$tree</code>
-    </MissingClosureParamType>
-    <MissingClosureReturnType occurrences="2">
-      <code>function ($tree) {</code>
-      <code>function ($tree) {</code>
-    </MissingClosureReturnType>
-    <MixedArgument occurrences="1">
-      <code>$tokenClass</code>
-    </MixedArgument>
-    <MixedArrayAccess occurrences="1">
-      <code>$tree[self::BUNDLE_CONFIG_TOKEN_CLASS]</code>
-    </MixedArrayAccess>
-    <MixedAssignment occurrences="1">
-      <code>$tokenClass</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="21">
-      <code>scalarNode</code>
-      <code>defaultValue</code>
-      <code>end</code>
-      <code>arrayNode</code>
-      <code>useAttributeAsKey</code>
-      <code>arrayPrototype</code>
-      <code>children</code>
-      <code>scalarNode</code>
-      <code>cannotBeEmpty</code>
-      <code>end</code>
-      <code>scalarNode</code>
-      <code>cannotBeEmpty</code>
-      <code>end</code>
-      <code>end</code>
-      <code>end</code>
-      <code>end</code>
-      <code>end</code>
-      <code>validate</code>
-      <code>ifTrue</code>
-      <code>then</code>
-      <code>end</code>
-    </MixedMethodCall>
-    <PossiblyUndefinedMethod occurrences="1">
-      <code>children</code>
-    </PossiblyUndefinedMethod>
+  <file src="src/Command/UserDeactivateCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <MixedArgument occurrences="1">
-      <code>$providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY]</code>
-    </MixedArgument>
-    <MixedArrayAccess occurrences="7">
-      <code>$securityExtConfig[0][Configuration::SECURITY_PROVIDERS_KEY]</code>
-      <code>$config[Configuration::SECURITY_ENTITY_KEY]</code>
-      <code>$config[Configuration::SECURITY_ENTITY_KEY]</code>
-      <code>$providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY]</code>
-      <code>$providerConfig[Configuration::SECURITY_ENTITY_PROPERTY_KEY]</code>
-      <code>$providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY]</code>
-      <code>$providerConfig[Configuration::SECURITY_ENTITY_CLASS_KEY]</code>
-    </MixedArrayAccess>
     <MixedArrayOffset occurrences="1">
       <code>$providers[$provider]</code>
     </MixedArrayOffset>
-    <MixedAssignment occurrences="6">
-      <code>$securityEntityProviders</code>
+    <MixedAssignment occurrences="5">
       <code>$config</code>
-      <code>$appSecret</code>
+      <code>$provider</code>
+      <code>$provider</code>
       <code>$providerConfig</code>
-      <code>$userClass</code>
-      <code>$userProperty</code>
+      <code>$securityEntityProviders</code>
     </MixedAssignment>
     <MixedOperand occurrences="1">
       <code>$provider</code>
@@ -97,63 +61,19 @@
       <code>$containerBuilder</code>
     </ParamNameMismatch>
   </file>
-  <file src="src/Doctrine/UserEncodePasswordListener.php">
-    <PossiblyNullArgument occurrences="2">
-      <code>$user-&gt;getPlainPassword()</code>
-      <code>$user-&gt;getPlainPassword()</code>
-    </PossiblyNullArgument>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>setPassword</code>
-    </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Event/UserCreatedEvent.php">
-    <MismatchingDocblockParamType occurrences="1">
-      <code>string|null</code>
-    </MismatchingDocblockParamType>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$provider</code>
-    </PossiblyNullPropertyAssignmentValue>
-  </file>
   <file src="src/Helper/PasswordResetHelper.php">
     <MixedInferredReturnType occurrences="1">
       <code>string</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$request-&gt;getSession()-&gt;get(self::RESET_PASSWORD_2_PUBLIC_TOKEN)</code>
-    </MixedReturnStatement>
-  </file>
-  <file src="src/Manager/Exception/UsersManagerException.php">
-    <UndefinedClass occurrences="1">
-      <code>HasPlainPasswordInterface</code>
-    </UndefinedClass>
   </file>
   <file src="src/Manager/PasswordManager.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;userClass</code>
-    </ArgumentTypeCoercion>
-    <InvalidStringClass occurrences="1">
-      <code>new $this-&gt;tokenClass($user)</code>
-    </InvalidStringClass>
-    <MissingPropertyType occurrences="1">
-      <code>$repository</code>
-    </MissingPropertyType>
     <MixedArgument occurrences="1">
       <code>$plainPassword</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
-      <code>$userPropertyValue</code>
+    <MixedAssignment occurrences="2">
       <code>$plainPassword</code>
-      <code>$lastToken</code>
+      <code>$userPropertyValue</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>int</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>removeExpiredResetPasswordRequests</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;repository-&gt;removeExpiredResetPasswordRequests()</code>
-    </MixedReturnStatement>
   </file>
   <file src="src/Manager/UsersManager.php">
     <InvalidArgument occurrences="1">
@@ -165,18 +85,9 @@
     <InvalidReturnType occurrences="1">
       <code>UserInterface</code>
     </InvalidReturnType>
-    <InvalidStringClass occurrences="1">
-      <code>new $this-&gt;userClass()</code>
-    </InvalidStringClass>
     <PossiblyInvalidArgument occurrences="1">
       <code>$user</code>
     </PossiblyInvalidArgument>
-  </file>
-  <file src="src/Manager/UsersManagerRegistry.php">
-    <MixedArgumentTypeCoercion occurrences="2">
-      <code>$provider</code>
-      <code>$provider</code>
-    </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
     <MissingReturnType occurrences="1">
@@ -194,8 +105,8 @@
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
     <ImplicitToStringCast occurrences="3">
-      <code>$verifier</code>
       <code>$selector</code>
+      <code>$verifier</code>
       <code>$verifier</code>
     </ImplicitToStringCast>
     <MixedAssignment occurrences="1">
