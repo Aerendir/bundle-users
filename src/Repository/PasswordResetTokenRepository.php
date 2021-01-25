@@ -34,7 +34,7 @@ final class PasswordResetTokenRepository extends EntityRepository
         return $this->createQueryBuilder('t')
              ->where('t.user = :user')
              ->setParameter('user', $user)
-             ->orderBy('t.requestedAt', 'DESC')
+             ->orderBy('t.requestedAt', \Doctrine\Common\Collections\Criteria::DESC)
              ->getQuery()
              ->getResult();
     }
