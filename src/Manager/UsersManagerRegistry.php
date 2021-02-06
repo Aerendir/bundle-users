@@ -3,26 +3,25 @@
 declare(strict_types=1);
 
 /*
- * This file is part of SHQUsersBundle.
+ * This file is part of the Serendipity HQ Users Bundle.
  *
- * (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
  *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace SerendipityHQ\Bundle\UsersBundle\Manager;
 
-use Safe\Exceptions\StringsException;
-use SerendipityHQ\Bundle\UsersBundle\Manager\Exception\UsersManagerException;
+use SerendipityHQ\Bundle\UsersBundle\Exception\UsersManagerException;
 
 /**
  * Stores all created UsersManager.
  */
-class UsersManagerRegistry
+final class UsersManagerRegistry
 {
     /** @var UsersManagerInterface[] $managers */
-    private $managers = [];
+    private array $managers = [];
 
     /**
      * @param string                $provider The provider as set in security.providers.[provider]
@@ -33,17 +32,9 @@ class UsersManagerRegistry
         $this->managers[$provider] = $manager;
     }
 
-    /**
-     * @param string|null $provider
-     *
-     * @throws UsersManagerException
-     * @throws StringsException
-     *
-     * @return UsersManagerInterface
-     */
     public function getManager(?string $provider = null): UsersManagerInterface
     {
-        $availableManagers = array_keys($this->getManagers());
+        $availableManagers = \array_keys($this->getManagers());
         if (null === $provider) {
             if (1 < \count($availableManagers)) {
                 throw UsersManagerException::providerMustBeSpecified($availableManagers);
@@ -59,11 +50,6 @@ class UsersManagerRegistry
         return $this->managers[$provider];
     }
 
-    /**
-     * @param string $provider
-     *
-     * @return bool
-     */
     public function hasProvider(string $provider): bool
     {
         return isset($this->managers[$provider]);

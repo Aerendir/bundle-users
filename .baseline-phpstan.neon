@@ -1,0 +1,32 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: src/Command/UserCreateCommand.php
+
+		-
+			message: "#^Class DateTimeImmutable is unsafe to use\\. Its methods can return FALSE instead of throwing an exception\\. Please add 'use Safe\\\\DateTimeImmutable;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
+			count: 1
+			path: src/Helper/PasswordResetHelper.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return typehint\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\PasswordResetTokenInterface\\:\\:activate\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/Property/PasswordResetTokenInterface.php
+
+		-
+			message: "#^Class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository extends generic class Doctrine\\\\ORM\\\\EntityRepository but does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+

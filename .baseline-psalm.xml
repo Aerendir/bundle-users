@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+  <file src="src/Command/AbstractUserActivationCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/AbstractUserCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/AbstractUserRolesCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/RoleAddCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/RoleRemCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/UserActivateCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/UserCreateCommand.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>0</code>
+    </DocblockTypeContradiction>
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Command/UserDeactivateCommand.php">
+    <RedundantCast occurrences="1">
+      <code>(int) $initialized</code>
+    </RedundantCast>
+  </file>
+  <file src="src/DependencyInjection/SHQUsersExtension.php">
+    <MixedArrayOffset occurrences="1">
+      <code>$providers[$provider]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="5">
+      <code>$config</code>
+      <code>$provider</code>
+      <code>$provider</code>
+      <code>$providerConfig</code>
+      <code>$securityEntityProviders</code>
+    </MixedAssignment>
+    <MixedOperand occurrences="1">
+      <code>$provider</code>
+    </MixedOperand>
+    <ParamNameMismatch occurrences="1">
+      <code>$containerBuilder</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/Helper/PasswordResetHelper.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+  </file>
+  <file src="src/Manager/PasswordManager.php">
+    <MixedArgument occurrences="1">
+      <code>$plainPassword</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$plainPassword</code>
+      <code>$userPropertyValue</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Manager/UsersManager.php">
+    <InvalidArgument occurrences="1">
+      <code>$user</code>
+    </InvalidArgument>
+    <InvalidReturnStatement occurrences="1">
+      <code>$user</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>UserInterface</code>
+    </InvalidReturnType>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$user</code>
+    </PossiblyInvalidArgument>
+  </file>
+  <file src="src/Model/Property/PasswordResetTokenInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>activate</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Repository/PasswordResetTokenRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>PasswordResetTokenInterface[]</code>
+    </LessSpecificImplementedReturnType>
+    <MixedInferredReturnType occurrences="1">
+      <code>?array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1"/>
+  </file>
+  <file src="src/Util/PasswordResetTokenGenerator.php">
+    <ImplicitToStringCast occurrences="3">
+      <code>$selector</code>
+      <code>$verifier</code>
+      <code>$verifier</code>
+    </ImplicitToStringCast>
+    <MixedAssignment occurrences="1">
+      <code>$userIdentifier</code>
+    </MixedAssignment>
+  </file>
+</files>

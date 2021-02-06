@@ -1,50 +1,69 @@
 {
     "name": "serendipity_hq/bundle-users",
     "description": "A Symfony bundle that helps manage users in a Symfony app.",
+    "keywords": ["user", "users"],
+    "homepage": "https://github.com/Aerendir/bundle-users",
     "type": "symfony-bundle",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Adamo Aerendir Crespi",
+            "email": "hello@aerendir.me"
+        }
+    ],
     "require": {
-        "php": "^7.2.5",
-        "serendipity_hq/console-styles-bundle": "dev-dev",
-        "symfony/console": "5.0.*",
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "doctrine/orm": "^2.7",
+        "nesbot/carbon": "^2.0",
+        "symfony/console": "^5.2",
+        "symfony/form": "^5.2",
+        "symfony/property-access": "^5.2",
+        "symfony/string": "^5.2",
+        "symfony/validator": "^5.2",
         "thecodingmachine/safe": "^1.0"
     },
     "require-dev": {
-        "drenso/phan-extensions": "^2.5",
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "phan/phan": "2.4.8",
-        "phpstan/phpstan": "^0.12.9",
-        "phpstan/phpstan-doctrine": "^0.12.8",
-        "phpstan/phpstan-phpunit": "^0.12.5",
-        "phpstan/phpstan-symfony": "^0.12.2",
-        "rector/rector": "0.7.1",
+        "ext-ast": "*",
+        "bamarni/composer-bin-plugin": "^1.4",
+        "phpstan/phpstan": "0.12.71",
+        "phpstan/phpstan-doctrine": "0.12.30",
+        "phpstan/phpstan-phpunit": "0.12.17",
+        "phpstan/phpstan-symfony": "0.12.16",
+        "rector/rector": "0.9.16",
         "roave/security-advisories": "dev-master",
-        "symfony/debug-pack": "1.0.7",
-        "symfony/maker-bundle": "^1.0",
-        "symfony/test-pack": "1.0.6",
-        "vimeo/psalm": "^3.8",
-        "weirdan/doctrine-psalm-plugin": "^0.9"
+        "symfony/browser-kit": "^5.2",
+        "symfony/css-selector": "^5.2",
+        "symfony/debug-bundle": "^5.2",
+        "symfony/monolog-bundle": "^2|^3",
+        "symfony/phpunit-bridge": "^5.2",
+        "symfony/security-core": "^5.2",
+        "symfony/stopwatch": "^5.2",
+        "symfony/twig-bundle": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "symfony/web-profiler-bundle": "^5.2",
+        "thecodingmachine/phpstan-safe-rule": "1.0.1"
     },
     "config": {
-        "preferred-install": {
-            "*": "dist"
-        },
         "sort-packages": true
     },
     "autoload": {
         "psr-4": {
-            "SerendipityHQ\\Bundle\\UsersBundle\\": "src/"
+            "SerendipityHQ\\Bundle\\UsersBundle\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests/"
+            "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        "bin": "echo 'bin not installed'",
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ]
     }
 }

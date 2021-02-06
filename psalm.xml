@@ -1,68 +1,88 @@
 <?xml version="1.0"?>
 <psalm
-        cacheDirectory="./var/cache/psalm"
-        allowPhpStormGenerics="true"
-        checkForThrowsDocblock="true"
-        hideExternalErrors="true"
-        ignoreInternalFunctionNullReturn="false"
-        ignoreInternalFunctionFalseReturn="false"
-    requireVoidReturnType="false"
+    phpVersion="7.4"
+    cacheDirectory="./var/cache/psalm"
+    allowPhpStormGenerics="true"
+    checkForThrowsDocblock="true"
+    hideExternalErrors="true"
+    ignoreInternalFunctionNullReturn="false"
+    ignoreInternalFunctionFalseReturn="false"
     strictBinaryOperands="true"
     totallyTyped="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
-    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    xsi:schemaLocation="vendor-bin/phpunit/vendor/vimeo/psalm/config.xsd"
+    errorBaseline=".baseline-psalm.xml"
 >
     <projectFiles>
         <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
-            <file name="src/Kernel.php"/>
+            <file name="src/DependencyInjection/Configuration.php"/>
         </ignoreFiles>
     </projectFiles>
 
     <issueHandlers>
-        <LessSpecificReturnType errorLevel="info"/>
-
-        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
-
-        <DeprecatedMethod errorLevel="info"/>
-        <DeprecatedProperty errorLevel="info"/>
-        <DeprecatedClass errorLevel="info"/>
-        <DeprecatedConstant errorLevel="info"/>
-        <DeprecatedInterface errorLevel="info"/>
-        <DeprecatedTrait errorLevel="info"/>
-
-        <InternalMethod errorLevel="info"/>
-        <InternalProperty errorLevel="info"/>
-        <InternalClass errorLevel="info"/>
-
-        <MissingClosureReturnType errorLevel="info"/>
-        <MissingReturnType errorLevel="info"/>
-        <MissingPropertyType errorLevel="info"/>
-        <InvalidDocblock errorLevel="info"/>
-        <MisplacedRequiredParam errorLevel="info"/>
-
-        <PropertyNotSetInConstructor errorLevel="suppress"/>
-        <MissingConstructor errorLevel="info"/>
-        <MissingClosureParamType errorLevel="info"/>
-        <MissingParamType errorLevel="info"/>
-
-        <RedundantCondition errorLevel="info"/>
-
-        <DocblockTypeContradiction errorLevel="suppress"/>
-        <RedundantConditionGivenDocblockType errorLevel="suppress"/>
-
-        <UnresolvableInclude errorLevel="info"/>
-
-        <RawObjectIteration errorLevel="info"/>
-
-        <InvalidStringClass errorLevel="info"/>
-
-        <MixedInferredReturnType errorLevel="suppress"/>
-        <MoreSpecificImplementedParamType errorLevel="suppress"/>
+        <LessSpecificReturnStatement errorLevel="suppress" />
+        <MissingThrowsDocblock errorLevel="suppress" />
+        <MoreSpecificReturnType errorLevel="suppress" />
+        <RedundantIdentityWithTrue errorLevel="suppress" />
+        <RedundantConditionGivenDocblockType errorLevel="suppress" />
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManager.php" />
+                <file name="src/Manager/PasswordManager.php" />
+            </errorLevel>
+        </ArgumentTypeCoercion>
+        <DocblockTypeContradiction>
+            <errorLevel type="suppress">
+                <file name="src/Command/AbstractUserActivationCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
+                <file name="src/Helper/PasswordHelper.php" />
+                <file name="src/Manager/UsersManager.php" />
+                <file name="src/Validator/RolesValidator.php" />
+            </errorLevel>
+        </DocblockTypeContradiction>
+        <InvalidStringClass>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManager.php" />
+                <file name="src/Manager/PasswordManager.php" />
+            </errorLevel>
+        </InvalidStringClass>
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <file name="src/Command/AbstractUserActivationCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
+                <file name="src/Helper/PasswordHelper.php" />
+                <file name="src/Manager/UsersManager.php" />
+            </errorLevel>
+        </MixedArgument>
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Manager/UsersManagerRegistry.php" />
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
+        <MixedArrayAccess>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/SHQUsersExtension.php" />
+            </errorLevel>
+        </MixedArrayAccess>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <file name="src/Command/AbstractUsersCommand.php" />
+                <file name="src/Command/AbstractUserActivationCommand.php" />
+                <file name="src/Command/AbstractUserRolesCommand.php" />
+                <file name="src/Command/UserActivateCommand.php" />
+                <file name="src/Command/UserDeactivateCommand.php" />
+                <file name="src/Command/UserCreateCommand.php" />
+                <file name="src/Command/RoleAddCommand.php" />
+                <file name="src/Command/RoleRemCommand.php" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
     </issueHandlers>
     <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
     </plugins>
 </psalm>
