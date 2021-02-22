@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+<files psalm-version="4.6.1@e93e532e4eaad6d68c4d7b606853800eaceccc72">
   <file src="src/Command/AbstractUserActivationCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$user</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
@@ -11,6 +14,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$user</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
