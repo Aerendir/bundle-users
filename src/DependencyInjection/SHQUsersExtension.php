@@ -41,6 +41,10 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
 
         $providers = [];
         foreach ($securityEntityProviders as $provider => $config) {
+            if (false === isset($config[Configuration::SECURITY_PROVIDERS_ENTITY])) {
+                throw new \RuntimeException('It seems you have not configured any Entity User Provider in the security of Symfony. Configure one to use SHQUsersBundle.');
+            }
+
             $providers[$provider] = [
                 Configuration::SECURITY_PROVIDERS_ENTITY_CLASS    => $config[Configuration::SECURITY_PROVIDERS_ENTITY][Configuration::SECURITY_PROVIDERS_ENTITY_CLASS],
                 Configuration::SECURITY_PROVIDERS_ENTITY_PROPERTY => $config[Configuration::SECURITY_PROVIDERS_ENTITY][Configuration::SECURITY_PROVIDERS_ENTITY_PROPERTY],
