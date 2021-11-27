@@ -6,17 +6,62 @@ parameters:
 			path: src/Command/UserCreateCommand.php
 
 		-
+			message: "#^Parameter \\#1 \\$child of method Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\:\\:add\\(\\) expects string\\|Symfony\\\\Component\\\\Form\\\\FormBuilderInterface, mixed given\\.$#"
+			count: 1
+			path: src/Form/Type/PasswordResetRequestType.php
+
+		-
 			message: "#^Class DateTimeImmutable is unsafe to use\\. Its methods can return FALSE instead of throwing an exception\\. Please add 'use Safe\\\\DateTimeImmutable;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
 			count: 1
 			path: src/Helper/PasswordResetHelper.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return typehint\\.$#"
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Helper\\\\PasswordResetHelper\\:\\:getTokenFromSession\\(\\) should return string but returns mixed\\.$#"
+			count: 1
+			path: src/Helper/PasswordResetHelper.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return type\\.$#"
 			count: 1
 			path: src/Manager/PasswordManager.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\PasswordResetTokenInterface\\:\\:activate\\(\\) has no return typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$password of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\:\\:setPlainPassword\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\)$#"
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManager\\:\\:load\\(\\) should return Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null but returns object\\|null\\.$#"
+			count: 1
+			path: src/Manager/UsersManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			count: 1
+			path: src/Manager/UsersManager.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UserClassMustImplementUserInterface constructor expects SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\|SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|string, object given\\.$#"
+			count: 1
+			path: src/Manager/UsersManager.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\)$#"
+			count: 1
+			path: src/Manager/UsersManager.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\PasswordResetTokenInterface\\:\\:activate\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Model/Property/PasswordResetTokenInterface.php
 
@@ -27,6 +72,16 @@ parameters:
 
 		-
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) should return array\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:removeExpiredResetPasswordRequests\\(\\) should return int but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 

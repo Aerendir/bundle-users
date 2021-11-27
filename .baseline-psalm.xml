@@ -14,6 +14,12 @@
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$roles</code>
+    </MixedArgumentTypeCoercion>
+    <MixedPropertyTypeCoercion occurrences="1">
+      <code>$roles</code>
+    </MixedPropertyTypeCoercion>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
@@ -66,6 +72,13 @@
     <ParamNameMismatch occurrences="1">
       <code>$containerBuilder</code>
     </ParamNameMismatch>
+  </file>
+  <file src="src/Helper/PasswordHelper.php">
+    <DeprecatedClass occurrences="3">
+      <code>$this-&gt;encoderFactory-&gt;getEncoder($user)</code>
+      <code>EncoderFactoryInterface</code>
+      <code>EncoderFactoryInterface</code>
+    </DeprecatedClass>
   </file>
   <file src="src/Helper/PasswordResetHelper.php">
     <MixedInferredReturnType occurrences="1">
