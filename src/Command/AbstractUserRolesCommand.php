@@ -64,7 +64,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         $this->roles = $roles;
 
         $errors = $this->rolesValidator->validate($roles);
-        if (0 < \count($errors)) {
+        if ([] !== $errors) {
             $this->printErrors($errors);
 
             return 1;

@@ -97,7 +97,7 @@ final class UsersManager implements UsersManagerInterface
 
         foreach ($rolesToAdd as $roleToAdd) {
             $errors = $this->rolesValidator->validateRole($roleToAdd);
-            if (0 < \count($errors)) {
+            if ([] !== $errors) {
                 throw new RoleInvalidException($roleToAdd, $errors);
             }
 

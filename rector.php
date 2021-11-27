@@ -63,6 +63,8 @@ return static function (ContainerConfigurator $containerConfigurator) : void {
             Rector\Privatization\Rector\MethodCall\PrivatizeLocalGetterToPropertyRector::class,
             Rector\TypeDeclaration\Rector\ClassMethod\AddArrayParamDocTypeRector::class,
             Rector\TypeDeclaration\Rector\ClassMethod\AddArrayReturnDocTypeRector::class,
+            \Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector::class,
+            \Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector::class,
 
             // Seems bugged (https://github.com/rectorphp/rector/issues/4002)
             Rector\TypeDeclaration\Rector\Property\PropertyTypeDeclarationRector::class,
