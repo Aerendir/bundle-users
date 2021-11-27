@@ -125,6 +125,7 @@ final class PasswordManager
 
         /** @var PasswordResetTokenInterface $resetToken */
         $resetToken = new $this->passResetTokenClass($user);
+
         try {
             $publicResetToken = $this->passwordResetHelper->activateResetToken($resetToken);
         } catch (PasswordResetException $passwordResetException) {
