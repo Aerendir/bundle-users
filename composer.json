@@ -45,7 +45,11 @@
         "thecodingmachine/phpstan-safe-rule": "1.1.0"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "bamarni/composer-bin-plugin": true
+        }
     },
     "autoload": {
         "psr-4": {
