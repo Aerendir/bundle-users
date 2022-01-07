@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.13.1@5cf660f63b548ccd4a56f62d916ee4d6028e01a3">
+<files psalm-version="4.17.0@6f4707aa41c9174353a6434bba3fc8840f981d9c">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
@@ -56,15 +56,10 @@
     </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <MixedArrayOffset occurrences="1">
-      <code>$providers[$provider]</code>
-    </MixedArrayOffset>
-    <MixedAssignment occurrences="5">
+    <MixedAssignment occurrences="3">
       <code>$config</code>
       <code>$provider</code>
-      <code>$provider</code>
       <code>$providerConfig</code>
-      <code>$securityEntityProviders</code>
     </MixedAssignment>
     <MixedOperand occurrences="1">
       <code>$provider</code>
@@ -118,7 +113,8 @@
     </MissingReturnType>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
-    <LessSpecificImplementedReturnType occurrences="1">
+    <LessSpecificImplementedReturnType occurrences="2">
+      <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
     </LessSpecificImplementedReturnType>
     <MixedInferredReturnType occurrences="1">
