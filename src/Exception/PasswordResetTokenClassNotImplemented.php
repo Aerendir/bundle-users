@@ -11,11 +11,13 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
+use function Safe\sprintf;
+
 final class PasswordResetTokenClassNotImplemented extends PasswordResetTokenException
 {
     public function __construct(?string $passResetTokenClass)
     {
-        $message = \Safe\sprintf("The entity class %s doesn't exist.", $passResetTokenClass);
+        $message = sprintf("The entity class %s doesn't exist.", $passResetTokenClass);
         parent::__construct($message);
     }
 }

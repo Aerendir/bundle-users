@@ -11,6 +11,8 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model;
 
+use function Safe\substr;
+
 /**
  * @author Jesse Rushlow <jr@rushlow.dev>
  * @author Ryan Weaver   <ryan@symfonycasts.com>
@@ -44,12 +46,12 @@ final class ResetPasswordTokenComponents
 
     public static function extractSelectorFromPublicToken(string $publicToken): string
     {
-        return \Safe\substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH);
+        return substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH);
     }
 
     public static function extractVerifierFromPublicToken(string $publicToken): string
     {
-        return \Safe\substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH);
+        return substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH);
     }
 
     public function getSelector(): string

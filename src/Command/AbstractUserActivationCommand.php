@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasActivationInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,7 +39,7 @@ abstract class AbstractUserActivationCommand extends AbstractUserCommand
         }
 
         if ( ! $this->user instanceof HasActivationInterface) {
-            $message = \Safe\sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class);
+            $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class);
             $this->io->error($message);
 
             return 1;

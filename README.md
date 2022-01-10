@@ -10,7 +10,16 @@
     <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/v/serendipity_hq/bundle-users.svg?style=flat-square"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
     <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF&style=flat-square&logo=php" /></a>
-    <a title="Tested with Symfony ^5.2" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.2" src="https://img.shields.io/badge/Symfony-%5E5.2-333?style=flat-square&logo=symfony" /></a>
+</p>
+<p>
+    Supports:
+    <a title="Supports Symfony ^5.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Supports Symfony ^5.4" src="https://img.shields.io/badge/Symfony-%5E5.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^6.0" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Supports Symfony ^6.0" src="https://img.shields.io/badge/Symfony-%5E6.0-333?style=flat-square&logo=symfony" /></a>
+</p>
+<p>
+    Tested with:
+    <a title="Tested with Symfony ^5.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^5.4" src="https://img.shields.io/badge/Symfony-%5E5.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^6.0" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^6.0" src="https://img.shields.io/badge/Symfony-%5E6.0-333?style=flat-square&logo=symfony" /></a>
 </p>
 
 ## Current Status
@@ -62,7 +71,30 @@ It works almost out of the box: you only need to tweak just a bit the entity aut
 
 ## Install the Serendipity HQ Users Bundle
 
+To install the bundle, run:
 
+    composer req serendipity_hq/bundle-users
+
+Then activate the bundle in your `bundles.php`:
+
+```diff
+<?php
+
+// config/bundles.php
+
+return [
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
+    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+    Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
+    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
+    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
++    SerendipityHQ\Bundle\UsersBundle\SHQUsersBundle::class => ['all' => true],
+    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
+];
+```
 
 ## Using the `shq:users:create` command
 
@@ -79,8 +111,8 @@ For the moment be sure that you will NEVER save the plain password in the databa
 For the moment, lets implement the interface and the trait.
 
 1. Open you `UserInterface` entity (`src/App/Entity/User.php`);
-2. Implement the interface `\SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordInterface`
-3. Use the trait `SerendipityHQ\Bundle\UsersBundle\Property\HasPlainPasswordTrait`
+2. Implement the interface `\SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface`
+3. Use the trait `SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordTrait`
 
 After these modifications, your entity should appear like this:
 
@@ -124,7 +156,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 Now create your first user using the command line:
 
-    Aerendir@SerendipityHQ % bin/console shq:users:create Aerendir 1234
+    Aerendir@SerendipityHQ % bin/console shq:user:create Aerendir 1234
 
     Create user
     ===========

@@ -39,6 +39,10 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $securityExtConfig       = $containerBuilder->getExtensionConfig('security');
         $securityEntityProviders = $securityExtConfig[0][Configuration::SECURITY_PROVIDERS];
 
+        if (false === is_array($securityEntityProviders)) {
+            throw new \InvalidArgumentException('Security providers are not listed.');
+        }
+
         $providers = [];
         foreach ($securityEntityProviders as $provider => $config) {
             if (false === isset($config[Configuration::SECURITY_PROVIDERS_ENTITY])) {

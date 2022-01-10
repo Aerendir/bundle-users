@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\PasswordResetTokenPublic;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
@@ -82,7 +83,7 @@ final class PasswordResetHelper
     public function activateResetToken(PasswordResetTokenInterface $resetToken): PasswordResetTokenPublic
     {
         // @todo use Carbon
-        $expiresAt = new \DateTimeImmutable(\Safe\sprintf('+%d seconds', self::RESET_TOKEN_LIFETIME));
+        $expiresAt = new \DateTimeImmutable(sprintf('+%d seconds', self::RESET_TOKEN_LIFETIME));
 
         $tokenComponents = $this->passwordResetTokenGenerator->createToken($expiresAt, $resetToken->getUser());
 
