@@ -11,8 +11,10 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Repository;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
 use Safe\DateTimeImmutable;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -34,7 +36,7 @@ final class PasswordResetTokenRepository extends EntityRepository
         return $this->createQueryBuilder('t')
              ->where('t.user = :user')
              ->setParameter('user', $user)
-             ->orderBy('t.requestedAt', \Doctrine\Common\Collections\Criteria::DESC)
+             ->orderBy('t.requestedAt', Criteria::DESC)
              ->getQuery()
              ->getResult();
     }
@@ -50,7 +52,7 @@ final class PasswordResetTokenRepository extends EntityRepository
      */
     public function removeExpiredResetPasswordRequests(int $passResetLifespanAmountOf, string $passResetLifespanUnit): int
     {
-        $time  = new DateTimeImmutable(\Safe\sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit));
+        $time  = new DateTimeImmutable(sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit));
 
         return $this
             ->createQueryBuilder('t')

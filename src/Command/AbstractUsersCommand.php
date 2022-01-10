@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -62,7 +63,7 @@ abstract class AbstractUsersCommand extends Command
         $availableManagers = \array_keys($this->usersManagerRegistry->getManagers());
         if (null === $provider) {
             if (1 < \count($availableManagers)) {
-                $message = \Safe\sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers));
+                $message = sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers));
                 $this->io->error($message);
 
                 return 1;
@@ -72,7 +73,7 @@ abstract class AbstractUsersCommand extends Command
         }
 
         if (false === \is_string($provider)) {
-            $message = \Safe\sprintf('Impossible to find a suitable user provider: please, check your security configuration.');
+            $message = 'Impossible to find a suitable user provider: please, check your security configuration.';
             $this->io->error($message);
 
             return 1;
@@ -81,7 +82,7 @@ abstract class AbstractUsersCommand extends Command
         $this->provider = $provider;
 
         if (false === $this->usersManagerRegistry->hasProvider($this->provider)) {
-            $message = \Safe\sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers));
+            $message = sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers));
             $this->io->error($message);
 
             return 1;

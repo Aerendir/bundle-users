@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Console\Input\InputArgument;
@@ -80,9 +81,9 @@ EOT);
         if ((\is_countable($errors) ? \count($errors) : 0) > 0) {
             /** @var ConstraintViolation $error */
             foreach ($errors as $error) {
-                $this->io->writeln(\Safe\sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
+                $this->io->writeln(sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
             }
-            $message = \Safe\sprintf('Impossible to create the user "%s".', $this->unique);
+            $message = sprintf('Impossible to create the user "%s".', $this->unique);
 
             $this->io->error($message);
 
@@ -91,8 +92,8 @@ EOT);
 
         $this->entityManager->flush();
 
-        $this->io->writeln(\Safe\sprintf('Password for user %s: %s', $this->unique, $user->getPlainPassword()));
-        $message = \Safe\sprintf('User %s created.', $this->unique);
+        $this->io->writeln(sprintf('Password for user %s: %s', $this->unique, $user->getPlainPassword()));
+        $message = sprintf('User %s created.', $this->unique);
         $this->io->success($message);
 
         return 0;

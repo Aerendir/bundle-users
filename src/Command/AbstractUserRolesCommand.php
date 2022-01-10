@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
@@ -51,7 +52,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         }
 
         if ( ! $this->user instanceof HasRolesInterface) {
-            $message = \Safe\sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class);
+            $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class);
             $this->io->error($message);
 
             return 1;
@@ -82,10 +83,10 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         $this->io->writeln('Found errors');
 
         foreach ($errors as $role => $roleErrors) {
-            $message = \Safe\sprintf('> <fg=green>%s</>', $role);
+            $message = sprintf('> <fg=green>%s</>', $role);
             $this->io->writeln($message);
             foreach ($roleErrors as $error) {
-                $message = \Safe\sprintf('  - %s', $error);
+                $message = sprintf('  - %s', $error);
                 $this->io->writeln($message);
             }
         }

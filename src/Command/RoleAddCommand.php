@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Console\Input\InputInterface;
@@ -55,7 +56,7 @@ EOT);
 
         $this->entityManager->flush();
 
-        $message = \Safe\sprintf('Roles added to user %s.', $this->unique);
+        $message = sprintf('Roles added to user %s.', $this->unique);
         $this->io->success($message);
 
         return 0;

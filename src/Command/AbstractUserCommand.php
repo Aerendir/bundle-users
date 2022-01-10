@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasActivationInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
@@ -39,7 +40,7 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
         $user    = $manager->load($this->unique);
 
         if (null === $user) {
-            $message = \Safe\sprintf('User "%s" not found.', $this->unique);
+            $message = sprintf('User "%s" not found.', $this->unique);
             $this->io->error($message);
 
             return 1;

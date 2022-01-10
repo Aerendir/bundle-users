@@ -11,13 +11,14 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
+use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 
 final class PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface extends PasswordResetTokenException
 {
     public function __construct(string $passResetTokenClass)
     {
-        $message = \Safe\sprintf('The entity %s MUST implement interface %s.', $passResetTokenClass, PasswordResetTokenInterface::class);
+        $message = sprintf('The entity %s MUST implement interface %s.', $passResetTokenClass, PasswordResetTokenInterface::class);
         parent::__construct($message);
     }
 }

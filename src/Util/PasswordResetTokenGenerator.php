@@ -11,6 +11,7 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Util;
 
+use function Safe\json_encode;
 use SerendipityHQ\Bundle\UsersBundle\Model\ResetPasswordTokenComponents;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -62,7 +63,7 @@ final class PasswordResetTokenGenerator
     private function generateHashedToken(\DateTimeInterface $expiresAt, UserInterface $user, string $verifier): string
     {
         $userIdentifier = $this->propertyAccessor->getValue($user, $this->userIdentifierProperty);
-        $encodedData    = \Safe\json_encode([$verifier, $userIdentifier, $expiresAt->getTimestamp()]);
+        $encodedData    = json_encode([$verifier, $userIdentifier, $expiresAt->getTimestamp()], JSON_THROW_ON_ERROR);
         $hashed         = \hash_hmac('sha256', $encodedData, $this->appSecret, true);
 
         if (false === $hashed) {
