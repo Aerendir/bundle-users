@@ -10,9 +10,12 @@
 return [
     // # Issue statistics:
     // PhanAccessMethodInternal : 9 occurrences
+    // PhanUndeclaredMethod : 3 occurrences
     // PhanUnreferencedClass : 3 occurrences
     // PhanAccessClassConstantInternal : 2 occurrences
-    // PhanUndeclaredMethod : 1 occurrence
+    // PhanUndeclaredClassMethod : 1 occurrence
+    // PhanUndeclaredTypeParameter : 1 occurrence
+    // PhanUndeclaredTypeProperty : 1 occurrence
     // PhanUnusedPublicFinalMethodParameter : 1 occurrence
     // PhanWriteOnlyPrivateProperty : 1 occurrence
 
@@ -21,6 +24,7 @@ return [
         'src/Command/UserCreateCommand.php' => ['PhanUndeclaredMethod'],
         'src/DependencyInjection/SHQUsersExtension.php' => ['PhanUnreferencedClass'],
         'src/Form/Type/UserPasswordChangeType.php' => ['PhanUnusedPublicFinalMethodParameter'],
+        'src/Helper/PasswordHelper.php' => ['PhanUndeclaredClassMethod', 'PhanUndeclaredMethod', 'PhanUndeclaredTypeParameter', 'PhanUndeclaredTypeProperty'],
         'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal'],
         'src/Manager/PasswordManager.php' => ['PhanAccessMethodInternal'],
         'src/Model/Property/HasPlainPasswordTrait.php' => ['PhanUnreferencedClass'],

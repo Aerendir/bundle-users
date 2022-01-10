@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.17.0@6f4707aa41c9174353a6434bba3fc8840f981d9c">
+<files psalm-version="4.18.1@dda05fa913f4dc6eb3386f2f7ce5a45d37a71bcb">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
@@ -43,12 +43,15 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
-    <DocblockTypeContradiction occurrences="1">
-      <code>0</code>
-    </DocblockTypeContradiction>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <RedundantCondition occurrences="1">
+      <code>\is_countable($errors)</code>
+    </RedundantCondition>
+    <TypeDoesNotContainType occurrences="1">
+      <code>0</code>
+    </TypeDoesNotContainType>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
     <RedundantCast occurrences="1">
@@ -70,11 +73,35 @@
     </ParamNameMismatch>
   </file>
   <file src="src/Helper/PasswordHelper.php">
-    <DeprecatedClass occurrences="3">
-      <code>$this-&gt;encoderFactory-&gt;getEncoder($user)</code>
+    <MixedAssignment occurrences="2">
+      <code>$encodedPassword</code>
+      <code>$encoder</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="2">
+      <code>encodePassword</code>
+      <code>isPasswordValid</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$encodedPassword</code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor occurrences="4">
+      <code>$encoderFactory</code>
+      <code>$formFactory</code>
+      <code>$router</code>
+      <code>$secUserProperty</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="3">
+      <code>$this-&gt;encoderFactory</code>
       <code>EncoderFactoryInterface</code>
       <code>EncoderFactoryInterface</code>
-    </DeprecatedClass>
+    </UndefinedClass>
+    <UndefinedInterfaceMethod occurrences="2">
+      <code>getSalt</code>
+      <code>getSalt</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Helper/PasswordResetHelper.php">
     <MixedInferredReturnType occurrences="1">
