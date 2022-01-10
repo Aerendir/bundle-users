@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 /**
  * This trait MUST be implemented by all UserInterface in the app.
  */
-interface HasPlainPasswordInterface
+interface HasPlainPasswordInterface extends PasswordAuthenticatedUserInterface
 {
     public const FIELD_PLAIN_PASSWORD = 'plainPassword';
 

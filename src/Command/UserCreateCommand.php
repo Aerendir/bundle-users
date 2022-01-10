@@ -78,7 +78,7 @@ EOT);
         $user   = $this->create($pass);
         $errors = $this->validator->validate($user);
 
-        if ((\is_countable($errors) ? \count($errors) : 0) > 0) {
+        if (\count($errors) > 0) {
             /** @var ConstraintViolation $error */
             foreach ($errors as $error) {
                 $this->io->writeln(sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
