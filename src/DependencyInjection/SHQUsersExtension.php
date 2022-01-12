@@ -82,14 +82,14 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $passResetThrottlingMinTimeBetweenTokens = $config[Configuration::BUNDLE_CONFIG_PASS][Configuration::BUNDLE_CONFIG_PASS_RESET][Configuration::BUNDLE_CONFIG_PASS_RESET_THROTTLING][Configuration::BUNDLE_CONFIG_PASS_RESET_THROTTLING_MIN_TIME_BETWEEN_TOKENS];
 
         /** @var string $appSecret */
-        $appSecret                           = $containerBuilder->getParameter('kernel.secret');
-        $dispatcherReference                 = new Reference('event_dispatcher');
-        $entityManagerReference              = new Reference('doctrine.orm.default_entity_manager');
-        $formFactoryReference                = new Reference('form.factory');
-        $propertyAccessorReference           = new Reference('property_accessor');
-        $routerReference                     = new Reference('router.default');
-        $userPasswordEncoderFactoryReference = new Reference('security.encoder_factory');
-        $sessionReference                    = new Reference('session');
+        $appSecret                          = $containerBuilder->getParameter('kernel.secret');
+        $dispatcherReference                = new Reference('event_dispatcher');
+        $entityManagerReference             = new Reference('doctrine.orm.default_entity_manager');
+        $formFactoryReference               = new Reference('form.factory');
+        $propertyAccessorReference          = new Reference('property_accessor');
+        $routerReference                    = new Reference('router.default');
+        $userPasswordHasherFactoryReference = new Reference('security.password_hasher_factory');
+        $sessionReference                   = new Reference('session');
 
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
@@ -109,7 +109,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 
-            $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$secUserProperty, $userPasswordEncoderFactoryReference, $formFactoryReference, $routerReference]);
+            $passwordHelperDefinition  = new Definition(PasswordHelper::class, [$secUserProperty, $userPasswordHasherFactoryReference, $formFactoryReference, $routerReference]);
             $containerBuilder->setDefinition(PasswordHelper::class, $passwordHelperDefinition);
 
             $passwordResetTokenGeneratorDefinition = new Definition(PasswordResetTokenGenerator::class, [$appSecret, $secUserProperty, $propertyAccessorReference]);
