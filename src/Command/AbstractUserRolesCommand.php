@@ -25,7 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 abstract class AbstractUserRolesCommand extends AbstractUserCommand
 {
-    /** @var HasRolesInterface&UserInterface */
+    /** @var HasRolesInterface|UserInterface */
     protected $user;
 
     /** @var string[] */

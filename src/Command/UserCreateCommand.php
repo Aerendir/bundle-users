@@ -74,7 +74,7 @@ EOT);
             return 1;
         }
 
-        /** @var HasPlainPasswordInterface&UserInterface $user */
+        /** @var HasPlainPasswordInterface|UserInterface $user */
         $user   = $this->create($pass);
         $errors = $this->validator->validate($user);
 
