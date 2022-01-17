@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 abstract class AbstractUserActivationCommand extends AbstractUserCommand
 {
-    /** @var HasActivationInterface&UserInterface */
+    /** @var HasActivationInterface|UserInterface */
     protected $user;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
