@@ -38,16 +38,25 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserActivateCommand.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>activate</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getPlainPassword</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>activate</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
@@ -93,9 +102,30 @@
     <InvalidReturnType occurrences="1">
       <code>UserInterface</code>
     </InvalidReturnType>
+    <MixedArrayAccess occurrences="1">
+      <code>$currentRoles[$currentRoleKey]</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="1">
+      <code>$currentRoles[]</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="1">
+      <code>$currentRoles[$currentRoleKey]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="4">
+      <code>$currentRole</code>
+      <code>$currentRoleKey</code>
+      <code>$currentRoles</code>
+      <code>$currentRoles</code>
+    </MixedAssignment>
     <PossiblyInvalidArgument occurrences="1">
       <code>$user</code>
     </PossiblyInvalidArgument>
+    <PossiblyUndefinedMethod occurrences="4">
+      <code>getRoles</code>
+      <code>getRoles</code>
+      <code>setRoles</code>
+      <code>setRoles</code>
+    </PossiblyUndefinedMethod>
   </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
     <MissingReturnType occurrences="1">
