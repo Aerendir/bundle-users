@@ -96,7 +96,12 @@ parameters:
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:removeExpiredResetPasswordRequests\\(\\) should return int but returns array\\.$#"
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) should return array\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:removeExpiredResetPasswordRequests\\(\\) should return int but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
