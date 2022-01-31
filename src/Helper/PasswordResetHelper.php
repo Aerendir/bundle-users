@@ -33,6 +33,7 @@ final class PasswordResetHelper
     public const RESET_TOKEN_LIFETIME = 3600;
 
     private PasswordResetTokenGenerator $passwordResetTokenGenerator;
+
     private SessionInterface $session;
 
     public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator, SessionInterface $session)
@@ -41,9 +42,6 @@ final class PasswordResetHelper
         $this->session                     = $session;
     }
 
-    /**
-     * @return PasswordResetTokenGenerator
-     */
     public function getPasswordResetTokenGenerator(): PasswordResetTokenGenerator
     {
         return $this->passwordResetTokenGenerator;

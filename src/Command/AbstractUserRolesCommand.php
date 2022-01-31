@@ -30,6 +30,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
 
     /** @var string[] */
     protected array $roles;
+
     protected RolesValidator $rolesValidator;
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
@@ -62,6 +63,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         if (false === \is_array($roles)) {
             return 1;
         }
+
         $this->roles = $roles;
 
         $errors = $this->rolesValidator->validate($roles);

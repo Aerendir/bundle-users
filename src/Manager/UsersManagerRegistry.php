@@ -24,8 +24,7 @@ final class UsersManagerRegistry
     private array $managers = [];
 
     /**
-     * @param string                $provider The provider as set in security.providers.[provider]
-     * @param UsersManagerInterface $manager
+     * @param string $provider The provider as set in security.providers.[provider]
      */
     public function addManager(string $provider, UsersManagerInterface $manager): void
     {

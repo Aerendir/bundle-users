@@ -39,7 +39,7 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
         $manager = $this->usersManagerRegistry->getManager($this->provider);
         $user    = $manager->load($this->unique);
 
-        if (null === $user) {
+        if ( ! $user instanceof UserInterface) {
             $message = sprintf('User "%s" not found.', $this->unique);
             $this->io->error($message);
 

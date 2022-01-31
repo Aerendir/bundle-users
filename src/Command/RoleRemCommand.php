@@ -22,7 +22,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class RoleRemCommand extends AbstractUserRolesCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:role:rem';
+
     protected static string $title = 'Add role';
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)

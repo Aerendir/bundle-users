@@ -38,16 +38,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class PasswordManager
 {
     private int $passResetThrottlingMaxActiveTokens;
+
     private int $passResetThrottlingMinTimeBetweenTokens;
+
     private int $passResetLifespanAmountOf;
+
     private string $passResetLifespanUnit;
+
     private string $secUserClass;
+
     private string $secUserProperty;
+
     private EntityManagerInterface $entityManager;
+
     private EventDispatcherInterface $eventDispatcher;
+
     private PasswordHelper $passwordHelper;
+
     private PasswordResetHelper $passwordResetHelper;
+
     private ?PasswordResetTokenRepository $passwordResetTokenRepository;
+
     private ?string $passResetTokenClass;
 
     public function __construct(
@@ -88,17 +99,11 @@ final class PasswordManager
         $this->passwordResetTokenRepository = $passwordResetTokenRepository;
     }
 
-    /**
-     * @return PasswordHelper
-     */
     public function getPasswordHelper(): PasswordHelper
     {
         return $this->passwordHelper;
     }
 
-    /**
-     * @return PasswordResetHelper
-     */
     public function getPasswordResetHelper(): PasswordResetHelper
     {
         return $this->passwordResetHelper;
@@ -167,7 +172,7 @@ final class PasswordManager
 
     public function loadTokenFromPublicOne(string $publicToken): PasswordResetTokenInterface
     {
-        if (null === $this->passwordResetTokenRepository) {
+        if ( ! $this->passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
             throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
         }
 
@@ -179,7 +184,7 @@ final class PasswordManager
 
         $token = $this->passwordResetTokenRepository->findBySelector($selector);
 
-        if (null === $token) {
+        if ( ! $token instanceof PasswordResetTokenInterface) {
             throw new PasswordResetTokenInvalid();
         }
 
@@ -212,7 +217,7 @@ final class PasswordManager
 
     public function cleanExpiredTokens(): int
     {
-        if (null === $this->passwordResetTokenRepository) {
+        if ( ! $this->passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
             throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
         }
 
@@ -226,9 +231,10 @@ final class PasswordManager
 
     private function checkThrottling(UserInterface $user): ?\DateTimeInterface
     {
-        if (null === $this->passwordResetTokenRepository) {
+        if ( ! $this->passwordResetTokenRepository instanceof PasswordResetTokenRepository) {
             throw new PasswordResetTokenClassNotImplemented($this->passResetTokenClass);
         }
+
         $tokens = $this->passwordResetTokenRepository->getTokensStillValid($user);
 
         if (null === $tokens) {

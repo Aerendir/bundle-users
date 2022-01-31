@@ -28,9 +28,6 @@ final class PasswordResetTokenCreationFailedEvent extends Event
         $this->resetPasswordException = $resetPasswordException;
     }
 
-    /**
-     * @return PasswordResetException
-     */
     public function getThrowable(): PasswordResetException
     {
         return $this->resetPasswordException;
