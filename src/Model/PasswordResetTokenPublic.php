@@ -44,9 +44,6 @@ final class PasswordResetTokenPublic
         return $this->expiresAt;
     }
 
-    /**
-     * @return int
-     */
     public function getLifetime(): int
     {
         return $this->lifetime;

@@ -28,16 +28,25 @@
     </RedundantCast>
   </file>
   <file src="src/Command/RoleAddCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/RoleRemCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserActivateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
       <code>activate</code>
     </PossiblyUndefinedMethod>
@@ -46,6 +55,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
       <code>getPlainPassword</code>
     </PossiblyUndefinedMethod>
@@ -54,6 +66,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
       <code>activate</code>
     </PossiblyUndefinedMethod>

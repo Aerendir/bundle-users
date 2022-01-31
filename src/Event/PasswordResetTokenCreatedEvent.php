@@ -37,9 +37,6 @@ final class PasswordResetTokenCreatedEvent extends Event
         return $this->token;
     }
 
-    /**
-     * @return UserInterface
-     */
     public function getUser(): UserInterface
     {
         return $this->user;

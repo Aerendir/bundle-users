@@ -26,8 +26,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class UserCreateCommand extends AbstractUsersCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:create';
+
     protected static string $title = 'Create user';
+
     private ValidatorInterface $validator;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, ValidatorInterface $validator)
@@ -83,6 +86,7 @@ EOT);
             foreach ($errors as $error) {
                 $this->io->writeln(sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
             }
+
             $message = sprintf('Impossible to create the user "%s".', $this->unique);
 
             $this->io->error($message);

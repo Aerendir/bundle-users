@@ -21,7 +21,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class UserActivateCommand extends AbstractUserActivationCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:activate';
+
     protected static string $title = 'Activate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)

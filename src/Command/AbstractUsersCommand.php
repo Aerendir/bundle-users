@@ -27,10 +27,15 @@ abstract class AbstractUsersCommand extends Command
 {
     /** @var string The title to print when starting the command */
     protected static string $title;
+
     protected string $unique;
+
     protected string $provider;
+
     protected EntityManagerInterface $entityManager;
+
     protected UsersManagerRegistry $usersManagerRegistry;
+
     protected SymfonyStyle $io;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
@@ -57,6 +62,7 @@ abstract class AbstractUsersCommand extends Command
         if (false === \is_string($unique)) {
             return 1;
         }
+
         $this->unique = $unique;
 
         $provider          = $input->getOption('provider');

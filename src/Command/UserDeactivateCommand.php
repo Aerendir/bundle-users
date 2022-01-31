@@ -21,7 +21,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class UserDeactivateCommand extends AbstractUserActivationCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:deactivate';
+
     protected static string $title = 'Deactivate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)

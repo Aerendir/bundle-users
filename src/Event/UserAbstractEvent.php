@@ -20,6 +20,7 @@ abstract class UserAbstractEvent extends Event
 {
     /** @var string|null May be null when extended by custom events in implementing apps: they may not need to specify the provider. */
     private ?string $provider;
+
     private UserInterface $user;
 
     public function __construct(UserInterface $user, ?string $provider = null)
