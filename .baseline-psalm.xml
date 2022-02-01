@@ -148,14 +148,14 @@
     </MissingReturnType>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1">
+      <code>int</code>
+    </InvalidReturnType>
     <LessSpecificImplementedReturnType occurrences="2">
       <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
     </LessSpecificImplementedReturnType>
-    <MixedInferredReturnType occurrences="1">
-      <code>?array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1"/>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
     <ImplicitToStringCast occurrences="3">
