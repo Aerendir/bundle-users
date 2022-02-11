@@ -105,3 +105,8 @@ parameters:
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
+		-
+			message: "#^Strict comparison using \\=\\=\\= between false and non\\-empty\\-string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
