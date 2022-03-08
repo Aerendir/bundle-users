@@ -28,6 +28,7 @@
         <RedundantIdentityWithTrue errorLevel="suppress" />
         <RedundantConditionGivenDocblockType errorLevel="suppress" />
         <ReservedWord errorLevel="suppress" />
+        <UndefinedDocblockClass errorLevel="suppress" />
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <file name="src/Manager/UsersManager.php" />
