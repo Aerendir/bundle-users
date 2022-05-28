@@ -10,7 +10,7 @@
 return [
     // # Issue statistics:
     // PhanAccessMethodInternal : 9 occurrences
-    // PhanUnreferencedClass : 3 occurrences
+    // PhanUnreferencedClass : 8 occurrences
     // PhanAccessClassConstantInternal : 2 occurrences
     // PhanUndeclaredMethod : 1 occurrence
     // PhanUnusedPublicFinalMethodParameter : 1 occurrence
@@ -18,7 +18,11 @@ return [
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
-        'src/Command/UserCreateCommand.php' => ['PhanUndeclaredMethod'],
+        'src/Command/RoleAddCommand.php' => ['PhanUnreferencedClass'],
+        'src/Command/RoleRemCommand.php' => ['PhanUnreferencedClass'],
+        'src/Command/UserActivateCommand.php' => ['PhanUnreferencedClass'],
+        'src/Command/UserCreateCommand.php' => ['PhanUndeclaredMethod', 'PhanUnreferencedClass'],
+        'src/Command/UserDeactivateCommand.php' => ['PhanUnreferencedClass'],
         'src/DependencyInjection/SHQUsersExtension.php' => ['PhanUnreferencedClass'],
         'src/Form/Type/UserPasswordChangeType.php' => ['PhanUnusedPublicFinalMethodParameter'],
         'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal'],

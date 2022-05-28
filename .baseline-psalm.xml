@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.19.0@a2ad69ae4f5ab1f7d225a8dc4e2ec2d9415ed599">
+<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
@@ -17,9 +17,6 @@
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$roles</code>
     </MixedArgumentTypeCoercion>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$roles</code>
-    </MixedPropertyTypeCoercion>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
@@ -77,35 +74,15 @@
     </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <MixedAssignment occurrences="3">
-      <code>$config</code>
-      <code>$provider</code>
-      <code>$providerConfig</code>
-    </MixedAssignment>
-    <MixedOperand occurrences="1">
-      <code>$provider</code>
-    </MixedOperand>
     <ParamNameMismatch occurrences="2">
       <code>$containerBuilder</code>
       <code>$containerBuilder</code>
     </ParamNameMismatch>
   </file>
-  <file src="src/Helper/PasswordResetHelper.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-  </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument occurrences="1">
       <code>$plainPassword</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$plainPassword</code>
-      <code>$userPropertyValue</code>
-    </MixedAssignment>
-    <UnnecessaryVarAnnotation occurrences="1">
-      <code>PasswordResetTokenInterface</code>
-    </UnnecessaryVarAnnotation>
   </file>
   <file src="src/Manager/UsersManager.php">
     <InvalidArgument occurrences="1">
@@ -120,18 +97,6 @@
     <MixedArrayAccess occurrences="1">
       <code>$currentRoles[$currentRoleKey]</code>
     </MixedArrayAccess>
-    <MixedArrayAssignment occurrences="1">
-      <code>$currentRoles[]</code>
-    </MixedArrayAssignment>
-    <MixedArrayOffset occurrences="1">
-      <code>$currentRoles[$currentRoleKey]</code>
-    </MixedArrayOffset>
-    <MixedAssignment occurrences="4">
-      <code>$currentRole</code>
-      <code>$currentRoleKey</code>
-      <code>$currentRoles</code>
-      <code>$currentRoles</code>
-    </MixedAssignment>
     <PossiblyInvalidArgument occurrences="1">
       <code>$user</code>
     </PossiblyInvalidArgument>
@@ -163,8 +128,30 @@
       <code>$verifier</code>
       <code>$verifier</code>
     </ImplicitToStringCast>
-    <MixedAssignment occurrences="1">
-      <code>$userIdentifier</code>
-    </MixedAssignment>
+  </file>
+  <file src="vendor/symfony/console/Helper/ProgressBar.php">
+    <ParseError occurrences="12">
+      <code>,</code>
+      <code>,</code>
+      <code>,</code>
+      <code>,</code>
+      <code>:</code>
+      <code>:</code>
+      <code>=&gt;</code>
+      <code>=&gt;</code>
+      <code>=&gt;</code>
+      <code>private</code>
+      <code>private</code>
+      <code>}</code>
+    </ParseError>
+  </file>
+  <file src="vendor/symfony/dependency-injection/Argument/ServiceLocator.php">
+    <ParseError occurrences="5">
+      <code>,</code>
+      <code>,</code>
+      <code>,</code>
+      <code>=&gt;</code>
+      <code>}</code>
+    </ParseError>
   </file>
 </files>
