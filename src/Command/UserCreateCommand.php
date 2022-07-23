@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Console\Input\InputArgument;
@@ -24,13 +23,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+use function Safe\sprintf;
+
 final class UserCreateCommand extends AbstractUsersCommand
 {
     /** @var string */
     protected static $defaultName  = 'shq:user:create';
 
     protected static string $title = 'Create user';
-
     private ValidatorInterface $validator;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, ValidatorInterface $validator)
@@ -45,7 +45,7 @@ final class UserCreateCommand extends AbstractUsersCommand
         $this->setDescription('Creates a user.')
             ->addArgument('pass', InputArgument::REQUIRED, 'The password to assign to the user.')
             ->setHelp(
-<<<'EOT'
+                <<<'EOT'
 The <info>%command.name%</info> command creates a user:
 
   <info>php %command.full_name% Aerendir P4sSw0rD</info>

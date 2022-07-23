@@ -38,27 +38,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class PasswordManager
 {
     private int $passResetThrottlingMaxActiveTokens;
-
     private int $passResetThrottlingMinTimeBetweenTokens;
-
     private int $passResetLifespanAmountOf;
-
     private string $passResetLifespanUnit;
-
     private string $secUserClass;
-
     private string $secUserProperty;
-
     private EntityManagerInterface $entityManager;
-
     private EventDispatcherInterface $eventDispatcher;
-
     private PasswordHelper $passwordHelper;
-
     private PasswordResetHelper $passwordResetHelper;
-
     private ?PasswordResetTokenRepository $passwordResetTokenRepository;
-
     private ?string $passResetTokenClass;
 
     public function __construct(

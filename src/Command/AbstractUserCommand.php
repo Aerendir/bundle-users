@@ -13,13 +13,14 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasActivationInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use function Safe\sprintf;
 
 abstract class AbstractUserCommand extends AbstractUsersCommand
 {

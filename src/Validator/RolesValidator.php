@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,8 +13,9 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Validator;
 
-use function Safe\preg_match;
 use Symfony\Component\String\UnicodeString;
+
+use function Safe\preg_match;
 
 final class RolesValidator
 {

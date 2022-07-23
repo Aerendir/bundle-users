@@ -31,17 +31,12 @@ use Symfony\Component\String\ByteString;
 final class PasswordHelper
 {
     private const ACTION = 'action';
-
     private const METHOD = 'method';
-
     private const POST   = 'POST';
 
     private string $secUserProperty;
-
     private PasswordHasherFactoryInterface $hasherFactory;
-
     private FormFactoryInterface $formFactory;
-
     private RouterInterface $router;
 
     public function __construct(

@@ -13,16 +13,16 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\PasswordResetTokenPublic;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+use function Safe\sprintf;
+
 final class PasswordResetHelper
 {
-    public const RESET_PASSWORD_1_CHECK_EMAIL = 'reset_password_1_check_email';
-
+    public const RESET_PASSWORD_1_CHECK_EMAIL  = 'reset_password_1_check_email';
     public const RESET_PASSWORD_2_PUBLIC_TOKEN = 'reset_password_2_public_token';
 
     /**
@@ -33,7 +33,6 @@ final class PasswordResetHelper
     public const RESET_TOKEN_LIFETIME = 3600;
 
     private PasswordResetTokenGenerator $passwordResetTokenGenerator;
-
     private SessionInterface $session;
 
     public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator, SessionInterface $session)

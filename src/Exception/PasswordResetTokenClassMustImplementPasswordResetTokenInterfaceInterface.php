@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,8 +13,9 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
+
+use function Safe\sprintf;
 
 final class PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface extends PasswordResetTokenException
 {
