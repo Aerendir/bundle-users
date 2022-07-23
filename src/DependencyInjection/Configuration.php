@@ -19,36 +19,20 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 final class Configuration implements ConfigurationInterface
 {
     public const BUNDLE_CONFIG_NAME                                          = 'shq_users';
-
     public const BUNDLE_CONFIG_PASS                                          = 'password';
-
     public const BUNDLE_CONFIG_PASS_RESET                                    = 'reset_request';
-
     public const BUNDLE_CONFIG_PASS_RESET_TOKEN_CLASS                        = 'token_class';
-
     public const BUNDLE_CONFIG_PASS_RESET_THROTTLING                         = 'throttling';
-
     public const BUNDLE_CONFIG_PASS_RESET_THROTTLING_MAX_ACTIVE_TOKENS       = 'max_active_tokens';
-
     public const BUNDLE_CONFIG_PASS_RESET_THROTTLING_MIN_TIME_BETWEEN_TOKENS = 'min_time_between_tokens';
-
     public const BUNDLE_CONFIG_PASS_RESET_LIFESPAN                           = 'lifespan';
-
     public const BUNDLE_CONFIG_PASS_RESET_LIFESPAN_AMOUNT_OF                 = 'amount_of';
-
     public const BUNDLE_CONFIG_PASS_RESET_LIFESPAN_UNIT                      = 'unit';
-
     public const SECURITY_PROVIDERS                                          = 'providers';
-
     public const SECURITY_PROVIDERS_ENTITY                                   = 'entity';
-
     public const SECURITY_PROVIDERS_ENTITY_CLASS                             = 'class';
-
     public const SECURITY_PROVIDERS_ENTITY_PROPERTY                          = 'property';
 
-    /**
-     * @throws \RuntimeException
-     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::BUNDLE_CONFIG_NAME);

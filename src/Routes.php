@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -13,9 +15,7 @@ namespace SerendipityHQ\Bundle\UsersBundle;
 
 final class Routes
 {
-    public const PASSWORD_CHANGE = 'user_password_change';
-
+    public const PASSWORD_CHANGE        = 'user_password_change';
     public const PASSWORD_RESET_REQUEST = 'user_password_reset_request';
-
-    public const PASSWORD_RESET_RESET = 'user_password_reset_reset_password';
+    public const PASSWORD_RESET_RESET   = 'user_password_reset_reset_password';
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
@@ -123,35 +123,12 @@
     </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
-    <ImplicitToStringCast occurrences="3">
+    <InvalidArgument occurrences="1">
       <code>$selector</code>
+    </InvalidArgument>
+    <PossiblyInvalidArgument occurrences="2">
       <code>$verifier</code>
       <code>$verifier</code>
-    </ImplicitToStringCast>
-  </file>
-  <file src="vendor/symfony/console/Helper/ProgressBar.php">
-    <ParseError occurrences="12">
-      <code>,</code>
-      <code>,</code>
-      <code>,</code>
-      <code>,</code>
-      <code>:</code>
-      <code>:</code>
-      <code>=&gt;</code>
-      <code>=&gt;</code>
-      <code>=&gt;</code>
-      <code>private</code>
-      <code>private</code>
-      <code>}</code>
-    </ParseError>
-  </file>
-  <file src="vendor/symfony/dependency-injection/Argument/ServiceLocator.php">
-    <ParseError occurrences="5">
-      <code>,</code>
-      <code>,</code>
-      <code>,</code>
-      <code>=&gt;</code>
-      <code>}</code>
-    </ParseError>
+    </PossiblyInvalidArgument>
   </file>
 </files>

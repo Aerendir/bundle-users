@@ -106,6 +106,21 @@ parameters:
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
+			message: "#^Parameter \\#1 \\$selector of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents constructor expects string, Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: "#^Parameter \\#2 \\$verifier of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents constructor expects string, string\\|Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: "#^Parameter \\#3 \\$verifier of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Util\\\\PasswordResetTokenGenerator\\:\\:generateHashedToken\\(\\) expects string, string\\|Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
 			message: "#^Strict comparison using \\=\\=\\= between false and non\\-empty\\-string will always evaluate to false\\.$#"
 			count: 1
 			path: src/Util/PasswordResetTokenGenerator.php

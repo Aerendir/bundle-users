@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -16,8 +18,6 @@ use Symfony\Component\Form\AbstractType as BaseAbstractType;
 abstract class AbstractType extends BaseAbstractType
 {
     protected const CONSTRAINTS_KEY = 'constraints';
-
-    protected const LABEL_KEY = 'label';
-
-    protected const MAPPED_KEY = 'mapped';
+    protected const LABEL_KEY       = 'label';
+    protected const MAPPED_KEY      = 'mapped';
 }

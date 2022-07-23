@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,10 +13,11 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use function Safe\sprintf;
 
 class UserClassMustImplementInterface extends UsersException
 {
