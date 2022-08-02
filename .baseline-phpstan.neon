@@ -1,6 +1,21 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasActivationInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:activate\\(\\)\\.$#"
+			count: 1
+			path: src/Command/UserActivateCommand.php
+
+		-
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getPlainPassword\\(\\)\\.$#"
+			count: 1
+			path: src/Command/UserCreateCommand.php
+
+		-
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasActivationInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:activate\\(\\)\\.$#"
+			count: 1
+			path: src/Command/UserDeactivateCommand.php
+
+		-
 			message: "#^Parameter \\#1 \\$child of method Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\:\\:add\\(\\) expects string\\|Symfony\\\\Component\\\\Form\\\\FormBuilderInterface, mixed given\\.$#"
 			count: 1
 			path: src/Form/Type/PasswordResetRequestType.php
@@ -34,6 +49,16 @@ parameters:
 			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\)$#"
 			count: 1
 			path: src/Manager/PasswordManager.php
+
+		-
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getRoles\\(\\)\\.$#"
+			count: 2
+			path: src/Manager/UsersManager.php
+
+		-
+			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setRoles\\(\\)\\.$#"
+			count: 2
+			path: src/Manager/UsersManager.php
 
 		-
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManager\\:\\:load\\(\\) should return Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null but returns object\\|null\\.$#"
@@ -79,4 +104,24 @@ parameters:
 			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:removeExpiredResetPasswordRequests\\(\\) should return int but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$selector of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents constructor expects string, Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: "#^Parameter \\#2 \\$verifier of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents constructor expects string, string\\|Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: "#^Parameter \\#3 \\$verifier of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Util\\\\PasswordResetTokenGenerator\\:\\:generateHashedToken\\(\\) expects string, string\\|Symfony\\\\Component\\\\String\\\\ByteString given\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between false and non\\-empty\\-string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Util/PasswordResetTokenGenerator.php
 

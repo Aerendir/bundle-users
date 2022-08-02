@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -17,7 +19,6 @@ final class PasswordResetTokenPublic
     private string $publicToken;
 
     private int $lifetime;
-
     private \DateTimeInterface $expiresAt;
 
     public function __construct(string $publicToken, \DateTimeInterface $expiresAt, int $lifetime)
@@ -44,9 +45,6 @@ final class PasswordResetTokenPublic
         return $this->expiresAt;
     }
 
-    /**
-     * @return int
-     */
     public function getLifetime(): int
     {
         return $this->lifetime;

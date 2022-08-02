@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use Symfony\Component\Console\Input\InputArgument;
@@ -24,9 +23,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+use function Safe\sprintf;
+
 final class UserCreateCommand extends AbstractUsersCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:create';
+
     protected static string $title = 'Create user';
     private ValidatorInterface $validator;
 
@@ -42,7 +45,7 @@ final class UserCreateCommand extends AbstractUsersCommand
         $this->setDescription('Creates a user.')
             ->addArgument('pass', InputArgument::REQUIRED, 'The password to assign to the user.')
             ->setHelp(
-<<<'EOT'
+                <<<'EOT'
 The <info>%command.name%</info> command creates a user:
 
   <info>php %command.full_name% Aerendir P4sSw0rD</info>
@@ -74,7 +77,7 @@ EOT);
             return 1;
         }
 
-        /** @var HasPlainPasswordInterface&UserInterface $user */
+        /** @var HasPlainPasswordInterface|UserInterface $user */
         $user   = $this->create($pass);
         $errors = $this->validator->validate($user);
 
@@ -83,6 +86,7 @@ EOT);
             foreach ($errors as $error) {
                 $this->io->writeln(sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue()));
             }
+
             $message = sprintf('Impossible to create the user "%s".', $this->unique);
 
             $this->io->error($message);

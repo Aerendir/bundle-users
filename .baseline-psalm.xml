@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.18.1@dda05fa913f4dc6eb3386f2f7ce5a45d37a71bcb">
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
@@ -17,9 +17,6 @@
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$roles</code>
     </MixedArgumentTypeCoercion>
-    <MixedPropertyTypeCoercion occurrences="1">
-      <code>$roles</code>
-    </MixedPropertyTypeCoercion>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
@@ -28,60 +25,64 @@
     </RedundantCast>
   </file>
   <file src="src/Command/RoleAddCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/RoleRemCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserActivateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>activate</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>getPlainPassword</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$defaultName</code>
+    </NonInvariantDocblockPropertyType>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>activate</code>
+    </PossiblyUndefinedMethod>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <MixedAssignment occurrences="3">
-      <code>$config</code>
-      <code>$provider</code>
-      <code>$providerConfig</code>
-    </MixedAssignment>
-    <MixedOperand occurrences="1">
-      <code>$provider</code>
-    </MixedOperand>
     <ParamNameMismatch occurrences="2">
       <code>$containerBuilder</code>
       <code>$containerBuilder</code>
     </ParamNameMismatch>
   </file>
-  <file src="src/Helper/PasswordResetHelper.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-  </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument occurrences="1">
       <code>$plainPassword</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$plainPassword</code>
-      <code>$userPropertyValue</code>
-    </MixedAssignment>
-    <UnnecessaryVarAnnotation occurrences="1">
-      <code>PasswordResetTokenInterface</code>
-    </UnnecessaryVarAnnotation>
   </file>
   <file src="src/Manager/UsersManager.php">
     <InvalidArgument occurrences="1">
@@ -93,9 +94,18 @@
     <InvalidReturnType occurrences="1">
       <code>UserInterface</code>
     </InvalidReturnType>
+    <MixedArrayAccess occurrences="1">
+      <code>$currentRoles[$currentRoleKey]</code>
+    </MixedArrayAccess>
     <PossiblyInvalidArgument occurrences="1">
       <code>$user</code>
     </PossiblyInvalidArgument>
+    <PossiblyUndefinedMethod occurrences="4">
+      <code>getRoles</code>
+      <code>getRoles</code>
+      <code>setRoles</code>
+      <code>setRoles</code>
+    </PossiblyUndefinedMethod>
   </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
     <MissingReturnType occurrences="1">
@@ -103,23 +113,22 @@
     </MissingReturnType>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1">
+      <code>int</code>
+    </InvalidReturnType>
     <LessSpecificImplementedReturnType occurrences="2">
       <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
     </LessSpecificImplementedReturnType>
-    <MixedInferredReturnType occurrences="1">
-      <code>?array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1"/>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
-    <ImplicitToStringCast occurrences="3">
+    <InvalidArgument occurrences="1">
       <code>$selector</code>
+    </InvalidArgument>
+    <PossiblyInvalidArgument occurrences="2">
       <code>$verifier</code>
       <code>$verifier</code>
-    </ImplicitToStringCast>
-    <MixedAssignment occurrences="1">
-      <code>$userIdentifier</code>
-    </MixedAssignment>
+    </PossiblyInvalidArgument>
   </file>
 </files>

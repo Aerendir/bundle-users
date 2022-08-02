@@ -33,11 +33,6 @@ final class Configuration implements ConfigurationInterface
     public const SECURITY_PROVIDERS_ENTITY_CLASS                             = 'class';
     public const SECURITY_PROVIDERS_ENTITY_PROPERTY                          = 'property';
 
-    /**
-     * @throws \RuntimeException
-     *
-     * @return TreeBuilder
-     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::BUNDLE_CONFIG_NAME);

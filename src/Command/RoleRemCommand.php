@@ -14,15 +14,18 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use function Safe\sprintf;
+
 final class RoleRemCommand extends AbstractUserRolesCommand
 {
+    /** @var string */
     protected static $defaultName  = 'shq:user:role:rem';
+
     protected static string $title = 'Add role';
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
@@ -36,7 +39,7 @@ final class RoleRemCommand extends AbstractUserRolesCommand
         parent::configure();
         $this->setDescription('Adds one or more roles to a user.')
             ->setHelp(
-<<<'EOT'
+                <<<'EOT'
 The <info>%command.name%</info> command removes one or more roles from a user:
 
   <info>php %command.full_name% Aerendir ROLE_CUSTOM</info>

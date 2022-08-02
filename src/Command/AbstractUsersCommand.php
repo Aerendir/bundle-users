@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -23,10 +22,13 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+use function Safe\sprintf;
+
 abstract class AbstractUsersCommand extends Command
 {
     /** @var string The title to print when starting the command */
     protected static string $title;
+
     protected string $unique;
     protected string $provider;
     protected EntityManagerInterface $entityManager;
@@ -57,6 +59,7 @@ abstract class AbstractUsersCommand extends Command
         if (false === \is_string($unique)) {
             return 1;
         }
+
         $this->unique = $unique;
 
         $provider          = $input->getOption('provider');

@@ -37,18 +37,18 @@ interface UsersManagerInterface
     public function load(string $primaryProperty): ?UserInterface;
 
     /**
-     * @param UserInterface&HasRolesInterface $user
+     * @param HasRolesInterface|UserInterface $user
      * @param string|string[]                 $rolesToAdd
      *
-     * @return UserInterface&HasRolesInterface
+     * @return HasRolesInterface|UserInterface
      */
     public function addRoles($user, $rolesToAdd);
 
     /**
-     * @param UserInterface&HasRolesInterface $user
+     * @param HasRolesInterface|UserInterface $user
      * @param string|string[]                 $rolesToRemove
      *
-     * @return UserInterface&HasRolesInterface
+     * @return HasRolesInterface|UserInterface
      */
     public function removeRoles($user, $rolesToRemove);
 }

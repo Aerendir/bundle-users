@@ -78,6 +78,7 @@ final class UsersManager implements UsersManagerInterface
 
             throw $toThrow;
         }
+
         $event = new UserCreatedEvent($user, $this->provider);
         $this->dispatcher->dispatch($event);
 

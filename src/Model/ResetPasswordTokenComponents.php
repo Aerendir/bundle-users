@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -19,7 +21,6 @@ use function Safe\substr;
  * @author Adamo Crespi <aerendir@serendipityhq.com>
  *
  * @internal
- * @final
  */
 final class ResetPasswordTokenComponents
 {

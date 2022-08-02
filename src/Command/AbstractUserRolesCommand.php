@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
@@ -23,13 +22,16 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use function Safe\sprintf;
+
 abstract class AbstractUserRolesCommand extends AbstractUserCommand
 {
-    /** @var HasRolesInterface&UserInterface */
+    /** @var HasRolesInterface|UserInterface */
     protected $user;
 
     /** @var string[] */
     protected array $roles;
+
     protected RolesValidator $rolesValidator;
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
@@ -62,6 +64,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         if (false === \is_array($roles)) {
             return 1;
         }
+
         $this->roles = $roles;
 
         $errors = $this->rolesValidator->validate($roles);

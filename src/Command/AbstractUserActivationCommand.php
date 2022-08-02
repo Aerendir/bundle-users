@@ -14,16 +14,17 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
-use function Safe\sprintf;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasActivationInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use function Safe\sprintf;
+
 abstract class AbstractUserActivationCommand extends AbstractUserCommand
 {
-    /** @var HasActivationInterface&UserInterface */
+    /** @var HasActivationInterface|UserInterface */
     protected $user;
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)

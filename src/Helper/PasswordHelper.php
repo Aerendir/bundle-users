@@ -84,9 +84,6 @@ final class PasswordHelper
         ]);
     }
 
-    /**
-     * @param HasPlainPasswordInterface $user
-     */
     public function encodePlainPassword(HasPlainPasswordInterface $user, string $plainPassword = null): string
     {
         $plainPassword ??= $user->getPlainPassword();

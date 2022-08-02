@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Serendipity HQ Users Bundle.
  *
@@ -11,11 +13,12 @@
 
 namespace SerendipityHQ\Bundle\UsersBundle\Util;
 
-use function Safe\json_encode;
 use SerendipityHQ\Bundle\UsersBundle\Model\ResetPasswordTokenComponents;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\String\ByteString;
+
+use function Safe\json_encode;
 
 /**
  * @author Jesse Rushlow <jr@rushlow.dev>
@@ -23,14 +26,11 @@ use Symfony\Component\String\ByteString;
  * @author Adamo Crespi <aerendir@serendipityhq.com>
  *
  * @internal
- * @final
  */
 final class PasswordResetTokenGenerator
 {
     private string $appSecret;
-
     private string $userIdentifierProperty;
-
     private PropertyAccessor $propertyAccessor;
 
     public function __construct(string $appSecret, string $userIdentifierProperty, PropertyAccessor $propertyAccessor)
