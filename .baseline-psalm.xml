@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+<files psalm-version="4.26.0@6998fabb2bf528b65777bf9941920888d23c03ac">
   <file src="src/Command/AbstractUserActivationCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasActivationInterface::class)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
@@ -9,11 +12,19 @@
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('User "%s" not found.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
+    <DeprecatedFunction occurrences="3">
+      <code>sprintf('  - %s', $error)</code>
+      <code>sprintf('&gt; &lt;fg=green&gt;%s&lt;/&gt;', $role)</code>
+      <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasRolesInterface::class)</code>
+    </DeprecatedFunction>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$roles</code>
     </MixedArgumentTypeCoercion>
@@ -24,7 +35,16 @@
       <code>(int) $initialized</code>
     </RedundantCast>
   </file>
+  <file src="src/Command/AbstractUsersCommand.php">
+    <DeprecatedFunction occurrences="2">
+      <code>sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers))</code>
+      <code>sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers))</code>
+    </DeprecatedFunction>
+  </file>
   <file src="src/Command/RoleAddCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('Roles added to user %s.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -33,6 +53,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/RoleRemCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('Roles removed from user %s.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -41,6 +64,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserActivateCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('User %s activated.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -52,6 +78,12 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
+    <DeprecatedFunction occurrences="4">
+      <code>sprintf('&lt;error&gt;%s (%s =&gt; %s)&lt;/error&gt;', $error-&gt;getMessage(), $error-&gt;getPropertyPath(), $error-&gt;getInvalidValue())</code>
+      <code>sprintf('Impossible to create the user "%s".', $this-&gt;unique)</code>
+      <code>sprintf('Password for user %s: %s', $this-&gt;unique, $user-&gt;getPlainPassword())</code>
+      <code>sprintf('User %s created.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -63,6 +95,9 @@
     </RedundantCast>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('User %s deactivated.', $this-&gt;unique)</code>
+    </DeprecatedFunction>
     <NonInvariantDocblockPropertyType occurrences="1">
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
@@ -78,6 +113,32 @@
       <code>$containerBuilder</code>
       <code>$containerBuilder</code>
     </ParamNameMismatch>
+  </file>
+  <file src="src/Exception/PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('The entity %s MUST implement interface %s.', $passResetTokenClass, PasswordResetTokenInterface::class)</code>
+    </DeprecatedFunction>
+  </file>
+  <file src="src/Exception/PasswordResetTokenClassNotImplemented.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf("The entity class %s doesn't exist.", $passResetTokenClass)</code>
+    </DeprecatedFunction>
+  </file>
+  <file src="src/Exception/UserClassMustImplementInterface.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('The User class "%s" MUST implement the "%s" interface.', $this-&gt;getUserClass($user), $interfaceToImplement)</code>
+    </DeprecatedFunction>
+  </file>
+  <file src="src/Exception/UsersManagerException.php">
+    <DeprecatedFunction occurrences="2">
+      <code>sprintf('Currently there are "%s" providers configured in "security.providers". Please, specify for which one you\'d like to get the UsersManager. Available providers are: %s', \count($availableProviders), \implode(', ', $availableProviders))</code>
+      <code>sprintf('The users manager for provider "%s" you are looking for doesn\'t exist. Please, be sure it is configured in "security.providers".', $provider)</code>
+    </DeprecatedFunction>
+  </file>
+  <file src="src/Helper/PasswordResetHelper.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('+%d seconds', self::RESET_TOKEN_LIFETIME)</code>
+    </DeprecatedFunction>
   </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument occurrences="1">
@@ -112,7 +173,16 @@
       <code>activate</code>
     </MissingReturnType>
   </file>
+  <file src="src/Model/ResetPasswordTokenComponents.php">
+    <DeprecatedFunction occurrences="2">
+      <code>substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH)</code>
+      <code>substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH)</code>
+    </DeprecatedFunction>
+  </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
+    <DeprecatedFunction occurrences="1">
+      <code>sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit)</code>
+    </DeprecatedFunction>
     <InvalidReturnStatement occurrences="1"/>
     <InvalidReturnType occurrences="1">
       <code>int</code>
