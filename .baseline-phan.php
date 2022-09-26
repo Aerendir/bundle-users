@@ -15,6 +15,7 @@ return [
     // PhanAccessClassConstantInternal : 2 occurrences
     // PhanUndeclaredMethod : 1 occurrence
     // PhanUnusedPublicFinalMethodParameter : 1 occurrence
+    // PhanUnusedVariableCaughtException : 1 occurrence
     // PhanWriteOnlyPrivateProperty : 1 occurrence
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
@@ -34,7 +35,7 @@ return [
         'src/Exception/UserClassMustImplementInterface.php' => ['PhanDeprecatedFunction'],
         'src/Exception/UsersManagerException.php' => ['PhanDeprecatedFunction'],
         'src/Form/Type/UserPasswordChangeType.php' => ['PhanUnusedPublicFinalMethodParameter'],
-        'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal', 'PhanDeprecatedFunction'],
+        'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal', 'PhanDeprecatedFunction', 'PhanUnusedVariableCaughtException'],
         'src/Manager/PasswordManager.php' => ['PhanAccessMethodInternal'],
         'src/Model/Property/HasPlainPasswordTrait.php' => ['PhanUnreferencedClass'],
         'src/Model/Property/PasswordResetTokenTrait.php' => ['PhanUnreferencedClass', 'PhanWriteOnlyPrivateProperty'],
