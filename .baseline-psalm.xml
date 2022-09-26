@@ -45,7 +45,8 @@
     <DeprecatedFunction occurrences="1">
       <code>sprintf('Roles added to user %s.', $this-&gt;unique)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="2">
+      <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
@@ -56,7 +57,8 @@
     <DeprecatedFunction occurrences="1">
       <code>sprintf('Roles removed from user %s.', $this-&gt;unique)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="2">
+      <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
@@ -67,7 +69,8 @@
     <DeprecatedFunction occurrences="1">
       <code>sprintf('User %s activated.', $this-&gt;unique)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="2">
+      <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
@@ -84,7 +87,8 @@
       <code>sprintf('Password for user %s: %s', $this-&gt;unique, $user-&gt;getPlainPassword())</code>
       <code>sprintf('User %s created.', $this-&gt;unique)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="2">
+      <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
@@ -98,7 +102,8 @@
     <DeprecatedFunction occurrences="1">
       <code>sprintf('User %s deactivated.', $this-&gt;unique)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="2">
+      <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
     <PossiblyUndefinedMethod occurrences="1">
