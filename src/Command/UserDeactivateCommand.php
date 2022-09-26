@@ -25,6 +25,9 @@ final class UserDeactivateCommand extends AbstractUserActivationCommand
     /** @var string */
     protected static $defaultName  = 'shq:user:deactivate';
 
+    /** @var string */
+    protected static $defaultDescription = 'Deactivates a user.';
+
     protected static string $title = 'Deactivate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
@@ -35,9 +38,7 @@ final class UserDeactivateCommand extends AbstractUserActivationCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->setDescription('Deactivates a user.')
-            ->setHelp(
-                <<<'EOT'
+        $this->setHelp(<<<'EOT'
 The <info>%command.name%</info> command deactivates the user:
 
   <info>php %command.full_name% Aerendir</info>

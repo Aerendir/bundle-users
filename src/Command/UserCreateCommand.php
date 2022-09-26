@@ -30,6 +30,9 @@ final class UserCreateCommand extends AbstractUsersCommand
     /** @var string */
     protected static $defaultName  = 'shq:user:create';
 
+    /** @var string */
+    protected static $defaultDescription = 'Creates a user.';
+
     protected static string $title = 'Create user';
     private ValidatorInterface $validator;
 
@@ -42,8 +45,7 @@ final class UserCreateCommand extends AbstractUsersCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->setDescription('Creates a user.')
-            ->addArgument('pass', InputArgument::REQUIRED, 'The password to assign to the user.')
+        $this->addArgument('pass', InputArgument::REQUIRED, 'The password to assign to the user.')
             ->setHelp(
                 <<<'EOT'
 The <info>%command.name%</info> command creates a user:

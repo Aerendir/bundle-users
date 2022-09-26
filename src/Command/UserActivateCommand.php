@@ -25,6 +25,9 @@ final class UserActivateCommand extends AbstractUserActivationCommand
     /** @var string */
     protected static $defaultName  = 'shq:user:activate';
 
+    /** @var string */
+    protected static $defaultDescription = 'Activates a user.';
+
     protected static string $title = 'Activate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
@@ -35,9 +38,7 @@ final class UserActivateCommand extends AbstractUserActivationCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->setDescription('Activates a user.')
-            ->setHelp(
-                <<<'EOT'
+        $this->setHelp(<<<'EOT'
 The <info>%command.name%</info> command activates the user:
 
   <info>php %command.full_name% Aerendir</info>
