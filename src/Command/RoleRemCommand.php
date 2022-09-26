@@ -26,6 +26,9 @@ final class RoleRemCommand extends AbstractUserRolesCommand
     /** @var string */
     protected static $defaultName  = 'shq:user:role:rem';
 
+    /** @var string */
+    protected static $defaultDescription = 'Adds one or more roles to a user.';
+
     protected static string $title = 'Add role';
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
@@ -37,9 +40,7 @@ final class RoleRemCommand extends AbstractUserRolesCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->setDescription('Adds one or more roles to a user.')
-            ->setHelp(
-                <<<'EOT'
+        $this->setHelp(<<<'EOT'
 The <info>%command.name%</info> command removes one or more roles from a user:
 
   <info>php %command.full_name% Aerendir ROLE_CUSTOM</info>
