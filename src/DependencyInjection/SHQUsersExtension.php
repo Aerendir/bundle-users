@@ -89,7 +89,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $propertyAccessorReference          = new Reference('property_accessor');
         $routerReference                    = new Reference('router.default');
         $userPasswordHasherFactoryReference = new Reference('security.password_hasher_factory');
-        $sessionReference                   = new Reference('session');
+        $sessionReference                   = new Reference('request_stack');
 
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
