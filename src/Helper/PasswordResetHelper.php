@@ -39,9 +39,11 @@ final class PasswordResetHelper
     public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator, RequestStack $requestStack)
     {
         $this->passwordResetTokenGenerator = $passwordResetTokenGenerator;
+
         try {
             $this->session = $requestStack->getSession();
-        } catch (\Throwable $e){}
+        } catch (\Throwable $throwable) {
+        }
     }
 
     public function getPasswordResetTokenGenerator(): PasswordResetTokenGenerator
