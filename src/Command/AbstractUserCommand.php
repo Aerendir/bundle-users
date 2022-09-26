@@ -26,6 +26,7 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
 {
     /**
      * @var HasActivationInterface|HasPlainPasswordInterface|HasRolesInterface|UserInterface
+     *
      * @suppress PhanWriteOnlyProtectedProperty
      */
     protected $user;

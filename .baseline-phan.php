@@ -9,6 +9,7 @@
  */
 return [
     // # Issue statistics:
+    // PhanDeprecatedFunction : 20+ occurrences
     // PhanAccessMethodInternal : 9 occurrences
     // PhanUnreferencedClass : 8 occurrences
     // PhanAccessClassConstantInternal : 2 occurrences
@@ -18,17 +19,27 @@ return [
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
-        'src/Command/RoleAddCommand.php' => ['PhanUnreferencedClass'],
-        'src/Command/RoleRemCommand.php' => ['PhanUnreferencedClass'],
-        'src/Command/UserActivateCommand.php' => ['PhanUnreferencedClass'],
-        'src/Command/UserCreateCommand.php' => ['PhanUndeclaredMethod', 'PhanUnreferencedClass'],
-        'src/Command/UserDeactivateCommand.php' => ['PhanUnreferencedClass'],
+        'src/Command/AbstractUserActivationCommand.php' => ['PhanDeprecatedFunction'],
+        'src/Command/AbstractUserCommand.php' => ['PhanDeprecatedFunction'],
+        'src/Command/AbstractUserRolesCommand.php' => ['PhanDeprecatedFunction'],
+        'src/Command/AbstractUsersCommand.php' => ['PhanDeprecatedFunction'],
+        'src/Command/RoleAddCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
+        'src/Command/RoleRemCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
+        'src/Command/UserActivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
+        'src/Command/UserCreateCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredMethod', 'PhanUnreferencedClass'],
+        'src/Command/UserDeactivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
         'src/DependencyInjection/SHQUsersExtension.php' => ['PhanUnreferencedClass'],
+        'src/Exception/PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface.php' => ['PhanDeprecatedFunction'],
+        'src/Exception/PasswordResetTokenClassNotImplemented.php' => ['PhanDeprecatedFunction'],
+        'src/Exception/UserClassMustImplementInterface.php' => ['PhanDeprecatedFunction'],
+        'src/Exception/UsersManagerException.php' => ['PhanDeprecatedFunction'],
         'src/Form/Type/UserPasswordChangeType.php' => ['PhanUnusedPublicFinalMethodParameter'],
-        'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal'],
+        'src/Helper/PasswordResetHelper.php' => ['PhanAccessMethodInternal', 'PhanDeprecatedFunction'],
         'src/Manager/PasswordManager.php' => ['PhanAccessMethodInternal'],
         'src/Model/Property/HasPlainPasswordTrait.php' => ['PhanUnreferencedClass'],
         'src/Model/Property/PasswordResetTokenTrait.php' => ['PhanUnreferencedClass', 'PhanWriteOnlyPrivateProperty'],
+        'src/Model/ResetPasswordTokenComponents.php' => ['PhanDeprecatedFunction'],
+        'src/Repository/PasswordResetTokenRepository.php' => ['PhanDeprecatedFunction'],
         'src/Util/PasswordResetTokenGenerator.php' => ['PhanAccessClassConstantInternal', 'PhanAccessMethodInternal'],
     ],
     // 'directory_suppressions' => ['src/directory_name' => ['PhanIssueName1', 'PhanIssueName2']] can be manually added if needed.
