@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.27.0@faf106e717c37b8c81721845dba9de3d8deed8ff">
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <DeprecatedFunction occurrences="1">
       <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasActivationInterface::class)</code>
@@ -10,6 +10,10 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="2">
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUserCommand.php">
     <DeprecatedFunction occurrences="1">
@@ -18,6 +22,10 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="2">
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
     <DeprecatedFunction occurrences="3">
@@ -34,6 +42,12 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="4">
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUsersCommand.php">
     <DeprecatedFunction occurrences="2">
@@ -52,6 +66,9 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/RoleRemCommand.php">
     <DeprecatedFunction occurrences="1">
@@ -64,6 +81,9 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserActivateCommand.php">
     <DeprecatedFunction occurrences="1">
@@ -79,6 +99,9 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserCreateCommand.php">
     <DeprecatedFunction occurrences="4">
@@ -97,6 +120,11 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="3">
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
     <DeprecatedFunction occurrences="1">
@@ -112,6 +140,9 @@
     <RedundantCast occurrences="1">
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
     <ParamNameMismatch occurrences="2">

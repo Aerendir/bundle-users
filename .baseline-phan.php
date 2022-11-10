@@ -10,6 +10,7 @@
 return [
     // # Issue statistics:
     // PhanDeprecatedFunction : 20+ occurrences
+    // PhanUndeclaredClassConstant : 15+ occurrences
     // PhanAccessMethodInternal : 9 occurrences
     // PhanUnreferencedClass : 8 occurrences
     // PhanAccessClassConstantInternal : 2 occurrences
@@ -20,15 +21,15 @@ return [
 
     // Currently, file_suppressions and directory_suppressions are the only supported suppressions
     'file_suppressions' => [
-        'src/Command/AbstractUserActivationCommand.php' => ['PhanDeprecatedFunction'],
-        'src/Command/AbstractUserCommand.php' => ['PhanDeprecatedFunction'],
-        'src/Command/AbstractUserRolesCommand.php' => ['PhanDeprecatedFunction'],
+        'src/Command/AbstractUserActivationCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant'],
+        'src/Command/AbstractUserCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant'],
+        'src/Command/AbstractUserRolesCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant'],
         'src/Command/AbstractUsersCommand.php' => ['PhanDeprecatedFunction'],
-        'src/Command/RoleAddCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
-        'src/Command/RoleRemCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
-        'src/Command/UserActivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
-        'src/Command/UserCreateCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredMethod', 'PhanUnreferencedClass'],
-        'src/Command/UserDeactivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUnreferencedClass'],
+        'src/Command/RoleAddCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant', 'PhanUnreferencedClass'],
+        'src/Command/RoleRemCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant', 'PhanUnreferencedClass'],
+        'src/Command/UserActivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant', 'PhanUnreferencedClass'],
+        'src/Command/UserCreateCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant', 'PhanUndeclaredMethod', 'PhanUnreferencedClass'],
+        'src/Command/UserDeactivateCommand.php' => ['PhanDeprecatedFunction', 'PhanUndeclaredClassConstant', 'PhanUnreferencedClass'],
         'src/DependencyInjection/SHQUsersExtension.php' => ['PhanUnreferencedClass'],
         'src/Exception/PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface.php' => ['PhanDeprecatedFunction'],
         'src/Exception/PasswordResetTokenClassNotImplemented.php' => ['PhanDeprecatedFunction'],
