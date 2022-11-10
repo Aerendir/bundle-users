@@ -76,7 +76,7 @@ EOT);
 
         $pass = $input->getArgument('pass');
         if (false === \is_string($pass)) {
-            return 1;
+            return (int) Command::FAILURE;
         }
 
         /** @var HasPlainPasswordInterface|UserInterface $user */
@@ -93,7 +93,7 @@ EOT);
 
             $this->io->error($message);
 
-            return 1;
+            return (int) Command::FAILURE;
         }
 
         $this->entityManager->flush();
@@ -102,7 +102,7 @@ EOT);
         $message = sprintf('User %s created.', $this->unique);
         $this->io->success($message);
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 
     protected function create(string $pass): UserInterface

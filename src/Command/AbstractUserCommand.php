@@ -45,11 +45,11 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
             $message = sprintf('User "%s" not found.', $this->unique);
             $this->io->error($message);
 
-            return 1;
+            return (int) Command::FAILURE;
         }
 
         $this->user = $user;
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 }

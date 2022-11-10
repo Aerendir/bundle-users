@@ -58,6 +58,6 @@ EOT);
         $message = sprintf('User %s deactivated.', $this->unique);
         $this->io->success($message);
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 }

@@ -57,12 +57,12 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
             $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class);
             $this->io->error($message);
 
-            return 1;
+            return (int) Command::FAILURE;
         }
 
         $roles = $input->getArgument('roles');
         if (false === \is_array($roles)) {
-            return 1;
+            return (int) Command::FAILURE;
         }
 
         $this->roles = $roles;
@@ -71,10 +71,10 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         if ([] !== $errors) {
             $this->printErrors($errors);
 
-            return 1;
+            return (int) Command::FAILURE;
         }
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 
     /**

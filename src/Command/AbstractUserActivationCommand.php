@@ -43,9 +43,9 @@ abstract class AbstractUserActivationCommand extends AbstractUserCommand
             $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class);
             $this->io->error($message);
 
-            return 1;
+            return (int) Command::FAILURE;
         }
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 }
