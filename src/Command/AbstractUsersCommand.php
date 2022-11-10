@@ -57,7 +57,7 @@ abstract class AbstractUsersCommand extends Command
 
         $unique = $input->getArgument('unique');
         if (false === \is_string($unique)) {
-            return 1;
+            return Command::FAILURE;
         }
 
         $this->unique = $unique;
@@ -69,7 +69,7 @@ abstract class AbstractUsersCommand extends Command
                 $message = sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers));
                 $this->io->error($message);
 
-                return 1;
+                return Command::FAILURE;
             }
 
             $provider = $availableManagers[0];
@@ -79,7 +79,7 @@ abstract class AbstractUsersCommand extends Command
             $message = 'Impossible to find a suitable user provider: please, check your security configuration.';
             $this->io->error($message);
 
-            return 1;
+            return Command::FAILURE;
         }
 
         $this->provider = $provider;
@@ -88,9 +88,9 @@ abstract class AbstractUsersCommand extends Command
             $message = sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers));
             $this->io->error($message);
 
-            return 1;
+            return Command::FAILURE;
         }
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

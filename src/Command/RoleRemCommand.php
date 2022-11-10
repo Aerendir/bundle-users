@@ -63,6 +63,6 @@ EOT);
         $message = sprintf('Roles removed from user %s.', $this->unique);
         $this->io->success($message);
 
-        return 0;
+        return (int) Command::SUCCESS;
     }
 }
