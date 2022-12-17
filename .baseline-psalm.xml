@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+<files psalm-version="5.2.0@fb685a16df3050d4c18d8a4100fe83abe6458cba">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <DeprecatedFunction occurrences="1">
       <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasActivationInterface::class)</code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="3">
+      <code>$user</code>
+      <code>$user</code>
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
@@ -36,7 +38,9 @@
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$roles</code>
     </MixedArgumentTypeCoercion>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType occurrences="3">
+      <code>$user</code>
+      <code>$user</code>
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast occurrences="1">
@@ -226,10 +230,14 @@
     <InvalidReturnType occurrences="1">
       <code>int</code>
     </InvalidReturnType>
-    <LessSpecificImplementedReturnType occurrences="2">
+    <LessSpecificImplementedReturnType occurrences="3">
+      <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
     </LessSpecificImplementedReturnType>
+    <MissingTemplateParam occurrences="1">
+      <code>PasswordResetTokenRepository</code>
+    </MissingTemplateParam>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
     <InvalidArgument occurrences="1">
