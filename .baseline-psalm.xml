@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.2.0@fb685a16df3050d4c18d8a4100fe83abe6458cba">
+<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <DeprecatedFunction occurrences="1">
       <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasActivationInterface::class)</code>
@@ -58,6 +58,9 @@
       <code>sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers))</code>
       <code>sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers))</code>
     </DeprecatedFunction>
+    <PossiblyUndefinedArrayOffset occurrences="1">
+      <code>$availableManagers[0]</code>
+    </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Command/RoleAddCommand.php">
     <DeprecatedFunction occurrences="1">
@@ -210,6 +213,11 @@
       <code>setRoles</code>
       <code>setRoles</code>
     </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/Manager/UsersManagerRegistry.php">
+    <PossiblyUndefinedArrayOffset occurrences="1">
+      <code>$availableManagers[0]</code>
+    </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
     <MissingReturnType occurrences="1">
