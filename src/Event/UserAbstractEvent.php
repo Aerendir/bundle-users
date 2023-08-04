@@ -23,7 +23,7 @@ abstract class UserAbstractEvent extends Event
 
     private UserInterface $user;
 
-    public function __construct(UserInterface $user, ?string $provider = null)
+    public function __construct(UserInterface $user, string $provider = null)
     {
         $this->provider = $provider;
         $this->user     = $user;

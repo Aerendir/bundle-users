@@ -31,7 +31,7 @@ final class UsersManagerRegistry
         $this->managers[$provider] = $manager;
     }
 
-    public function getManager(?string $provider = null): UsersManagerInterface
+    public function getManager(string $provider = null): UsersManagerInterface
     {
         $availableManagers = \array_keys($this->getManagers());
         if (null === $provider) {
