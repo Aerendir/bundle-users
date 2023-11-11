@@ -37,44 +37,21 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PasswordManager
 {
-    private int $passResetThrottlingMaxActiveTokens;
-    private int $passResetThrottlingMinTimeBetweenTokens;
-    private int $passResetLifespanAmountOf;
-    private string $passResetLifespanUnit;
-    private string $secUserClass;
-    private string $secUserProperty;
-    private EntityManagerInterface $entityManager;
-    private EventDispatcherInterface $eventDispatcher;
-    private PasswordHelper $passwordHelper;
-    private PasswordResetHelper $passwordResetHelper;
-    private ?PasswordResetTokenRepository $passwordResetTokenRepository;
-    private ?string $passResetTokenClass;
+    private readonly ?PasswordResetTokenRepository $passwordResetTokenRepository;
 
     public function __construct(
-        int $passResetThrottlingMaxActiveTokens,
-        int $passResetThrottlingMinTimeBetweenTokens,
-        int $passResetLifespanAmountOf,
-        string $passResetLifespanUnit,
-        string $secUserClass,
-        string $secUserProperty,
-        EntityManagerInterface $entityManager,
-        EventDispatcherInterface $eventDispatcher,
-        PasswordHelper $passwordHelper,
-        PasswordResetHelper $passwordResetHelper,
-        ?string $passResetTokenClass
+        private readonly int $passResetThrottlingMaxActiveTokens,
+        private readonly int $passResetThrottlingMinTimeBetweenTokens,
+        private readonly int $passResetLifespanAmountOf,
+        private readonly string $passResetLifespanUnit,
+        private readonly string $secUserClass,
+        private readonly string $secUserProperty,
+        private readonly EntityManagerInterface $entityManager,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly PasswordHelper $passwordHelper,
+        private readonly PasswordResetHelper $passwordResetHelper,
+        private readonly ?string $passResetTokenClass
     ) {
-        $this->passResetThrottlingMaxActiveTokens      = $passResetThrottlingMaxActiveTokens;
-        $this->passResetThrottlingMinTimeBetweenTokens = $passResetThrottlingMinTimeBetweenTokens;
-        $this->passResetLifespanAmountOf               = $passResetLifespanAmountOf;
-        $this->passResetLifespanUnit                   = $passResetLifespanUnit;
-        $this->secUserClass                            = $secUserClass;
-        $this->secUserProperty                         = $secUserProperty;
-        $this->entityManager                           = $entityManager;
-        $this->eventDispatcher                         = $eventDispatcher;
-        $this->passwordHelper                          = $passwordHelper;
-        $this->passwordResetHelper                     = $passwordResetHelper;
-        $this->passResetTokenClass                     = $passResetTokenClass;
-
         // Only load the repository if the reset password feature is activated,
         // That means, the entity class that represents the token is implemented.
         $passwordResetTokenRepository = null;

@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use function Safe\sprintf;
-
 final class PasswordResetTokenClassNotImplemented extends PasswordResetTokenException
 {
     public function __construct(?string $passResetTokenClass)

@@ -20,8 +20,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-use function Safe\sprintf;
-
 abstract class AbstractUserActivationCommand extends AbstractUserCommand
 {
     /** @var HasActivationInterface|UserInterface */
@@ -40,12 +38,12 @@ abstract class AbstractUserActivationCommand extends AbstractUserCommand
         }
 
         if ( ! $this->user instanceof HasActivationInterface) {
-            $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class);
+            $message = sprintf('User class "%s" must implement interface "%s".', $this->user::class, HasActivationInterface::class);
             $this->io->error($message);
 
-            return (int) Command::FAILURE;
+            return self::FAILURE;
         }
 
-        return (int) Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

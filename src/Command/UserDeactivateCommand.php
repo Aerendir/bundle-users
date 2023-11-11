@@ -15,19 +15,13 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use function Safe\sprintf;
-
+#[AsCommand('shq:user:deactivate', 'Deactivates a user.')]
 final class UserDeactivateCommand extends AbstractUserActivationCommand
 {
-    /** @var string */
-    protected static $defaultName  = 'shq:user:deactivate';
-
-    /** @var string */
-    protected static $defaultDescription = 'Deactivates a user.';
-
     protected static string $title = 'Deactivate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
@@ -58,6 +52,6 @@ EOT);
         $message = sprintf('User %s deactivated.', $this->unique);
         $this->io->success($message);
 
-        return (int) Command::SUCCESS;
+        return (int) self::SUCCESS;
     }
 }

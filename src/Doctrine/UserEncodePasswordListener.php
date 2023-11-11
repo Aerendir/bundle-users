@@ -27,11 +27,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 final class UserEncodePasswordListener
 {
-    private PasswordManager $passwordManager;
-
-    public function __construct(PasswordManager $passwordMa)
+    public function __construct(private readonly PasswordManager $passwordManager)
     {
-        $this->passwordManager = $passwordMa;
     }
 
     public function preFlush(UserInterface $user): void

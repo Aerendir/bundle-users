@@ -22,8 +22,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-use function Safe\sprintf;
-
 abstract class AbstractUserRolesCommand extends AbstractUserCommand
 {
     /** @var HasRolesInterface|UserInterface */
@@ -32,11 +30,8 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
     /** @var string[] */
     protected array $roles;
 
-    protected RolesValidator $rolesValidator;
-
-    public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(EntityManagerInterface $entityManager, protected RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
     {
-        $this->rolesValidator = $rolesValidator;
         parent::__construct($entityManager, $usersManagerRegistry);
     }
 
@@ -54,15 +49,15 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         }
 
         if ( ! $this->user instanceof HasRolesInterface) {
-            $message = sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class);
+            $message = sprintf('User class "%s" must implement interface "%s".', $this->user::class, HasRolesInterface::class);
             $this->io->error($message);
 
-            return (int) Command::FAILURE;
+            return (int) self::FAILURE;
         }
 
         $roles = $input->getArgument('roles');
         if (false === \is_array($roles)) {
-            return (int) Command::FAILURE;
+            return (int) self::FAILURE;
         }
 
         $this->roles = $roles;
@@ -71,10 +66,10 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
         if ([] !== $errors) {
             $this->printErrors($errors);
 
-            return (int) Command::FAILURE;
+            return (int) self::FAILURE;
         }
 
-        return (int) Command::SUCCESS;
+        return (int) self::SUCCESS;
     }
 
     /**

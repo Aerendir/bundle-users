@@ -16,6 +16,7 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -23,22 +24,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-use function Safe\sprintf;
-
+#[AsCommand('shq:user:create', 'Creates a user.')]
 final class UserCreateCommand extends AbstractUsersCommand
 {
-    /** @var string */
-    protected static $defaultName  = 'shq:user:create';
-
-    /** @var string */
-    protected static $defaultDescription = 'Creates a user.';
-
     protected static string $title = 'Create user';
-    private ValidatorInterface $validator;
 
-    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, ValidatorInterface $validator)
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, private readonly ValidatorInterface $validator)
     {
-        $this->validator             = $validator;
         parent::__construct($entityManager, $usersManagerRegistry);
     }
 
@@ -76,7 +68,7 @@ EOT);
 
         $pass = $input->getArgument('pass');
         if (false === \is_string($pass)) {
-            return (int) Command::FAILURE;
+            return (int) self::FAILURE;
         }
 
         /** @var HasPlainPasswordInterface|UserInterface $user */
@@ -93,7 +85,7 @@ EOT);
 
             $this->io->error($message);
 
-            return (int) Command::FAILURE;
+            return (int) self::FAILURE;
         }
 
         $this->entityManager->flush();
@@ -102,7 +94,7 @@ EOT);
         $message = sprintf('User %s created.', $this->unique);
         $this->io->success($message);
 
-        return (int) Command::SUCCESS;
+        return (int) self::SUCCESS;
     }
 
     protected function create(string $pass): UserInterface

@@ -15,8 +15,6 @@ namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 
-use function Safe\sprintf;
-
 final class PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface extends PasswordResetTokenException
 {
     public function __construct(string $passResetTokenClass)

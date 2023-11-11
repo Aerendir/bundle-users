@@ -16,19 +16,13 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use function Safe\sprintf;
-
+#[AsCommand('shq:user:role:add', 'Adds one or more roles to a user.')]
 final class RoleAddCommand extends AbstractUserRolesCommand
 {
-    /** @var string */
-    protected static $defaultName  = 'shq:user:role:add';
-
-    /** @var string */
-    protected static $defaultDescription = 'Adds one or more roles to a user.';
-
     protected static string $title = 'Add role';
 
     public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
@@ -63,6 +57,6 @@ EOT);
         $message = sprintf('Roles added to user %s.', $this->unique);
         $this->io->success($message);
 
-        return (int) Command::SUCCESS;
+        return (int) self::SUCCESS;
     }
 }

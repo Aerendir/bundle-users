@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,16 +23,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 trait PasswordResetTokenTrait
 {
-    /** @ORM\Column(type="string", length=20) */
+    #[ORM\Column(type: Types::STRING, length: 20)]
     private string $selector;
 
-    /** @ORM\Column(type="string", length=100) */
+    #[ORM\Column(type: Types::STRING, length: 100)]
     private string $hashedToken;
 
-    /** @ORM\Column(type="datetime_immutable") */
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $requestedAt;
 
-    /** @ORM\Column(type="datetime_immutable") */
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $expiresAt;
 
     public function activate(\DateTimeImmutable $expiresAt, string $selector, string $hashedToken): void
