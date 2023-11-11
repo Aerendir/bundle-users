@@ -22,8 +22,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function Safe\sprintf;
-
 abstract class AbstractUsersCommand extends Command
 {
     /** @var string The title to print when starting the command */
@@ -31,14 +29,10 @@ abstract class AbstractUsersCommand extends Command
 
     protected string $unique;
     protected string $provider;
-    protected EntityManagerInterface $entityManager;
-    protected UsersManagerRegistry $usersManagerRegistry;
     protected SymfonyStyle $io;
 
-    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(protected EntityManagerInterface $entityManager, protected UsersManagerRegistry $usersManagerRegistry)
     {
-        $this->entityManager        = $entityManager;
-        $this->usersManagerRegistry = $usersManagerRegistry;
         parent::__construct();
     }
 
@@ -57,7 +51,7 @@ abstract class AbstractUsersCommand extends Command
 
         $unique = $input->getArgument('unique');
         if (false === \is_string($unique)) {
-            return 1;
+            return self::FAILURE;
         }
 
         $this->unique = $unique;
@@ -69,7 +63,7 @@ abstract class AbstractUsersCommand extends Command
                 $message = sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers));
                 $this->io->error($message);
 
-                return 1;
+                return self::FAILURE;
             }
 
             $provider = $availableManagers[0];
@@ -79,7 +73,7 @@ abstract class AbstractUsersCommand extends Command
             $message = 'Impossible to find a suitable user provider: please, check your security configuration.';
             $this->io->error($message);
 
-            return 1;
+            return self::FAILURE;
         }
 
         $this->provider = $provider;
@@ -88,9 +82,9 @@ abstract class AbstractUsersCommand extends Command
             $message = sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers));
             $this->io->error($message);
 
-            return 1;
+            return self::FAILURE;
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 }

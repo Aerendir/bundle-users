@@ -17,8 +17,6 @@ use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-use function Safe\sprintf;
-
 class UserClassMustImplementInterface extends UsersException
 {
     /**

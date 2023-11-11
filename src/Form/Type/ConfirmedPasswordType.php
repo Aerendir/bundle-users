@@ -48,7 +48,7 @@ final class ConfirmedPasswordType extends AbstractType
                   ]),
                ],
            ],
-           'second_options' => [self::LABEL_KEY => 'form.label.confirmed_password.confirm_password'],
+           'second_options'     => [self::LABEL_KEY => 'form.label.confirmed_password.confirm_password'],
        ]);
     }
 

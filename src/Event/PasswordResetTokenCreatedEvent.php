@@ -22,13 +22,8 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 final class PasswordResetTokenCreatedEvent extends Event
 {
-    private PasswordResetTokenPublic $token;
-    private UserInterface $user;
-
-    public function __construct(UserInterface $user, PasswordResetTokenPublic $token)
+    public function __construct(private readonly UserInterface $user, private readonly PasswordResetTokenPublic $token)
     {
-        $this->token = $token;
-        $this->user  = $user;
     }
 
     public function getToken(): PasswordResetTokenPublic

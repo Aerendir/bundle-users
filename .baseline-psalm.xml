@@ -1,210 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.27.0@faf106e717c37b8c81721845dba9de3d8deed8ff">
+<files psalm-version="5.14.1@b9d355e0829c397b9b3b47d0c0ed042a8a70284d">
   <file src="src/Command/AbstractUserActivationCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasActivationInterface::class)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasActivationInterface::class)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType>
+      <code>$user</code>
+      <code>$user</code>
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUserCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('User "%s" not found.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('User "%s" not found.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
-    <DeprecatedFunction occurrences="3">
-      <code>sprintf('  - %s', $error)</code>
-      <code>sprintf('&gt; &lt;fg=green&gt;%s&lt;/&gt;', $role)</code>
-      <code>sprintf('User class "%s" must implement interface "%s".', \get_class($this-&gt;user), HasRolesInterface::class)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('  - %s', $error)]]></code>
+      <code><![CDATA[sprintf('> <fg=green>%s</>', $role)]]></code>
+      <code><![CDATA[sprintf('User class "%s" must implement interface "%s".', \get_class($this->user), HasRolesInterface::class)]]></code>
     </DeprecatedFunction>
-    <MixedArgumentTypeCoercion occurrences="1">
+    <MixedArgumentTypeCoercion>
       <code>$roles</code>
     </MixedArgumentTypeCoercion>
-    <NonInvariantDocblockPropertyType occurrences="1">
+    <NonInvariantDocblockPropertyType>
+      <code>$user</code>
+      <code>$user</code>
       <code>$user</code>
     </NonInvariantDocblockPropertyType>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/AbstractUsersCommand.php">
-    <DeprecatedFunction occurrences="2">
-      <code>sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers))</code>
-      <code>sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers))</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('The provider "%s" you passed is not configured in your "security.providers". Available providers are: %s', $provider, \implode(', ', $availableManagers))]]></code>
+      <code><![CDATA[sprintf('There is more than one provider configured in your "security.providers". Please, pass the option --provider to the command to use the right one. Available providers are: %s', \implode(', ', $availableManagers))]]></code>
     </DeprecatedFunction>
+    <PossiblyUndefinedArrayOffset>
+      <code>$availableManagers[0]</code>
+    </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Command/RoleAddCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('Roles added to user %s.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('Roles added to user %s.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="2">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/RoleRemCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('Roles removed from user %s.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('Roles removed from user %s.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="2">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserActivateCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('User %s activated.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('User %s activated.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="2">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <PossiblyUndefinedMethod occurrences="1">
+    <PossiblyUndefinedMethod>
       <code>activate</code>
     </PossiblyUndefinedMethod>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserCreateCommand.php">
-    <DeprecatedFunction occurrences="4">
-      <code>sprintf('&lt;error&gt;%s (%s =&gt; %s)&lt;/error&gt;', $error-&gt;getMessage(), $error-&gt;getPropertyPath(), $error-&gt;getInvalidValue())</code>
-      <code>sprintf('Impossible to create the user "%s".', $this-&gt;unique)</code>
-      <code>sprintf('Password for user %s: %s', $this-&gt;unique, $user-&gt;getPlainPassword())</code>
-      <code>sprintf('User %s created.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('<error>%s (%s => %s)</error>', $error->getMessage(), $error->getPropertyPath(), $error->getInvalidValue())]]></code>
+      <code><![CDATA[sprintf('Impossible to create the user "%s".', $this->unique)]]></code>
+      <code><![CDATA[sprintf('Password for user %s: %s', $this->unique, $user->getPlainPassword())]]></code>
+      <code><![CDATA[sprintf('User %s created.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="2">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <PossiblyUndefinedMethod occurrences="1">
+    <PossiblyUndefinedMethod>
       <code>getPlainPassword</code>
     </PossiblyUndefinedMethod>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+      <code>Command</code>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('User %s deactivated.', $this-&gt;unique)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('User %s deactivated.', $this->unique)]]></code>
     </DeprecatedFunction>
-    <NonInvariantDocblockPropertyType occurrences="2">
+    <NonInvariantDocblockPropertyType>
       <code>$defaultDescription</code>
       <code>$defaultName</code>
     </NonInvariantDocblockPropertyType>
-    <PossiblyUndefinedMethod occurrences="1">
+    <PossiblyUndefinedMethod>
       <code>activate</code>
     </PossiblyUndefinedMethod>
-    <RedundantCast occurrences="1">
+    <RedundantCast>
       <code>(int) $initialized</code>
     </RedundantCast>
+    <UndefinedClass>
+      <code>Command</code>
+    </UndefinedClass>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <ParamNameMismatch occurrences="2">
+    <ParamNameMismatch>
       <code>$containerBuilder</code>
       <code>$containerBuilder</code>
     </ParamNameMismatch>
   </file>
   <file src="src/Exception/PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('The entity %s MUST implement interface %s.', $passResetTokenClass, PasswordResetTokenInterface::class)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('The entity %s MUST implement interface %s.', $passResetTokenClass, PasswordResetTokenInterface::class)]]></code>
     </DeprecatedFunction>
   </file>
   <file src="src/Exception/PasswordResetTokenClassNotImplemented.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf("The entity class %s doesn't exist.", $passResetTokenClass)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf("The entity class %s doesn't exist.", $passResetTokenClass)]]></code>
     </DeprecatedFunction>
   </file>
   <file src="src/Exception/UserClassMustImplementInterface.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('The User class "%s" MUST implement the "%s" interface.', $this-&gt;getUserClass($user), $interfaceToImplement)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('The User class "%s" MUST implement the "%s" interface.', $this->getUserClass($user), $interfaceToImplement)]]></code>
     </DeprecatedFunction>
   </file>
   <file src="src/Exception/UsersManagerException.php">
-    <DeprecatedFunction occurrences="2">
-      <code>sprintf('Currently there are "%s" providers configured in "security.providers". Please, specify for which one you\'d like to get the UsersManager. Available providers are: %s', \count($availableProviders), \implode(', ', $availableProviders))</code>
-      <code>sprintf('The users manager for provider "%s" you are looking for doesn\'t exist. Please, be sure it is configured in "security.providers".', $provider)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('Currently there are "%s" providers configured in "security.providers". Please, specify for which one you\'d like to get the UsersManager. Available providers are: %s', \count($availableProviders), \implode(', ', $availableProviders))]]></code>
+      <code><![CDATA[sprintf('The users manager for provider "%s" you are looking for doesn\'t exist. Please, be sure it is configured in "security.providers".', $provider)]]></code>
     </DeprecatedFunction>
   </file>
   <file src="src/Helper/PasswordResetHelper.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('+%d seconds', self::RESET_TOKEN_LIFETIME)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('+%d seconds', self::RESET_TOKEN_LIFETIME)]]></code>
     </DeprecatedFunction>
-    <PropertyNotSetInConstructor occurrences="1">
+    <PropertyNotSetInConstructor>
       <code>$session</code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Manager/PasswordManager.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$plainPassword</code>
     </MixedArgument>
   </file>
   <file src="src/Manager/UsersManager.php">
-    <InvalidArgument occurrences="1">
+    <InvalidArgument>
       <code>$user</code>
     </InvalidArgument>
-    <InvalidReturnStatement occurrences="1">
+    <InvalidReturnStatement>
       <code>$user</code>
     </InvalidReturnStatement>
-    <InvalidReturnType occurrences="1">
+    <InvalidReturnType>
       <code>UserInterface</code>
     </InvalidReturnType>
-    <MixedArrayAccess occurrences="1">
+    <MixedArgumentTypeCoercion>
+      <code>\array_unique($currentRoles)</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
       <code>$currentRoles[$currentRoleKey]</code>
     </MixedArrayAccess>
-    <PossiblyInvalidArgument occurrences="1">
+    <PossiblyInvalidArgument>
       <code>$user</code>
     </PossiblyInvalidArgument>
-    <PossiblyUndefinedMethod occurrences="4">
+    <PossiblyUndefinedMethod>
       <code>getRoles</code>
       <code>getRoles</code>
       <code>setRoles</code>
       <code>setRoles</code>
     </PossiblyUndefinedMethod>
   </file>
+  <file src="src/Manager/UsersManagerRegistry.php">
+    <PossiblyUndefinedArrayOffset>
+      <code>$availableManagers[0]</code>
+    </PossiblyUndefinedArrayOffset>
+  </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
-    <MissingReturnType occurrences="1">
+    <MissingReturnType>
       <code>activate</code>
     </MissingReturnType>
   </file>
   <file src="src/Model/ResetPasswordTokenComponents.php">
-    <DeprecatedFunction occurrences="2">
+    <DeprecatedFunction>
       <code>substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH)</code>
       <code>substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH)</code>
     </DeprecatedFunction>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
-    <DeprecatedFunction occurrences="1">
-      <code>sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit)</code>
+    <DeprecatedFunction>
+      <code><![CDATA[sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit)]]></code>
     </DeprecatedFunction>
-    <InvalidReturnStatement occurrences="1"/>
-    <InvalidReturnType occurrences="1">
+    <InvalidReturnStatement>
+      <code><![CDATA[$this
+            ->createQueryBuilder('t')
+            ->delete()
+            ->where('t.expiresAt <= :time')
+            ->setParameter('time', $time)
+            ->getQuery()
+            ->getResult()]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
       <code>int</code>
     </InvalidReturnType>
-    <LessSpecificImplementedReturnType occurrences="2">
+    <LessSpecificImplementedReturnType>
+      <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
       <code>PasswordResetTokenInterface[]</code>
     </LessSpecificImplementedReturnType>
+    <MissingTemplateParam>
+      <code>PasswordResetTokenRepository</code>
+    </MissingTemplateParam>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
-    <InvalidArgument occurrences="1">
+    <InvalidArgument>
       <code>$selector</code>
     </InvalidArgument>
-    <PossiblyInvalidArgument occurrences="2">
+    <PossiblyInvalidArgument>
       <code>$verifier</code>
       <code>$verifier</code>
     </PossiblyInvalidArgument>

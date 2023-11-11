@@ -15,19 +15,11 @@ namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
 final class RoleInvalidException extends RolesException
 {
-    private string $role;
-
-    /** @var array<string,array<string>> $errors */
-    private array $errors;
-
     /**
      * @param array<string,array<string>> $errors
      */
-    public function __construct(string $role, array $errors)
+    public function __construct(private readonly string $role, private readonly array $errors)
     {
-        $this->role   = $role;
-        $this->errors = $errors;
-
         parent::__construct();
     }
 

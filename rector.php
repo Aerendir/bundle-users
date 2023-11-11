@@ -16,7 +16,7 @@ use Rector\Core\ValueObject\PhpVersion;
 use SerendipityHQ\Integration\Rector\SerendipityHQ;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->phpVersion(PhpVersion::PHP_74);
+    $rectorConfig->phpVersion(PhpVersion::PHP_81);
     $rectorConfig->paths([__DIR__ . '/src', __DIR__ . '/tests']);
 
     // This causes issues with controllers

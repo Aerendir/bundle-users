@@ -15,17 +15,12 @@ namespace SerendipityHQ\Bundle\UsersBundle\Model;
 
 final class PasswordResetTokenPublic
 {
-    /** Selector + non-hashed verifier token */
-    private string $publicToken;
-
-    private int $lifetime;
-    private \DateTimeInterface $expiresAt;
-
-    public function __construct(string $publicToken, \DateTimeInterface $expiresAt, int $lifetime)
-    {
-        $this->publicToken = $publicToken;
-        $this->expiresAt   = $expiresAt;
-        $this->lifetime    = $lifetime;
+    public function __construct(
+        /** Selector + non-hashed verifier token */
+        private readonly string $publicToken,
+        private readonly \DateTimeInterface $expiresAt,
+        private readonly int $lifetime
+    ) {
     }
 
     /**

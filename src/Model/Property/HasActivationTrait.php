@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Model\Property;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 trait HasActivationTrait
 {
-    /** @ORM\Column(type="boolean") */
+    #[ORM\Column(type: Types::BOOLEAN)]
     private bool $active = false;
 
     public function activate(bool $activate = true): void

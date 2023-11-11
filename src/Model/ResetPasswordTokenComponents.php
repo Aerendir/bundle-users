@@ -30,19 +30,13 @@ final class ResetPasswordTokenComponents
     /** @var int */
     public const TOKEN_VERIFIER_LENGTH = 20;
 
-    private string $verifier;
-
-    /** @var string Non-hashed random string used to fetch request objects from persistence */
-    private string $selector;
-
-    /** @var string The hashed non-public token used to validate reset password requests */
-    private string $hashedToken;
-
-    public function __construct(string $selector, string $verifier, string $hashedToken)
-    {
-        $this->selector    = $selector;
-        $this->verifier    = $verifier;
-        $this->hashedToken = $hashedToken;
+    public function __construct(
+        /** @var string Non-hashed random string used to fetch request objects from persistence */
+        private readonly string $selector,
+        private readonly string $verifier,
+        /** @var string The hashed non-public token used to validate reset password requests */
+        private readonly string $hashedToken
+    ) {
     }
 
     public static function extractSelectorFromPublicToken(string $publicToken): string

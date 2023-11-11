@@ -34,21 +34,8 @@ final class PasswordHelper
     private const METHOD = 'method';
     private const POST   = 'POST';
 
-    private string $secUserProperty;
-    private PasswordHasherFactoryInterface $hasherFactory;
-    private FormFactoryInterface $formFactory;
-    private RouterInterface $router;
-
-    public function __construct(
-        string $secUserProperty,
-        PasswordHasherFactoryInterface $hasherFactory,
-        FormFactoryInterface $formFactory,
-        RouterInterface $router
-    ) {
-        $this->secUserProperty = $secUserProperty;
-        $this->hasherFactory   = $hasherFactory;
-        $this->formFactory     = $formFactory;
-        $this->router          = $router;
+    public function __construct(private readonly string $secUserProperty, private readonly PasswordHasherFactoryInterface $hasherFactory, private readonly FormFactoryInterface $formFactory, private readonly RouterInterface $router)
+    {
     }
 
     public function createFormPasswordChange(HasPlainPasswordInterface $user): FormInterface

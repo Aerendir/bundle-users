@@ -26,7 +26,7 @@ class UsersException extends \Exception
     {
         $userClass = 'unknown';
         if (\is_object($user)) {
-            $userClass = \get_class($user);
+            $userClass = $user::class;
         }
 
         if (\is_string($user)) {

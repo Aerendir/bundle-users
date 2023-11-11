@@ -21,11 +21,8 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 final class PasswordResetTokenCreationFailedEvent extends Event
 {
-    private PasswordResetException $resetPasswordException;
-
-    public function __construct(PasswordResetException $resetPasswordException)
+    public function __construct(private readonly PasswordResetException $resetPasswordException)
     {
-        $this->resetPasswordException = $resetPasswordException;
     }
 
     public function getThrowable(): PasswordResetException

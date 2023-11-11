@@ -31,30 +31,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class UsersManager implements UsersManagerInterface
 {
-    private string $provider;
-    private string $secUserClass;
-    private string $secUserProperty;
-    private EventDispatcherInterface $dispatcher;
-    private EntityManagerInterface $entityManager;
-    private PropertyAccessor $propertyAccessor;
-    private RolesValidator $rolesValidator;
-
-    public function __construct(
-        string $provider,
-        string $secUserClass,
-        string $secUserProperty,
-        EventDispatcherInterface $dispatcher,
-        EntityManagerInterface $entityManager,
-        PropertyAccessor $propertyAccessor,
-        RolesValidator $rolesValidator
-    ) {
-        $this->provider         = $provider;
-        $this->secUserClass     = $secUserClass;
-        $this->secUserProperty  = $secUserProperty;
-        $this->dispatcher       = $dispatcher;
-        $this->entityManager    = $entityManager;
-        $this->propertyAccessor = $propertyAccessor;
-        $this->rolesValidator   = $rolesValidator;
+    public function __construct(private readonly string $provider, private readonly string $secUserClass, private readonly string $secUserProperty, private readonly EventDispatcherInterface $dispatcher, private readonly EntityManagerInterface $entityManager, private readonly PropertyAccessor $propertyAccessor, private readonly RolesValidator $rolesValidator)
+    {
     }
 
     public function create(string $unique, string $pass): UserInterface
@@ -72,7 +50,7 @@ final class UsersManager implements UsersManagerInterface
         } catch (NoSuchPropertyException $noSuchPropertyException) {
             $toThrow = $noSuchPropertyException;
 
-            if (false !== \strpos($noSuchPropertyException->getMessage(), HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)) {
+            if (str_contains($noSuchPropertyException->getMessage(), HasPlainPasswordInterface::FIELD_PLAIN_PASSWORD)) {
                 $toThrow = new UserClassMustImplementHasPlainPasswordInterface($this->secUserClass);
             }
 

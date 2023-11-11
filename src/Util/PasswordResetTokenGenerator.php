@@ -29,15 +29,8 @@ use function Safe\json_encode;
  */
 final class PasswordResetTokenGenerator
 {
-    private string $appSecret;
-    private string $userIdentifierProperty;
-    private PropertyAccessor $propertyAccessor;
-
-    public function __construct(string $appSecret, string $userIdentifierProperty, PropertyAccessor $propertyAccessor)
+    public function __construct(private readonly string $appSecret, private readonly string $userIdentifierProperty, private readonly PropertyAccessor $propertyAccessor)
     {
-        $this->appSecret              = $appSecret;
-        $this->userIdentifierProperty = $userIdentifierProperty;
-        $this->propertyAccessor       = $propertyAccessor;
     }
 
     /**

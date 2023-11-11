@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Exception;
 
-use function Safe\sprintf;
-
 /**
  * Exceptions related to UsersManager.
  */

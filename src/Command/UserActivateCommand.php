@@ -15,19 +15,13 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use function Safe\sprintf;
-
+#[AsCommand('shq:user:activate', 'Activates a user.')]
 final class UserActivateCommand extends AbstractUserActivationCommand
 {
-    /** @var string */
-    protected static $defaultName  = 'shq:user:activate';
-
-    /** @var string */
-    protected static $defaultDescription = 'Activates a user.';
-
     protected static string $title = 'Activate user';
 
     public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
@@ -58,6 +52,6 @@ EOT);
         $message = sprintf('User %s activated.', $this->unique);
         $this->io->success($message);
 
-        return 0;
+        return (int) self::SUCCESS;
     }
 }

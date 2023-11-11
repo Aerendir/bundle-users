@@ -20,8 +20,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-use function Safe\sprintf;
-
 abstract class AbstractUserCommand extends AbstractUsersCommand
 {
     /**
@@ -45,11 +43,11 @@ abstract class AbstractUserCommand extends AbstractUsersCommand
             $message = sprintf('User "%s" not found.', $this->unique);
             $this->io->error($message);
 
-            return 1;
+            return (int) self::FAILURE;
         }
 
         $this->user = $user;
 
-        return 0;
+        return (int) self::SUCCESS;
     }
 }

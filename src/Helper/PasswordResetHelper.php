@@ -19,8 +19,6 @@ use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-use function Safe\sprintf;
-
 final class PasswordResetHelper
 {
     public const RESET_PASSWORD_1_CHECK_EMAIL  = 'reset_password_1_check_email';
@@ -33,16 +31,13 @@ final class PasswordResetHelper
      */
     public const RESET_TOKEN_LIFETIME = 3600;
 
-    private PasswordResetTokenGenerator $passwordResetTokenGenerator;
     private SessionInterface $session;
 
-    public function __construct(PasswordResetTokenGenerator $passwordResetTokenGenerator, RequestStack $requestStack)
+    public function __construct(private readonly PasswordResetTokenGenerator $passwordResetTokenGenerator, RequestStack $requestStack)
     {
-        $this->passwordResetTokenGenerator = $passwordResetTokenGenerator;
-
         try {
             $this->session = $requestStack->getSession();
-        } catch (\Throwable $throwable) {
+        } catch (\Throwable) {
         }
     }
 
