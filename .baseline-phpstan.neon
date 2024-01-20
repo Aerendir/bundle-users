@@ -21,7 +21,7 @@ parameters:
 			path: src/Command/UserDeactivateCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$child of method Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\:\\:add\\(\\) expects string\\|Symfony\\\\Component\\\\Form\\\\FormBuilderInterface, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$child of method Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\<mixed\\>\\:\\:add\\(\\) expects string\\|Symfony\\\\Component\\\\Form\\\\FormBuilderInterface, mixed given\\.$#"
 			count: 1
 			path: src/Form/Type/PasswordResetRequestType.php
 
