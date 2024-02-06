@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 return [
     'target_php_version'                          => '8.2',
-    'minimum_severity'                            => \Phan\Issue::SEVERITY_LOW,
+    'minimum_severity'                            => Phan\Issue::SEVERITY_LOW,
 
     // A list of directories that should be parsed for class and
     // method information. After excluding the directories
