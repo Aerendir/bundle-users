@@ -47,10 +47,6 @@ final class PasswordResetTokenRepository extends EntityRepository
         return $this->findOneBy(['selector' => $selector]);
     }
 
-    /**
-     * @psalm-suppress MixedInferredReturnType
-     * @psalm-suppress MixedReturnStatement
-     */
     public function removeExpiredResetPasswordRequests(int $passResetLifespanAmountOf, string $passResetLifespanUnit): int
     {
         $time  = new DateTimeImmutable(sprintf('-%s %s', $passResetLifespanAmountOf, $passResetLifespanUnit));
