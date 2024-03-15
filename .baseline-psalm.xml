@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.20.0@3f284e96c9d9be6fe6b15c79416e1d1903dcfef4">
+<files psalm-version="5.22.2@d768d914152dbbf3486c36398802f74e80cfde48">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType>
-      <code>$user</code>
-      <code>$user</code>
-      <code>$user</code>
+      <code><![CDATA[$user]]></code>
+      <code><![CDATA[$user]]></code>
+      <code><![CDATA[$user]]></code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast>
-      <code>(int) $initialized</code>
+      <code><![CDATA[(int) $initialized]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserCommand.php">
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
     <MixedArgumentTypeCoercion>
-      <code>$roles</code>
+      <code><![CDATA[$roles]]></code>
     </MixedArgumentTypeCoercion>
     <NonInvariantDocblockPropertyType>
-      <code>$user</code>
-      <code>$user</code>
-      <code>$user</code>
+      <code><![CDATA[$user]]></code>
+      <code><![CDATA[$user]]></code>
+      <code><![CDATA[$user]]></code>
     </NonInvariantDocblockPropertyType>
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUsersCommand.php">
     <PossiblyUndefinedArrayOffset>
-      <code>$availableManagers[0]</code>
+      <code><![CDATA[$availableManagers[0]]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Command/RoleAddCommand.php">
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/RoleRemCommand.php">
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserActivateCommand.php">
     <PossiblyUndefinedMethod>
-      <code>activate</code>
+      <code><![CDATA[activate]]></code>
     </PossiblyUndefinedMethod>
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserCreateCommand.php">
@@ -66,95 +66,98 @@
       <code><![CDATA[$user->getPlainPassword()]]></code>
     </MixedArgument>
     <PossiblyUndefinedMethod>
-      <code>getPlainPassword</code>
+      <code><![CDATA[getPlainPassword]]></code>
     </PossiblyUndefinedMethod>
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::FAILURE</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::FAILURE]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
     <PossiblyUndefinedMethod>
-      <code>activate</code>
+      <code><![CDATA[activate]]></code>
     </PossiblyUndefinedMethod>
     <RedundantCast>
-      <code>(int) $initialized</code>
-      <code>(int) self::SUCCESS</code>
+      <code><![CDATA[(int) $initialized]]></code>
+      <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
     <ParamNameMismatch>
-      <code>$containerBuilder</code>
-      <code>$containerBuilder</code>
+      <code><![CDATA[$containerBuilder]]></code>
+      <code><![CDATA[$containerBuilder]]></code>
     </ParamNameMismatch>
   </file>
   <file src="src/Exception/PasswordResetTokenClassNotImplemented.php">
     <PossiblyNullArgument>
-      <code>$passResetTokenClass</code>
+      <code><![CDATA[$passResetTokenClass]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Helper/PasswordResetHelper.php">
     <PropertyNotSetInConstructor>
-      <code>$session</code>
+      <code><![CDATA[$session]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument>
-      <code>$plainPassword</code>
+      <code><![CDATA[$plainPassword]]></code>
     </MixedArgument>
   </file>
   <file src="src/Manager/UsersManager.php">
     <InvalidArgument>
-      <code>$user</code>
+      <code><![CDATA[$user]]></code>
     </InvalidArgument>
     <InvalidReturnStatement>
-      <code>$user</code>
+      <code><![CDATA[$user]]></code>
     </InvalidReturnStatement>
     <InvalidReturnType>
-      <code>UserInterface</code>
+      <code><![CDATA[UserInterface]]></code>
     </InvalidReturnType>
     <MixedArgumentTypeCoercion>
-      <code>\array_unique($currentRoles)</code>
+      <code><![CDATA[\array_unique($currentRoles)]]></code>
     </MixedArgumentTypeCoercion>
     <MixedArrayAccess>
-      <code>$currentRoles[$currentRoleKey]</code>
+      <code><![CDATA[$currentRoles[$currentRoleKey]]]></code>
     </MixedArrayAccess>
     <PossiblyInvalidArgument>
-      <code>$user</code>
+      <code><![CDATA[$user]]></code>
     </PossiblyInvalidArgument>
     <PossiblyUndefinedMethod>
-      <code>getRoles</code>
-      <code>getRoles</code>
-      <code>setRoles</code>
-      <code>setRoles</code>
+      <code><![CDATA[getRoles]]></code>
+      <code><![CDATA[getRoles]]></code>
+      <code><![CDATA[setRoles]]></code>
+      <code><![CDATA[setRoles]]></code>
     </PossiblyUndefinedMethod>
   </file>
   <file src="src/Manager/UsersManagerRegistry.php">
     <PossiblyNullArgument>
-      <code>$provider</code>
-      <code>$provider</code>
+      <code><![CDATA[$provider]]></code>
+      <code><![CDATA[$provider]]></code>
     </PossiblyNullArgument>
     <PossiblyNullArrayOffset>
       <code><![CDATA[$this->managers]]></code>
     </PossiblyNullArrayOffset>
     <PossiblyUndefinedArrayOffset>
-      <code>$availableManagers[0]</code>
+      <code><![CDATA[$availableManagers[0]]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Model/Property/PasswordResetTokenInterface.php">
     <MissingReturnType>
-      <code>activate</code>
+      <code><![CDATA[activate]]></code>
     </MissingReturnType>
   </file>
   <file src="src/Model/ResetPasswordTokenComponents.php">
     <DeprecatedFunction>
-      <code>substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH)</code>
-      <code>substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH)</code>
+      <code><![CDATA[substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH)]]></code>
+      <code><![CDATA[substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH)]]></code>
     </DeprecatedFunction>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
+    <DeprecatedConstant>
+      <code><![CDATA[Criteria::DESC]]></code>
+    </DeprecatedConstant>
     <InvalidReturnStatement>
       <code><![CDATA[$this
             ->createQueryBuilder('t')
@@ -165,28 +168,34 @@
             ->getResult()]]></code>
     </InvalidReturnStatement>
     <InvalidReturnType>
-      <code>int</code>
+      <code><![CDATA[int]]></code>
     </InvalidReturnType>
     <LessSpecificImplementedReturnType>
-      <code>PasswordResetTokenInterface[]</code>
-      <code>PasswordResetTokenInterface[]</code>
-      <code>PasswordResetTokenInterface[]</code>
+      <code><![CDATA[PasswordResetTokenInterface[]]]></code>
+      <code><![CDATA[PasswordResetTokenInterface[]]]></code>
+      <code><![CDATA[PasswordResetTokenInterface[]]]></code>
     </LessSpecificImplementedReturnType>
+    <MethodSignatureMustProvideReturnType>
+      <code><![CDATA[Bun]]></code>
+      <code><![CDATA[<aerendir]]></code>
+      <code><![CDATA[ers Bun]]></code>
+      <code><![CDATA[pi <ae]]></code>
+    </MethodSignatureMustProvideReturnType>
     <MissingTemplateParam>
-      <code>PasswordResetTokenRepository</code>
+      <code><![CDATA[PasswordResetTokenRepository]]></code>
     </MissingTemplateParam>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
     <ImplicitToStringCast>
-      <code>$selector</code>
+      <code><![CDATA[$selector]]></code>
     </ImplicitToStringCast>
     <PossiblyInvalidArgument>
-      <code>$verifier</code>
-      <code>$verifier</code>
+      <code><![CDATA[$verifier]]></code>
+      <code><![CDATA[$verifier]]></code>
     </PossiblyInvalidArgument>
     <TypeDoesNotContainType>
-      <code>false === $hashed</code>
-      <code>false === $hashed</code>
+      <code><![CDATA[false === $hashed]]></code>
+      <code><![CDATA[false === $hashed]]></code>
     </TypeDoesNotContainType>
   </file>
 </files>

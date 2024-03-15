@@ -41,7 +41,7 @@ final class PasswordResetTokenGenerator
      *
      * @todo The user was originally UserId: currently the Id is a field that may be not present.
      */
-    public function createToken(\DateTimeInterface $expiresAt, UserInterface $user, string $verifier = null): ResetPasswordTokenComponents
+    public function createToken(\DateTimeInterface $expiresAt, UserInterface $user, ?string $verifier = null): ResetPasswordTokenComponents
     {
         if (null === $verifier) {
             $verifier = ByteString::fromRandom(ResetPasswordTokenComponents::TOKEN_VERIFIER_LENGTH);
