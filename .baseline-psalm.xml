@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.22.2@d768d914152dbbf3486c36398802f74e80cfde48">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="src/Command/AbstractUserActivationCommand.php">
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$user]]></code>
@@ -85,6 +85,9 @@
     </RedundantCast>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
+    <InternalClass>
+      <code><![CDATA[Extension]]></code>
+    </InternalClass>
     <ParamNameMismatch>
       <code><![CDATA[$containerBuilder]]></code>
       <code><![CDATA[$containerBuilder]]></code>
@@ -186,13 +189,6 @@
     </MissingTemplateParam>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
-    <ImplicitToStringCast>
-      <code><![CDATA[$selector]]></code>
-    </ImplicitToStringCast>
-    <PossiblyInvalidArgument>
-      <code><![CDATA[$verifier]]></code>
-      <code><![CDATA[$verifier]]></code>
-    </PossiblyInvalidArgument>
     <TypeDoesNotContainType>
       <code><![CDATA[false === $hashed]]></code>
       <code><![CDATA[false === $hashed]]></code>

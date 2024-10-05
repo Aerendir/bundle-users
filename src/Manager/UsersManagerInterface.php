@@ -29,7 +29,7 @@ interface UsersManagerInterface
         EventDispatcherInterface $dispatcher,
         EntityManagerInterface $entityManager,
         PropertyAccessor $propertyAccessor,
-        RolesValidator $rolesValidator
+        RolesValidator $rolesValidator,
     );
 
     public function create(string $unique, string $pass): UserInterface;

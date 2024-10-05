@@ -21,7 +21,7 @@ abstract class UserAbstractEvent extends Event
     public function __construct(
         private readonly UserInterface $user,
         /** @var string|null May be null when extended by custom events in implementing apps: they may not need to specify the provider. */
-        private readonly ?string $provider = null
+        private readonly ?string $provider = null,
     ) {
     }
 
