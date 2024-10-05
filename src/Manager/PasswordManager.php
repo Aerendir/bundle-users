@@ -50,7 +50,7 @@ final class PasswordManager
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly PasswordHelper $passwordHelper,
         private readonly PasswordResetHelper $passwordResetHelper,
-        private readonly ?string $passResetTokenClass
+        private readonly ?string $passResetTokenClass,
     ) {
         // Only load the repository if the reset password feature is activated,
         // That means, the entity class that represents the token is implemented.

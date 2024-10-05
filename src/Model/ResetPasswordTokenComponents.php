@@ -35,7 +35,7 @@ final class ResetPasswordTokenComponents
         private readonly string $selector,
         private readonly string $verifier,
         /** @var string The hashed non-public token used to validate reset password requests */
-        private readonly string $hashedToken
+        private readonly string $hashedToken,
     ) {
     }
 
