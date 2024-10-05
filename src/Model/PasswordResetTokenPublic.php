@@ -19,7 +19,7 @@ final class PasswordResetTokenPublic
         /** Selector + non-hashed verifier token */
         private readonly string $publicToken,
         private readonly \DateTimeInterface $expiresAt,
-        private readonly int $lifetime
+        private readonly int $lifetime,
     ) {
     }
 
