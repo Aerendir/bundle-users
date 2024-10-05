@@ -44,10 +44,10 @@ final class PasswordResetTokenGenerator
     public function createToken(\DateTimeInterface $expiresAt, UserInterface $user, ?string $verifier = null): ResetPasswordTokenComponents
     {
         if (null === $verifier) {
-            $verifier = ByteString::fromRandom(ResetPasswordTokenComponents::TOKEN_VERIFIER_LENGTH);
+            $verifier = ByteString::fromRandom(ResetPasswordTokenComponents::TOKEN_VERIFIER_LENGTH)->toString();
         }
 
-        $selector    = ByteString::fromRandom(ResetPasswordTokenComponents::TOKEN_VERIFIER_LENGTH);
+        $selector    = ByteString::fromRandom(ResetPasswordTokenComponents::TOKEN_VERIFIER_LENGTH)->toString();
         $hashedToken = $this->generateHashedToken($expiresAt, $user, $verifier);
 
         return new ResetPasswordTokenComponents($selector, $verifier, $hashedToken);
