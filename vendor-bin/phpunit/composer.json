@@ -1,10 +1,10 @@
 {
     "require-dev": {
-        "symfony/phpunit-bridge": "7.0.3",
-        "vimeo/psalm": "5.22.2",
-        "psalm/plugin-phpunit": "0.18.4",
+        "symfony/phpunit-bridge": "7.1.4",
+        "vimeo/psalm": "5.26.1",
+        "psalm/plugin-phpunit": "0.19.0",
         "weirdan/doctrine-psalm-plugin": "2.9.0",
-        "phpunit/phpunit": "9.6.17",
+        "phpunit/phpunit": "9.6.19",
         "symfony/framework-bundle": "~5.4"
     },
     "config": {
