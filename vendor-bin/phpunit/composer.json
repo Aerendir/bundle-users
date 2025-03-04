@@ -5,7 +5,7 @@
         "psalm/plugin-phpunit": "0.19.0",
         "weirdan/doctrine-psalm-plugin": "2.9.0",
         "phpunit/phpunit": "9.6.19",
-        "symfony/framework-bundle": "~5.4"
+        "symfony/framework-bundle": "~7.2"
     },
     "config": {
         "allow-plugins": {
