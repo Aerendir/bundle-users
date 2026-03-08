@@ -15,13 +15,13 @@ jobs:
             fail-fast: false
             matrix:
                 os: [ ubuntu-latest ]
-                php: [ '8.1', '8.2' ]
-                symfony: [ '~5.4', '~6.0' ]
+                php: [ '8.2' ]
+                symfony: [ '~5.4', '~6.4' ]
 
                 # This combination is not installable
                 exclude:
-                    - php: '7.4'
-                      symfony: '~6.0'
+                    - php: '8.2'
+                      symfony: '~5.4' # Just a placeholder
 
         steps:
             -   name: Checkout

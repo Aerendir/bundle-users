@@ -1,56 +1,63 @@
 {
     "name": "serendipity_hq/bundle-users",
     "description": "A Symfony bundle that helps manage users in a Symfony app.",
-    "keywords": ["user", "users"],
-    "homepage": "https://github.com/Aerendir/bundle-users",
-    "type": "symfony-bundle",
     "license": "MIT",
+    "type": "symfony-bundle",
+    "keywords": [
+        "user",
+        "users"
+    ],
     "authors": [
         {
             "name": "Adamo Aerendir Crespi",
             "email": "hello@aerendir.me"
         }
     ],
+    "homepage": "https://github.com/Aerendir/bundle-users",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-json": "*",
-        "doctrine/orm": "^2.7 | ^3.0",
+        "doctrine/orm": "^2.7 || ^3.0",
         "nesbot/carbon": "^2.0 || ^3.0",
-        "symfony/console": "~5.4|~6.4|~7.0",
-        "symfony/form": "~5.4|~6.4|~7.0",
-        "symfony/property-access": "~5.4|~6.4|~7.0",
-        "symfony/string": "~5.4|~6.4|~7.0",
-        "symfony/validator": "~5.4|~6.4|~7.0",
-        "thecodingmachine/safe": "^1.0|^2.0|^3.0"
+        "symfony/console": "^5.4 || ^6.4 || ^7.0",
+        "symfony/form": "^5.4 || ^6.4 || ^7.0",
+        "symfony/property-access": "^5.4 || ^6.4 || ^7.0",
+        "symfony/string": "^5.4 || ^6.4 || ^7.0",
+        "symfony/validator": "^5.4 || ^6.4 || ^7.0",
+        "thecodingmachine/safe": "^1.0 || ^2.0 || ^3.0"
     },
     "require-dev": {
         "ext-ast": "*",
         "bamarni/composer-bin-plugin": "^1.4",
-        "phpstan/phpstan": "1.10.66",
-        "phpstan/phpstan-doctrine": "1.3.65",
-        "phpstan/phpstan-phpunit": "1.3.16",
-        "phpstan/phpstan-symfony": "1.3.9",
-        "rector/rector": "1.0.4",
+        "doctrine/doctrine-bundle": "~2.13.0",
+        "phpdocumentor/reflection-docblock": "^5.0 || ^6.0",
+        "phpdocumentor/type-resolver": "^1.8",
+        "phpstan/phpstan": "2.1.40",
+        "phpstan/phpstan-doctrine": "2.0.18",
+        "phpstan/phpstan-phpunit": "2.0.16",
+        "phpstan/phpstan-symfony": "2.0.15",
+        "rector/rector": "2.3.8",
         "roave/security-advisories": "dev-master",
         "serendipity_hq/rector-config": "^1.0",
-        "symfony/browser-kit": "~5.4|~6.4|~7.0",
-        "symfony/css-selector": "~5.4|~6.4|~7.0",
-        "symfony/debug-bundle": "~5.4|~6.4|~7.0",
-        "symfony/monolog-bundle": "^2|^3",
-        "symfony/phpunit-bridge": "~5.4|~6.0 || ^6.0|^7.0",
-        "symfony/security-core": "~5.4|~6.4|~7.0",
-        "symfony/stopwatch": "~5.4|~6.4|~7.0",
-        "symfony/twig-bundle": "~5.4|~6.4|~7.0",
-        "symfony/var-dumper": "~5.4|~6.4|~7.0",
-        "symfony/web-profiler-bundle": "~5.4|~6.4|~7.0",
-        "thecodingmachine/phpstan-safe-rule": "1.2.0"
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "bamarni/composer-bin-plugin": true
-        }
+        "symfony/browser-kit": "^5.4 || ^6.4 || ^7.0",
+        "symfony/config": "^5.4 || ^6.4 || ^7.0",
+        "symfony/css-selector": "^5.4 || ^6.4 || ^7.0",
+        "symfony/debug-bundle": "^5.4 || ^6.4 || ^7.0",
+        "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.0",
+        "symfony/dotenv": "^5.4 || ^6.4 || ^7.0",
+        "symfony/flex": "^2.0",
+        "symfony/framework-bundle": "^5.4 || ^6.4 || ^7.0",
+        "symfony/monolog-bundle": "^2 || ^3",
+        "symfony/phpunit-bridge": "^5.4 || ^6.0 || ^7.0",
+        "symfony/security-bundle": "^5.4 || ^6.4 || ^7.0",
+        "symfony/security-core": "^5.4 || ^6.4 || ^7.0",
+        "symfony/stopwatch": "^5.4 || ^6.4 || ^7.0",
+        "symfony/twig-bundle": "^5.4 || ^6.4 || ^7.0",
+        "symfony/var-dumper": "^5.4 || ^6.4 || ^7.0",
+        "symfony/web-profiler-bundle": "^5.4 || ^6.4 || ^7.0",
+        "symfony/yaml": "^5.4 || ^6.4 || ^7.0",
+        "thecodingmachine/phpstan-safe-rule": "1.4.3",
+        "zenstruck/foundry": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -62,18 +69,140 @@
             "SerendipityHQ\\Bundle\\UsersBundle\\Tests\\": "tests"
         }
     },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "symfony/flex": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": false
+        },
+        "src-dir": "tests/Fixtures/App",
+        "symfony": {
+            "allow-contrib": false,
+            "docker": false
+        }
+    },
     "scripts": {
-        "bin": "echo 'bin not installed'",
         "post-install-cmd": [
             "@composer bin all install --ansi"
         ],
         "post-update-cmd": [
             "@composer bin all update --ansi"
+        ],
+        "bin": "echo 'bin not installed'",
+        "bl": [
+            "@bl:phpstan",
+            "@bl:psalm"
+        ],
+        "bl:phpstan": [
+            "vendor/bin/phpstan analyse --generate-baseline .baseline-phpstan.neon"
+        ],
+        "bl:psalm": [
+            "vendor-bin/phpunit/vendor/bin/psalm --set-baseline=.baseline-psalm.xml"
+        ],
+        "dev:insights": [
+            "./vendor-bin/phpinsights/vendor/bin/phpinsights analyse --composer=./composer.json -v"
+        ],
+        "fix": [
+            "@fix:rector",
+            "@fix:phpcs",
+            "@fix:cn"
+        ],
+        "fix:cn": [
+            "composer bin cn normalize ./../../composer.json --no-scripts --no-update-lock"
+        ],
+        "fix:phpcs": [
+            "vendor-bin/phpcs/vendor/bin/php-cs-fixer fix --allow-risky yes -v"
+        ],
+        "fix:rector": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/rector process"
+        ],
+        "matrix:compare": [
+            "vendor-bin/ghmatrix/vendor/bin/github-actions-matrix compare"
+        ],
+        "matrix:sync": [
+            "vendor-bin/ghmatrix/vendor/bin/github-actions-matrix sync"
+        ],
+        "test": [
+            "@test:run"
+        ],
+        "test:coverage": [
+            "@test:run:coverage"
+        ],
+        "test:infection:covered": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:fast": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --git-diff-filter=AM --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:full": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --logger-html=./var/mutations"
+        ],
+        "test:infection:run:covered": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:run:fast": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --git-diff-filter=AM --logger-html=./var/mutations --only-covered --only-covering-test-cases"
+        ],
+        "test:infection:run:full": [
+            "@putenv SYMFONY_DEPRECATIONS_HELPER=weak",
+            "vendor-bin/infection/vendor/bin/infection --skip-initial-tests --coverage=./var/coverage/ --logger-html=./var/mutations"
+        ],
+        "test:run": [
+            "@php vendor-bin/phpunit/vendor/bin/phpunit"
+        ],
+        "test:run:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@test:run --coverage-html ./var/coverage/coverage-html --coverage-clover ./var/coverage/clover.xml --coverage-xml ./var/coverage/coverage-xml --log-junit ./var/coverage/junit.xml"
+        ],
+        "test:run:coverage:filter": [
+            "@test:run:coverage --filter"
+        ],
+        "val": [
+            "@val:style",
+            "@val:static"
+        ],
+        "val:cn": [
+            "composer bin cn normalize ./../../composer.json --dry-run"
+        ],
+        "val:composer": [
+            "@val:cn",
+            "composer audit",
+            "composer validate --strict --check-lock"
+        ],
+        "val:phpcs": [
+            "vendor-bin/phpcs/vendor/bin/php-cs-fixer fix --allow-risky yes -v --dry-run"
+        ],
+        "val:phpstan": [
+            "vendor/bin/phpstan analyse"
+        ],
+        "val:psalm": [
+            "vendor-bin/phpunit/vendor/bin/psalm"
+        ],
+        "val:rector": [
+            "vendor/bin/rector process --dry-run"
+        ],
+        "val:static": [
+            "@val:composer",
+            "@val:phpstan",
+            "@val:psalm"
+        ],
+        "val:style": [
+            "@val:rector",
+            "@val:phpcs",
+            "@val:cn"
         ]
-    },
-    "extra": {
-        "bamarni-bin": {
-            "bin-links": false
-        }
     }
 }

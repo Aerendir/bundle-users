@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+<files psalm-version="6.15.1@28dc127af1b5aecd52314f6f645bafc10d0e11f9">
   <file src="src/Command/AbstractUserActivationCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$user]]></code>
       <code><![CDATA[$user]]></code>
@@ -11,6 +14,12 @@
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$user]]></code>
+    </PossiblyUnusedProperty>
     <RedundantCast>
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::FAILURE]]></code>
@@ -18,9 +27,10 @@
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUserRolesCommand.php">
-    <MixedArgumentTypeCoercion>
-      <code><![CDATA[$roles]]></code>
-    </MixedArgumentTypeCoercion>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <NonInvariantDocblockPropertyType>
       <code><![CDATA[$user]]></code>
       <code><![CDATA[$user]]></code>
@@ -29,29 +39,54 @@
     <RedundantCast>
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::FAILURE]]></code>
-      <code><![CDATA[(int) self::FAILURE]]></code>
-      <code><![CDATA[(int) self::FAILURE]]></code>
       <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
   </file>
   <file src="src/Command/AbstractUsersCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUndefinedArrayOffset>
       <code><![CDATA[$availableManagers[0]]]></code>
     </PossiblyUndefinedArrayOffset>
   </file>
+  <file src="src/Command/Arguments/RolesCommandArgument.php">
+    <MixedArgument>
+      <code><![CDATA[$roles]]></code>
+    </MixedArgument>
+  </file>
   <file src="src/Command/RoleAddCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <RedundantCast>
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
+    <UnusedClass>
+      <code><![CDATA[RoleAddCommand]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Command/RoleRemCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <RedundantCast>
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
+    <UnusedClass>
+      <code><![CDATA[RoleRemCommand]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Command/UserActivateCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUndefinedMethod>
       <code><![CDATA[activate]]></code>
     </PossiblyUndefinedMethod>
@@ -59,8 +94,15 @@
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
+    <UnusedClass>
+      <code><![CDATA[UserActivateCommand]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Command/UserCreateCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <MixedArgument>
       <code><![CDATA[$error->getInvalidValue()]]></code>
       <code><![CDATA[$user->getPlainPassword()]]></code>
@@ -68,14 +110,15 @@
     <PossiblyUndefinedMethod>
       <code><![CDATA[getPlainPassword]]></code>
     </PossiblyUndefinedMethod>
-    <RedundantCast>
-      <code><![CDATA[(int) $initialized]]></code>
-      <code><![CDATA[(int) self::FAILURE]]></code>
-      <code><![CDATA[(int) self::FAILURE]]></code>
-      <code><![CDATA[(int) self::SUCCESS]]></code>
-    </RedundantCast>
+    <UnusedClass>
+      <code><![CDATA[UserCreateCommand]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Command/UserDeactivateCommand.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function configure(): void]]></code>
+      <code><![CDATA[protected function execute(InputInterface $input, OutputInterface $output): int]]></code>
+    </MissingOverrideAttribute>
     <PossiblyUndefinedMethod>
       <code><![CDATA[activate]]></code>
     </PossiblyUndefinedMethod>
@@ -83,30 +126,73 @@
       <code><![CDATA[(int) $initialized]]></code>
       <code><![CDATA[(int) self::SUCCESS]]></code>
     </RedundantCast>
+    <UnusedClass>
+      <code><![CDATA[UserDeactivateCommand]]></code>
+    </UnusedClass>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <InternalClass>
-      <code><![CDATA[Extension]]></code>
-    </InternalClass>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function load(array $configs, ContainerBuilder $containerBuilder): void]]></code>
+      <code><![CDATA[public function prepend(ContainerBuilder $containerBuilder): void]]></code>
+    </MissingOverrideAttribute>
     <ParamNameMismatch>
       <code><![CDATA[$containerBuilder]]></code>
       <code><![CDATA[$containerBuilder]]></code>
     </ParamNameMismatch>
+  </file>
+  <file src="src/Doctrine/UserEncodePasswordListener.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[preFlush]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/Exception/PasswordResetTokenClassNotImplemented.php">
     <PossiblyNullArgument>
       <code><![CDATA[$passResetTokenClass]]></code>
     </PossiblyNullArgument>
   </file>
+  <file src="src/Form/Type/ConfirmedPasswordType.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function configureOptions(OptionsResolver $resolver): void]]></code>
+      <code><![CDATA[public function getParent(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Form/Type/PasswordResetRequestType.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function buildForm(FormBuilderInterface $builder, array $options): void]]></code>
+      <code><![CDATA[public function configureOptions(OptionsResolver $resolver): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Form/Type/PasswordResetType.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function buildForm(FormBuilderInterface $builder, array $options): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Form/Type/UserPasswordChangeType.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function buildForm(FormBuilderInterface $builder, array $options): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Helper/PasswordResetHelper.php">
     <PropertyNotSetInConstructor>
       <code><![CDATA[$session]]></code>
     </PropertyNotSetInConstructor>
   </file>
+  <file src="src/Kernel.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Kernel]]></code>
+    </ClassMustBeFinal>
+  </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument>
       <code><![CDATA[$plainPassword]]></code>
     </MixedArgument>
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[PasswordResetTokenInterface]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedReturnValue>
+      <code><![CDATA[?\DateTimeInterface]]></code>
+    </UnusedReturnValue>
   </file>
   <file src="src/Manager/UsersManager.php">
     <InvalidArgument>
@@ -118,6 +204,12 @@
     <InvalidReturnType>
       <code><![CDATA[UserInterface]]></code>
     </InvalidReturnType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function addRoles($user, $rolesToAdd)]]></code>
+      <code><![CDATA[public function create(string $unique, string $pass): UserInterface]]></code>
+      <code><![CDATA[public function load(string $primaryProperty): ?UserInterface]]></code>
+      <code><![CDATA[public function removeRoles($user, $rolesToRemove)]]></code>
+    </MissingOverrideAttribute>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[\array_unique($currentRoles)]]></code>
     </MixedArgumentTypeCoercion>
@@ -133,6 +225,16 @@
       <code><![CDATA[setRoles]]></code>
       <code><![CDATA[setRoles]]></code>
     </PossiblyUndefinedMethod>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[passwordChanged]]></code>
+      <code><![CDATA[updated]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Manager/UsersManagerInterface.php">
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[HasRolesInterface|UserInterface]]></code>
+      <code><![CDATA[HasRolesInterface|UserInterface]]></code>
+    </PossiblyUnusedReturnValue>
   </file>
   <file src="src/Manager/UsersManagerRegistry.php">
     <PossiblyNullArgument>
@@ -151,11 +253,23 @@
       <code><![CDATA[activate]]></code>
     </MissingReturnType>
   </file>
-  <file src="src/Model/ResetPasswordTokenComponents.php">
-    <DeprecatedFunction>
-      <code><![CDATA[substr($publicToken, 0, self::TOKEN_SELECTOR_LENGTH)]]></code>
-      <code><![CDATA[substr($publicToken, self::TOKEN_SELECTOR_LENGTH, self::TOKEN_VERIFIER_LENGTH)]]></code>
-    </DeprecatedFunction>
+  <file src="src/Model/Property/PasswordResetTokenTrait.php">
+    <MissingConstructor>
+      <code><![CDATA[$expiresAt]]></code>
+      <code><![CDATA[$expiresAt]]></code>
+      <code><![CDATA[$hashedToken]]></code>
+      <code><![CDATA[$hashedToken]]></code>
+      <code><![CDATA[$requestedAt]]></code>
+      <code><![CDATA[$requestedAt]]></code>
+      <code><![CDATA[$selector]]></code>
+      <code><![CDATA[$selector]]></code>
+    </MissingConstructor>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[setExpiresAt]]></code>
+      <code><![CDATA[setHashedToken]]></code>
+      <code><![CDATA[setRequestedAt]]></code>
+      <code><![CDATA[setSelector]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/Repository/PasswordResetTokenRepository.php">
     <DeprecatedConstant>
@@ -188,10 +302,312 @@
       <code><![CDATA[PasswordResetTokenRepository]]></code>
     </MissingTemplateParam>
   </file>
+  <file src="src/Story/AppStory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function build(): void]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[AppStory]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function createToken(\DateTimeInterface $expiresAt, UserInterface $user, ?string $verifier = null): ResetPasswordTokenComponents]]></code>
+    </MissingOverrideAttribute>
     <TypeDoesNotContainType>
       <code><![CDATA[false === $hashed]]></code>
       <code><![CDATA[false === $hashed]]></code>
     </TypeDoesNotContainType>
+  </file>
+  <file src="src/Validator/RolesValidator.php">
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(string) $role]]></code>
+    </RedundantCastGivenDocblockType>
+  </file>
+  <file src="tests/Fixtures/App/Controller/TestController.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[confirmedPassword]]></code>
+      <code><![CDATA[passwordChange]]></code>
+      <code><![CDATA[passwordReset]]></code>
+      <code><![CDATA[passwordResetRequest]]></code>
+    </PossiblyUnusedMethod>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[TestController]]></code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="tests/Fixtures/App/Entity/PasswordResetToken.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[PasswordResetToken]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function activate(\DateTimeImmutable $expiresAt, string $selector, string $hashedToken): void]]></code>
+      <code><![CDATA[public function getUser(): UserInterface]]></code>
+    </MissingOverrideAttribute>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[PasswordResetTokenRepository::class]]></code>
+    </MixedArgumentTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getId]]></code>
+    </PossiblyUnusedMethod>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[PasswordResetToken]]></code>
+      <code><![CDATA[PasswordResetToken]]></code>
+      <code><![CDATA[PasswordResetToken]]></code>
+      <code><![CDATA[PasswordResetToken]]></code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="tests/Fixtures/App/Entity/User.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[User]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function activate(bool $activate = true): void]]></code>
+      <code><![CDATA[public function eraseCredentials(): void]]></code>
+      <code><![CDATA[public function getPassword(): ?string]]></code>
+      <code><![CDATA[public function getPlainPassword(): ?string]]></code>
+      <code><![CDATA[public function getRoles(): array]]></code>
+      <code><![CDATA[public function getUserIdentifier(): string]]></code>
+      <code><![CDATA[public function isActive(): bool]]></code>
+      <code><![CDATA[public function setPassword(string $password): void]]></code>
+      <code><![CDATA[public function setPlainPassword(string $plainPassword): void]]></code>
+      <code><![CDATA[public function setRoles(array $roles): void]]></code>
+    </MissingOverrideAttribute>
+    <ParamNameMismatch>
+      <code><![CDATA[$plainPassword]]></code>
+    </ParamNameMismatch>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[setActive]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/Fixtures/App/Factories/PasswordResetTokenFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function defaults(): array]]></code>
+      <code><![CDATA[public static function class(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/Fixtures/App/Factories/UserFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function defaults(): array]]></code>
+      <code><![CDATA[public static function class(): string]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/Fixtures/App/SHQBundleUsersTestKernel.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getProjectDir(): string]]></code>
+      <code><![CDATA[public function registerBundles(): iterable]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[configureContainer]]></code>
+      <code><![CDATA[configureRoutes]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="tests/Functional/Command/UserRoleAddCommandTest.php">
+    <MixedArgument>
+      <code><![CDATA[$user->getRoles()]]></code>
+      <code><![CDATA[$user->getRoles()]]></code>
+      <code><![CDATA[$user->getRoles()]]></code>
+    </MixedArgument>
+    <UnusedVariable>
+      <code><![CDATA[$user]]></code>
+    </UnusedVariable>
+  </file>
+  <file src="tests/Functional/Command/UserRoleRemCommandTest.php">
+    <MixedArgument>
+      <code><![CDATA[$user->getRoles()]]></code>
+      <code><![CDATA[$user->getRoles()]]></code>
+      <code><![CDATA[$user->getRoles()]]></code>
+    </MixedArgument>
+    <UnusedVariable>
+      <code><![CDATA[$user]]></code>
+    </UnusedVariable>
+  </file>
+  <file src="tests/Functional/Form/Type/UserPasswordChangeTypeTest.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[User]]></code>
+    </UnnecessaryVarAnnotation>
+  </file>
+  <file src="tests/Functional/Manager/PasswordManagerTest.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$formFactory]]></code>
+      <code><![CDATA[$passwordHasherFactory]]></code>
+      <code><![CDATA[$propertyAccessor]]></code>
+      <code><![CDATA[$requestStack]]></code>
+      <code><![CDATA[$router]]></code>
+      <code><![CDATA[self::getContainer()->get('event_dispatcher')]]></code>
+    </ArgumentTypeCoercion>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+    <MixedArgument>
+      <code><![CDATA[$form]]></code>
+      <code><![CDATA[$form]]></code>
+      <code><![CDATA[$form]]></code>
+      <code><![CDATA[$form]]></code>
+      <code><![CDATA[$form]]></code>
+    </MixedArgument>
+    <PossiblyInvalidCast>
+      <code><![CDATA[$appSecret]]></code>
+    </PossiblyInvalidCast>
+    <UnusedMethodCall>
+      <code><![CDATA[setAccessible]]></code>
+      <code><![CDATA[setAccessible]]></code>
+    </UnusedMethodCall>
+    <UnusedVariable>
+      <code><![CDATA[$public]]></code>
+    </UnusedVariable>
+  </file>
+  <file src="tests/Functional/Manager/UsersManagerTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+      <code><![CDATA[protected static function getKernelClass(): string]]></code>
+    </MissingOverrideAttribute>
+    <PropertyTypeCoercion>
+      <code><![CDATA[self::getContainer()->get('event_dispatcher')]]></code>
+      <code><![CDATA[self::getContainer()->get(UsersManagerInterface::class)]]></code>
+    </PropertyTypeCoercion>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[passwordChanged]]></code>
+      <code><![CDATA[updated]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="tests/Functional/Repository/PasswordResetTokenRepositoryTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+      <code><![CDATA[protected static function getKernelClass(): string]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyNullArgument>
+      <code><![CDATA[$tokens]]></code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="tests/Unit/Command/Arguments/PassCommandArgumentTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/Unit/DependencyInjection/ConfigurationTest.php">
+    <MixedArgument>
+      <code><![CDATA[$config['providers']]]></code>
+      <code><![CDATA[$config['providers']['main']]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['providers']['main']]]></code>
+    </MixedArrayAccess>
+  </file>
+  <file src="tests/Unit/DependencyInjection/SHQUsersExtensionTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+    <MixedArgument>
+      <code><![CDATA[$shqUsersConfig[0]['providers']]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$shqUsersConfig[0]['providers']['main']]]></code>
+      <code><![CDATA[$shqUsersConfig[0]['providers']['main']]]></code>
+      <code><![CDATA[$shqUsersConfig[0]['providers']['main']['class']]]></code>
+      <code><![CDATA[$shqUsersConfig[0]['providers']['main']['property']]]></code>
+      <code><![CDATA[$tags[0]['entity']]]></code>
+      <code><![CDATA[$tags[0]['event']]]></code>
+    </MixedArrayAccess>
+  </file>
+  <file src="tests/Unit/Exception/SimpleExceptionsTest.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$exceptionClass]]></code>
+      <code><![CDATA[$parentClass]]></code>
+    </ArgumentTypeCoercion>
+    <InvalidStringClass>
+      <code><![CDATA[new $exceptionClass()]]></code>
+    </InvalidStringClass>
+  </file>
+  <file src="tests/Unit/Exception/UserClassMustImplementHasPlainPasswordInterfaceTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/Unit/Exception/UserClassMustImplementHasRolesInterfaceTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/Unit/Exception/UserClassMustImplementInterfaceTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/Unit/Exception/UserClassMustImplementUserInterfaceTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </InvalidArgument>
+  </file>
+  <file src="tests/Unit/Exception/UsersExceptionTest.php">
+    <MissingParamType>
+      <code><![CDATA[$user]]></code>
+    </MissingParamType>
+    <MixedArgument>
+      <code><![CDATA[$user]]></code>
+    </MixedArgument>
+  </file>
+  <file src="tests/Unit/Helper/PasswordHelperTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+    <RedundantCondition>
+      <code><![CDATA[assertIsString]]></code>
+    </RedundantCondition>
+  </file>
+  <file src="tests/Unit/Helper/PasswordResetHelperTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="tests/Unit/Manager/UsersManagerTest.php">
+    <InvalidArgument>
+      <code><![CDATA[$this->mockDispatcher]]></code>
+      <code><![CDATA[$this->mockDispatcher]]></code>
+      <code><![CDATA[$this->mockDispatcher]]></code>
+      <code><![CDATA[$this->mockEntityManager]]></code>
+      <code><![CDATA[$this->mockEntityManager]]></code>
+      <code><![CDATA[$this->mockEntityManager]]></code>
+      <code><![CDATA[$this->mockPropertyAccessor]]></code>
+      <code><![CDATA[$this->mockPropertyAccessor]]></code>
+      <code><![CDATA[$this->mockPropertyAccessor]]></code>
+    </InvalidArgument>
+    <MissingClosureParamType>
+      <code><![CDATA[$object]]></code>
+      <code><![CDATA[$property]]></code>
+      <code><![CDATA[$value]]></code>
+    </MissingClosureParamType>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+      <code><![CDATA[public function eraseCredentials(): void]]></code>
+      <code><![CDATA[public function getRoles(): array]]></code>
+      <code><![CDATA[public function getUserIdentifier(): string]]></code>
+      <code><![CDATA[public function setRoles(array $roles): void]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClosureParam>
+      <code><![CDATA[$value]]></code>
+    </UnusedClosureParam>
+    <UnusedMethodCall>
+      <code><![CDATA[setAccessible]]></code>
+      <code><![CDATA[setAccessible]]></code>
+      <code><![CDATA[setAccessible]]></code>
+    </UnusedMethodCall>
+  </file>
+  <file src="tests/Unit/Util/PasswordResetTokenGeneratorTest.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
+    <MixedArgument>
+      <code><![CDATA[$verifier]]></code>
+    </MixedArgument>
+    <UnusedMethodCall>
+      <code><![CDATA[setAccessible]]></code>
+    </UnusedMethodCall>
+  </file>
+  <file src="tests/Unit/Validator/RolesValidatorTest.php">
+    <InvalidArgument>
+      <code><![CDATA[['ROLE_USER', 123]]]></code>
+    </InvalidArgument>
   </file>
 </files>

@@ -19,45 +19,58 @@ use function Safe\preg_match;
 
 final class RolesValidator
 {
-    /** @var array<string,array<string>> */
-    private array $errors = [];
-
     /**
      * @param string|string[] $roles
      *
      * @return array<string,array<string>>
      */
-    public function validate($roles): array
+    public static function validate(array|string $roles): array
     {
         if (\is_string($roles)) {
             $roles = [$roles];
         }
 
-        if (false === \is_array($roles)) {
-            throw new \InvalidArgumentException('The $roles argument can be only a string or an array<string>');
-        }
-
+        $errors = [];
         foreach ($roles as $role) {
-            $this->validateRole($role);
+            if (false === \is_string($role)) {
+                throw new \InvalidArgumentException(sprintf('Each role must be a string. Current type: %s.', get_debug_type($role)));
+            }
+
+            $errors = self::validateRole($role, $errors);
         }
 
-        return $this->errors;
+        return $errors;
     }
 
     /**
+     * @param array<string,array<string>> $errors
+     *
      * @return array<string,array<string>>
      */
-    public function validateRole(string $role): array
+    public static function validateRole(string $role, array $errors = []): array
     {
         if (1 !== preg_match('#^[A-Z0-9_]+$#', $role)) {
-            $this->errors[$role][] = 'Role name can contain only UPPERCASE LETTERS, numbers and underscores (ex.: ROLE_ADMIN).';
+            $errors[$role][] = 'Role name can contain only UPPERCASE LETTERS, numbers and underscores (ex.: ROLE_ADMIN).';
         }
 
         $string = new UnicodeString($role);
         if (false === $string->startsWith('ROLE_')) {
-            $this->errors[$role][] = 'Must start with "ROLE_" (ex.: ROLE_ADMIN).';
+            $errors[$role][] = 'Must start with "ROLE_" (ex.: ROLE_ADMIN).';
         }
 
-        return $this->errors;
+        return $errors;
+    }
+
+    /**
+     * @param array<string,array<string>> $errors
+     */
+    public static function formatErrors(array $errors): string
+    {
+        $message = '';
+        foreach ($errors as $role => $roleErrors) {
+            $message .= sprintf('Role "%s": %s ', (string) $role, implode(' ', $roleErrors));
+        }
+
+        return trim($message);
     }
 }

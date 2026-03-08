@@ -27,18 +27,13 @@ use function Safe\json_encode;
  *
  * @internal
  */
-final class PasswordResetTokenGenerator
+final class PasswordResetTokenGenerator implements PasswordResetTokenGeneratorInterface
 {
     public function __construct(private readonly string $appSecret, private readonly string $userIdentifierProperty, private readonly PropertyAccessor $propertyAccessor)
     {
     }
 
     /**
-     * Get a cryptographically secure token with it's non-hashed components.
-     *
-     * @param UserInterface $user     Unique user identifier
-     * @param string|null   $verifier Only required for token comparison
-     *
      * @todo The user was originally UserId: currently the Id is a field that may be not present.
      */
     public function createToken(\DateTimeInterface $expiresAt, UserInterface $user, ?string $verifier = null): ResetPasswordTokenComponents

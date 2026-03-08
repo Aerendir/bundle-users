@@ -35,6 +35,26 @@ trait PasswordResetTokenTrait
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $expiresAt;
 
+    public function setRequestedAt(\DateTimeImmutable $requestedAt): void
+    {
+        $this->requestedAt = $requestedAt;
+    }
+
+    public function setExpiresAt(\DateTimeImmutable $expiresAt): void
+    {
+        $this->expiresAt = $expiresAt;
+    }
+
+    public function setSelector(string $selector): void
+    {
+        $this->selector = $selector;
+    }
+
+    public function setHashedToken(string $hashedToken): void
+    {
+        $this->hashedToken = $hashedToken;
+    }
+
     public function activate(\DateTimeImmutable $expiresAt, string $selector, string $hashedToken): void
     {
         $this->requestedAt = new \DateTimeImmutable();
@@ -61,5 +81,10 @@ trait PasswordResetTokenTrait
     public function getHashedToken(): string
     {
         return $this->hashedToken;
+    }
+
+    public function getSelector(): string
+    {
+        return $this->selector;
     }
 }

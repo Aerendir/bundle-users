@@ -45,6 +45,11 @@ interface PasswordResetTokenInterface
     public function getHashedToken(): string;
 
     /**
+     * Get the selector used to find a password reset request.
+     */
+    public function getSelector(): string;
+
+    /**
      * Get the user who requested a password reset.
      */
     public function getUser(): UserInterface;

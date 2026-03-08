@@ -31,7 +31,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class UsersManager implements UsersManagerInterface
 {
-    public function __construct(private readonly string $provider, private readonly string $secUserClass, private readonly string $secUserProperty, private readonly EventDispatcherInterface $dispatcher, private readonly EntityManagerInterface $entityManager, private readonly PropertyAccessor $propertyAccessor, private readonly RolesValidator $rolesValidator)
+    public function __construct(private readonly string $provider, private readonly string $secUserClass, private readonly string $secUserProperty, private readonly EventDispatcherInterface $dispatcher, private readonly EntityManagerInterface $entityManager, private readonly PropertyAccessor $propertyAccessor)
     {
     }
 
@@ -75,7 +75,7 @@ final class UsersManager implements UsersManagerInterface
         $rolesToAdd   = $this->ensureRolesIsArray($rolesToAdd);
 
         foreach ($rolesToAdd as $roleToAdd) {
-            $errors = $this->rolesValidator->validateRole($roleToAdd);
+            $errors = RolesValidator::validateRole($roleToAdd);
             if ([] !== $errors) {
                 throw new RoleInvalidException($roleToAdd, $errors);
             }

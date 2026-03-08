@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-    phpVersion="8.1"
+    phpVersion="8.2"
     cacheDirectory="./var/cache/psalm"
     checkForThrowsDocblock="true"
     hideExternalErrors="true"
@@ -17,6 +17,7 @@
         <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <directory name="tests/Fixtures/var"/>
             <file name="src/DependencyInjection/Configuration.php"/>
         </ignoreFiles>
     </projectFiles>

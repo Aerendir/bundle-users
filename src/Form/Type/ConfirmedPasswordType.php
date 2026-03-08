@@ -40,12 +40,12 @@ final class ConfirmedPasswordType extends AbstractType
             'first_options'      => [
                 self::LABEL_KEY       => 'form.password_change.new_password.label',
                 self::CONSTRAINTS_KEY => [
-                    new NotBlank(['message' => 'form.error.confirmed_password.not_blank']),
-                    new Length([
+                    new NotBlank(message: 'form.error.confirmed_password.not_blank'),
+                    new Length(
+                        max: self::CONSTRAINT_PASSWORD_LENGTH_MAX,
+                        maxMessage: 'form.error.confirmed_password.too_long',
                         // 'Your password should be at least {{ limit }} characters'
-                        'maxMessage' => 'form.error.confirmed_password.too_long',
-                        'max'        => self::CONSTRAINT_PASSWORD_LENGTH_MAX,
-                    ]),
+                    ),
                 ],
             ],
             'second_options'     => [self::LABEL_KEY => 'form.label.confirmed_password.confirm_password'],
