@@ -33,7 +33,7 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         $user = UserFactory::createOne([
             'email'    => 'test@example.com',
             'password' => password_hash('password123', PASSWORD_BCRYPT),
-        ])->_real();
+        ]);
 
         $client->loginUser($user);
 
@@ -51,7 +51,7 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         ]);
 
         $this->assertResponseStatusCodeSame(422);
-        $this->assertSelectorTextContains('body', 'form.error.old_password.passwords_mismatch');
+        $this->assertSelectorTextContains('body', 'This value should be the user\'s current password.');
 
         // Test password mismatch
         $crawler = $client->request(Request::METHOD_GET, '/password-change');

@@ -109,7 +109,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testAddSingleRole(): void
     {
-        $user = UserFactory::createOne(['roles' => ['ROLE_USER']])->_real();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER']]);
 
         $this->manager->addRoles($user, 'ROLE_ADMIN');
         $this->assertContains('ROLE_ADMIN', $user->getRoles());
@@ -118,7 +118,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testAddMultipleRoles(): void
     {
-        $user = UserFactory::createOne(['roles' => ['ROLE_USER']])->_real();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER']]);
 
         $this->manager->addRoles($user, ['ROLE_EDITOR', 'ROLE_MANAGER']);
         $this->assertContains('ROLE_EDITOR', $user->getRoles());
@@ -128,7 +128,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testAddInvalidRole(): void
     {
-        $user = UserFactory::createOne(['roles' => ['ROLE_USER']])->_real();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER']]);
 
         $this->expectException(RoleInvalidException::class);
         $this->manager->addRoles($user, 'invalid_role');
@@ -136,7 +136,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testRemoveSingleRole(): void
     {
-        $user = UserFactory::createOne(['roles' => ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_EDITOR']])->_real();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_EDITOR']]);
 
         $this->manager->removeRoles($user, 'ROLE_EDITOR');
         $this->assertNotContains('ROLE_EDITOR', $user->getRoles());
@@ -146,7 +146,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testRemoveMultipleRoles(): void
     {
-        $user = UserFactory::createOne(['roles' => ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_EDITOR']])->_real();
+        $user = UserFactory::createOne(['roles' => ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_EDITOR']]);
 
         $this->manager->removeRoles($user, ['ROLE_ADMIN', 'ROLE_EDITOR']);
         $this->assertNotContains('ROLE_ADMIN', $user->getRoles());
@@ -156,7 +156,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testUpdated(): void
     {
-        $user            = UserFactory::createOne()->_real();
+        $user            = UserFactory::createOne();
         $eventDispatched = false;
 
         $this->dispatcher->addListener(UserUpdatedEvent::class, function (UserUpdatedEvent $event) use (&$eventDispatched, $user): void {
@@ -171,7 +171,7 @@ final class UsersManagerTest extends KernelTestCase
 
     public function testPasswordChanged(): void
     {
-        $user            = UserFactory::createOne()->_real();
+        $user            = UserFactory::createOne();
         $eventDispatched = false;
 
         $this->dispatcher->addListener(UserPasswordChangedEvent::class, function (UserPasswordChangedEvent $event) use (&$eventDispatched, $user): void {

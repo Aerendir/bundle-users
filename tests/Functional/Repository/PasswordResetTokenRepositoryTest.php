@@ -40,7 +40,7 @@ final class PasswordResetTokenRepositoryTest extends KernelTestCase
 
     public function testGetTokensStillValid(): void
     {
-        $user = UserFactory::createOne()->_real();
+        $user = UserFactory::createOne();
 
         // A valid token
         PasswordResetTokenFactory::createOne([

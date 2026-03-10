@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Factories;
 
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Entity\PasswordResetToken;
-use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
+use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
 /**
- * @extends PersistentProxyObjectFactory<PasswordResetToken>
+ * @extends PersistentObjectFactory<PasswordResetToken>
  */
-final class PasswordResetTokenFactory extends PersistentProxyObjectFactory
+final class PasswordResetTokenFactory extends PersistentObjectFactory
 {
     public static function class(): string
     {

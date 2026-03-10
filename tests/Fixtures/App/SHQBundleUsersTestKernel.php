@@ -122,6 +122,13 @@ final class SHQBundleUsersTestKernel extends BaseKernel
             'orm'  => $ormConfig,
         ]);
 
+        $zenstruckFoundryConfig = [];
+        if (PHP_VERSION_ID >= 80400) {
+            $zenstruckFoundryConfig['enable_auto_refresh_with_lazy_objects'] = true;
+        }
+
+        $container->loadFromExtension('zenstruck_foundry', $zenstruckFoundryConfig);
+
         if (file_exists(__DIR__ . '/config/services.yaml')) {
             $loader->load(__DIR__ . '/config/services.yaml');
         }
