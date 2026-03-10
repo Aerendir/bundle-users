@@ -89,20 +89,35 @@ final class SHQBundleUsersTestKernel extends BaseKernel
             ],
         ]);
 
-        $container->loadFromExtension('doctrine', [
-            'dbal' => ['url' => 'sqlite:///%kernel.project_dir%/var/data.db'],
-            'orm'  => [
-                'auto_generate_proxy_classes' => true,
-                'mappings'                    => [
-                    'App' => [
-                        'is_bundle' => false,
-                        'type'      => 'attribute',
-                        'dir'       => '%kernel.project_dir%/App/Entity',
-                        'prefix'    => (new \ReflectionClass(User::class))->getNamespaceName(),
-                        'alias'     => 'App',
-                    ],
+        $ormConfig = [
+            'mappings'                    => [
+                'App' => [
+                    'is_bundle' => false,
+                    'type'      => 'attribute',
+                    'dir'       => '%kernel.project_dir%/App/Entity',
+                    'prefix'    => (new \ReflectionClass(User::class))->getNamespaceName(),
+                    'alias'     => 'App',
                 ],
             ],
+        ];
+
+        if (interface_exists(\Doctrine\ORM\EntityManagerInterface::class)) {
+            $isOrm3 = false;
+            if (class_exists(\Composer\InstalledVersions::class) && \Composer\InstalledVersions::isInstalled('doctrine/orm')) {
+                $version = \Composer\InstalledVersions::getVersion('doctrine/orm');
+                if (null !== $version && str_starts_with($version, '3.')) {
+                    $isOrm3 = true;
+                }
+            }
+
+            if (false === $isOrm3) {
+                $ormConfig['auto_generate_proxy_classes'] = true;
+            }
+        }
+
+        $container->loadFromExtension('doctrine', [
+            'dbal' => ['url' => 'sqlite:///%kernel.project_dir%/var/data.db'],
+            'orm'  => $ormConfig,
         ]);
 
         if (file_exists(__DIR__ . '/config/services.yaml')) {
