@@ -36,9 +36,7 @@ jobs:
 
             -   name: Fix Symfony version
                 run: |
-                    composer req symfony/flex --no-update
                     composer config extra.symfony.require "${{ matrix.symfony }}"
-                    composer config --no-plugins allow-plugins.symfony/flex true
 
             -   name: Remove Rector
                 run: |
@@ -58,10 +56,6 @@ jobs:
                 uses: ramsey/composer-install@v3
                 with:
                     working-directory: './vendor-bin/phpunit'
-
-            -   name: Remove Kernel.php
-                run: |
-                    rm ./src/Kernel.php
 
             -   name: Run PHPStan
                 run: |
