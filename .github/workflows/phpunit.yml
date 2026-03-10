@@ -17,12 +17,7 @@ jobs:
                 os: [ ubuntu-latest ]
                 # When you change a version here, change it also in the SonarCloud if condition
                 php: [ '8.2' ]
-                symfony: [ '~5.4', '~6.4' ]
-
-                # This combination is not installable
-                exclude:
-                    - php: '8.2'
-                      symfony: '~5.4' # Just a placeholder if needed, but the original was for 7.4
+                symfony: [ '~6.4', '~7.4', '~8.0' ]
 
         steps:
             -   name: Checkout

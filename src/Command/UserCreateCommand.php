@@ -25,24 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-#[AsCommand('shq:user:create', 'Creates a user.')]
-final class UserCreateCommand extends AbstractUsersCommand
-{
-    use PassCommandArgument;
-
-    protected static string $title = 'Create user';
-
-    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, private readonly ValidatorInterface $validator)
-    {
-        parent::__construct($entityManager, $usersManagerRegistry);
-    }
-
-    protected function configure(): void
-    {
-        parent::configure();
-        $this->addArgument(self::ARG_PASS, InputArgument::REQUIRED, 'The password to assign to the user.')
-            ->setHelp(
-                <<<'EOT'
+#[AsCommand('shq:user:create', 'Creates a user.', help: <<<'TXT'
 The <info>%command.name%</info> command creates a user:
 
   <info>php %command.full_name% Aerendir P4sSw0rD</info>
@@ -59,7 +42,22 @@ If your application, instead, uses the username to identify the users, then you 
 
   <info>php %command.full_name% Aerendir P4sSw0rD</info>
 
-EOT);
+TXT)]
+final class UserCreateCommand extends AbstractUsersCommand
+{
+    use PassCommandArgument;
+
+    protected static string $title = 'Create user';
+
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry, private readonly ValidatorInterface $validator)
+    {
+        parent::__construct($entityManager, $usersManagerRegistry);
+    }
+
+    protected function configure(): void
+    {
+        parent::configure();
+        $this->addArgument(self::ARG_PASS, InputArgument::REQUIRED, 'The password to assign to the user.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

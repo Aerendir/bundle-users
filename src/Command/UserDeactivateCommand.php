@@ -19,7 +19,11 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-#[AsCommand('shq:user:deactivate', 'Deactivates a user.')]
+#[AsCommand('shq:user:deactivate', 'Deactivates a user.', help: <<<'TXT'
+The <info>%command.name%</info> command deactivates the user:
+
+  <info>php %command.full_name% Aerendir</info>
+TXT)]
 final class UserDeactivateCommand extends AbstractUserActivationCommand
 {
     protected static string $title = 'Deactivate user';
@@ -32,11 +36,6 @@ final class UserDeactivateCommand extends AbstractUserActivationCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->setHelp(<<<'EOT'
-The <info>%command.name%</info> command deactivates the user:
-
-  <info>php %command.full_name% Aerendir</info>
-EOT);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

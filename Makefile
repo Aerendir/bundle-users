@@ -1,6 +1,6 @@
 # Supported PHP Versions
 PHP_VERSIONS := 8.2 8.3 8.4 8.5
-SF_VERSIONS := 5.4 6.4 7.0
+SF_VERSIONS := 6.4 7.4 8.0
 
 # Versions (always use the lowest supported versions)
 PHP_V ?= 8.2
