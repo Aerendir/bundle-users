@@ -55,8 +55,8 @@ This applies to all other relvant libraries used in the bundle: read the GitHub 
 When changing the supported PHP versions, you need to update those files:
 
 - Supported Docker versions (`.docker/php`): for each version of PHP there is a dedicated folder with the same name, e.g. `8.2`. To add a new version, simply copy an existing folder, rename it after the new supported version and update the `Dockerfile` accordingly.
-- GitHub Actions workflows (`.github/workflows/*.yml`): update `jobs.*.strategy.matrix.php`
-- GitHub Actions `phpunit.yml` workflow: update the SonarCloud step: always send the report for lowest supported versions
+- GitHub Actions workflows (`.github/workflows/*.yml`): all but `phpunit.yml` workflows have a matrix with only the lowest supported PHP version
+- GitHub Actions `phpunit.yml` workflow: update the SonarCloud step: always send the report for lowest supported PHP versions and the highest supported composer versions. The matrix has to support all supported PHP versions
 - `composer.json` (`require.php`): always ensure it requires the lowest supported version of PHP, e.g. `"php": "^8.2"`.
 - `Makefile`: update `PHP_VERSIONS` variable with the new supported version. Set the variable `PHP_V` to the lowest supported version, e.g. `8.2`.
 - `psalm.xml`: update the `phpVersion` attribute of the `psalm` element to the lowest supported version, e.g. `8.2`.
