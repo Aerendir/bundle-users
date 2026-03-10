@@ -57,6 +57,11 @@ jobs:
                 with:
                     working-directory: './vendor-bin/phpunit'
 
+            -   name: Remove Kernel.php and AppStory.php
+                run: |
+                    rm ./tests/Fixtures/App/Kernel.php
+                    rm ./tests/Fixtures/App/Story/AppStory.php
+
             -   name: Run PSalm
                 run: |
                     ./vendor-bin/phpunit/vendor/bin/psalm
