@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App;
 
-use Zenstruck\Foundry\Configuration;
 use Composer\InstalledVersions;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,6 +29,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Zenstruck\Foundry\Configuration;
 use Zenstruck\Foundry\ZenstruckFoundryBundle;
 
 final class SHQBundleUsersTestKernel extends BaseKernel
