@@ -178,11 +178,6 @@
       <code><![CDATA[$session]]></code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Kernel.php">
-    <ClassMustBeFinal>
-      <code><![CDATA[Kernel]]></code>
-    </ClassMustBeFinal>
-  </file>
   <file src="src/Manager/PasswordManager.php">
     <MixedArgument>
       <code><![CDATA[$plainPassword]]></code>
@@ -301,14 +296,6 @@
     <MissingTemplateParam>
       <code><![CDATA[PasswordResetTokenRepository]]></code>
     </MissingTemplateParam>
-  </file>
-  <file src="src/Story/AppStory.php">
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function build(): void]]></code>
-    </MissingOverrideAttribute>
-    <UnusedClass>
-      <code><![CDATA[AppStory]]></code>
-    </UnusedClass>
   </file>
   <file src="src/Util/PasswordResetTokenGenerator.php">
     <MissingOverrideAttribute>
