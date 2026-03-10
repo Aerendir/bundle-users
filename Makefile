@@ -28,7 +28,7 @@ COMPOSER_EX = $(PHP_CONT) composer
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY: help build start stax stop stop-v down sh composer initialize cov mut sf $(PHP_VERSIONS) $(SF_VERSIONS)
+.PHONY: help build start stax stop stop-v down sh composer initialize cov mut sf lowest highest $(PHP_VERSIONS) $(SF_VERSIONS)
 
 # Icons
 ICON_THICK = \033[32m\xE2\x9C\x94\033[0m
@@ -116,6 +116,12 @@ composer: ## Run Composer. Pass the parameter "c=" to run a given command, examp
 sf: ## Sets the Symfony version to use. Ex.: make sf 6.4
 	$(COMPOSER_EX) config extra.symfony.require "^$(SF_V)"
 	$(COMPOSER_EX) update "symfony/*"
+
+lowest: ## Updates dependencies to the lowest supported versions.
+	$(COMPOSER_EX) update --prefer-lowest
+
+highest: ## Updates dependencies to the highest supported versions.
+	$(COMPOSER_EX) update
 
 # Private commands
 stop-v:
