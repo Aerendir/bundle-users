@@ -123,8 +123,11 @@ final class SHQBundleUsersTestKernel extends BaseKernel
         ]);
 
         $zenstruckFoundryConfig = [];
-        if (PHP_VERSION_ID >= 80400) {
-            $zenstruckFoundryConfig['enable_auto_refresh_with_lazy_objects'] = true;
+        if (PHP_VERSION_ID >= 80400 && class_exists(InstalledVersions::class) && InstalledVersions::isInstalled('zenstruck/foundry')) {
+            $version = InstalledVersions::getVersion('zenstruck/foundry');
+            if (null !== $version && version_compare($version, '2.4.0', '>=')) {
+                $zenstruckFoundryConfig['enable_auto_refresh_with_lazy_objects'] = true;
+            }
         }
 
         $container->loadFromExtension('zenstruck_foundry', $zenstruckFoundryConfig);

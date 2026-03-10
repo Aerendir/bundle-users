@@ -53,8 +53,8 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         $this->assertResponseStatusCodeSame(422);
         $bodyText = $client->getCrawler()->filter('body')->text();
         $this->assertTrue(
-            str_contains($bodyText, 'This value should be the user\'s current password.') ||
-            str_contains($bodyText, 'form.error.old_password.passwords_mismatch'),
+            str_contains($bodyText, 'This value should be the user\'s current password.')
+            || str_contains($bodyText, 'form.error.old_password.passwords_mismatch'),
             sprintf('The error message for old password was not found in body. Body content: "%s"', $bodyText)
         );
 
@@ -69,8 +69,8 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         $this->assertResponseStatusCodeSame(422);
         $bodyText = $client->getCrawler()->filter('body')->text();
         $this->assertTrue(
-            str_contains($bodyText, 'form.password_change.new_password.error.mismatch') ||
-            str_contains($bodyText, 'This value is not valid.'),
+            str_contains($bodyText, 'form.password_change.new_password.error.mismatch')
+            || str_contains($bodyText, 'This value is not valid.'),
             sprintf('The error message for password mismatch was not found in body. Body content: "%s"', $bodyText)
         );
 
