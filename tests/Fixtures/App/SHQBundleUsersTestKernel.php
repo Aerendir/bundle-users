@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App;
 
+use Zenstruck\Foundry\Configuration;
 use Composer\InstalledVersions;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\ORM\EntityManagerInterface;
@@ -125,7 +126,7 @@ final class SHQBundleUsersTestKernel extends BaseKernel
         $zenstruckFoundryConfig = [];
         if (PHP_VERSION_ID >= 80400 && class_exists(InstalledVersions::class) && InstalledVersions::isInstalled('zenstruck/foundry')) {
             $version = InstalledVersions::getVersion('zenstruck/foundry');
-            if (null !== $version && version_compare($version, '2.4.0', '>=')) {
+            if (null !== $version && version_compare($version, '2.4.0', '>=') && class_exists(Configuration::class) && method_exists(Configuration::class, 'enableAutoRefreshWithLazyObjects')) {
                 $zenstruckFoundryConfig['enable_auto_refresh_with_lazy_objects'] = true;
             }
         }
