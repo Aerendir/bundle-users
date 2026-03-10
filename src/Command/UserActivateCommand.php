@@ -19,11 +19,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-#[AsCommand('shq:user:activate', 'Activates a user.', help: <<<'TXT'
-The <info>%command.name%</info> command activates the user:
-
-  <info>php %command.full_name% Aerendir</info>
-TXT)]
+#[AsCommand('shq:user:activate', 'Activates a user.')]
 final class UserActivateCommand extends AbstractUserActivationCommand
 {
     protected static string $title = 'Activate user';
@@ -36,6 +32,11 @@ final class UserActivateCommand extends AbstractUserActivationCommand
     protected function configure(): void
     {
         parent::configure();
+        $this->setHelp(<<<'EOT'
+The <info>%command.name%</info> command activates the user:
+
+  <info>php %command.full_name% Aerendir</info>
+EOT);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

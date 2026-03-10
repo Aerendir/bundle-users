@@ -19,12 +19,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-#[AsCommand('shq:user:role:add', 'Adds one or more roles to a user.', help: <<<'TXT'
-The <info>%command.name%</info> command adds one or more roles to a user:
-
-  <info>php %command.full_name% Aerendir ROLE_CUSTOM</info>
-<info>php %command.full_name% Aerendir ROLE_CUSTOM1 ROLE_CUSTOM2 ROLE_CUSTOM3</info>
-TXT)]
+#[AsCommand('shq:user:role:add', 'Adds one or more roles to a user.')]
 final class RoleAddCommand extends AbstractUserRolesCommand
 {
     protected static string $title = 'Add role';
@@ -38,6 +33,12 @@ final class RoleAddCommand extends AbstractUserRolesCommand
     protected function configure(): void
     {
         parent::configure();
+        $this->setHelp(<<<'EOT'
+The <info>%command.name%</info> command adds one or more roles to a user:
+
+  <info>php %command.full_name% Aerendir ROLE_CUSTOM</info>
+<info>php %command.full_name% Aerendir ROLE_CUSTOM1 ROLE_CUSTOM2 ROLE_CUSTOM3</info>
+EOT);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
