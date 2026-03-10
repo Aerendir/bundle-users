@@ -1,0 +1,14 @@
+services:
+  php:
+    image: ${PROJECT_NAME}-php:${PHP_V}
+    container_name: ${PROJECT_NAME}-${PHP_V}
+    build:
+      context: .
+      # This has to be the same name as set in Dockerfiles `as container-name-xx´
+      target: ${PROJECT_NAME}-${PHP_V_ID}
+      dockerfile: .docker/php/${PHP_V}/Dockerfile
+    volumes:
+      - .:/project
+    command: [ "tail", "-f", "/dev/null" ]
+    stdin_open: true
+    tty: true

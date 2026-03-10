@@ -36,7 +36,9 @@ final class PasswordResetTokenRepository extends EntityRepository
     {
         return $this->createQueryBuilder('t')
              ->where('t.user = :user')
+             ->andWhere('t.expiresAt > :now')
              ->setParameter('user', $user)
+             ->setParameter('now', new \DateTimeImmutable())
              ->orderBy('t.requestedAt', Criteria::DESC)
              ->getQuery()
              ->getResult();

@@ -28,6 +28,9 @@ jobs:
                     coverage: none # disable xdebug, pcov
                     extensions: ast
 
+            -   name: Remove Symfony Flex
+                run: composer remove symfony/flex --dev --no-update
+
             -   name: Install Composer deps
                 uses: ramsey/composer-install@v3
                 with:

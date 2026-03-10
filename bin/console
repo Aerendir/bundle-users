@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Serendipity HQ Users Bundle.
+ *
+ * Copyright (c) Adamo Aerendir Crespi <aerendir@serendipityhq.com>.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\SHQBundleUsersTestKernel;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Dotenv\Dotenv;
+
+if (false === \is_file(\dirname(__DIR__).'/vendor/autoload.php')) {
+    throw new LogicException('Run "composer install" to allow executing the console.');
+}
+
+require \dirname(__DIR__).'/vendor/autoload.php';
+
+if (class_exists(Dotenv::class) && is_file($env = \dirname(__DIR__).'/.env')) {
+    (new Dotenv())->load($env);
+}
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], $_SERVER['APP_ENV'] ?? 'test', true);
+$debug = $_SERVER['APP_DEBUG'] ?? ('prod' !== $env);
+
+$kernel = new SHQBundleUsersTestKernel($env, (bool) $debug);
+$application = new Application($kernel);
+$application->run($input);

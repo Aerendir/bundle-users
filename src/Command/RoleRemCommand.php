@@ -15,7 +15,6 @@ namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
-use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -25,10 +24,10 @@ final class RoleRemCommand extends AbstractUserRolesCommand
 {
     protected static string $title = 'Add role';
 
-    public function __construct(EntityManagerInterface $entityManager, RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
     {
         $this->entityManager = $entityManager;
-        parent::__construct($entityManager, $rolesValidator, $usersManagerRegistry);
+        parent::__construct($entityManager, $usersManagerRegistry);
     }
 
     protected function configure(): void

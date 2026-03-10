@@ -15,7 +15,7 @@ jobs:
             fail-fast: false
             matrix:
                 os: [ ubuntu-latest ]
-                php: [ '8.1', '8.2' ]
+                php: [ '8.2' ]
 
         steps:
             -   name: Checkout
@@ -27,6 +27,9 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none # disable xdebug, pcov
                     extensions: ast
+
+            -   name: Remove Symfony Flex
+                run: composer remove symfony/flex --dev --no-update
 
             -   name: Install Composer deps
                 uses: ramsey/composer-install@v3
@@ -40,4 +43,5 @@ jobs:
 
             -   name: Run Rector
                 run: |
+                    ./bin/console cache:clear
                     ./vendor/bin/rector process --dry-run

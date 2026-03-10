@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use SerendipityHQ\Bundle\UsersBundle\Command\Arguments\UniqueCommandArgument;
+use SerendipityHQ\Bundle\UsersBundle\Command\Options\ProviderCommandOption;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -24,6 +26,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class AbstractUsersCommand extends Command
 {
+    use UniqueCommandArgument;
+    use ProviderCommandOption;
+
     /** @var string The title to print when starting the command */
     protected static string $title;
 
@@ -39,8 +44,8 @@ abstract class AbstractUsersCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('unique', InputArgument::REQUIRED, 'The value to use with the unique field.')
-            ->addOption('provider', 'p', InputOption::VALUE_OPTIONAL);
+            ->addArgument(self::ARG_UNIQUE, InputArgument::REQUIRED, 'The value to use with the unique field.')
+            ->addOption(self::OPT_PROVIDER, 'p', InputOption::VALUE_OPTIONAL);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -49,14 +54,11 @@ abstract class AbstractUsersCommand extends Command
 
         $this->io->title(static::$title);
 
-        $unique = $input->getArgument('unique');
-        if (false === \is_string($unique)) {
-            return self::FAILURE;
-        }
+        $unique = $this->getArgumentUnique($input);
 
         $this->unique = $unique;
 
-        $provider          = $input->getOption('provider');
+        $provider          = $this->getOptionProviderOrNull($input);
         $availableManagers = \array_keys($this->usersManagerRegistry->getManagers());
         if (null === $provider) {
             if (1 < \count($availableManagers)) {
