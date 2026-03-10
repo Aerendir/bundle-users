@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App;
 
+use Composer\InstalledVersions;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\SHQUsersBundle;
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Controller\TestController;
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Entity\User;
@@ -101,10 +103,10 @@ final class SHQBundleUsersTestKernel extends BaseKernel
             ],
         ];
 
-        if (interface_exists(\Doctrine\ORM\EntityManagerInterface::class)) {
+        if (interface_exists(EntityManagerInterface::class)) {
             $isOrm3 = false;
-            if (class_exists(\Composer\InstalledVersions::class) && \Composer\InstalledVersions::isInstalled('doctrine/orm')) {
-                $version = \Composer\InstalledVersions::getVersion('doctrine/orm');
+            if (class_exists(InstalledVersions::class) && InstalledVersions::isInstalled('doctrine/orm')) {
+                $version = InstalledVersions::getVersion('doctrine/orm');
                 if (null !== $version && str_starts_with($version, '3.')) {
                     $isOrm3 = true;
                 }
