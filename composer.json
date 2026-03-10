@@ -95,6 +95,10 @@
         "post-update-cmd": [
             "@composer bin all update --ansi"
         ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
         "bin": "echo 'bin not installed'",
         "bl": [
             "@bl:phpstan",
