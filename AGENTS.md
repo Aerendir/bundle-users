@@ -41,7 +41,7 @@ If you have to commit `composer.json`, please, first remove the `extra.symfony.r
 
 ### Managing the versions of libraries in `composer.json`
 
-This is a Symfony bindle: this means it will be installed in apps with a wide range of Symfony versions.
+This is a Symfony bundle: this means it will be installed in apps with a wide range of Symfony versions.
 
 To ensure it works with all supported Symfony versions, we need to set the version constraints of the libraries in `composer.json` to all the supported version.
 
