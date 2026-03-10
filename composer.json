@@ -47,7 +47,7 @@
         "symfony/dotenv": "^6.4 || ^7.4 || ^8.0",
         "symfony/flex": "^2.0",
         "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.0",
-        "symfony/monolog-bundle": "^2 || ^3",
+        "symfony/monolog-bundle": "^2 || ^3 || ^4",
         "symfony/phpunit-bridge": "^6.4 || ^7.4 || ^8.0",
         "symfony/security-bundle": "^6.4 || ^7.4 || ^8.0",
         "symfony/security-core": "^6.4 || ^7.4 || ^8.0",
