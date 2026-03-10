@@ -40,6 +40,7 @@ if (false === $canRun) {
 
 $toSkip   = SerendipityHQ::buildToSkip(SerendipityHQ::SHQ_SYMFONY_BUNDLE_SKIP);
 $toSkip[] = __DIR__ . '/tests/Fixtures/var';
+$toSkip[] = Rector\Symfony\Symfony73\Rector\Class_\CommandHelpToAttributeRector::class;
 
 return RectorConfig::configure()
     ->withPaths([__DIR__ . '/src', __DIR__ . '/tests'])
