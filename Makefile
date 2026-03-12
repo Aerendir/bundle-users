@@ -115,7 +115,7 @@ composer: ## Run Composer. Pass the parameter "c=" to run a given command, examp
 
 sf: ## Sets the Symfony version to use. Ex.: make sf 6.4
 	$(COMPOSER_EX) config extra.symfony.require "^$(SF_V)"
-	$(COMPOSER_EX) update "symfony/*"
+	$(COMPOSER_EX) update
 
 lowest: ## Updates dependencies to the lowest supported versions.
 	$(COMPOSER_EX) update --prefer-lowest
