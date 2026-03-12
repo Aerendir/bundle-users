@@ -131,9 +131,6 @@
     </UnusedClass>
   </file>
   <file src="src/DependencyInjection/SHQUsersExtension.php">
-    <InternalClass>
-      <code><![CDATA[Extension]]></code>
-    </InternalClass>
     <MissingOverrideAttribute>
       <code><![CDATA[public function load(array $configs, ContainerBuilder $containerBuilder): void]]></code>
       <code><![CDATA[public function prepend(ContainerBuilder $containerBuilder): void]]></code>
@@ -193,6 +190,15 @@
     </UnusedReturnValue>
   </file>
   <file src="src/Manager/UsersManager.php">
+    <InvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </InvalidArgument>
+    <InvalidReturnStatement>
+      <code><![CDATA[$user]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[UserInterface]]></code>
+    </InvalidReturnType>
     <MissingOverrideAttribute>
       <code><![CDATA[public function addRoles($user, $rolesToAdd)]]></code>
       <code><![CDATA[public function create(string $unique, string $pass): UserInterface]]></code>
@@ -205,6 +211,9 @@
     <MixedArrayAccess>
       <code><![CDATA[$currentRoles[$currentRoleKey]]]></code>
     </MixedArrayAccess>
+    <PossiblyInvalidArgument>
+      <code><![CDATA[$user]]></code>
+    </PossiblyInvalidArgument>
     <PossiblyUndefinedMethod>
       <code><![CDATA[getRoles]]></code>
       <code><![CDATA[getRoles]]></code>
@@ -381,35 +390,12 @@
       <code><![CDATA[configureRoutes]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="tests/Functional/Command/UserActivateCommandTest.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[self::$kernel]]></code>
-      <code><![CDATA[self::$kernel]]></code>
-    </PossiblyNullArgument>
-  </file>
-  <file src="tests/Functional/Command/UserCreateCommandTest.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[self::$kernel]]></code>
-      <code><![CDATA[self::$kernel]]></code>
-      <code><![CDATA[self::$kernel]]></code>
-      <code><![CDATA[self::$kernel]]></code>
-    </PossiblyNullArgument>
-  </file>
-  <file src="tests/Functional/Command/UserDeactivateCommandTest.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[self::$kernel]]></code>
-    </PossiblyNullArgument>
-  </file>
   <file src="tests/Functional/Command/UserRoleAddCommandTest.php">
     <MixedArgument>
       <code><![CDATA[$user->getRoles()]]></code>
       <code><![CDATA[$user->getRoles()]]></code>
       <code><![CDATA[$user->getRoles()]]></code>
     </MixedArgument>
-    <PossiblyNullArgument>
-      <code><![CDATA[self::$kernel]]></code>
-      <code><![CDATA[self::$kernel]]></code>
-    </PossiblyNullArgument>
     <UnusedVariable>
       <code><![CDATA[$user]]></code>
     </UnusedVariable>
@@ -420,9 +406,6 @@
       <code><![CDATA[$user->getRoles()]]></code>
       <code><![CDATA[$user->getRoles()]]></code>
     </MixedArgument>
-    <PossiblyNullArgument>
-      <code><![CDATA[self::$kernel]]></code>
-    </PossiblyNullArgument>
     <UnusedVariable>
       <code><![CDATA[$user]]></code>
     </UnusedVariable>

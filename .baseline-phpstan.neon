@@ -361,18 +361,6 @@ parameters:
 			path: tests/Functional/Command/UserActivateCommandTest.php
 
 		-
-			message: '#^Parameter \#1 \$command of class Symfony\\Component\\Console\\Tester\\CommandTester constructor expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: tests/Functional/Command/UserActivateCommandTest.php
-
-		-
-			message: '#^Parameter \#1 \$command of class Symfony\\Component\\Console\\Tester\\CommandTester constructor expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
-			identifier: argument.type
-			count: 4
-			path: tests/Functional/Command/UserCreateCommandTest.php
-
-		-
 			message: '#^Call to an undefined method object\:\:clear\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -393,12 +381,6 @@ parameters:
 		-
 			message: '#^Cannot call method isActive\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 1
-			path: tests/Functional/Command/UserDeactivateCommandTest.php
-
-		-
-			message: '#^Parameter \#1 \$command of class Symfony\\Component\\Console\\Tester\\CommandTester constructor expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: tests/Functional/Command/UserDeactivateCommandTest.php
 
@@ -424,12 +406,6 @@ parameters:
 			message: '#^Cannot call method getRoles\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
-			path: tests/Functional/Command/UserRoleAddCommandTest.php
-
-		-
-			message: '#^Parameter \#1 \$command of class Symfony\\Component\\Console\\Tester\\CommandTester constructor expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
-			identifier: argument.type
-			count: 2
 			path: tests/Functional/Command/UserRoleAddCommandTest.php
 
 		-
@@ -460,12 +436,6 @@ parameters:
 			message: '#^Cannot call method getRoles\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
-			path: tests/Functional/Command/UserRoleRemCommandTest.php
-
-		-
-			message: '#^Parameter \#1 \$command of class Symfony\\Component\\Console\\Tester\\CommandTester constructor expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
-			identifier: argument.type
-			count: 1
 			path: tests/Functional/Command/UserRoleRemCommandTest.php
 
 		-
