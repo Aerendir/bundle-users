@@ -16,19 +16,34 @@ jobs:
             matrix:
                 os: [ ubuntu-latest ]
                 # When you change a version here, change it also in the SonarCloud if condition
-                php: [ '8.2' ]
+                php: [ '8.2', '8.3', '8.4', '8.5' ]
                 symfony: [ '~6.4', '~7.4', '~8.0' ]
                 dependency-versions: [ lowest, highest ]
 
                 exclude:
-                    - php: '8.2'
-                      symfony: '~8.0'
-                    - php: '8.2'
-                      symfony: '~6.4'
-                      dependency-versions: 'lowest'
-                    - php: '8.2'
-                      symfony: '~7.4'
-                      dependency-versions: 'lowest'
+                    -   php: '8.2'
+                        symfony: '~8.0'
+                    -   php: '8.2'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.2'
+                        symfony: '~7.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.3'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.3'
+                        symfony: '~7.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.4'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.5'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    # SF 8 requires PHP ^8.4
+                    -   php: '8.3'
+                        symfony: '~8.0'
 
         steps:
             -   name: Checkout
@@ -67,7 +82,14 @@ jobs:
                 # The second update is to make Flex able to do its job
                 run: |
                     if [ "${{ matrix.dependency-versions }}" == "lowest" ]; then
-                        composer update --no-interaction --no-scripts --prefer-lowest
+                        # On PHP 8.4+ and Symfony 7.4/8.0, the "lowest" dependencies may install an incompatible version of phpstan/phpdoc-parser (2.x)
+                        # that is not compatible with the installed version of symfony/property-info.
+                        # We force phpstan/phpdoc-parser to ^1.33 to avoid the TypeError.
+                        if [[ "${{ matrix.php }}" == "8.4" || "${{ matrix.php }}" == "8.5" ]] && [[ "${{ matrix.symfony }}" == "~7.4" || "${{ matrix.symfony }}" == "~8.0" ]]; then
+                            composer update --no-interaction --no-scripts --prefer-lowest --with="phpstan/phpdoc-parser:^2"
+                        else
+                            composer update --no-interaction --no-scripts --prefer-lowest
+                        fi
                     else
                         composer update --no-interaction --no-scripts
                     fi

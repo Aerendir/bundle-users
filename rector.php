@@ -17,6 +17,7 @@ use SerendipityHQ\Integration\Rector\SerendipityHQ;
 $allowedRunPaths = [
     // From inside Docker
     '/project',
+    '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 
     // ON GitHub Actions
     '/home/runner/.composer/vendor/bin',

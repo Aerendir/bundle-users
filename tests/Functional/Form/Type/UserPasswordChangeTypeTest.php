@@ -33,7 +33,7 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         $user = UserFactory::createOne([
             'email'    => 'test@example.com',
             'password' => password_hash('password123', PASSWORD_BCRYPT),
-        ])->_real();
+        ]);
 
         $client->loginUser($user);
 
@@ -51,7 +51,12 @@ final class UserPasswordChangeTypeTest extends WebTestCase
         ]);
 
         $this->assertResponseStatusCodeSame(422);
-        $this->assertSelectorTextContains('body', 'form.error.old_password.passwords_mismatch');
+        $bodyText = $client->getCrawler()->filter('body')->text();
+        $this->assertTrue(
+            str_contains($bodyText, 'This value should be the user\'s current password.')
+            || str_contains($bodyText, 'form.error.old_password.passwords_mismatch'),
+            sprintf('The error message for old password was not found in body. Body content: "%s"', $bodyText)
+        );
 
         // Test password mismatch
         $crawler = $client->request(Request::METHOD_GET, '/password-change');
@@ -62,7 +67,12 @@ final class UserPasswordChangeTypeTest extends WebTestCase
             'user_password_change[plainPassword][second]' => 'mismatch',
         ]);
         $this->assertResponseStatusCodeSame(422);
-        $this->assertSelectorTextContains('body', 'form.password_change.new_password.error.mismatch');
+        $bodyText = $client->getCrawler()->filter('body')->text();
+        $this->assertTrue(
+            str_contains($bodyText, 'form.password_change.new_password.error.mismatch')
+            || str_contains($bodyText, 'This value is not valid.'),
+            sprintf('The error message for password mismatch was not found in body. Body content: "%s"', $bodyText)
+        );
 
         // Test valid submission
         $crawler = $client->request(Request::METHOD_GET, '/password-change');

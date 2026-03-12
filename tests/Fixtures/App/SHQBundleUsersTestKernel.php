@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App;
 
+use Composer\InstalledVersions;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\SHQUsersBundle;
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Controller\TestController;
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Entity\User;
@@ -27,6 +29,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Zenstruck\Foundry\Configuration;
 use Zenstruck\Foundry\ZenstruckFoundryBundle;
 
 final class SHQBundleUsersTestKernel extends BaseKernel
@@ -89,21 +92,46 @@ final class SHQBundleUsersTestKernel extends BaseKernel
             ],
         ]);
 
-        $container->loadFromExtension('doctrine', [
-            'dbal' => ['url' => 'sqlite:///%kernel.project_dir%/var/data.db'],
-            'orm'  => [
-                'auto_generate_proxy_classes' => true,
-                'mappings'                    => [
-                    'App' => [
-                        'is_bundle' => false,
-                        'type'      => 'attribute',
-                        'dir'       => '%kernel.project_dir%/App/Entity',
-                        'prefix'    => (new \ReflectionClass(User::class))->getNamespaceName(),
-                        'alias'     => 'App',
-                    ],
+        $ormConfig = [
+            'mappings'                    => [
+                'App' => [
+                    'is_bundle' => false,
+                    'type'      => 'attribute',
+                    'dir'       => '%kernel.project_dir%/App/Entity',
+                    'prefix'    => (new \ReflectionClass(User::class))->getNamespaceName(),
+                    'alias'     => 'App',
                 ],
             ],
+        ];
+
+        if (interface_exists(EntityManagerInterface::class)) {
+            $isOrm3 = false;
+            if (class_exists(InstalledVersions::class) && InstalledVersions::isInstalled('doctrine/orm')) {
+                $version = InstalledVersions::getVersion('doctrine/orm');
+                if (null !== $version && str_starts_with($version, '3.')) {
+                    $isOrm3 = true;
+                }
+            }
+
+            if (false === $isOrm3) {
+                $ormConfig['auto_generate_proxy_classes'] = true;
+            }
+        }
+
+        $container->loadFromExtension('doctrine', [
+            'dbal' => ['url' => 'sqlite:///%kernel.project_dir%/var/data.db'],
+            'orm'  => $ormConfig,
         ]);
+
+        $zenstruckFoundryConfig = [];
+        if (PHP_VERSION_ID >= 80400 && class_exists(InstalledVersions::class) && InstalledVersions::isInstalled('zenstruck/foundry')) {
+            $version = InstalledVersions::getVersion('zenstruck/foundry');
+            if (null !== $version && version_compare($version, '2.4.0', '>=') && class_exists(Configuration::class) && method_exists(Configuration::class, 'enableAutoRefreshWithLazyObjects')) {
+                $zenstruckFoundryConfig['enable_auto_refresh_with_lazy_objects'] = true;
+            }
+        }
+
+        $container->loadFromExtension('zenstruck_foundry', $zenstruckFoundryConfig);
 
         if (file_exists(__DIR__ . '/config/services.yaml')) {
             $loader->load(__DIR__ . '/config/services.yaml');

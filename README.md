@@ -10,18 +10,22 @@
     <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/v/serendipity_hq/bundle-users.svg?style=flat-square"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
     <a href="https://github.com/Aerendir/bundle-users/releases"><img src="https://img.shields.io/packagist/php-v/serendipity_hq/bundle-users?color=%238892BF&style=flat-square&logo=php" /></a>
+    <a href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img src="https://img.shields.io/badge/PHP-8.2-8892BF?style=flat-square&logo=php" /></a>
+    <a href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img src="https://img.shields.io/badge/PHP-8.3-8892BF?style=flat-square&logo=php" /></a>
+    <a href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img src="https://img.shields.io/badge/PHP-8.4-8892BF?style=flat-square&logo=php" /></a>
+    <a href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img src="https://img.shields.io/badge/PHP-8.5-8892BF?style=flat-square&logo=php" /></a>
 </p>
 <p>
     Supports:
-    <a title="Supports Symfony ^6.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Supports Symfony ^6.4" src="https://img.shields.io/badge/Symfony-%5E6.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Supports Symfony ^7.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Supports Symfony ^7.4" src="https://img.shields.io/badge/Symfony-%5E7.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Supports Symfony ^8.0" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Supports Symfony ^8.0" src="https://img.shields.io/badge/Symfony-%5E8.0-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^6.4" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Supports Symfony ^6.4" src="https://img.shields.io/badge/Symfony-%5E6.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^7.4" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Supports Symfony ^7.4" src="https://img.shields.io/badge/Symfony-%5E7.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Supports Symfony ^8.0" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Supports Symfony ^8.0" src="https://img.shields.io/badge/Symfony-%5E8.0-333?style=flat-square&logo=symfony" /></a>
 </p>
 <p>
     Tested with:
-    <a title="Tested with Symfony ^6.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^6.4" src="https://img.shields.io/badge/Symfony-%5E6.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Tested with Symfony ^7.4" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^7.4" src="https://img.shields.io/badge/Symfony-%5E7.4-333?style=flat-square&logo=symfony" /></a>
-    <a title="Tested with Symfony ^8.0" href="https://github.com/Aerendir/bundle-aws-ses-monitor/actions?query=branch%3Adev"><img title="Tested with Symfony ^8.0" src="https://img.shields.io/badge/Symfony-%5E8.0-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^6.4" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Tested with Symfony ^6.4" src="https://img.shields.io/badge/Symfony-%5E6.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^7.4" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Tested with Symfony ^7.4" src="https://img.shields.io/badge/Symfony-%5E7.4-333?style=flat-square&logo=symfony" /></a>
+    <a title="Tested with Symfony ^8.0" href="https://github.com/Aerendir/bundle-users/actions?query=workflow%3APHPunit"><img title="Tested with Symfony ^8.0" src="https://img.shields.io/badge/Symfony-%5E8.0-333?style=flat-square&logo=symfony" /></a>
 </p>
 
 ## Current Status
@@ -34,7 +38,6 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 
-[![Phan](https://github.com/Aerendir/bundle-users/workflows/Phan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 [![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 [![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 [![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
