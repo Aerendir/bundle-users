@@ -17,6 +17,7 @@ parameters:
         - src
         - tests
     excludePaths:
+        - tests/Fixtures/var
         - */src/DependencyInjection/Configuration.php
         - */tests/bootstrap.php
     ignoreErrors:

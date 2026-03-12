@@ -1,107 +1,956 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasActivationInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:activate\\(\\)\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Command\\AbstractUserRolesCommand\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Command/AbstractUserRolesCommand.php
+
+		-
+			message: '#^Parameter \#1 \$roles of static method SerendipityHQ\\Bundle\\UsersBundle\\Validator\\RolesValidator\:\:validate\(\) expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Command/AbstractUserRolesCommand.php
+
+		-
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasActivationInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:activate\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Command/UserActivateCommand.php
 
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getPlainPassword\\(\\)\\.$#"
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:getPlainPassword\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Command/UserCreateCommand.php
 
 		-
-			message: "#^Parameter \\#4 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			message: '#^PHPDoc tag @var with type SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface is not subtype of native type Symfony\\Component\\Security\\Core\\User\\UserInterface\.$#'
+			identifier: varTag.nativeType
 			count: 1
 			path: src/Command/UserCreateCommand.php
 
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasActivationInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:activate\\(\\)\\.$#"
+			message: '#^Parameter \#4 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Command/UserCreateCommand.php
+
+		-
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasActivationInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:activate\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: src/Command/UserDeactivateCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$child of method Symfony\\\\Component\\\\Form\\\\FormBuilderInterface\\<mixed\\>\\:\\:add\\(\\) expects string\\|Symfony\\\\Component\\\\Form\\\\FormBuilderInterface, mixed given\\.$#"
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Binary operation "\." between ''shq_users\.managers\.'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Call to function is_string\(\) with non\-falsy\-string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''amount_of'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''class'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''entity'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''lifespan'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''max_active_tokens'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''min_time_between_tokens'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''property'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''reset_request'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 5
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''throttling'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''token_class'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Cannot access offset ''unit'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Instanceof between Symfony\\Component\\DependencyInjection\\Definition and Symfony\\Component\\DependencyInjection\\Definition will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/DependencyInjection/SHQUsersExtension.php
+
+		-
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Form\\Type\\AbstractType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Form/Type/AbstractType.php
+
+		-
+			message: '#^Parameter \#1 \$child of method Symfony\\Component\\Form\\FormBuilderInterface\<mixed\>\:\:add\(\) expects string\|Symfony\\Component\\Form\\FormBuilderInterface, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Form/Type/PasswordResetRequestType.php
 
 		-
-			message: "#^Class DateTimeImmutable is unsafe to use\\. Its methods can return FALSE instead of throwing an exception\\. Please add 'use Safe\\\\DateTimeImmutable;' at the beginning of the file to use the variant provided by the 'thecodingmachine/safe' library\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper\:\:createFormPasswordChange\(\) return type with generic interface Symfony\\Component\\Form\\FormInterface does not specify its types\: TData$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Helper/PasswordHelper.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper\:\:createFormPasswordReset\(\) return type with generic interface Symfony\\Component\\Form\\FormInterface does not specify its types\: TData$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Helper/PasswordHelper.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper\:\:createFormPasswordResetRequest\(\) return type with generic interface Symfony\\Component\\Form\\FormInterface does not specify its types\: TData$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Helper/PasswordHelper.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
 			count: 1
 			path: src/Helper/PasswordResetHelper.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Helper\\\\PasswordResetHelper\\:\\:getTokenFromSession\\(\\) should return string but returns mixed\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordResetHelper\:\:getTokenFromSession\(\) should return string but returns mixed\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Helper/PasswordResetHelper.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\PasswordManager\\:\\:checkThrottling\\(\\) never returns DateTimeInterface so it can be removed from the return type\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager\:\:checkThrottling\(\) never returns DateTimeInterface so it can be removed from the return type\.$#'
+			identifier: return.unusedType
 			count: 1
 			path: src/Manager/PasswordManager.php
 
 		-
-			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager\:\:handleReset\(\) has parameter \$form with generic interface Symfony\\Component\\Form\\FormInterface but does not specify its types\: TData$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Manager/PasswordManager.php
 
 		-
-			message: "#^Parameter \\#1 \\$password of method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\:\\:setPlainPassword\\(\\) expects string, mixed given\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager\:\:handleResetRequest\(\) has parameter \$form with generic interface Symfony\\Component\\Form\\FormInterface but does not specify its types\: TData$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Manager/PasswordManager.php
 
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getRoles\\(\\)\\.$#"
+			message: '#^Parameter \#1 \$className of method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\) expects class\-string\<object\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: '#^Parameter \#1 \$password of method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\:\:setPlainPassword\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:getRoles\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: src/Manager/UsersManager.php
 
 		-
-			message: "#^Call to an undefined method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setRoles\\(\\)\\.$#"
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:setRoles\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: src/Manager/UsersManager.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Manager\\\\UsersManager\\:\\:load\\(\\) should return Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null but returns object\\|null\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManager\:\:load\(\) should return Symfony\\Component\\Security\\Core\\User\\UserInterface\|null but returns object\|null\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Manager/UsersManager.php
 
 		-
-			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			message: '#^Parameter \#1 \$className of method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\) expects class\-string\<object\>, string given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Manager/UsersManager.php
 
 		-
-			message: "#^Parameter \\#1 \\$user of class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UserClassMustImplementUserInterface constructor expects SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasPlainPasswordInterface\\|SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\HasRolesInterface\\|string, object given\\.$#"
+			message: '#^Parameter \#1 \$user of class SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementUserInterface constructor expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|string, object given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Manager/UsersManager.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\Property\\\\PasswordResetTokenInterface\\:\\:activate\\(\\) has no return type specified\\.$#"
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\PasswordResetTokenInterface\:\:activate\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Model/Property/PasswordResetTokenInterface.php
 
 		-
-			message: "#^Class SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository extends generic class Doctrine\\\\ORM\\\\EntityRepository but does not specify its types\\: TEntityClass$#"
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository extends generic class Doctrine\\ORM\\EntityRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:getTokensStillValid\\(\\) should return array\\|null but returns mixed\\.$#"
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository has PHPDoc tag @method for method findBy\(\) parameter \#1 \$criteria with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
-			message: "#^Method SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Repository\\\\PasswordResetTokenRepository\\:\\:removeExpiredResetPasswordRequests\\(\\) should return int but returns mixed\\.$#"
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository has PHPDoc tag @method for method findBy\(\) parameter \#2 \$orderBy with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Repository/PasswordResetTokenRepository.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between false and non\\-empty\\-string will always evaluate to false\\.$#"
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository has PHPDoc tag @method for method findOneBy\(\) parameter \#1 \$criteria with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository has PHPDoc tag @method for method findOneBy\(\) parameter \#2 \$orderBy with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository\:\:getTokensStillValid\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository\:\:getTokensStillValid\(\) should return array\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository\:\:removeExpiredResetPasswordRequests\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between false and non\-falsy\-string will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
 			count: 1
 			path: src/Util/PasswordResetTokenGenerator.php
+
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Validator/RolesValidator.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 1
+			path: tests/Fixtures/App/Entity/PasswordResetToken.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\PasswordResetToken\:\:\$user type mapping mismatch\: property can contain Symfony\\Component\\Security\\Core\\User\\UserInterface but database expects SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\User\.$#'
+			identifier: doctrine.associationType
+			count: 1
+			path: tests/Fixtures/App/Entity/PasswordResetToken.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\User\:\:\$email type mapping mismatch\: property can contain string\|null but database expects string\.$#'
+			identifier: doctrine.columnType
+			count: 1
+			path: tests/Fixtures/App/Entity/User.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\User\:\:\$password type mapping mismatch\: property can contain string\|null but database expects string\.$#'
+			identifier: doctrine.columnType
+			count: 1
+			path: tests/Fixtures/App/Entity/User.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Zenstruck\\\\Foundry\\\\Configuration'' and ''enableAutoRefreshWi…'' will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: tests/Fixtures/App/SHQBundleUsersTestKernel.php
+
+		-
+			message: '#^Call to an undefined method object\:\:clear\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserActivateCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getRepository\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserActivateCommandTest.php
+
+		-
+			message: '#^Cannot call method findOneBy\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserActivateCommandTest.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserActivateCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:clear\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserDeactivateCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getRepository\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserDeactivateCommandTest.php
+
+		-
+			message: '#^Cannot call method findOneBy\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserDeactivateCommandTest.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserDeactivateCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:clear\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserRoleAddCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getRepository\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserRoleAddCommandTest.php
+
+		-
+			message: '#^Cannot call method findOneBy\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserRoleAddCommandTest.php
+
+		-
+			message: '#^Cannot call method getRoles\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: tests/Functional/Command/UserRoleAddCommandTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of method PHPUnit\\Framework\\Assert\:\:assertContains\(\) expects iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Command/UserRoleAddCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:clear\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserRoleRemCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getRepository\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Command/UserRoleRemCommandTest.php
+
+		-
+			message: '#^Cannot call method findOneBy\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: tests/Functional/Command/UserRoleRemCommandTest.php
+
+		-
+			message: '#^Cannot call method getRoles\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: tests/Functional/Command/UserRoleRemCommandTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of method PHPUnit\\Framework\\Assert\:\:assertNotContains\(\) expects iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Command/UserRoleRemCommandTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:createBuilder\(\)\.$#'
+			identifier: method.notFound
+			count: 5
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getManager\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:push\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertSame\(\) with 40 and 40 will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Cannot call method add\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Cannot call method getForm\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Cannot call method submit\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Cannot cast array\|bool\|float\|int\|string\|null to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 7
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#1 \$appSecret of class SerendipityHQ\\Bundle\\UsersBundle\\Util\\PasswordResetTokenGenerator constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#1 \$form of method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager\:\:handleResetRequest\(\) expects Symfony\\Component\\Form\\FormInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 4
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#2 \$hasherFactory of class SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper constructor expects Symfony\\Component\\PasswordHasher\\Hasher\\PasswordHasherFactoryInterface, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#2 \$requestStack of class SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordResetHelper constructor expects Symfony\\Component\\HttpFoundation\\RequestStack, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#3 \$form of method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager\:\:handleReset\(\) expects Symfony\\Component\\Form\\FormInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#3 \$formFactory of class SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper constructor expects Symfony\\Component\\Form\\FormFactoryInterface, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#3 \$propertyAccessor of class SerendipityHQ\\Bundle\\UsersBundle\\Util\\PasswordResetTokenGenerator constructor expects Symfony\\Component\\PropertyAccess\\PropertyAccessor, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#4 \$router of class SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordHelper constructor expects Symfony\\Component\\Routing\\RouterInterface, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Parameter \#8 \$eventDispatcher of class SerendipityHQ\\Bundle\\UsersBundle\\Manager\\PasswordManager constructor expects Symfony\\Component\\EventDispatcher\\EventDispatcherInterface, object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Functional\\Manager\\PasswordManagerTest\:\:\$entityManager \(Doctrine\\ORM\\EntityManagerInterface\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Functional/Manager/PasswordManagerTest.php
+
+		-
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManagerInterface\:\:passwordChanged\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Call to an undefined method SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManagerInterface\:\:updated\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getManager\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Functional\\Manager\\UsersManagerTest\:\:\$dispatcher \(Symfony\\Component\\EventDispatcher\\EventDispatcherInterface\) does not accept object\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Functional\\Manager\\UsersManagerTest\:\:\$entityManager \(Doctrine\\ORM\\EntityManagerInterface\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Functional\\Manager\\UsersManagerTest\:\:\$manager \(SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManagerInterface\) does not accept object\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Functional/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getManager\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Cannot call method getRequestedAt\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 8
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Offset 0 might not exist on array\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Offset 1 might not exist on array\|null\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, array\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Functional\\Repository\\PasswordResetTokenRepositoryTest\:\:\$entityManager \(Doctrine\\ORM\\EntityManagerInterface\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:ensurePassIsString\(\)\.$#'
+			identifier: method.notFound
+			count: 3
+			path: tests/Unit/Command/Arguments/PassCommandArgumentTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getArgumentPass\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: tests/Unit/Command/Arguments/PassCommandArgumentTest.php
+
+		-
+			message: '#^Call to an undefined method object\:\:getArgumentPassOrNull\(\)\.$#'
+			identifier: method.notFound
+			count: 3
+			path: tests/Unit/Command/Arguments/PassCommandArgumentTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Command/Arguments/PassCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:101\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:27\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:41\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:55\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:69\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Command/Arguments/RolesCommandArgumentTest\.php\:85\:\:getArgumentRolesOrNull\(\) should return array\<string\>\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Parameter \#1 \$roles of static method SerendipityHQ\\Bundle\\UsersBundle\\Validator\\RolesValidator\:\:validate\(\) expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/Unit/Command/Arguments/RolesCommandArgumentTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/DependencyInjection/ConfigurationTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of static method PHPUnit\\Framework\\Assert\:\:assertArrayNotHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/DependencyInjection/ConfigurationTest.php
+
+		-
+			message: '#^Cannot access offset ''class'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
+
+		-
+			message: '#^Cannot access offset ''entity'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
+
+		-
+			message: '#^Cannot access offset ''event'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
+
+		-
+			message: '#^Cannot access offset ''property'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of static method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
+
+		-
+			message: '#^Class DateTime is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTime;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 1
+			path: tests/Unit/Event/PasswordResetTokenCreatedEventTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\PasswordResetTokenException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterfaceTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\PasswordResetTokenException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\PasswordResetTokenClassNotImplemented will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/PasswordResetTokenClassNotImplementedTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\RolesException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\RoleInvalidException will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/RoleInvalidExceptionTest.php
+
+		-
+			message: '#^Parameter \#1 \$expected of method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) expects class\-string\<object\>, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/Unit/Exception/SimpleExceptionsTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UserClassMustImplementInterface'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementHasPlainPasswordInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementHasPlainPasswordInterfaceTest.php
+
+		-
+			message: '#^Parameter \#1 \$user of class SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementHasPlainPasswordInterface constructor expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|string\|Symfony\\Component\\Security\\Core\\User\\UserInterface, stdClass given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementHasPlainPasswordInterfaceTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UserClassMustImplementInterface'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementHasRolesInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementHasRolesInterfaceTest.php
+
+		-
+			message: '#^Parameter \#1 \$user of class SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementHasRolesInterface constructor expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|string\|Symfony\\Component\\Security\\Core\\User\\UserInterface, stdClass given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementHasRolesInterfaceTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UsersException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementInterfaceTest.php
+
+		-
+			message: '#^Parameter \#1 \$user of class SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementInterface constructor expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|string\|Symfony\\Component\\Security\\Core\\User\\UserInterface, stdClass given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementInterfaceTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UserClassMustImplementInterface'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementUserInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementUserInterfaceTest.php
+
+		-
+			message: '#^Parameter \#1 \$user of class SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UserClassMustImplementUserInterface constructor expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|string, stdClass given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Exception/UserClassMustImplementUserInterfaceTest.php
+
+		-
+			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UsersException@anonymous/tests/Unit/Exception/UsersExceptionTest\.php\:23\:\:callGetUserClass\(\) has parameter \$user with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: tests/Unit/Exception/UsersExceptionTest.php
+
+		-
+			message: '#^Parameter \#1 \$user of method SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UsersException\:\:getUserClass\(\) expects SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasPlainPasswordInterface\|SerendipityHQ\\Bundle\\UsersBundle\\Model\\Property\\HasRolesInterface\|string\|Symfony\\Component\\Security\\Core\\User\\UserInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Exception/UsersExceptionTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UsersException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UsersManagerException will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Exception/UsersManagerExceptionTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\UsersManagerException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\UsersManagerException will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 2
+			path: tests/Unit/Exception/UsersManagerExceptionTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Helper/PasswordHelperTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\PasswordResetTokenPublic'' and SerendipityHQ\\Bundle\\UsersBundle\\Model\\PasswordResetTokenPublic will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Helper/PasswordResetHelperTest.php
+
+		-
+			message: '#^Cannot use \+\+ on mixed\.$#'
+			identifier: postInc.type
+			count: 1
+			path: tests/Unit/Helper/PasswordResetHelperTest.php
+
+		-
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: tests/Unit/Helper/PasswordResetHelperTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface'' and Symfony\\Component\\Security\\Core\\User\\UserInterface will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Method Symfony\\Component\\Security\\Core\\User\\UserInterface@anonymous/tests/Unit/Manager/UsersManagerTest\.php\:153\:\:getPassword\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Method Symfony\\Component\\Security\\Core\\User\\UserInterface@anonymous/tests/Unit/Manager/UsersManagerTest\.php\:153\:\:getSalt\(\) never returns string so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Parameter \#4 \$dispatcher of class SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManager constructor expects Symfony\\Component\\EventDispatcher\\EventDispatcherInterface, PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Parameter \#5 \$entityManager of class SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManager constructor expects Doctrine\\ORM\\EntityManagerInterface, PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Parameter \#6 \$propertyAccessor of class SerendipityHQ\\Bundle\\UsersBundle\\Manager\\UsersManager constructor expects Symfony\\Component\\PropertyAccess\\PropertyAccessor, PHPUnit\\Framework\\MockObject\\MockObject given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Unit/Manager/UsersManagerTest.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 1
+			path: tests/Unit/Model/PasswordResetTokenPublicTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''DateTimeImmutable'' and DateTimeImmutable will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Unit/Model/Property/PasswordResetTokenTraitTest.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 4
+			path: tests/Unit/Model/Property/PasswordResetTokenTraitTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents'' and SerendipityHQ\\Bundle\\UsersBundle\\Model\\ResetPasswordTokenComponents will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 2
+			path: tests/Unit/Util/PasswordResetTokenGeneratorTest.php
+
+		-
+			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
+			identifier: theCodingMachineSafe.class
+			count: 2
+			path: tests/Unit/Util/PasswordResetTokenGeneratorTest.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Util/PasswordResetTokenGeneratorTest.php
+
+		-
+			message: '#^Parameter \#1 \$roles of static method SerendipityHQ\\Bundle\\UsersBundle\\Validator\\RolesValidator\:\:validate\(\) expects array\<string\>\|string, array\<int, int\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Validator/RolesValidatorTest.php
 

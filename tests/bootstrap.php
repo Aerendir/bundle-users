@@ -12,3 +12,9 @@ declare(strict_types=1);
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+if (false === file_exists(__DIR__ . '/../vendor-bin/phpunit/vendor/autoload.php')) {
+    throw new LogicException('PHPUnit is required to run the tests. Please install it via composer bin phpunit install');
+}
+
+require_once __DIR__ . '/../vendor-bin/phpunit/vendor/autoload.php';

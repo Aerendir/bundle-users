@@ -15,7 +15,6 @@ namespace SerendipityHQ\Bundle\UsersBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
-use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -29,7 +28,6 @@ interface UsersManagerInterface
         EventDispatcherInterface $dispatcher,
         EntityManagerInterface $entityManager,
         PropertyAccessor $propertyAccessor,
-        RolesValidator $rolesValidator,
     );
 
     public function create(string $unique, string $pass): UserInterface;

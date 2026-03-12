@@ -23,7 +23,6 @@ use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasPlainPasswordInterface;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
-use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -37,7 +36,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
     public function prepend(ContainerBuilder $containerBuilder): void
     {
         $securityExtConfig       = $containerBuilder->getExtensionConfig('security');
-        $securityEntityProviders = $securityExtConfig[0][Configuration::SECURITY_PROVIDERS];
+        $securityEntityProviders = $securityExtConfig[0][Configuration::SECURITY_PROVIDERS] ?? null;
 
         if (false === is_array($securityEntityProviders)) {
             throw new \InvalidArgumentException('Security providers are not listed.');
@@ -94,9 +93,6 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         $managerRegistryDefinition = new Definition(UsersManagerRegistry::class);
         $containerBuilder->setDefinition(UsersManagerRegistry::class, $managerRegistryDefinition);
 
-        $rolesValidatorDefinition = new Definition(RolesValidator::class);
-        $containerBuilder->setDefinition(RolesValidator::class, $rolesValidatorDefinition);
-
         foreach ($config[Configuration::SECURITY_PROVIDERS] as $provider => $providerConfig) {
             /** @var string $secUserClass */
             $secUserClass = $providerConfig[Configuration::SECURITY_PROVIDERS_ENTITY_CLASS];
@@ -105,7 +101,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
             $secUserProperty = $providerConfig[Configuration::SECURITY_PROVIDERS_ENTITY_PROPERTY];
 
             $manager           = 'shq_users.managers.' . $provider;
-            $managerDefinition = new Definition(UsersManager::class, [$provider, $secUserClass, $secUserProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference, $rolesValidatorDefinition]);
+            $managerDefinition = new Definition(UsersManager::class, [$provider, $secUserClass, $secUserProperty, $dispatcherReference, $entityManagerReference, $propertyAccessorReference]);
             $containerBuilder->setDefinition($manager, $managerRegistryDefinition);
             $managerRegistryDefinition->addMethodCall('addManager', [$provider, $managerDefinition]);
 
@@ -136,8 +132,7 @@ final class SHQUsersExtension extends Extension implements PrependExtensionInter
         }
 
         if (isset($manager) && \is_string($manager) && isset($managerDefinition) && $managerDefinition instanceof Definition && 1 === (\is_countable($config[Configuration::SECURITY_PROVIDERS]) ? \count($config[Configuration::SECURITY_PROVIDERS]) : 0)) {
-            $containerBuilder->setAlias('shq_users.managers.default_manager', $manager);
-            $containerBuilder->setDefinition(UsersManagerInterface::class, $managerDefinition);
+            $containerBuilder->setDefinition(UsersManagerInterface::class, $managerDefinition)->setPublic(true);
         }
     }
 }

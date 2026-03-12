@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace SerendipityHQ\Bundle\UsersBundle\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
+use SerendipityHQ\Bundle\UsersBundle\Command\Arguments\RolesCommandArgument;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\HasRolesInterface;
-use SerendipityHQ\Bundle\UsersBundle\Validator\RolesValidator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,13 +24,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 abstract class AbstractUserRolesCommand extends AbstractUserCommand
 {
+    use RolesCommandArgument;
+
     /** @var HasRolesInterface|UserInterface */
     protected $user;
 
     /** @var string[] */
     protected array $roles;
 
-    public function __construct(EntityManagerInterface $entityManager, protected RolesValidator $rolesValidator, UsersManagerRegistry $usersManagerRegistry)
+    public function __construct(EntityManagerInterface $entityManager, UsersManagerRegistry $usersManagerRegistry)
     {
         parent::__construct($entityManager, $usersManagerRegistry);
     }
@@ -38,7 +40,7 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
     protected function configure(): void
     {
         parent::configure();
-        $this->addArgument('roles', InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'The role(s) to apply to or remove from the user.');
+        $this->addArgument(self::ARG_ROLES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'The role(s) to apply to or remove from the user.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -55,38 +57,10 @@ abstract class AbstractUserRolesCommand extends AbstractUserCommand
             return (int) self::FAILURE;
         }
 
-        $roles = $input->getArgument('roles');
-        if (false === \is_array($roles)) {
-            return (int) self::FAILURE;
-        }
+        $roles = $this->getArgumentRoles($input);
 
         $this->roles = $roles;
 
-        $errors = $this->rolesValidator->validate($roles);
-        if ([] !== $errors) {
-            $this->printErrors($errors);
-
-            return (int) self::FAILURE;
-        }
-
         return (int) self::SUCCESS;
-    }
-
-    /**
-     * @param array<string,array<string>> $errors
-     */
-    private function printErrors(array $errors): void
-    {
-        $this->io->error('The roles you passed have some errors');
-        $this->io->writeln('Found errors');
-
-        foreach ($errors as $role => $roleErrors) {
-            $message = sprintf('> <fg=green>%s</>', $role);
-            $this->io->writeln($message);
-            foreach ($roleErrors as $error) {
-                $message = sprintf('  - %s', $error);
-                $this->io->writeln($message);
-            }
-        }
     }
 }

@@ -15,7 +15,7 @@ namespace SerendipityHQ\Bundle\UsersBundle\Helper;
 
 use SerendipityHQ\Bundle\UsersBundle\Model\PasswordResetTokenPublic;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
-use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
+use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGeneratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -33,7 +33,7 @@ final class PasswordResetHelper
 
     private SessionInterface $session;
 
-    public function __construct(private readonly PasswordResetTokenGenerator $passwordResetTokenGenerator, RequestStack $requestStack)
+    public function __construct(private readonly PasswordResetTokenGeneratorInterface $passwordResetTokenGenerator, RequestStack $requestStack)
     {
         try {
             $this->session = $requestStack->getSession();
@@ -41,7 +41,7 @@ final class PasswordResetHelper
         }
     }
 
-    public function getPasswordResetTokenGenerator(): PasswordResetTokenGenerator
+    public function getPasswordResetTokenGenerator(): PasswordResetTokenGeneratorInterface
     {
         return $this->passwordResetTokenGenerator;
     }

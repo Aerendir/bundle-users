@@ -1,5 +1,7 @@
 .php_cs
 composer.lock
+symfony.lock
 phpunit.xml
 var
 vendor
+gh-actions-matrix.php

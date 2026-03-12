@@ -12,18 +12,55 @@ declare(strict_types=1);
  */
 
 use Rector\Config\RectorConfig;
-use Rector\ValueObject\PhpVersion;
 use SerendipityHQ\Integration\Rector\SerendipityHQ;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
-    $rectorConfig->paths([__DIR__ . '/src', __DIR__ . '/tests']);
+$allowedRunPaths = [
+    // From inside Docker
+    '/project',
+    '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 
+    // ON GitHub Actions
+    '/home/runner/.composer/vendor/bin',
+];
+
+$canRun = false;
+foreach ($allowedRunPaths as $allowedRunPath) {
+    if (str_starts_with($_SERVER['PATH'] ?? '', $allowedRunPath)) {
+        $canRun = true;
+    }
+}
+
+if (false === $canRun) {
+    $message = <<<EOF
+        It seems you are running `composer fix` from outside the development container, maybe from your host machine.
+        Please, run it from inside the container (`make start && make sh`).
+        EOF;
+
+    throw new RuntimeException(sprintf("%s\n\nCurrent path:\n%s\n\nAllowed paths:\n%s", $message, $_SERVER['PATH'], implode(', ', $allowedRunPaths)));
+}
+
+$toSkip   = SerendipityHQ::buildToSkip(SerendipityHQ::SHQ_SYMFONY_BUNDLE_SKIP);
+$toSkip[] = __DIR__ . '/tests/Fixtures/var';
+$toSkip[] = Rector\Symfony\Symfony73\Rector\Class_\CommandHelpToAttributeRector::class;
+
+return RectorConfig::configure()
+    ->withPaths([__DIR__ . '/src', __DIR__ . '/tests'])
     // This causes issues with controllers
     // Until required for tests, keep it commented
-    // $rectorConfig->bootstrapFiles([__DIR__ . '/vendor-bin/phpunit/vendor/autoload.php']);
-    $rectorConfig->import(SerendipityHQ::SHQ_SYMFONY_BUNDLE);
-
-    $toSkip = SerendipityHQ::buildToSkip(SerendipityHQ::SHQ_SYMFONY_BUNDLE_SKIP);
-    $rectorConfig->skip($toSkip);
-};
+    ->withBootstrapFiles([__DIR__ . '/vendor-bin/phpunit/vendor/autoload.php'])
+    ->withSets([
+        Rector\Symfony\Set\SymfonySetList::SYMFONY_64,
+    ])
+    ->withRules([
+        Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class,
+        Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
+        Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector::class,
+    ])
+    ->withImportNames(importNames: true, importDocBlockNames: true, importShortClasses: false)
+    ->withSymfonyContainerXml(__DIR__ . '/tests/Fixtures/var/cache/test/SerendipityHQ_Bundle_UsersBundle_Tests_Fixtures_App_SHQBundleUsersTestKernelTestDebugContainer.xml')
+    ->withSkip($toSkip)
+    ->withCache(
+        './var/cache/rector',
+        Rector\Caching\ValueObject\Storage\FileCacheStorage::class
+    )
+    ->withComposerBased(symfony: true);

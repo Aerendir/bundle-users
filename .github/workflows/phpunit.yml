@@ -16,20 +16,41 @@ jobs:
             matrix:
                 os: [ ubuntu-latest ]
                 # When you change a version here, change it also in the SonarCloud if condition
-                php: [ '8.1', '8.2' ]
-                symfony: [ '~5.4', '~6.0' ]
+                php: [ '8.2', '8.3', '8.4', '8.5' ]
+                symfony: [ '~6.4', '~7.4', '~8.0' ]
+                dependency-versions: [ lowest, highest ]
 
-                # This combination is not installable
                 exclude:
-                    - php: '7.4'
-                      symfony: '~6.0'
+                    -   php: '8.2'
+                        symfony: '~8.0'
+                    -   php: '8.2'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.2'
+                        symfony: '~7.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.3'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.3'
+                        symfony: '~7.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.4'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    -   php: '8.5'
+                        symfony: '~6.4'
+                        dependency-versions: 'lowest'
+                    # SF 8 requires PHP ^8.4
+                    -   php: '8.3'
+                        symfony: '~8.0'
 
         steps:
             -   name: Checkout
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
 
             -   name: Setup PHP
-                uses: shivammathur/setup-php@2.32.0
+                uses: shivammathur/setup-php@2.36.0
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: pcov
@@ -41,7 +62,7 @@ jobs:
                     echo "::set-output name=dir::$(composer config cache-files-dir)"
 
             -   name: Cache Composer's dependencies
-                uses: actions/cache@v4
+                uses: actions/cache@v5
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
                     key: php-composer-dependencies-cache
@@ -60,7 +81,18 @@ jobs:
             -   name: Update Composer deps (with Flex)
                 # The second update is to make Flex able to do its job
                 run: |
-                    composer update --no-interaction --no-scripts
+                    if [ "${{ matrix.dependency-versions }}" == "lowest" ]; then
+                        # On PHP 8.4+ and Symfony 7.4/8.0, the "lowest" dependencies may install an incompatible version of phpstan/phpdoc-parser (2.x)
+                        # that is not compatible with the installed version of symfony/property-info.
+                        # We force phpstan/phpdoc-parser to ^1.33 to avoid the TypeError.
+                        if [[ "${{ matrix.php }}" == "8.4" || "${{ matrix.php }}" == "8.5" ]] && [[ "${{ matrix.symfony }}" == "~7.4" || "${{ matrix.symfony }}" == "~8.0" ]]; then
+                            composer update --no-interaction --no-scripts --prefer-lowest --with="phpstan/phpdoc-parser:^2"
+                        else
+                            composer update --no-interaction --no-scripts --prefer-lowest
+                        fi
+                    else
+                        composer update --no-interaction --no-scripts
+                    fi
 
             -   name: Install Composer bin PHPUnit
                 uses: ramsey/composer-install@v3
@@ -77,7 +109,7 @@ jobs:
 
             -   name: Sonarcloud
                 if: |
-                    github.ref == 'refs/heads/dev' && matrix.php == '8.1' && matrix.symfony == '~6.0'
+                    github.ref == 'refs/heads/dev' && matrix.php == '8.2' && matrix.symfony == '~6.4' && matrix.dependency-versions == 'highest'
                 uses: sonarsource/sonarcloud-github-action@master
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

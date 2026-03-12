@@ -19,14 +19,17 @@ jobs:
 
         steps:
             -   name: Checkout
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
 
             -   name: Setup PHP
-                uses: shivammathur/setup-php@2.32.0
+                uses: shivammathur/setup-php@2.36.0
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: none # disable xdebug, pcov
                     extensions: ast
+
+            -   name: Remove Symfony Flex
+                run: composer remove symfony/flex --dev --no-update
 
             -   name: Install Composer deps
                 uses: ramsey/composer-install@v3

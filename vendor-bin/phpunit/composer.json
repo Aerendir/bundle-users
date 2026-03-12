@@ -1,15 +1,19 @@
 {
     "require-dev": {
-        "symfony/phpunit-bridge": "7.2.0",
-        "vimeo/psalm": "5.26.1",
-        "psalm/plugin-phpunit": "0.19.0",
-        "weirdan/doctrine-psalm-plugin": "2.9.0",
-        "phpunit/phpunit": "9.6.19",
-        "symfony/framework-bundle": "~5.4"
+        "symfony/phpunit-bridge": "^7.2",
+        "phpunit/phpunit": "^11.0",
+        "symfony/framework-bundle": "~5.4",
+        "vimeo/psalm": "^6.15",
+        "psalm/plugin-phpunit": "^0.19.5",
+        "psalm/plugin-symfony": "^5.3",
+        "weirdan/doctrine-psalm-plugin": "^2.10"
     },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     }
 }
