@@ -74,6 +74,8 @@ mut: ## Opens the report of mutations in the browser
 start: ## Starts the containers to run the bundle (all in detached mode - no logs). Ex.: make start 8.2
 	$(MAKE) stop
 	$(DOCKER_COMP) up -d
+	@docker image rm bundle-users-php:current 2>/dev/null || true
+	@docker tag bundle-users-php:$(PHP_V) bundle-users-php:current
 
 stax: ## Starts, WITH XDEBUG, the containers to run the bundle (all in detached mode - no logs). Ex.: make stax 8.2
 	$(MAKE) stop
