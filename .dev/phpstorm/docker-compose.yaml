@@ -1,0 +1,12 @@
+name: bundle-users
+
+services:
+    php:
+        image: bundle-users-php:current
+        container_name: bundle-users
+        volumes:
+            - ../../:/project
+        working_dir: /project
+        command: [ "tail", "-f", "/dev/null" ]
+        stdin_open: true
+        tty: true

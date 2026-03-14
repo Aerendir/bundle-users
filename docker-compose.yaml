@@ -1,12 +1,12 @@
 services:
   php:
-    image: ${PROJECT_NAME}-php:${PHP_V}
-    container_name: ${PROJECT_NAME}-${PHP_V}
+    image: ${PROJECT_NAME:-bundle-users}-php:${PHP_V}
+    container_name: ${PROJECT_NAME:-bundle-users}-${PHP_V:-8.2}
     build:
       context: .
       # This has to be the same name as set in Dockerfiles `as container-name-xx´
-      target: ${PROJECT_NAME}-${PHP_V_ID}
-      dockerfile: .docker/php/${PHP_V}/Dockerfile
+      target: ${PROJECT_NAME:-bundle-users}-${PHP_V_ID:-82}
+      dockerfile: .docker/php/${PHP_V:-8.2}/Dockerfile
     volumes:
       - .:/project
     command: [ "tail", "-f", "/dev/null" ]
