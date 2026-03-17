@@ -11,6 +11,8 @@ concurrency:
 jobs:
     phpunit:
         runs-on: ${{ matrix.os }}
+        env:
+            IS_MAIN_ENV: ${{ github.ref == 'refs/heads/master' && matrix.php == '8.2' && matrix.symfony == '~6.4' && matrix.dependency-versions == 'highest' }}
         strategy:
             fail-fast: false
             matrix:
@@ -48,18 +50,20 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v6
+                with:
+                    fetch-depth: 0
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@2.36.0
                 with:
                     php-version: ${{ matrix.php }}
-                    coverage: pcov
+                    coverage: ${{ env.IS_MAIN_ENV == 'true' && 'pcov' || 'none' }}
                     extensions: ast
 
             -   name: Get Composer Cache Directory
                 id: composer-cache
                 run: |
-                    echo "::set-output name=dir::$(composer config cache-files-dir)"
+                    echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             -   name: Cache Composer's dependencies
                 uses: actions/cache@v5
@@ -101,16 +105,38 @@ jobs:
 
             -   name: Run PHPunit
                 run: |
-                    ./vendor-bin/phpunit/vendor/bin/phpunit --coverage-clover var/coverage/clover.xml
+                    if [ "${{ env.IS_MAIN_ENV }}" == "true" ]; then
+                        ./vendor-bin/phpunit/vendor/bin/phpunit --coverage-clover var/coverage/clover.xml --log-junit junit.xml
+                    else
+                        ./vendor-bin/phpunit/vendor/bin/phpunit
+                    fi
 
             -   name: Change paths in clover.xml
+                if: env.IS_MAIN_ENV == 'true'
                 run: |
-                    sed -i 's+/home/runner/work/bundle-users/bundle-users+/github/workspace+g' ./var/coverage/clover.xml
+                    sed -i 's+/home/runner/work/bundle-users/bundle-users+/github/workspace+g' var/coverage/clover.xml
 
             -   name: Sonarcloud
-                if: |
-                    github.ref == 'refs/heads/dev' && matrix.php == '8.2' && matrix.symfony == '~6.4' && matrix.dependency-versions == 'highest'
-                uses: sonarsource/sonarcloud-github-action@master
+                if: env.IS_MAIN_ENV == 'true'
+                uses: sonarsource/sonarqube-scan-action@v6
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+            - name: Upload test results to Codecov
+              if: ${{ !cancelled() && env.IS_MAIN_ENV == 'true' }}
+              uses: codecov/codecov-action@v5
+              with:
+                  token: ${{ secrets.CODECOV_TOKEN }}
+                  flags: ${{matrix.symfony}},${{matrix.php}}
+                  report_type: test_results
+                  files: junit.xml
+
+            -   name: Upload coverage reports to Codecov
+                if: env.IS_MAIN_ENV == 'true'
+                uses: codecov/codecov-action@v5
+                with:
+                    token: ${{ secrets.CODECOV_TOKEN }}
+                    fail_ci_if_error: false
+                    verbose: true
+                    files: ./var/coverage/clover.xml

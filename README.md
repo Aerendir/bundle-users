@@ -45,6 +45,12 @@
 [![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 [![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
 
+[![codecov](https://codecov.io/gh/Aerendir/bundle-users/branch/master/graph/badge.svg?token=W9FH392F73)](https://codecov.io/gh/Aerendir/bundle-users)
+
+[![CodeCov SunBurst](https://codecov.io/gh/Aerendir/bundle-users/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/Aerendir/bundle-users)
+[![CodeCov Tree](https://codecov.io/gh/Aerendir/bundle-users/branch/master/graphs/tree.svg)](https://codecov.io/gh/Aerendir/bundle-users)
+[![CodeCov I Cicle](https://codecov.io/gh/Aerendir/bundle-users/branch/master/graphs/icicle.svg)](https://codecov.io/gh/Aerendir/bundle-users)
+
 ## Features
 
 Provides some utilities to make easier the management of users in Symfony applications, on top of Symfony's built-in management of users.
