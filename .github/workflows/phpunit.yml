@@ -54,7 +54,7 @@ jobs:
                     fetch-depth: 0
 
             -   name: Setup PHP
-                uses: shivammathur/setup-php@2.36.0
+                uses: shivammathur/setup-php@2.37.1
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: ${{ env.IS_MAIN_ENV == 'true' && 'pcov' || 'none' }}
