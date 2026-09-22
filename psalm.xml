@@ -85,5 +85,6 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
+        <pluginClass class="Zenstruck\Foundry\Psalm\FoundryPlugin"/>
     </plugins>
 </psalm>
