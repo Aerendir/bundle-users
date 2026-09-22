@@ -48,9 +48,6 @@ return RectorConfig::configure()
     // This causes issues with controllers
     // Until required for tests, keep it commented
     ->withBootstrapFiles([__DIR__ . '/vendor-bin/phpunit/vendor/autoload.php'])
-    ->withSets([
-        Rector\Symfony\Set\SymfonySetList::SYMFONY_64,
-    ])
     ->withRules([
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class,
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
