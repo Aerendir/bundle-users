@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Repository;
 
-use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\EntityRepository;
 use Safe\DateTimeImmutable;
 use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
@@ -39,7 +39,7 @@ final class PasswordResetTokenRepository extends EntityRepository
              ->andWhere('t.expiresAt > :now')
              ->setParameter('user', $user)
              ->setParameter('now', new \DateTimeImmutable())
-             ->orderBy('t.requestedAt', Criteria::DESC)
+             ->orderBy('t.requestedAt', Order::Descending->value)
              ->getQuery()
              ->getResult();
     }
