@@ -25,11 +25,11 @@ final class UserRoleAddCommandTest extends KernelTestCase
 {
     public function testUserRoleAdd(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
         $user = UserFactory::createOne(['email' => 'test@example.com', 'roles' => ['ROLE_USER']]);
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:role:add');
         $commandTester = new CommandTester($command);
         $commandTester->execute([
@@ -53,10 +53,10 @@ final class UserRoleAddCommandTest extends KernelTestCase
 
     public function testUserRoleAddFailsWithInvalidRoles(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
         UserFactory::createOne(['email' => 'test@example.com']);
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:role:add');
         $commandTester = new CommandTester($command);
 

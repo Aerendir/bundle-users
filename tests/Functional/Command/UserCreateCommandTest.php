@@ -25,8 +25,8 @@ final class UserCreateCommandTest extends KernelTestCase
 {
     public function testUserCreate(): void
     {
-        self::bootKernel();
-        $application = new Application(self::$kernel);
+        $kernel = self::bootKernel();
+        $application = new Application($kernel);
 
         $command       = $application->find('shq:user:create');
         $commandTester = new CommandTester($command);
@@ -54,8 +54,8 @@ final class UserCreateCommandTest extends KernelTestCase
 
     public function testUserCreateFailsWithInvalidEmail(): void
     {
-        self::bootKernel();
-        $application = new Application(self::$kernel);
+        $kernel = self::bootKernel();
+        $application = new Application($kernel);
 
         $command       = $application->find('shq:user:create');
         $commandTester = new CommandTester($command);
@@ -72,8 +72,8 @@ final class UserCreateCommandTest extends KernelTestCase
 
     public function testUserCreateFailsWithShortPassword(): void
     {
-        self::bootKernel();
-        $application = new Application(self::$kernel);
+        $kernel = self::bootKernel();
+        $application = new Application($kernel);
 
         $command       = $application->find('shq:user:create');
         $commandTester = new CommandTester($command);
@@ -90,8 +90,8 @@ final class UserCreateCommandTest extends KernelTestCase
 
     public function testUserCreateFailsWithInvalidProvider(): void
     {
-        self::bootKernel();
-        $application = new Application(self::$kernel);
+        $kernel = self::bootKernel();
+        $application = new Application($kernel);
 
         $command       = $application->find('shq:user:create');
         $commandTester = new CommandTester($command);
