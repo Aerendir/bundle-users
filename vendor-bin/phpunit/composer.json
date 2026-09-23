@@ -1,9 +1,9 @@
 {
     "require-dev": {
-        "symfony/phpunit-bridge": "^7.2",
+        "symfony/phpunit-bridge": "^8.1",
         "phpunit/phpunit": "^11.0",
         "symfony/framework-bundle": "~5.4",
-        "vimeo/psalm": "6.16.1",
+        "vimeo/psalm": "6.17.2",
         "psalm/plugin-phpunit": "^0.19.5",
         "psalm/plugin-symfony": "^5.3",
         "weirdan/doctrine-psalm-plugin": "^2.10"
