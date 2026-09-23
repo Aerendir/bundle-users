@@ -56,7 +56,7 @@
         "symfony/var-dumper": "^6.4 || ^7.4 || ^8.0",
         "symfony/web-profiler-bundle": "^6.4 || ^7.4 || ^8.0",
         "symfony/yaml": "^6.4 || ^7.4 || ^8.0",
-        "thecodingmachine/phpstan-safe-rule": "1.4.3",
+        "thecodingmachine/phpstan-safe-rule": "1.4.7",
         "zenstruck/foundry": "^2.9"
     },
     "autoload": {
