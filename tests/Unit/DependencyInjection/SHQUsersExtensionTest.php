@@ -21,7 +21,6 @@ use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerInterface;
 use SerendipityHQ\Bundle\UsersBundle\Manager\UsersManagerRegistry;
 use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 
 final class SHQUsersExtensionTest extends TestCase
 {
