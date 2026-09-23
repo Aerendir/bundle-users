@@ -49,12 +49,12 @@ jobs:
 
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@v7
                 with:
                     fetch-depth: 0
 
             -   name: Setup PHP
-                uses: shivammathur/setup-php@2.37.1
+                uses: shivammathur/setup-php@2.37.2
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: ${{ env.IS_MAIN_ENV == 'true' && 'pcov' || 'none' }}
@@ -66,7 +66,7 @@ jobs:
                     echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             -   name: Cache Composer's dependencies
-                uses: actions/cache@v5
+                uses: actions/cache@v6
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
                     key: php-composer-dependencies-cache
@@ -78,7 +78,7 @@ jobs:
                     composer config --no-plugins allow-plugins.symfony/flex true
 
             -   name: Install Composer deps
-                uses: ramsey/composer-install@v3
+                uses: ramsey/composer-install@v4
                 with:
                     composer-options: --no-scripts
 
@@ -99,7 +99,7 @@ jobs:
                     fi
 
             -   name: Install Composer bin PHPUnit
-                uses: ramsey/composer-install@v3
+                uses: ramsey/composer-install@v4
                 with:
                     working-directory: './vendor-bin/phpunit'
 
@@ -118,14 +118,14 @@ jobs:
 
             -   name: Sonarcloud
                 if: env.IS_MAIN_ENV == 'true'
-                uses: sonarsource/sonarqube-scan-action@v6
+                uses: sonarsource/sonarqube-scan-action@v8
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
             - name: Upload test results to Codecov
               if: ${{ !cancelled() && env.IS_MAIN_ENV == 'true' }}
-              uses: codecov/codecov-action@v5
+              uses: codecov/codecov-action@v7
               with:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   flags: ${{matrix.symfony}},${{matrix.php}}
@@ -134,7 +134,7 @@ jobs:
 
             -   name: Upload coverage reports to Codecov
                 if: env.IS_MAIN_ENV == 'true'
-                uses: codecov/codecov-action@v5
+                uses: codecov/codecov-action@v7
                 with:
                     token: ${{ secrets.CODECOV_TOKEN }}
                     fail_ci_if_error: false
