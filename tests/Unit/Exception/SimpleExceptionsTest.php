@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SerendipityHQ\Bundle\UsersBundle\Tests\Unit\Exception;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordEncodingError;
 use SerendipityHQ\Bundle\UsersBundle\Exception\PasswordException;
@@ -28,9 +29,7 @@ use SerendipityHQ\Bundle\UsersBundle\Exception\RolesException;
 
 final class SimpleExceptionsTest extends TestCase
 {
-    /**
-     * @dataProvider provideSimpleExceptions
-     */
+    #[DataProvider('provideSimpleExceptions')]
     public function testSimpleExceptions(string $exceptionClass, string $parentClass): void
     {
         $exception = new $exceptionClass();
