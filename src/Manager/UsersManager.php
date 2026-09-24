@@ -31,14 +31,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class UsersManager implements UsersManagerInterface
 {
-    /**
-     * `$secUserClass` comes from `security.providers.*.entity.class`, which Symfony's own entity
-     * user provider already requires to be a `UserInterface` entity — this class relies on it too,
-     * instantiating it and returning it as one. Declaring it is what lets
-     * `EntityManagerInterface::getRepository()` resolve its template type.
-     *
-     * @param class-string<UserInterface> $secUserClass
-     */
     public function __construct(private readonly string $provider, private readonly string $secUserClass, private readonly string $secUserProperty, private readonly EventDispatcherInterface $dispatcher, private readonly EntityManagerInterface $entityManager, private readonly PropertyAccessor $propertyAccessor)
     {
     }

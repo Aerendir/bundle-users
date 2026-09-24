@@ -39,13 +39,6 @@ final class PasswordManager
 {
     private readonly ?PasswordResetTokenRepository $passwordResetTokenRepository;
 
-    /**
-     * `$secUserClass` comes from `security.providers.*.entity.class`, which Symfony's own entity
-     * user provider already requires to be a `UserInterface` entity. Declaring it is what lets
-     * `EntityManagerInterface::getRepository()` resolve its template type.
-     *
-     * @param class-string<UserInterface> $secUserClass
-     */
     public function __construct(
         private readonly int $passResetThrottlingMaxActiveTokens,
         private readonly int $passResetThrottlingMinTimeBetweenTokens,

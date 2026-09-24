@@ -954,3 +954,14 @@ parameters:
 			count: 1
 			path: tests/Unit/Validator/RolesValidatorTest.php
 
+		-
+			message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Manager/UsersManager.php
