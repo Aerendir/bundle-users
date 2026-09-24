@@ -33,7 +33,7 @@
         "phpdocumentor/reflection-docblock": "^5.0 || ^6.0",
         "phpdocumentor/type-resolver": "^1.8",
         "phpstan/phpstan": "2.2.14",
-        "phpstan/phpstan-doctrine": "2.0.18",
+        "phpstan/phpstan-doctrine": "2.0.28",
         "phpstan/phpstan-phpunit": "2.0.18",
         "phpstan/phpstan-symfony": "2.0.20",
         "rector/rector": "2.6.7",

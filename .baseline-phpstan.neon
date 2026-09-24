@@ -954,3 +954,21 @@ parameters:
 			count: 1
 			path: tests/Unit/Validator/RolesValidatorTest.php
 
+		-
+			message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Manager/PasswordManager.php
+
+		-
+			message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Manager/UsersManager.php
+
+		-
+			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository extends generic class Doctrine\\ORM\\EntityRepository but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Repository/PasswordResetTokenRepository.php
+
