@@ -20,8 +20,6 @@ use SerendipityHQ\Bundle\UsersBundle\Model\Property\PasswordResetTokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @extends EntityRepository<PasswordResetTokenInterface>
- *
  * @method PasswordResetTokenInterface|null find($id, $lockMode = null, $lockVersion = null)
  * @method PasswordResetTokenInterface|null findOneBy(array $criteria, array $orderBy = null)
  * @method PasswordResetTokenInterface[]    findAll()
