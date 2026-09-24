@@ -25,11 +25,11 @@ final class UserRoleRemCommandTest extends KernelTestCase
 {
     public function testUserRoleRem(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
         $user = UserFactory::createOne(['email' => 'test@example.com', 'roles' => ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER']]);
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:role:rem');
         $commandTester = new CommandTester($command);
         $commandTester->execute([
