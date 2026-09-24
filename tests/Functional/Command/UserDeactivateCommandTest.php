@@ -25,11 +25,11 @@ final class UserDeactivateCommandTest extends KernelTestCase
 {
     public function testUserDeactivate(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
         UserFactory::createOne(['email' => 'test@example.com', 'active' => true]);
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:deactivate');
         $commandTester = new CommandTester($command);
         $commandTester->execute(['unique' => 'test@example.com']);

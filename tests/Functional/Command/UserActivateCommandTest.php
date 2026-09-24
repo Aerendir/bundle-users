@@ -25,12 +25,12 @@ final class UserActivateCommandTest extends KernelTestCase
 {
     public function testUserActivate(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
         $user = UserFactory::createOne(['email' => 'test@example.com', 'active' => false]);
         $this->assertFalse($user->isActive());
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:activate');
         $commandTester = new CommandTester($command);
         $commandTester->execute(['unique' => 'test@example.com']);
@@ -49,9 +49,9 @@ final class UserActivateCommandTest extends KernelTestCase
 
     public function testUserActivateFailsWithNonExistentUser(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
-        $application   = new Application(self::$kernel);
+        $application   = new Application($kernel);
         $command       = $application->find('shq:user:activate');
         $commandTester = new CommandTester($command);
         $commandTester->execute(['unique' => 'non-existent@example.com']);
