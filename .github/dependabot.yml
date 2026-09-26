@@ -3,6 +3,14 @@ updates:
     - package-ecosystem: "composer"
       versioning-strategy: widen
       directory: "/"
+      ignore:
+          # phpdocumentor/reflection-docblock is required here only to keep a 5.x copy in the root
+          # autoloader, shadowing the 6.0.3 that Psalm drags in through danog/advanced-json-rpc.
+          # symfony/property-info 6.4 declares no conflict against it and throws at runtime instead,
+          # so accepting 6.x turns every ~6.4 column red. The commit that pinned it carries the full
+          # analysis.
+          - dependency-name: "phpdocumentor/reflection-docblock"
+            versions: [">=6"]
       schedule:
           interval: "daily"
       allow:
@@ -65,13 +73,20 @@ updates:
       versioning-strategy: increase
       directory: "/vendor-bin/phpunit/"
       ignore:
-          # PHPUnit 13 requires PHP >= 8.4.1, and this matrix still runs 8.2: it simply cannot be
-          # installed on the lowest columns. Widening the requirement into a union of lines is not
-          # the answer either — the tests are written against one major only, and PHPUnit 12 already
-          # stopped reading metadata from doc-comments. Remove this entry when the matrix floor
-          # reaches PHP 8.4.1, in the same change that raises it and migrates the tests.
+          # PHPUnit 12 requires PHP >= 8.3 and PHPUnit 13 requires PHP >= 8.4.1, while this matrix
+          # still runs 8.2: neither can be installed on the lowest columns. The highest line that
+          # covers the whole matrix is 11.5, whose own floor is 8.2. Widening the requirement into
+          # a union of lines is not the answer either — the tests are written against one major
+          # only, and PHPUnit 12 already stopped reading metadata from doc-comments. Remove this
+          # entry when the matrix floor reaches 8.3, in the same change that raises it and migrates
+          # the tests to attributes.
           - dependency-name: "phpunit/phpunit"
-            versions: [">=13"]
+            versions: [">=12"]
+          # symfony/framework-bundle 8.0 requires PHP >= 8.4 and 8.1 requires >= 8.4.1, while this
+          # matrix still runs 8.2. The 7.4 line, whose own floor is 8.2, is the last one that covers
+          # the whole matrix. Remove this entry in the same change that raises the matrix floor.
+          - dependency-name: "symfony/framework-bundle"
+            versions: [">=8.0"]
       schedule:
           interval: "daily"
       allow:
