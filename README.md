@@ -38,12 +38,12 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=sqale_index)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Aerendir_bundle-users&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=Aerendir_bundle-users)
 
-[![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
-[![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
-[![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
-[![Composer](https://github.com/Aerendir/bundle-users/workflows/Composer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
-[![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
-[![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Adev)
+[![PHPStan](https://github.com/Aerendir/bundle-users/workflows/PHPStan/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
+[![PSalm](https://github.com/Aerendir/bundle-users/workflows/PSalm/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
+[![PHPUnit](https://github.com/Aerendir/bundle-users/workflows/PHPunit/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
+[![Composer](https://github.com/Aerendir/bundle-users/workflows/Composer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
+[![PHP CS Fixer](https://github.com/Aerendir/bundle-users/workflows/PHP%20CS%20Fixer/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
+[![Rector](https://github.com/Aerendir/bundle-users/workflows/Rector/badge.svg)](https://github.com/Aerendir/bundle-users/actions?query=branch%3Amaster)
 
 [![codecov](https://codecov.io/gh/Aerendir/bundle-users/branch/master/graph/badge.svg?token=W9FH392F73)](https://codecov.io/gh/Aerendir/bundle-users)
 
