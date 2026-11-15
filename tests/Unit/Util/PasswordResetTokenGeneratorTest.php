@@ -19,8 +19,6 @@ use SerendipityHQ\Bundle\UsersBundle\Tests\Fixtures\App\Entity\User;
 use SerendipityHQ\Bundle\UsersBundle\Util\PasswordResetTokenGenerator;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
-use function Safe\json_encode;
-
 final class PasswordResetTokenGeneratorTest extends TestCase
 {
     private string $appSecret              = 'test_secret';

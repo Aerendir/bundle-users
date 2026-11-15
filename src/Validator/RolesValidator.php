@@ -15,8 +15,6 @@ namespace SerendipityHQ\Bundle\UsersBundle\Validator;
 
 use Symfony\Component\String\UnicodeString;
 
-use function Safe\preg_match;
-
 final class RolesValidator
 {
     /**
@@ -49,7 +47,12 @@ final class RolesValidator
      */
     public static function validateRole(string $role, array $errors = []): array
     {
-        if (1 !== preg_match('#^[A-Z0-9_]+$#', $role)) {
+        $matches = \preg_match('#^[A-Z0-9_]+$#', $role);
+        if (false === $matches) {
+            throw new \RuntimeException(\preg_last_error_msg());
+        }
+
+        if (1 !== $matches) {
             $errors[$role][] = 'Role name can contain only UPPERCASE LETTERS, numbers and underscores (ex.: ROLE_ADMIN).';
         }
 

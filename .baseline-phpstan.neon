@@ -163,12 +163,6 @@ parameters:
 			path: src/Helper/PasswordHelper.php
 
 		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 1
-			path: src/Helper/PasswordResetHelper.php
-
-		-
 			message: '#^Method SerendipityHQ\\Bundle\\UsersBundle\\Helper\\PasswordResetHelper\:\:getTokenFromSession\(\) should return string but returns mixed\.$#'
 			identifier: return.type
 			count: 1
@@ -241,12 +235,6 @@ parameters:
 			path: src/Model/Property/PasswordResetTokenInterface.php
 
 		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 1
-			path: src/Repository/PasswordResetTokenRepository.php
-
-		-
 			message: '#^Class SerendipityHQ\\Bundle\\UsersBundle\\Repository\\PasswordResetTokenRepository extends generic class Doctrine\\ORM\\EntityRepository but does not specify its types\: TEntityClass$#'
 			identifier: missingType.generics
 			count: 1
@@ -305,12 +293,6 @@ parameters:
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/Validator/RolesValidator.php
-
-		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 1
-			path: tests/Fixtures/App/Entity/PasswordResetToken.php
 
 		-
 			message: '#^Property SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\PasswordResetToken\:\:\$user type mapping mismatch\: property can contain Symfony\\Component\\Security\\Core\\User\\UserInterface but database expects SerendipityHQ\\Bundle\\UsersBundle\\Tests\\Fixtures\\App\\Entity\\User\.$#'
@@ -493,12 +475,6 @@ parameters:
 			path: tests/Functional/Manager/PasswordManagerTest.php
 
 		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 7
-			path: tests/Functional/Manager/PasswordManagerTest.php
-
-		-
 			message: '#^Parameter \#1 \$appSecret of class SerendipityHQ\\Bundle\\UsersBundle\\Util\\PasswordResetTokenGenerator constructor expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -604,12 +580,6 @@ parameters:
 			message: '#^Cannot call method getRequestedAt\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 2
-			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
-
-		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 8
 			path: tests/Functional/Repository/PasswordResetTokenRepositoryTest.php
 
 		-
@@ -743,12 +713,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: tests/Unit/DependencyInjection/SHQUsersExtensionTest.php
-
-		-
-			message: '#^Class DateTime is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTime;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 1
-			path: tests/Unit/Event/PasswordResetTokenCreatedEventTest.php
 
 		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Exception\\\\PasswordResetTokenException'' and SerendipityHQ\\Bundle\\UsersBundle\\Exception\\PasswordResetTokenClassMustImplementPasswordResetTokenInterfaceInterface will always evaluate to true\.$#'
@@ -913,32 +877,14 @@ parameters:
 			path: tests/Unit/Manager/UsersManagerTest.php
 
 		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 1
-			path: tests/Unit/Model/PasswordResetTokenPublicTest.php
-
-		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''DateTimeImmutable'' and DateTimeImmutable will always evaluate to true\.$#'
 			identifier: method.alreadyNarrowedType
 			count: 1
 			path: tests/Unit/Model/Property/PasswordResetTokenTraitTest.php
 
 		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
-			count: 4
-			path: tests/Unit/Model/Property/PasswordResetTokenTraitTest.php
-
-		-
 			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''SerendipityHQ\\\\Bundle\\\\UsersBundle\\\\Model\\\\ResetPasswordTokenComponents'' and SerendipityHQ\\Bundle\\UsersBundle\\Model\\ResetPasswordTokenComponents will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
-			count: 2
-			path: tests/Unit/Util/PasswordResetTokenGeneratorTest.php
-
-		-
-			message: '#^Class DateTimeImmutable is unsafe to use\. Its methods can return FALSE instead of throwing an exception\. Please add ''use Safe\\DateTimeImmutable;'' at the beginning of the file to use the variant provided by the ''thecodingmachine/safe'' library\.$#'
-			identifier: theCodingMachineSafe.class
 			count: 2
 			path: tests/Unit/Util/PasswordResetTokenGeneratorTest.php
 
